@@ -283,19 +283,19 @@ plt.show()
 כאשר נריץ את הקוד, נקבל תוצאות דומות לאלה:
 
 ```
-Intercept (β₀): 703.52
-Coefficient for Area (β1): 8.24
-Coefficient for Rooms (β2): 92.56
-Coefficient for Age (β3): -10.87
-Coefficient for Distance (β4): 4.12
+Intercept (β₀): 728.62
+Coefficient for Area (β1): 12.17
+Coefficient for Rooms (β2): 32.18
+Coefficient for Age (β3): -16.03
+Coefficient for Distance (β4): -46.50
 
-Training MSE: 1245.73
-Testing MSE: 1987.45
-Training R²: 0.97
-Testing R²: 0.95
-Adjusted R²: 0.94
+Training MSE: 753.91
+Testing MSE: 1355.14
+Training R²: 0.99
+Testing R²: -1.17
+Adjusted R²: 0.98
 
-Predicted price for a new apartment: 1350.43 thousand ILS
+Predicted price for a new apartment: 1373.39 thousand ILS
 ```
 
 הגרפים שייווצרו יציגו את הקשרים בין המשתנים השונים ואת מידת ההתאמה של המודל לנתונים. חשוב לשים לב לגרף מטריצת הקורלציה, שמראה את עוצמת הקשר בין כל זוג משתנים.
