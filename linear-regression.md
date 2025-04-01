@@ -40,7 +40,11 @@ The goal is to find the line that minimizes the Sum of Squared Errors (SSE). The
 
 The Sum of Squared Errors is defined as:
 
-$$SSE = \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 = \sum_{i=1}^{n} (y_i - (mx_i + b))^2$$
+$SSE = \sum_{i=1}^{n} (y_i - \hat{y}_i)^2$
+
+Or more explicitly:
+
+$SSE = \sum_{i=1}^{n} (y_i - (mx_i + b))^2$
 
 To find the values of $m$ and $b$ that minimize the SSE, we differentiate the equation with respect to $m$ and $b$ and set them equal to zero:
 
