@@ -57,7 +57,7 @@ In matrix form:
 
 $$SSE = (\mathbf{y} - \mathbf{X}\boldsymbol{\beta})^T(\mathbf{y} - \mathbf{X}\boldsymbol{\beta})$$
 
-<a href="2-multivariate-linear-regression-math.md">see detailed explanation</a>
+<a href="multivariate-linear-regression-math.md">see detailed explanation</a>
 
 To find the coefficient values that minimize SSE, we differentiate with respect to $\boldsymbol{\beta}$ and set it equal to zero:
 
