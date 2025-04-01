@@ -1,71 +1,71 @@
-# הסבר על הפתרון של רגרסיה פולינומיאלית מדרגה שנייה
+# Explanation of Quadratic Polynomial Regression Solution
 
-## מהנוסחה לפתרון
+## From Formula to Solution
 
-ברגרסיה פולינומיאלית מדרגה שנייה, אנו מנסים למצוא את המקדמים $\beta_0$, $\beta_1$, ו-$\beta_2$ במשוואה:
+In quadratic polynomial regression, we're trying to find the coefficients $\beta_0$, $\beta_1$, and $\beta_2$ in the equation:
 
 $$y = \beta_0 + \beta_1 x + \beta_2 x^2$$
 
-כמו ברגרסיה לינארית, אנו רוצים למצוא את הערכים שממזערים את סכום ריבועי השגיאות (SSE):
+Similar to linear regression, we want to find the values that minimize the Sum of Squared Errors (SSE):
 
 $$SSE = \sum_{i=1}^{n} (y_i - (\beta_0 + \beta_1 x_i + \beta_2 x_i^2))^2$$
 
-## צעד 1: גזירת ה-SSE לפי כל אחד מהפרמטרים
+## Step 1: Differentiating the SSE with respect to each parameter
 
-כדי למצוא את הפרמטרים האופטימליים, נגזור את ה-SSE לפי כל אחד מהפרמטרים ונשווה לאפס:
+To find the optimal parameters, we differentiate the SSE with respect to each parameter and set it equal to zero:
 
-**גזירה לפי $\beta_0$**:
+**Differentiation with respect to $\beta_0$**:
 $$\frac{\partial SSE}{\partial \beta_0} = -2 \sum_{i=1}^{n} (y_i - (\beta_0 + \beta_1 x_i + \beta_2 x_i^2)) = 0$$
 
-**גזירה לפי $\beta_1$**:
+**Differentiation with respect to $\beta_1$**:
 $$\frac{\partial SSE}{\partial \beta_1} = -2 \sum_{i=1}^{n} x_i(y_i - (\beta_0 + \beta_1 x_i + \beta_2 x_i^2)) = 0$$
 
-**גזירה לפי $\beta_2$**:
+**Differentiation with respect to $\beta_2$**:
 $$\frac{\partial SSE}{\partial \beta_2} = -2 \sum_{i=1}^{n} x_i^2(y_i - (\beta_0 + \beta_1 x_i + \beta_2 x_i^2)) = 0$$
 
-## צעד 2: פישוט המשוואות
+## Step 2: Simplifying the equations
 
-**מהגזירה לפי $\beta_0$**:
+**From differentiation with respect to $\beta_0$**:
 $$\sum_{i=1}^{n} (y_i - \beta_0 - \beta_1 x_i - \beta_2 x_i^2) = 0$$
 
-נפשט:
+Simplifying:
 $$\sum_{i=1}^{n} y_i - \beta_0 \sum_{i=1}^{n} 1 - \beta_1 \sum_{i=1}^{n} x_i - \beta_2 \sum_{i=1}^{n} x_i^2 = 0$$
 
-מכיוון ש-$\sum_{i=1}^{n} 1 = n$ (מספר הנקודות), נקבל:
+Since $\sum_{i=1}^{n} 1 = n$ (the number of data points), we get:
 $$\sum_{i=1}^{n} y_i - n\beta_0 - \beta_1 \sum_{i=1}^{n} x_i - \beta_2 \sum_{i=1}^{n} x_i^2 = 0$$
 
-מכאן:
+Thus:
 $$\sum_{i=1}^{n} y_i = n\beta_0 + \beta_1 \sum_{i=1}^{n} x_i + \beta_2 \sum_{i=1}^{n} x_i^2$$
 
-**מהגזירה לפי $\beta_1$**:
+**From differentiation with respect to $\beta_1$**:
 $$\sum_{i=1}^{n} x_i(y_i - \beta_0 - \beta_1 x_i - \beta_2 x_i^2) = 0$$
 
-נפשט:
+Simplifying:
 $$\sum_{i=1}^{n} x_iy_i - \beta_0 \sum_{i=1}^{n} x_i - \beta_1 \sum_{i=1}^{n} x_i^2 - \beta_2 \sum_{i=1}^{n} x_i^3 = 0$$
 
-מכאן:
+Thus:
 $$\sum_{i=1}^{n} x_iy_i = \beta_0 \sum_{i=1}^{n} x_i + \beta_1 \sum_{i=1}^{n} x_i^2 + \beta_2 \sum_{i=1}^{n} x_i^3$$
 
-**מהגזירה לפי $\beta_2$**:
+**From differentiation with respect to $\beta_2$**:
 $$\sum_{i=1}^{n} x_i^2(y_i - \beta_0 - \beta_1 x_i - \beta_2 x_i^2) = 0$$
 
-נפשט:
+Simplifying:
 $$\sum_{i=1}^{n} x_i^2y_i - \beta_0 \sum_{i=1}^{n} x_i^2 - \beta_1 \sum_{i=1}^{n} x_i^3 - \beta_2 \sum_{i=1}^{n} x_i^4 = 0$$
 
-מכאן:
+Thus:
 $$\sum_{i=1}^{n} x_i^2y_i = \beta_0 \sum_{i=1}^{n} x_i^2 + \beta_1 \sum_{i=1}^{n} x_i^3 + \beta_2 \sum_{i=1}^{n} x_i^4$$
 
-## צעד 3: ייצוג במערכת משוואות
+## Step 3: Representing as a system of equations
 
-קיבלנו מערכת של שלוש משוואות ליניאריות עם שלושה נעלמים ($\beta_0$, $\beta_1$, $\beta_2$):
+We've obtained a system of three linear equations with three unknowns ($\beta_0$, $\beta_1$, $\beta_2$):
 
 1. $\sum_{i=1}^{n} y_i = n\beta_0 + \beta_1 \sum_{i=1}^{n} x_i + \beta_2 \sum_{i=1}^{n} x_i^2$
 2. $\sum_{i=1}^{n} x_iy_i = \beta_0 \sum_{i=1}^{n} x_i + \beta_1 \sum_{i=1}^{n} x_i^2 + \beta_2 \sum_{i=1}^{n} x_i^3$
 3. $\sum_{i=1}^{n} x_i^2y_i = \beta_0 \sum_{i=1}^{n} x_i^2 + \beta_1 \sum_{i=1}^{n} x_i^3 + \beta_2 \sum_{i=1}^{n} x_i^4$
 
-## צעד 4: פתרון בצורה מטריצית
+## Step 4: Matrix solution
 
-אפשר לייצג את המערכת בצורה מטריצית:
+We can represent this system in matrix form:
 
 $$\begin{bmatrix} 
 n & \sum x_i & \sum x_i^2 \\
@@ -83,68 +83,68 @@ n & \sum x_i & \sum x_i^2 \\
 \sum x_i^2 y_i
 \end{bmatrix}$$
 
-זוהי בדיוק משוואת המטריצה הנורמלית $X^TX\beta = X^Ty$ שמתקבלת כאשר מיישמים רגרסיה לינארית על נתונים שעברו טרנספורמציה פולינומיאלית.
+This is exactly the normal equation $X^TX\beta = X^Ty$ that we get when applying linear regression to data that has undergone polynomial transformation.
 
-בצורה מקוצרת:
+In short form:
 $$A\beta = b$$
 
-והפתרון:
+And the solution:
 $$\beta = A^{-1}b$$
 
-## צעד 5: פתרון מספרי עבור הדוגמה
+## Step 5: Numerical solution for the example
 
-עבור הדוגמה של שעות אימון וזמני ריצה, אנו צריכים לחשב את הסכומים:
+For the training hours and running times example, we need to calculate the sums:
 
-- $n = 10$ (מספר הנקודות)
-- $\sum x_i = 129$ (סכום שעות האימון)
-- $\sum y_i = 661$ (סכום זמני הריצה)
-- $\sum x_i^2 = 2,493$ (סכום ריבועי שעות האימון)
-- $\sum x_i y_i = 7,860$ (סכום מכפלות שעות וזמנים)
-- $\sum x_i^2 y_i = 152,110$ (סכום מכפלות ריבועי שעות וזמנים)
-- $\sum x_i^3$ = יש לחשב
-- $\sum x_i^4$ = יש לחשב
+- $n = 10$ (number of data points)
+- $\sum x_i = 129$ (sum of training hours)
+- $\sum y_i = 661$ (sum of running times)
+- $\sum x_i^2 = 2,493$ (sum of squared training hours)
+- $\sum x_i y_i = 7,860$ (sum of products of hours and times)
+- $\sum x_i^2 y_i = 152,110$ (sum of products of squared hours and times)
+- $\sum x_i^3$ = needs to be calculated
+- $\sum x_i^4$ = needs to be calculated
 
-אם נחשב את הסכומים החסרים ונציב במטריצה, נוכל למצוא את הפתרון המספרי:
+If we calculate the missing sums and substitute into the matrix, we can find the numerical solution:
 
 $$\beta_0 \approx 110.5$$
 $$\beta_1 \approx -5.3$$
 $$\beta_2 \approx 0.13$$
 
-מכאן, משוואת הרגרסיה הפולינומיאלית היא:
+Therefore, the polynomial regression equation is:
 $$y = 110.5 - 5.3x + 0.13x^2$$
 
-## הסבר גרפי של המשמעות
+## Graphical interpretation
 
-משוואה זו מייצגת פרבולה (עקומה בצורת U) שבה:
-- $\beta_0 = 110.5$ הוא החיתוך עם ציר ה-y (הערך כאשר x=0)
-- $\beta_1 = -5.3$ מייצג את השיפוע הראשוני (שלילי, כלומר הביצועים משתפרים בהתחלה)
-- $\beta_2 = 0.13$ מייצג את מידת הקמירות של הפרבולה (חיובי, כלומר הפרבולה פונה כלפי מעלה - הביצועים מתחילים להידרדר לאחר נקודה מסוימת)
+This equation represents a parabola (U-shaped curve) where:
+- $\beta_0 = 110.5$ is the y-intercept (the value when x=0)
+- $\beta_1 = -5.3$ represents the initial slope (negative, meaning performance improves initially)
+- $\beta_2 = 0.13$ represents the curvature of the parabola (positive, meaning the parabola opens upward - performance starts to deteriorate after a certain point)
 
-פרבולה זו מתארת את היחס בין שעות אימון לזמן ריצה, כאשר ניתן לראות שהיא מגיעה למינימום (הזמן הטוב ביותר) ואז עולה שוב.
+This parabola describes the relationship between training hours and running time, showing that it reaches a minimum (best time) and then increases again.
 
-## חישוב הנקודה האופטימלית
+## Finding the optimal point
 
-כדי למצוא את נקודת המינימום של הפרבולה, נגזור את המשוואה לפי x ונשווה לאפס:
+To find the minimum point of the parabola, we differentiate the equation with respect to x and set it to zero:
 
 $$\frac{dy}{dx} = -5.3 + 2 \cdot 0.13 \cdot x = 0$$
 $$-5.3 + 0.26x = 0$$
 $$0.26x = 5.3$$
 $$x = \frac{5.3}{0.26} \approx 20.4$$
 
-לכן, מספר שעות האימון האופטימלי הוא כ-20.4 שעות בשבוע. כדי למצוא את הזמן הטוב ביותר, נציב את הערך הזה במשוואה המקורית:
+Therefore, the optimal number of training hours is approximately 20.4 hours per week. To find the best time, we substitute this value into the original equation:
 
 $$y = 110.5 - 5.3 \cdot 20.4 + 0.13 \cdot 20.4^2$$
 $$y = 110.5 - 108.12 + 0.13 \cdot 416.16$$
 $$y = 110.5 - 108.12 + 54.1$$
-$$y \approx 56.48 \textrm{ שניות}$$
+$$y \approx 56.48 \text{ seconds}$$
 
-זהו הזמן המינימלי הצפוי לפי המודל שלנו.
+This is the minimum time predicted by our model.
 
-## יתרונות השימוש במודל פולינומיאלי
+## Advantages of using a polynomial model
 
-המודל הפולינומיאלי מאפשר לנו:
-1. לתאר מערכות יחסים לא-לינאריות
-2. למצוא נקודות אופטימום (מינימום או מקסימום)
-3. לחזות ביצועים בצורה מדויקת יותר במקרים שבהם היחס אינו לינארי
+The polynomial model allows us to:
+1. Describe non-linear relationships
+2. Find optimum points (minimum or maximum)
+3. Predict performance more accurately in cases where the relationship is not linear
 
-חשוב לזכור שמודלים פולינומיאליים מדרגה גבוהה עלולים לסבול מ"אובר-פיטינג" - התאמת יתר לנתונים הקיימים, שעשויה לפגוע ביכולת ההכללה על נתונים חדשים. לכן, בדרך כלל מתחילים עם מודל ריבועי (דרגה 2) ומעלים את הדרגה רק אם יש הצדקה לכך מבחינת הנתונים והתיאוריה.
+It's important to remember that high-degree polynomial models may suffer from "overfitting" - fitting the existing data too closely, which might impair the ability to generalize to new data. Therefore, we usually start with a quadratic model (degree 2) and increase the degree only if there is justification from the data and theory.
