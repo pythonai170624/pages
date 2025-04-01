@@ -22,112 +22,110 @@
 
 עלינו למצוא את הקשר בין שעות הלימוד לציון, כדי שנוכל לחזות כמה שעות צריך ללמוד כדי לקבל ציון 100.
 
-## הנוסחה המתמטית והחישוב המלא
+## Mathematical Formula and Complete Calculation
 
-רגרסיה לינארית מחפשת את הקו הישר שמתאים בצורה הטובה ביותר לנתונים שלנו. הקו מיוצג על-ידי המשוואה:
+Linear regression finds the straight line that best fits our data. The line is represented by the equation:
 
-$y = mx + b$
+$$y = mx + b$$
 
-כאשר:
-- $y$ הוא המשתנה התלוי (במקרה שלנו: הציון במבחן)
-- $x$ הוא המשתנה הבלתי תלוי (במקרה שלנו: שעות הלימוד)
-- $m$ הוא השיפוע (הקצב שבו $y$ משתנה ביחס ל-$x$)
-- $b$ הוא נקודת החיתוך עם ציר ה-$y$ (הערך של $y$ כאשר $x = 0$)
+Where:
+- $y$ is the dependent variable (in our case: the exam score)
+- $x$ is the independent variable (in our case: study hours)
+- $m$ is the slope (the rate at which $y$ changes with respect to $x$)
+- $b$ is the y-intercept (the value of $y$ when $x = 0$)
 
-### השיטה המתמטית המלאה
+### Complete Mathematical Method
 
-המטרה היא למצוא את הקו שממזער את סכום ריבועי השגיאות (SSE - Sum of Squared Errors). השגיאה היא ההפרש בין הערך האמיתי $y_i$ לבין הערך המנובא על ידי המודל $\hat{y}_i = mx_i + b$.
+The goal is to find the line that minimizes the Sum of Squared Errors (SSE). The error is the difference between the actual value $y_i$ and the predicted value $\hat{y}_i = mx_i + b$.
 
-סכום ריבועי השגיאות מוגדר כך:
+The Sum of Squared Errors is defined as:
 
-$SSE = \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 = \sum_{i=1}^{n} (y_i - (mx_i + b))^2$
+$$SSE = \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 = \sum_{i=1}^{n} (y_i - (mx_i + b))^2$$
 
-כדי למצוא את הערכים של $m$ ו-$b$ שממזערים את ה-SSE, נגזור את המשוואה ביחס ל-$m$ ו-$b$ ונשווה לאפס:
+To find the values of $m$ and $b$ that minimize the SSE, we differentiate the equation with respect to $m$ and $b$ and set them equal to zero:
 
-$\frac{\partial SSE}{\partial m} = \sum_{i=1}^{n} -2x_i(y_i - (mx_i + b)) = 0$
+$$\frac{\partial SSE}{\partial m} = \sum_{i=1}^{n} -2x_i(y_i - (mx_i + b)) = 0$$
 
-$\frac{\partial SSE}{\partial b} = \sum_{i=1}^{n} -2(y_i - (mx_i + b)) = 0$
+$$\frac{\partial SSE}{\partial b} = \sum_{i=1}^{n} -2(y_i - (mx_i + b)) = 0$$
 
-נפשט את המשוואות:
+Let's simplify these equations:
 
-מהנגזרת ביחס ל-$b$:
+From the derivative with respect to $b$:
 
-$\sum_{i=1}^{n} (y_i - mx_i - b) = 0$
+$$\sum_{i=1}^{n} (y_i - mx_i - b) = 0$$
 
-$\sum_{i=1}^{n} y_i - m\sum_{i=1}^{n} x_i - nb = 0$
+$$\sum_{i=1}^{n} y_i - m\sum_{i=1}^{n} x_i - nb = 0$$
 
-$\sum_{i=1}^{n} y_i = m\sum_{i=1}^{n} x_i + nb$
+$$\sum_{i=1}^{n} y_i = m\sum_{i=1}^{n} x_i + nb$$
 
-$b = \frac{\sum_{i=1}^{n} y_i - m\sum_{i=1}^{n} x_i}{n}$
+$$b = \frac{\sum_{i=1}^{n} y_i - m\sum_{i=1}^{n} x_i}{n}$$
 
-מהנגזרת ביחס ל-$m$:
+From the derivative with respect to $m$:
 
-$\sum_{i=1}^{n} x_i(y_i - mx_i - b) = 0$
+$$\sum_{i=1}^{n} x_i(y_i - mx_i - b) = 0$$
 
-$\sum_{i=1}^{n} x_iy_i - m\sum_{i=1}^{n} x_i^2 - b\sum_{i=1}^{n} x_i = 0$
+$$\sum_{i=1}^{n} x_iy_i - m\sum_{i=1}^{n} x_i^2 - b\sum_{i=1}^{n} x_i = 0$$
 
-נציב את הביטוי ל-$b$ שמצאנו קודם:
+Now we substitute the expression for $b$ that we found earlier:
 
-$\sum_{i=1}^{n} x_iy_i - m\sum_{i=1}^{n} x_i^2 - \frac{\sum_{i=1}^{n} y_i - m\sum_{i=1}^{n} x_i}{n}\sum_{i=1}^{n} x_i = 0$
+$$\sum_{i=1}^{n} x_iy_i - m\sum_{i=1}^{n} x_i^2 - \frac{\sum_{i=1}^{n} y_i - m\sum_{i=1}^{n} x_i}{n}\sum_{i=1}^{n} x_i = 0$$
 
-$\sum_{i=1}^{n} x_iy_i - m\sum_{i=1}^{n} x_i^2 - \frac{\sum_{i=1}^{n} y_i\sum_{i=1}^{n} x_i - m(\sum_{i=1}^{n} x_i)^2}{n} = 0$
+$$\sum_{i=1}^{n} x_iy_i - m\sum_{i=1}^{n} x_i^2 - \frac{\sum_{i=1}^{n} y_i\sum_{i=1}^{n} x_i - m(\sum_{i=1}^{n} x_i)^2}{n} = 0$$
 
-$n\sum_{i=1}^{n} x_iy_i - nm\sum_{i=1}^{n} x_i^2 - \sum_{i=1}^{n} y_i\sum_{i=1}^{n} x_i + m(\sum_{i=1}^{n} x_i)^2 = 0$
+$$n\sum_{i=1}^{n} x_iy_i - nm\sum_{i=1}^{n} x_i^2 - \sum_{i=1}^{n} y_i\sum_{i=1}^{n} x_i + m(\sum_{i=1}^{n} x_i)^2 = 0$$
 
-$n\sum_{i=1}^{n} x_iy_i - \sum_{i=1}^{n} y_i\sum_{i=1}^{n} x_i = nm\sum_{i=1}^{n} x_i^2 - m(\sum_{i=1}^{n} x_i)^2$
+$$n\sum_{i=1}^{n} x_iy_i - \sum_{i=1}^{n} y_i\sum_{i=1}^{n} x_i = nm\sum_{i=1}^{n} x_i^2 - m(\sum_{i=1}^{n} x_i)^2$$
 
-$n\sum_{i=1}^{n} x_iy_i - \sum_{i=1}^{n} y_i\sum_{i=1}^{n} x_i = m(n\sum_{i=1}^{n} x_i^2 - (\sum_{i=1}^{n} x_i)^2)$
+$$n\sum_{i=1}^{n} x_iy_i - \sum_{i=1}^{n} y_i\sum_{i=1}^{n} x_i = m(n\sum_{i=1}^{n} x_i^2 - (\sum_{i=1}^{n} x_i)^2)$$
 
-$m = \frac{n\sum_{i=1}^{n} x_iy_i - \sum_{i=1}^{n} x_i\sum_{i=1}^{n} y_i}{n\sum_{i=1}^{n} x_i^2 - (\sum_{i=1}^{n} x_i)^2}$
+$$m = \frac{n\sum_{i=1}^{n} x_iy_i - \sum_{i=1}^{n} x_i\sum_{i=1}^{n} y_i}{n\sum_{i=1}^{n} x_i^2 - (\sum_{i=1}^{n} x_i)^2}$$
 
-וכאשר חישבנו את $m$, אנחנו יכולים להציב בביטוי ל-$b$:
+And once we've calculated $m$, we can substitute it into the expression for $b$:
 
-$b = \frac{\sum_{i=1}^{n} y_i - m\sum_{i=1}^{n} x_i}{n}$
+$$b = \frac{\sum_{i=1}^{n} y_i - m\sum_{i=1}^{n} x_i}{n}$$
 
-### יישום החישוב על הדוגמה שלנו
+### Applying the Calculation to Our Example
 
-נחשב את $m$ ו-$b$ עבור הנתונים שלנו:
+Let's calculate $m$ and $b$ for our data:
 
-| שעות לימוד ($x_i$) | ציון במבחן ($y_i$) | $x_i \cdot y_i$ | $x_i^2$ |
-|-------------------|-------------------|----------------|----------|
-| 1                 | 60                | 60             | 1        |
-| 2                 | 65                | 130            | 4        |
-| 3                 | 70                | 210            | 9        |
-| 4                 | 75                | 300            | 16       |
-| 5                 | 80                | 400            | 25       |
-| 6                 | 85                | 510            | 36       |
-| 7                 | 90                | 630            | 49       |
-| 8                 | 92                | 736            | 64       |
-| 9                 | 95                | 855            | 81       |
-| **סה"כ:** | $\sum x_i = 45$ | $\sum y_i = 712$ | $\sum x_i y_i = 3,831$ | $\sum x_i^2 = 285$ |
+| Study Hours ($x_i$) | Exam Score ($y_i$) | $x_i \cdot y_i$ | $x_i^2$ |
+|---------------------|-------------------|----------------|----------|
+| 1                   | 60                | 60             | 1        |
+| 2                   | 65                | 130            | 4        |
+| 3                   | 70                | 210            | 9        |
+| 4                   | 75                | 300            | 16       |
+| 5                   | 80                | 400            | 25       |
+| 6                   | 85                | 510            | 36       |
+| 7                   | 90                | 630            | 49       |
+| 8                   | 92                | 736            | 64       |
+| 9                   | 95                | 855            | 81       |
+| **Total:** | $\sum x_i = 45$ | $\sum y_i = 712$ | $\sum x_i y_i = 3,831$ | $\sum x_i^2 = 285$ |
 
-כעת נציב בנוסחאות:
+Now we substitute into our formulas:
 
-$m = \frac{n\sum x_iy_i - \sum x_i\sum y_i}{n\sum x_i^2 - (\sum x_i)^2} = \frac{9 \cdot 3,831 - 45 \cdot 712}{9 \cdot 285 - 45^2} = \frac{34,479 - 32,040}{2,565 - 2,025} = \frac{2,439}{540} \approx 4.52$
+$$m = \frac{n\sum x_iy_i - \sum x_i\sum y_i}{n\sum x_i^2 - (\sum x_i)^2} = \frac{9 \cdot 3,831 - 45 \cdot 712}{9 \cdot 285 - 45^2} = \frac{34,479 - 32,040}{2,565 - 2,025} = \frac{2,439}{540} \approx 4.52$$
 
-$b = \frac{\sum y_i - m\sum x_i}{n} = \frac{712 - 4.52 \cdot 45}{9} = \frac{712 - 203.4}{9} = \frac{508.6}{9} \approx 56.51$
+$$b = \frac{\sum y_i - m\sum x_i}{n} = \frac{712 - 4.52 \cdot 45}{9} = \frac{712 - 203.4}{9} = \frac{508.6}{9} \approx 56.51$$
 
-לכן, משוואת הקו המתאימה ביותר היא בקירוב:
+Therefore, the best-fitting line equation is approximately:
 
-$y = 4.52x + 56.51$
+$$y = 4.52x + 56.51$$
 
-זה אומר שכל שעת לימוד נוספת מוסיפה בממוצע כ-4.52 נקודות לציון, וללא לימוד כלל (0 שעות) הציון הצפוי הוא כ-56.51.
+This means that each additional hour of study adds approximately 4.52 points to the score, and with no study at all (0 hours), the expected score is about 56.51.
 
-### חישוב הערך לקבלת ציון 100
+### Calculating the Value to Get a Score of 100
 
-כדי לחשב כמה שעות לימוד נדרשות לקבלת ציון 100:
+To calculate how many study hours are needed to get a score of 100:
 
-$100 = 4.52x + 56.51$
-$4.52x = 100 - 56.51 = 43.49$
-$x = \frac{43.49}{4.52} \approx 9.62$
+$$100 = 4.52x + 56.51$$
+$$4.52x = 100 - 56.51 = 43.49$$
+$$x = \frac{43.49}{4.52} \approx 9.62$$
 
-כלומר, כדי לקבל ציון 100, צריך ללמוד כ-9.62 שעות לפי המודל שחישבנו.
+So, according to our model, approximately 9.62 hours of study are needed to achieve a score of 100.
 
-הערה: קיימים הבדלים קטנים בין החישובים הידניים שביצענו כאן לבין התוצאות שיתקבלו מספריות המכונה בפייתון (כמו scikit-learn) בגלל שיטות עיגול והבדלים קטנים באלגוריתמים.
+Note: There may be small differences between our manual calculations here and the results obtained from Python libraries (like scikit-learn) due to rounding methods and small differences in algorithms.
 
 ## גרף
-
-הנה איך הרגרסיה הלינארית שלנו נראית בצורה גרפית:
 
 ```
     ^
