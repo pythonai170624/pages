@@ -135,6 +135,12 @@ This means:
 - Each year of building age decreases the price by about 15,690 ILS
 - Each kilometer of distance from the city center decreases the price by about 41,380 ILS (which aligns with the common pattern that properties closer to city centers typically command higher prices)
 
+## גרף
+
+<img src="mul1.png" style="width:60%;"/>
+
+בניגוד לרגרסיה לינארית פשוטה, שניתן לייצג בקלות בגרף דו-ממדי, רגרסיה לינארית מרובת משתנים דורשת ייצוג מורכב יותר. הגרף מציג ויזואליזציה של הקשר בין שטח הדירה לבין המחיר, כאשר גודל הנקודות מייצג את מספר החדרים והצבע מייצג את גיל המבנה. קשה לייצג את כל המשתנים בגרף אחד, ולכן לעתים קרובות משתמשים במספר גרפים או בשיטות ויזואליזציה מתקדמות.
+
 ### Interpretation of R² and Adjusted R²
 
 In multiple regression, we use two key metrics to evaluate model fit:
@@ -148,12 +154,6 @@ $$R^2 = 1 - \frac{SSE}{SST} = 1 - \frac{\sum(y_i - \hat{y}_i)^2}{\sum(y_i - \bar
 $$R^2_{adj} = 1 - \frac{(1-R^2)(n-1)}{n-p-1}$$
 
 Where n is the sample size and p is the number of predictors.
-
-## גרף
-
-<img src="mul1.png" style="width:60%;"/>
-
-בניגוד לרגרסיה לינארית פשוטה, שניתן לייצג בקלות בגרף דו-ממדי, רגרסיה לינארית מרובת משתנים דורשת ייצוג מורכב יותר. הגרף מציג ויזואליזציה של הקשר בין שטח הדירה לבין המחיר, כאשר גודל הנקודות מייצג את מספר החדרים והצבע מייצג את גיל המבנה. קשה לייצג את כל המשתנים בגרף אחד, ולכן לעתים קרובות משתמשים במספר גרפים או בשיטות ויזואליזציה מתקדמות.
 
 ## קוד פייטון
 
