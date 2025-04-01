@@ -153,7 +153,9 @@ $$R^2 = 1 - \frac{SSE}{SST} = 1 - \frac{\sum(y_i - \hat{y}_i)^2}{\sum(y_i - \bar
 
 $$R^2_{adj} = 1 - \frac{(1-R^2)(n-1)}{n-p-1}$$
 
-Where n is the sample size and p is the number of predictors.
+Where n is the sample size and p is the number of predictors
+
+<a href="r-explained.md">R² and Adjusted R² detailed explained</a>
 
 ## קוד פייטון
 
