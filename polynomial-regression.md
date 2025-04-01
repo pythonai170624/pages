@@ -110,7 +110,7 @@ According to our model, the optimal number of training hours is about 20.4 hours
 
 ## גרף
 
-<img src="polynomial_regression_plot.png" style="width:60%;"/>
+<img src="poly1.png" style="width:60%;"/>
 
 הגרף מראה את התאמת הרגרסיה הפולינומיאלית (הקו האדום) לנתונים שלנו (הנקודות הכחולות). אפשר לראות שהמודל הפולינומיאלי מצליח לתפוס את המגמה הלא-לינארית בנתונים - שיפור בביצועים עם עלייה בשעות האימון עד לנקודה מסוימת, ולאחר מכן ירידה בביצועים.
 
