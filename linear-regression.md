@@ -203,9 +203,21 @@ To get a score of 100, approximately 9.62 hours of study are needed
 
 על פי המודל שלנו, כדי לקבל ציון של 100 במבחן, יש צורך ללמוד בערך 10.06 שעות
 
-## תרגיל
+### Note:
+For the simple linear regression problems shown in these examples (with one predictor variable and a small dataset), the direct solution using the normal equation is preferred because:
 
-## תרגיל נוסף עם פתרון
+1. It's computationally efficient
+2. It provides an exact solution
+3. It's easy to implement and understand
+4. It doesn't require hyperparameter tuning
+
+Gradient descent becomes advantageous when:
+- Working with very large datasets
+- Dealing with many features (high-dimensional data)
+- Implementing online learning where data arrives sequentially
+- Building more complex models where closed-form solutions don't exist
+
+## תרגיל
 
 **תרגיל**:  
 חברה מפרסמת טוענת שיש קשר בין הסכום שחברה משקיעה בפרסום לבין הגידול במכירות. הנה הנתונים (בשקלים):
