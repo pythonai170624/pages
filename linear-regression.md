@@ -191,9 +191,10 @@ plt.show()
 כאשר נריץ את הקוד, נקבל:
 
 ```
-True parameters: m = 2.5, b = -5
-Found parameters: m = 2.3260, b = -4.9892
-Final loss: 7.8986
+Slope (m): 4.52
+Intercept (b): 56.53
+Line equation: y = 4.52x + 56.53
+To get a score of 100, approximately 9.62 hours of study are needed
 ```
 
 ותוצג תמונה של גרף עם קו הרגרסיה שחוצה את הנקודות, והחיזוי שלנו מסומן בירוק
