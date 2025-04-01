@@ -215,7 +215,8 @@ Gradient descent becomes advantageous when:
 - Working with very large datasets
 - Dealing with many features (high-dimensional data)
 - Implementing online learning where data arrives sequentially
-- Building more complex models where closed-form solutions don't exist
+- Building more complex models where closed-form solutions (=mathematical expression that solves a problem using a finite number of standard operations. It gives you the answer directly, without requiring
+  iterative approximations or numerical methods) don't exist
 
 ## תרגיל
 
