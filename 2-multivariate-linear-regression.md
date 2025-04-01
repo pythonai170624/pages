@@ -49,9 +49,11 @@ Where:
 
 ### The Normal Equations
 
-Similar to simple linear regression, we want to minimize the sum of squared errors (SSE):
+Similar to simple linear regression, we want to minimize the **sum of squared errors (SSE)**:
 
-$$SSE = \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 = \sum_{i=1}^{n} (y_i - (\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + ... + \beta_p x_{ip}))^2$$
+$$
+SSE = \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 = \sum_{i=1}^{n} \left(y_i - \left(\beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \dots + \beta_p x_{ip}\right)\right)^2
+$$
 
 In matrix form:
 
