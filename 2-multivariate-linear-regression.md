@@ -65,6 +65,8 @@ This leads to the normal equation:
 
 $$\mathbf{X}^T\mathbf{X}\boldsymbol{\beta} = \mathbf{X}^T\mathbf{y}$$
 
+<a href="2-multivariate-linear-regression-math.md">detailed explanation</a>
+
 Solving for $\boldsymbol{\beta}$:
 
 $$\boldsymbol{\beta} = (\mathbf{X}^T\mathbf{X})^{-1}\mathbf{X}^T\mathbf{y}$$
