@@ -131,7 +131,7 @@ Note: There may be small differences between our manual calculations here and th
 
 ## גרף
 
-<img src="lin1.png" widht="688" height="550"/>
+<img src="lin1.png" style="width:40%;"/>
 
 הקו המיטבי שמתאים לנתונים שלנו עובר בקירוב דרך הנקודות ומאפשר לנו לחזות ערכים חדשים.
 
