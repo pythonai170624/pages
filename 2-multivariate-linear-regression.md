@@ -51,7 +51,7 @@ Where:
 
 Similar to simple linear regression, we want to minimize the **sum of squared errors (SSE)**:
 
-<image src="formula1.png" />
+<image src="formula1.jpg" />
 
 In matrix form:
 
