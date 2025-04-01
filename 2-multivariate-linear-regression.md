@@ -119,22 +119,21 @@ print(f"Intercept (β₀): {model.intercept_:.2f}")
 print(f"Coefficients (β₁, β₂, β₃, β₄): {model.coef_}")
 ```
 
-Using this example data, we would get approximate coefficients:
-- $\beta_0 \approx 703.52$ (Intercept)
-- $\beta_1 \approx 8.24$ (Area coefficient)
-- $\beta_2 \approx 92.56$ (Rooms coefficient)
-- $\beta_3 \approx -10.87$ (Building age coefficient)
-- $\beta_4 \approx 4.12$ (Distance coefficient)
+Using the example data, we get the following coefficients:
+- $\beta_0 \approx 740.66$ (Intercept)
+- $\beta_1 \approx 11.31$ (Area coefficient)
+- $\beta_2 \approx 40.11$ (Rooms coefficient)
+- $\beta_3 \approx -15.69$ (Building age coefficient)
+- $\beta_4 \approx -41.38$ (Distance coefficient)
 
-Therefore, our multiple linear regression equation would be:
-
-$$\text{Price} = 703.52 + 8.24 \times \text{Area} + 92.56 \times \text{Rooms} - 10.87 \times \text{Age} + 4.12 \times \text{Distance}$$
+Therefore, our multiple linear regression equation is:
+$$\text{Price} = 740.66 + 11.31 \times \text{Area} + 40.11 \times \text{Rooms} - 15.69 \times \text{Age} - 41.38 \times \text{Distance}$$
 
 This means:
-- Each additional square meter increases the price by about 8,240 ILS
-- Each additional room increases the price by about 92,560 ILS
-- Each year of building age decreases the price by about 10,870 ILS
-- Each kilometer of distance from the city center increases the price by about 4,120 ILS (this might seem counterintuitive but could reflect other factors such as larger properties being farther from the center)
+- Each additional square meter increases the price by about 11,310 ILS
+- Each additional room increases the price by about 40,110 ILS
+- Each year of building age decreases the price by about 15,690 ILS
+- Each kilometer of distance from the city center decreases the price by about 41,380 ILS (which aligns with the common pattern that properties closer to city centers typically command higher prices)
 
 ### Interpretation of R² and Adjusted R²
 
