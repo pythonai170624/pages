@@ -89,6 +89,8 @@ $\beta_0 \approx 110.5$
 $\beta_1 \approx -5.3$
 $\beta_2 \approx 0.13$
 
+<a href="polynomial-regression-math.md">see detailed explanation</a>
+
 Therefore, our polynomial regression equation would be:
 
 $$y = 110.5 - 5.3x + 0.13x^2$$
