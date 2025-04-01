@@ -143,45 +143,44 @@ Note: There may be small differences between our manual calculations here and th
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
-import matplotlib.font_manager as fm
 
-# הנתונים שלנו
-hours_studied = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9]).reshape(-1, 1)  # שעות לימוד
-exam_scores = np.array([60, 65, 70, 75, 80, 85, 90, 92, 95])  # ציונים במבחן
+# Our data
+hours_studied = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9]).reshape(-1, 1)  # Study hours
+exam_scores = np.array([60, 65, 70, 75, 80, 85, 90, 92, 95])  # Exam scores
 
-# יצירת מודל הרגרסיה
+# Create regression model
 model = LinearRegression()
 model.fit(hours_studied, exam_scores)
 
-# הדפסת התוצאות
-print(f"שיפוע (m): {model.coef_[0]:.2f}")
-print(f"נקודת החיתוך (b): {model.intercept_:.2f}")
+# Print results
+print(f"Slope (m): {model.coef_[0]:.2f}")
+print(f"Intercept (b): {model.intercept_:.2f}")
 
-# חישוב הנוסחה
+# Calculate equation
 equation = f"y = {model.coef_[0]:.2f}x + {model.intercept_:.2f}"
-print(f"משוואת הקו: {equation}")
+print(f"Line equation: {equation}")
 
-# חיזוי כמה שעות צריך ללמוד כדי לקבל 100
+# Predict hours needed to get score of 100
 score_to_predict = 100
 hours_needed = (score_to_predict - model.intercept_) / model.coef_[0]
-print(f"כדי לקבל ציון של 100, צריך ללמוד בערך {hours_needed:.2f} שעות")
+print(f"To get a score of 100, approximately {hours_needed:.2f} hours of study are needed")
 
-# יצירת הגרף
+# Create the graph
 plt.figure(figsize=(10, 6))
-plt.scatter(hours_studied, exam_scores, color='blue', label='נתונים')
-plt.plot(hours_studied, model.predict(hours_studied), color='red', label='קו הרגרסיה')
+plt.scatter(hours_studied, exam_scores, color='blue', label='Data points')
+plt.plot(hours_studied, model.predict(hours_studied), color='red', label='Regression line')
 
-# הוספת נקודה עבור החיזוי שלנו
-plt.scatter([[hours_needed]], [100], color='green', s=100, label='החיזוי שלנו')
+# Add prediction point
+plt.scatter([[hours_needed]], [100], color='green', s=100, label='Our prediction')
 
-# הוספת תווית עברית לגרף
-plt.title('רגרסיה לינארית - שעות לימוד לעומת ציון במבחן')
-plt.xlabel('שעות לימוד')
-plt.ylabel('ציון במבחן')
+# Add labels in English
+plt.title('Linear Regression - Study Hours vs. Exam Score')
+plt.xlabel('Study Hours')
+plt.ylabel('Exam Score')
 plt.grid(True)
 plt.legend()
 
-# הצגת המשוואה על הגרף
+# Display equation on the graph
 plt.text(1, 95, equation, fontsize=12)
 
 plt.show()
@@ -192,15 +191,16 @@ plt.show()
 כאשר נריץ את הקוד, נקבל:
 
 ```
-שיפוע (m): 4.32
-נקודת החיתוך (b): 56.57
-משוואת הקו: y = 4.32x + 56.57
-כדי לקבל ציון של 100, צריך ללמוד בערך 10.06 שעות
+True parameters: m = 2.5, b = -5
+Found parameters: m = 2.3260, b = -4.9892
+Final loss: 7.8986
 ```
 
-ותוצג תמונה של גרף עם קו הרגרסיה שחוצה את הנקודות, והחיזוי שלנו מסומן בירוק.
+ותוצג תמונה של גרף עם קו הרגרסיה שחוצה את הנקודות, והחיזוי שלנו מסומן בירוק
 
-על פי המודל שלנו, כדי לקבל ציון של 100 במבחן, יש צורך ללמוד בערך 10.06 שעות.
+<img src="lin2.png" style="width:40%" />
+
+על פי המודל שלנו, כדי לקבל ציון של 100 במבחן, יש צורך ללמוד בערך 10.06 שעות
 
 ## תרגיל נוסף עם פתרון
 
