@@ -57,6 +57,8 @@ The gradient descent algorithm updates all coefficients simultaneously:
 
 $$\beta_j := \beta_j - \alpha \frac{\partial J}{\partial \beta_j}$$
 
+The symbol := means assignment or definition, It’s read as "is updated to" or "is defined as"
+
 Where:
 - $\alpha$ is the learning rate
 - $\frac{\partial J}{\partial \beta_j}$ is the partial derivative of the cost function with respect to $\beta_j$
