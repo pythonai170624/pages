@@ -45,6 +45,8 @@ The cost function for multiple linear regression is the Mean Squared Error (MSE)
 
 <img src="formula2.jpg" />
 
+The letter 𝐽 is traditionally used in machine learning and optimization to represent the cost function, also known as the objective function — the thing we want to minimize.
+
 Where:
 - $n$ is the number of observations
 - $y_i$ is the actual value
