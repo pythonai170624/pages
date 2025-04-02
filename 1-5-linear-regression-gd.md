@@ -44,6 +44,9 @@ The goal is to minimize the Mean Squared Error (MSE):
 
 $$J(m, b) = \frac{1}{2n} \sum_{i=1}^{n} (y_i - (mx_i + b))^2$$
 
+The letter 𝐽 is traditionally used in machine learning and optimization to represent the cost function, 
+also known as the objective function — the thing we want to minimize
+
 Where:
 - $n$ is the number of data points
 - $y_i$ is the actual value
