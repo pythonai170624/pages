@@ -281,6 +281,7 @@ for i, ax in enumerate(axes.flat):
 plt.tight_layout()
 plt.show()
 ```
+<a href="multivariate-linear-regression-code.py">full code</a>
 
 ## דוגמת הרצה
 
