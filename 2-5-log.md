@@ -63,11 +63,7 @@ Where:
 - $\alpha$ is the learning rate
 - $\frac{\partial J}{\partial \beta_j}$ is the partial derivative of the cost function with respect to $\beta_j$
 
-The partial derivatives are:
-
-$$\frac{\partial J}{\partial \beta_0} = \frac{1}{n} \sum_{i=1}^{n} (\hat{y}_i - y_i)$$
-
-$$\frac{\partial J}{\partial \beta_j} = \frac{1}{n} \sum_{i=1}^{n} (\hat{y}_i - y_i) \cdot x_{ij} \quad \text{for } j = 1, 2, ..., p$$
+<img src="formula3.jpg" />
 
 ### Feature Scaling
 
