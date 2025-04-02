@@ -126,8 +126,6 @@ So, according to our model, approximately 9.62 hours of study are needed to achi
 
 ## גרף התכנסות
 
-<img src="convergence.png" style="width:40%;"/>
-
 גרף זה מראה כיצד פונקציית העלות (Cost Function) יורדת עם כל איטרציה של אלגוריתם ה-Gradient Descent. אנו רואים שהאלגוריתם מתכנס לפתרון אופטימלי לאחר מספר איטרציות.
 
 ## קוד פייטון
@@ -247,7 +245,7 @@ To get a score of 100, approximately 9.62 hours of study are needed
 
 וגרף הרגרסיה יציג את הקו הטוב ביותר שמצאנו:
 
-<img src="regression_graph.png" style="width:60%" />
+<img src="lingd2.png" style="width:60%" />
 
 ## השוואה בין הגישות
 
