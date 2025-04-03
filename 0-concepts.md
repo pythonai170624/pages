@@ -30,9 +30,15 @@
 
 - **Regression Problem**: The task that machine learning solves when dealing with continuous labels.
 
-## Linear Regression
+## Linear Regression (Pages 12-15)
 
 - **Linear Regression**: A type of statistical analysis that attempts to show a relationship between two variables (x & y). It looks at various data points and plots a line through them that best expresses this relationship.
+
+- **Linear Regression Equation**: 
+  - Simple form: ŷ = β₀ + β₁x₁
+  - General form: ŷ = β₀x₀ + β₁x₁ + ... + βₙxₙ
+  - Or expressed using summation: ŷ = Σ(i=0 to n) βᵢxᵢ
+  - For simple linear regression, this is similar to the line equation y = mx + b
 
 - **Beta Coefficient (β)**: The influence of a specific feature on the label value. It indicates how much the dependent variable changes when the independent variable increases by one unit.
 
