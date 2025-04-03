@@ -30,6 +30,18 @@
 
 - **Regression Problem**: The task that machine learning solves when dealing with continuous labels.
 
+## Linear Regression
+
+- **Linear Regression**: A type of statistical analysis that attempts to show a relationship between two variables (x & y). It looks at various data points and plots a line through them that best expresses this relationship.
+
+- **Beta Coefficient (β)**: The influence of a specific feature on the label value. It indicates how much the dependent variable changes when the independent variable increases by one unit.
+
+- **Y-hat (ŷ)**: Represents the predicted value of the dependent variable (y) for any given value of the independent variable (x). It is an estimate of the true y value obtained from the regression line fitted to the data.
+
+- **Simple Linear Regression**: A model with only one feature (single X), resulting in an equation similar to a linear line equation (y = mx + b).
+
+- **Multiple Linear Regression**: A model with multiple features that creates a regression hyperplane rather than a simple line to fit the data. Each independent variable forms a different axis in a multidimensional space.
+
 ## Linear Regression Requirements
 
 - **Linear Relationship**: There should be a linear relationship between the dependent and independent variables, which can be checked by creating a scatterplot to see if a linear pattern appears.
