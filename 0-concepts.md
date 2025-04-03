@@ -38,8 +38,8 @@
 
 - **Homoscedasticity**: The variance of the errors should be the same across all levels of the independent variables. If variance changes, linear regression may not be appropriate.
 
-<img src="residuals_hetero.jpg" />
+<img src="residuals_hetero.jpg" style="width:70%"/>
 
 - **Normality**: The residuals of the model should be normally distributed.
-<img src="residuals_normal.jpg" />
+<img src="residuals_normal.jpg" style="width:70%" />
 
