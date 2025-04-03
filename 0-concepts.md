@@ -1,6 +1,6 @@
 # Machine Learning Key Terms
 
-## Introduction to Machine Learning (Pages 3-4)
+## Introduction to Machine Learning 
 
 - **Machine Learning (ML)**: A subfield of artificial intelligence that uses algorithms and statistical models to enable computers to make decisions or predictions without being explicitly programmed to perform the task.
 
@@ -8,7 +8,7 @@
 
 - **Label**: The forecasting result or output value that the machine learning model attempts to predict based on the features.
 
-## Types of Machine Learning (Pages 5-6)
+## Types of Machine Learning 
 
 - **Supervised Learning**: A type of machine learning where an algorithm learns from example data and associated output provided during training. Each input instance comes with the correct output. Used in applications where historical data predicts likely future events (e.g., fraud detection, insurance claim validation).
 
@@ -16,7 +16,7 @@
 
 - **Reinforcement Learning**: A type of machine learning where an agent learns how to behave in an environment by performing actions and seeing the results. The agent receives rewards for desired behaviors and aims to maximize cumulative rewards. Used in game theory/strategy (e.g., Google's DeepMind AlphaGo).
 
-## Supervised Learning Process (Pages 7-9)
+## Supervised Learning Process
 
 - **Historical Data**: Known data from the past used to train machine learning models.
 
@@ -37,5 +37,6 @@
 - **Independence**: The observations should be independent of each other, meaning the residuals at any point in the dataset should not depend on residuals at any other point.
 
 - **Homoscedasticity**: The variance of the errors should be the same across all levels of the independent variables. If variance changes, linear regression may not be appropriate.
-
+<img src="residuals_hetero.jpg" />
 - **Normality**: The residuals of the model should be normally distributed.
+- <img src="residuals_normal.jpg" />
