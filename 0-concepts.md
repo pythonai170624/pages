@@ -30,7 +30,7 @@
 
 - **Regression Problem**: The task that machine learning solves when dealing with continuous labels.
 
-## Linear Regression Requirements (Page 21)
+## Linear Regression Requirements
 
 - **Linear Relationship**: There should be a linear relationship between the dependent and independent variables, which can be checked by creating a scatterplot to see if a linear pattern appears.
 
