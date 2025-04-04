@@ -103,7 +103,7 @@ Let's calculate $m$ and $b$ for our data:
 | 7                   | 90                | 630            | 49       |
 | 8                   | 92                | 736            | 64       |
 | 9                   | 95                | 855            | 81       |
-| **Total:** | $\sum x_i = 45$ | $\sum y_i = 712$ | $\sum x_i y_i = 3,831$ | $\sum x_i^2 = 285$ |
+| $\sum x_i = 45$ | $\sum y_i = 712$ | $\sum x_i y_i = 3,831$ | $\sum x_i^2 = 285$ |
 
 Now we substitute into our formulas:
 
