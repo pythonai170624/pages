@@ -417,6 +417,7 @@ plt.grid(True, alpha=0.3)
 plt.tight_layout()
 plt.show()
 ```
+<a href="multivariate-linear-regression-code-gd.py">see full code</a>
 
 ## דוגמת הרצה
 
