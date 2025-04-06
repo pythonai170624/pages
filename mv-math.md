@@ -145,7 +145,7 @@ The complete X^T X matrix is:
 To find the inverse of X^T X, we can use the adjoint method:
 (X^T X)^-1 = adj(X^T X) / det(X^T X)
 
-For a 5×5 matrix, calculating this by hand involves finding the determinant and adjoint, which requires many calculations. Let me show the steps using an algorithm:
+For a 5×5 matrix, calculating this by hand involves finding the determinant and adjoint, which requires many calculations. algorithm steps:
 
 1. First, calculate the determinant of X^T X
 2. Then calculate the cofactor matrix
