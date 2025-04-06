@@ -79,22 +79,6 @@ For gradient descent to work efficiently with multiple variables, it's important
 
 This helps the algorithm converge faster and prevents some features from dominating others due to their scale.
 
-Feature scaling is crucial for many machine learning algorithms, especially those that rely on gradient descent. Here's an explanation of two common techniques with practical examples:
-
-For gradient descent to work efficiently with multiple variables, it's important to scale the features to similar ranges. Common scaling techniques include:
-
-1. **Min-Max Scaling**: Scales features to a range [0, 1]
-   ```
-   x_scaled = (x - x_min) / (x_max - x_min)
-   ```
-
-2. **Standardization**: Scales features to have mean=0 and standard deviation=1
-   ```
-   x_scaled = (x - μ) / σ
-   ```
-
-This helps the algorithm converge faster and prevents some features from dominating others due to their scale.
-
 ## 1. Min-Max Scaling
 
 Min-Max scaling transforms features to a range between 0 and 1 using the formula:
