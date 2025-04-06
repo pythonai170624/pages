@@ -256,6 +256,68 @@ Predicted price for a new apartment: 1373.39 thousand ILS
 
 הגרפים שייווצרו יציגו את הקשרים בין המשתנים השונים ואת מידת ההתאמה של המודל לנתונים. חשוב לשים לב לגרף מטריצת הקורלציה, שמראה את עוצמת הקשר בין כל זוג משתנים.
 
+# למה יש צורך לפצל לקבוצות אימון ובדיקה במודל רגרסיה
+
+## בעיית ה"התאמת יתר" (Overfitting)
+
+נוסחת ה-OLS (Ordinary Least Squares) מוצאת את המקדמים הטובים ביותר **עבור נתוני האימון** בלבד. מדדי ה-R² ו-R מודדים רק כמה טוב המודל מתאים לנתונים שהשתמשנו בהם כדי לבנות את המודל מלכתחילה.
+
+הבעיה המרכזית היא שמודל יכול להתאים מצוין לנתוני האימון (R² גבוה) אבל להיות גרוע מאוד בחיזוי נתונים חדשים שהמודל לא ראה - וזוהי הבעיה של **התאמת יתר** (Overfitting).
+
+## הדגמה של הבעיה
+
+בואו ניקח דוגמה פשוטה:
+
+נניח שיש לנו 10 נקודות נתונים שמייצגות מחירי דירות לפי שטח. אם נבנה מודל לינארי פשוט (קו ישר), נקבל התאמה סבירה.
+
+אבל אם במקום זאת נשתמש בפולינום ממעלה 9, נוכל לקבל התאמה מושלמת (R² = 1.0) שעוברת בדיוק דרך כל 10 הנקודות. למרות זאת, המודל הזה יהיה גרוע בחיזוי מחירים של דירות חדשות, כי הוא "למד" את הרעש בנתונים ולא רק את הקשר האמיתי.
+
+![דוגמת התאמת יתר](data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgMzAwIj4KICA8cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0id2hpdGUiIHN0cm9rZT0iZ3JheSIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgPCEtLSBYIGFuZCBZIGF4ZXMgLS0+CiAgPGxpbmUgeDE9IjUwIiB5MT0iMjUwIiB4Mj0iMzUwIiB5Mj0iMjUwIiBzdHJva2U9ImJsYWNrIiBzdHJva2Utd2lkdGg9IjIiLz4KICA8bGluZSB4MT0iNTAiIHkxPSI1MCIgeDI9IjUwIiB5Mj0iMjUwIiBzdHJva2U9ImJsYWNrIiBzdHJva2Utd2lkdGg9IjIiLz4KICA8IS0tIEF4aXMgbGFiZWxzIC0tPgogIDx0ZXh0IHg9IjIwMCIgeT0iMjgwIiBmb250LWZhbWlseT0iQXJpYWwsSGVicmV3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE0Ij7Xqdei15cg15fXk9eoPC90ZXh0PgogIDx0ZXh0IHg9IjIwIiB5PSIxNTAiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWJyZXciIHRleHQtYW5jaG9yPSJtaWRkbGUiIHRyYW5zZm9ybT0icm90YXRlKC05MCwyMCwxNTApIiBmb250LXNpemU9IjE0Ij7Xnteh16jXmden16gg15HXqdeT16fXnDwvdGV4dD4KICA8IS0tIERhdGEgcG9pbnRzIC0tPgogIDxjaXJjbGUgY3g9IjcwIiBjeT0iMjAwIiByPSI1IiBmaWxsPSJibHVlIi8+CiAgPGNpcmNsZSBjeD0iOTAiIGN5PSIxODAiIHI9IjUiIGZpbGw9ImJsdWUiLz4KICA8Y2lyY2xlIGN4PSIxMzAiIGN5PSIxNzAiIHI9IjUiIGZpbGw9ImJsdWUiLz4KICA8Y2lyY2xlIGN4PSIxNTAiIGN5PSIxNTAiIHI9IjUiIGZpbGw9ImJsdWUiLz4KICA8Y2lyY2xlIGN4PSIxODAiIGN5PSIxMzAiIHI9IjUiIGZpbGw9ImJsdWUiLz4KICA8Y2lyY2xlIGN4PSIyMTAiIGN5PSIxMjAiIHI9IjUiIGZpbGw9ImJsdWUiLz4KICA8Y2lyY2xlIGN4PSIyNDAiIGN5PSIxMTAiIHI9IjUiIGZpbGw9ImJsdWUiLz4KICA8Y2lyY2xlIGN4PSIyNzAiIGN5PSI5MCIgcj0iNSIgZmlsbD0iYmx1ZSIvPgogIDxjaXJjbGUgY3g9IjMwMCIgY3k9IjcwIiByPSI1IiBmaWxsPSJibHVlIi8+CiAgPGNpcmNsZSBjeD0iMzMwIiBjeT0iNjAiIHI9IjUiIGZpbGw9ImJsdWUiLz4KICA8IS0tIExpbmVhciBtb2RlbCAtLT4KICA8bGluZSB4MT0iNTAiIHkxPSIyMTUiIHgyPSIzNTAiIHkyPSI0NSIgc3Ryb2tlPSJyZWQiIHN0cm9rZS13aWR0aD0iMiIvPgogIDwhLS0gT3ZlcmZpdHRlZCBtb2RlbCAtLT4KICA8cGF0aCBkPSJNNzAsMjAwIEM3NSwyMDAgODAsMTg1IDkwLDE4MCBDMTE1LDE3MiAxMjUsMTczIDEzMCwxNzAgQzE0MCwxNjUgMTQ1LDE1NSAxNTAsMTUwIEMxNjAsMTQwIDE3MCwxMzUgMTgwLDEzMCBDMTkwLDEyNyAyMDAsMTI1IDIxMCwxMjAgQzIyMCwxMTcgMjMwLDExNSAyNDAsMTEwIEMyNTAsMTAwIDI2MCw5NyAyNzAsOTAgQzI4MCw4MyAyOTAsNzUgMzAwLDcwIEMzMTAsNjUgMzIwLDYzIDMzMCw2MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJncmVlbiIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPCEtLSBMZWdlbmQgLS0+CiAgPHJlY3QgeD0iMTAwIiB5PSIzMCIgd2lkdGg9IjIwMCIgaGVpZ2h0PSI0MCIgZmlsbD0id2hpdGUiIHN0cm9rZT0iZ3JheSIgc3Ryb2tlLXdpZHRoPSIxIi8+CiAgPGxpbmUgeDE9IjEyMCIgeTE9IjQwIiB4Mj0iMTUwIiB5Mj0iNDAiIHN0cm9rZT0icmVkIiBzdHJva2Utd2lkdGg9IjIiLz4KICA8dGV4dCB4PSIxNjAiIHk9IjQ1IiBmb250LWZhbWlseT0iQXJpYWwsSGVicmV3IiBmb250LXNpemU9IjEyIj7Xnteh15PXnCDXnNeZ16DXkNeo16k8L3RleHQ+CiAgPGxpbmUgeDE9IjEyMCIgeTE9IjYwIiB4Mj0iMTUwIiB5Mj0iNjAiIHN0cm9rZT0iZ3JlZW4iIHN0cm9rZS13aWR0aD0iMiIvPgogIDx0ZXh0IHg9IjE2MCIgeT0iNjUiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWJyZXciIGZvbnQtc2l6ZT0iMTIiPtee15PXnCDXlNeq15DXnteqINeZ16rXqDwvdGV4dD4KPC9zdmc+)
+
+## למה לפצל לקבוצות אימון ובדיקה?
+
+פיצול הנתונים לקבוצת אימון (Train) וקבוצת בדיקה (Test) עוזר לנו להעריך את הביצועים האמיתיים של המודל על נתונים חדשים:
+
+1. **קבוצת אימון (Train)**: משמשת לבניית המודל ולמציאת המקדמים האופטימליים.
+
+2. **קבוצת בדיקה (Test)**: משמשת להערכת המודל על נתונים שלא השתתפו בתהליך האימון, כדי לראות איך המודל יתפקד במציאות.
+
+## דוגמה מעשית - מודל מחירי דירות
+
+נניח שאנחנו בונים מודל לחיזוי מחירי דירות:
+
+1. אנחנו מפצלים את הנתונים שלנו:
+   - 80% מהדירות ישמשו כקבוצת אימון
+   - 20% מהדירות ישמשו כקבוצת בדיקה
+
+2. בונים את המודל על קבוצת האימון ומקבלים R² = 0.95 (התאמה מצוינת)
+
+3. כשבודקים את המודל על קבוצת הבדיקה, אנחנו מקבלים R² = 0.70 (התאמה פחות טובה)
+
+4. ההבדל הגדול מרמז שיש לנו התאמת יתר (Overfitting) - המודל "זוכר" את נתוני האימון במקום ללמוד את הקשר האמיתי.
+
+## יתרונות נוספים של שיטת הפיצול
+
+1. **בחירת מודל**: פיצול מאפשר להשוות בין מודלים שונים ולבחור את המודל עם הביצועים הטובים ביותר על נתונים חדשים.
+
+2. **התאמת היפר-פרמטרים**: ניתן לכוונן פרמטרים כמו מידת הרגולריזציה (Regularization) כדי לשפר את יכולת ההכללה של המודל.
+
+3. **מניעת דליפת מידע (Data Leakage)**: הערכת ביצועים על נתונים שלא השתתפו בתהליך האימון מבטיחה שהמודל לא "רימה" והשתמש במידע שלא אמור להיות זמין לו.
+
+## שיטות מתקדמות יותר
+
+1. **אימות צולב (Cross-Validation)**: מפצלים את הנתונים לכמה קבוצות, ומריצים את האימון והבדיקה מספר פעמים כאשר בכל פעם קבוצה אחרת משמשת כקבוצת בדיקה.
+
+2. **פיצול משולש (Train-Validation-Test)**: מפצלים את הנתונים לשלוש קבוצות:
+   - **אימון (Train)**: לבניית המודל
+   - **אימות (Validation)**: לכיוונון היפר-פרמטרים
+   - **בדיקה (Test)**: להערכה סופית של המודל
+
+## לסיכום
+
+למרות שמקדמי ה-OLS אכן מינימליים מבחינה מתמטית עבור נתוני האימון, והמדדים R ו-R² נותנים אינדיקציה לטיב ההתאמה, הם אינם מספיקים להערכת איכות המודל בעולם האמיתי. פיצול הנתונים לקבוצות אימון ובדיקה חיוני להערכה אמינה של ביצועי המודל על נתונים חדשים ולמניעת התאמת יתר.
+
+
 ## יתרונות וחסרונות רגרסיה לינארית מרובת משתנים
 
 | יתרונות | חסרונות |
