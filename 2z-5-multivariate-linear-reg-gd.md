@@ -79,7 +79,7 @@ For gradient descent to work efficiently with multiple variables, it's important
 
 This helps the algorithm converge faster and prevents some features from dominating others due to their scale.
 
-## 1. Min-Max Scaling
+### 1. Min-Max Scaling
 
 Min-Max scaling transforms features to a range between 0 and 1 using the formula:
 
@@ -117,7 +117,7 @@ For Age:
 
 Now both features range from 0 to 1, making them comparable in scale.
 
-## 2. Standardization
+### 2. Standardization
 
 Standardization (Z-score normalization) transforms features to have a mean of 0 and a standard deviation of 1 using the formula:
 
@@ -157,13 +157,13 @@ For Age:
 
 Now both features are centered around 0 with a standard deviation of 1, effectively putting them on the same scale regardless of their original units or ranges.
 
-## When to Use Which Method
+### When to Use Which Method
 
 - **Min-Max Scaling**: Best when you need values in a bounded interval and the distribution isn't Gaussian. Works well for algorithms that require positive inputs.
 
 - **Standardization**: Better for features with outliers as it's less affected by them. Preferred for algorithms that assume features are approximately normally distributed (e.g., linear regression, logistic regression).
 
-## Code Example in Python
+### Code Example in Python
 
 ```python
 import numpy as np
