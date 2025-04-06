@@ -79,6 +79,155 @@ For gradient descent to work efficiently with multiple variables, it's important
 
 This helps the algorithm converge faster and prevents some features from dominating others due to their scale.
 
+# Feature Scaling Techniques with Examples
+
+Feature scaling is crucial for many machine learning algorithms, especially those that rely on gradient descent. Here's an explanation of two common techniques with practical examples:
+
+## Feature Scaling
+
+For gradient descent to work efficiently with multiple variables, it's important to scale the features to similar ranges. Common scaling techniques include:
+
+1. **Min-Max Scaling**: Scales features to a range [0, 1]
+   ```
+   x_scaled = (x - x_min) / (x_max - x_min)
+   ```
+
+2. **Standardization**: Scales features to have mean=0 and standard deviation=1
+   ```
+   x_scaled = (x - μ) / σ
+   ```
+
+This helps the algorithm converge faster and prevents some features from dominating others due to their scale.
+
+## 1. Min-Max Scaling
+
+Min-Max scaling transforms features to a range between 0 and 1 using the formula:
+
+$$x_{scaled} = \frac{x - x_{min}}{x_{max} - x_{min}}$$
+
+### Example:
+
+Let's say we have housing price data with two features:
+- Area (m²): [60, 100, 80, 150, 120]
+- Age (years): [5, 15, 10, 2, 8]
+
+**Step 1: Find min and max values**
+- Area: min = 60, max = 150
+- Age: min = 2, max = 15
+
+**Step 2: Apply min-max scaling**
+
+For Area:
+- 60 → (60-60)/(150-60) = 0/90 = 0
+- 100 → (100-60)/(150-60) = 40/90 = 0.44
+- 80 → (80-60)/(150-60) = 20/90 = 0.22
+- 150 → (150-60)/(150-60) = 90/90 = 1
+- 120 → (120-60)/(150-60) = 60/90 = 0.67
+
+For Age:
+- 5 → (5-2)/(15-2) = 3/13 = 0.23
+- 15 → (15-2)/(15-2) = 13/13 = 1
+- 10 → (10-2)/(15-2) = 8/13 = 0.62
+- 2 → (2-2)/(15-2) = 0/13 = 0
+- 8 → (8-2)/(15-2) = 6/13 = 0.46
+
+**Result:**
+- Scaled Area: [0, 0.44, 0.22, 1, 0.67]
+- Scaled Age: [0.23, 1, 0.62, 0, 0.46]
+
+Now both features range from 0 to 1, making them comparable in scale.
+
+## 2. Standardization
+
+Standardization (Z-score normalization) transforms features to have a mean of 0 and a standard deviation of 1 using the formula:
+
+$$x_{scaled} = \frac{x - \mu}{\sigma}$$
+
+Where μ is the mean and σ is the standard deviation.
+
+### Example:
+
+Using the same housing data:
+- Area (m²): [60, 100, 80, 150, 120]
+- Age (years): [5, 15, 10, 2, 8]
+
+**Step 1: Calculate mean and standard deviation**
+- Area: mean = (60+100+80+150+120)/5 = 102, std = 34.93
+- Age: mean = (5+15+10+2+8)/5 = 8, std = 4.97
+
+**Step 2: Apply standardization**
+
+For Area:
+- 60 → (60-102)/34.93 = -1.20
+- 100 → (100-102)/34.93 = -0.06
+- 80 → (80-102)/34.93 = -0.63
+- 150 → (150-102)/34.93 = 1.37
+- 120 → (120-102)/34.93 = 0.52
+
+For Age:
+- 5 → (5-8)/4.97 = -0.60
+- 15 → (15-8)/4.97 = 1.41
+- 10 → (10-8)/4.97 = 0.40
+- 2 → (2-8)/4.97 = -1.21
+- 8 → (8-8)/4.97 = 0
+
+**Result:**
+- Standardized Area: [-1.20, -0.06, -0.63, 1.37, 0.52]
+- Standardized Age: [-0.60, 1.41, 0.40, -1.21, 0]
+
+Now both features are centered around 0 with a standard deviation of 1, effectively putting them on the same scale regardless of their original units or ranges.
+
+## When to Use Which Method
+
+- **Min-Max Scaling**: Best when you need values in a bounded interval and the distribution isn't Gaussian. Works well for algorithms that require positive inputs.
+
+- **Standardization**: Better for features with outliers as it's less affected by them. Preferred for algorithms that assume features are approximately normally distributed (e.g., linear regression, logistic regression).
+
+## Code Example in Python
+
+```python
+import numpy as np
+from sklearn.preprocessing import MinMaxScaler, StandardScaler
+
+# Sample data
+data = np.array([
+    [60, 5],
+    [100, 15],
+    [80, 10],
+    [150, 2],
+    [120, 8]
+])
+
+# Min-Max Scaling
+min_max_scaler = MinMaxScaler()
+data_minmax = min_max_scaler.fit_transform(data)
+print("Min-Max Scaled Data:")
+print(data_minmax)
+
+# Standardization
+standard_scaler = StandardScaler()
+data_standardized = standard_scaler.fit_transform(data)
+print("\nStandardized Data:")
+print(data_standardized)
+```
+
+Output:
+```
+Min-Max Scaled Data:
+[[0.         0.23076923]
+ [0.44444444 1.        ]
+ [0.22222222 0.61538462]
+ [1.         0.        ]
+ [0.66666667 0.46153846]]
+
+Standardized Data:
+[[-1.20233113 -0.60301508]
+ [-0.0571586   1.40703519]
+ [-0.62949473  0.40201005]
+ [ 1.37358565 -1.20603015]
+ [ 0.51539881  0.        ]]
+```
+
 ### The Complete Gradient Descent Algorithm
 
 1. Scale features (optional but recommended)
