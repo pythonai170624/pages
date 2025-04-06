@@ -196,6 +196,94 @@ Predicted minimum running time: 49.93 seconds
 
 הגרף שיוצג יראה את הפרבולה (קו אדום) שמתאימה לנתונים, כאשר הנקודה האופטימלית (ירוקה) מסמנת את מספר שעות האימון האופטימלי.
 
+# Understanding scikit-learn Pipeline for Polynomial Regression
+
+## The Code
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.linear_model import LinearRegression
+from sklearn.pipeline import Pipeline
+
+# Our data
+training_hours = np.array([2, 3, 5, 7, 9, 12, 16, 20, 25, 30]).reshape(-1, 1)
+running_times = np.array([95, 85, 70, 65, 60, 55, 50, 53, 58, 70])
+
+# Create polynomial regression model (degree 2)
+polynomial_model = Pipeline([
+    ('poly', PolynomialFeatures(degree=2)),
+    ('linear', LinearRegression())
+])
+```
+
+## What is a Pipeline?
+
+A `Pipeline` in scikit-learn is a utility that allows you to chain multiple processing steps together in a sequence. This creates a single estimator that applies all transformations in order before applying the final estimator. Pipelines provide several advantages:
+
+- Clean code that is easier to read and maintain
+- Protection against data leakage during cross-validation
+- Simplified parameter tuning across all steps
+- One single interface for fitting and prediction
+
+## How This Pipeline Works
+
+In this example, the pipeline consists of two steps:
+
+### Step 1: Polynomial Feature Generation
+```python
+('poly', PolynomialFeatures(degree=2))
+```
+
+This step:
+- Takes the input feature `training_hours`
+- Generates polynomial features up to degree 2
+- For a single feature x, it creates: [1, x, x²]
+- The 1 represents the constant term (bias or intercept)
+- Transforms your 1-dimensional data into 3-dimensional data
+
+For example, if the input is `[5]`, it becomes `[1, 5, 25]`.
+
+### Step 2: Linear Regression
+```python
+('linear', LinearRegression())
+```
+
+This step:
+- Takes the polynomial features from Step 1
+- Fits a linear model to these features
+- Effectively fits a polynomial function to the original data
+
+## How It's Applied to the Data
+
+In this example:
+- `training_hours` is the input feature (number of hours trained)
+- `running_times` is the target variable (race times in minutes)
+
+When you call `polynomial_model.fit(training_hours, running_times)`, the pipeline:
+1. Transforms `training_hours` into polynomial features
+2. Fits a linear regression model on those polynomial features against `running_times`
+
+The result is a quadratic model of the form:
+$$\text{running\_time} = \beta_0 + \beta_1 \cdot \text{hours} + \beta_2 \cdot \text{hours}^2$$
+
+## Under the Hood
+
+When you call methods on this pipeline, the following happens:
+
+1. **During `fit`**:
+   - `PolynomialFeatures` transforms `training_hours` → polynomial features
+   - `LinearRegression` fits a model to these transformed features
+
+2. **During `predict`**:
+   - New data passes through `PolynomialFeatures` transformation
+   - Transformed data is fed to the trained linear regression model
+   - Final predictions are returned
+
+The coefficients of the linear model (accessible via `polynomial_model.named_steps['linear'].coef_`) correspond to the weights for each polynomial term.
+
+
 ## יתרונות הרגרסיה הפולינומיאלית לעומת הרגרסיה הלינארית
 
 | היבט | רגרסיה לינארית | רגרסיה פולינומיאלית |
