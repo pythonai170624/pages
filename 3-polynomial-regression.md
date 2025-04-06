@@ -284,6 +284,66 @@ When you call methods on this pipeline, the following happens:
 
 The coefficients of the linear model (accessible via `polynomial_model.named_steps['linear'].coef_`) correspond to the weights for each polynomial term.
 
+## דוגמת הרצה עם np.polyfit
+
+```
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Our data
+training_hours = np.array([2, 3, 5, 7, 9, 12, 16, 20, 25, 30])
+running_times = np.array([95, 85, 70, 65, 60, 55, 50, 53, 58, 70])
+
+# Fit a polynomial of degree 2 using np.polyfit
+# Note: np.polyfit returns coefficients in descending order (highest power first)
+coefficients = np.polyfit(training_hours, running_times, 2)
+
+# Extract the coefficients
+a = coefficients[0]  # coefficient for x²
+b = coefficients[1]  # coefficient for x
+c = coefficients[2]  # intercept
+
+print(f"Coefficient for x² (a): {a:.2f}")
+print(f"Coefficient for x (b): {b:.2f}")
+print(f"Intercept (c): {c:.2f}")
+
+# Equation
+equation = f"y = {c:.2f} + ({b:.2f})x + ({a:.2f})x²"
+print(f"Polynomial equation: {equation}")
+
+# Find optimal training hours (vertex of the parabola)
+optimal_hours = -b / (2 * a)
+print(f"Optimal training hours: {optimal_hours:.2f}")
+
+# Create a polynomial function using the coefficients
+poly_function = np.poly1d(coefficients)
+
+# Calculate the minimum running time
+min_running_time = poly_function(optimal_hours)
+print(f"Predicted minimum running time: {min_running_time:.2f} seconds")
+
+# Create smooth curve for plotting
+x_curve = np.linspace(0, 35, 100)
+y_curve = poly_function(x_curve)
+
+# Plot the results
+plt.figure(figsize=(10, 6))
+plt.scatter(training_hours, running_times, color='blue', label='Data points')
+plt.plot(x_curve, y_curve, color='red', label='Polynomial regression')
+plt.scatter([optimal_hours], [min_running_time], color='green', s=100, label='Optimal point')
+
+# Add labels
+plt.title('Polynomial Regression - Training Hours vs. Running Time')
+plt.xlabel('Training Hours per Week')
+plt.ylabel('Running Time (seconds)')
+plt.grid(True)
+plt.legend()
+
+# Display equation on the graph
+plt.text(5, 90, equation, fontsize=12)
+plt.show()
+```
+
 
 ## יתרונות הרגרסיה הפולינומיאלית לעומת הרגרסיה הלינארית
 
