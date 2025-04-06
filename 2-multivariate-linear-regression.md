@@ -231,56 +231,6 @@ new_apartment = np.array([[85, 3, 10, 7]])
 predicted_price = model.predict(new_apartment)[0]
 print(f"\nPredicted price for a new apartment: {predicted_price:.2f} thousand ILS")
 
-# Visualize the data (simplified for 2D)
-plt.figure(figsize=(12, 8))
-
-# Create scatter plot with area vs price, with rooms shown by point size and age by color
-scatter = plt.scatter(df['Area'], df['Price'], s=df['Rooms']*30, c=df['Age'], cmap='viridis', alpha=0.7)
-
-# Add colorbar to show age scale
-cbar = plt.colorbar(scatter)
-cbar.set_label('Building Age (years)')
-
-# Add visualization of the relationship between area and price
-X_area = df[['Area']]
-y_price = df['Price']
-area_model = LinearRegression().fit(X_area, y_price)
-area_line = np.linspace(min(df['Area']), max(df['Area']), 100).reshape(-1, 1)
-price_line = area_model.predict(area_line)
-plt.plot(area_line, price_line, color='red', linestyle='--')
-
-plt.title('Multiple Linear Regression: Apartment Prices')
-plt.xlabel('Area (sq m)')
-plt.ylabel('Price (thousand ILS)')
-plt.grid(True, linestyle='--', alpha=0.7)
-plt.legend(['Area vs Price Trend', 'Apartments (size = rooms, color = age)'])
-
-plt.tight_layout()
-plt.show()
-
-# Correlation heatmap
-plt.figure(figsize=(10, 8))
-correlation_matrix = df.corr()
-sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', linewidths=0.5)
-plt.title('Correlation Matrix of Apartment Features')
-plt.tight_layout()
-plt.show()
-
-# Partial regression plots (added feature)
-fig, axes = plt.subplots(2, 2, figsize=(14, 10))
-feature_names = X.columns
-
-for i, ax in enumerate(axes.flat):
-    if i < len(feature_names):
-        feature = feature_names[i]
-        sns.regplot(x=X[feature], y=y, ax=ax)
-        ax.set_title(f'Partial Regression: {feature} vs Price')
-        ax.set_xlabel(feature)
-        ax.set_ylabel('Price (thousand ILS)')
-        ax.grid(True, linestyle='--', alpha=0.7)
-
-plt.tight_layout()
-plt.show()
 ```
 <a href="multivariate-linear-regression-code.py">see full code</a>
 
