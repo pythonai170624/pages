@@ -47,7 +47,7 @@
 2. שעות שינה לפני הבחינה
 
 אם המודל שלנו הוא:
-$grade = 50 + 2 \times \text{study-hours} + 1 \times \text{שעות שינה}$
+$grade = 50 + 2 \times \text{study-hours} + 1 \times \text{sleeping-hours}$
 
 וה-R² הוא 0.6, זה אומר ש-60% מההבדלים בציונים מוסברים על ידי שעות הלימוד ושעות השינה.
 
