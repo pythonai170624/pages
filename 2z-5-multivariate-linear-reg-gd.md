@@ -67,7 +67,7 @@ Where:
 
 <img src="formula3.jpg" />
 
-### Feature Scaling
+# Feature Scaling Techniques with Examples
 
 For gradient descent to work efficiently with multiple variables, it's important to scale the features to similar ranges. Common scaling techniques include:
 
@@ -79,11 +79,7 @@ For gradient descent to work efficiently with multiple variables, it's important
 
 This helps the algorithm converge faster and prevents some features from dominating others due to their scale.
 
-# Feature Scaling Techniques with Examples
-
 Feature scaling is crucial for many machine learning algorithms, especially those that rely on gradient descent. Here's an explanation of two common techniques with practical examples:
-
-## Feature Scaling
 
 For gradient descent to work efficiently with multiple variables, it's important to scale the features to similar ranges. Common scaling techniques include:
 
