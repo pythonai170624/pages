@@ -266,6 +266,7 @@ When you call `polynomial_model.fit(training_hours, running_times)`, the pipelin
 2. Fits a linear regression model on those polynomial features against `running_times`
 
 The result is a quadratic model of the form:
+
 <img src="formula6.jpg"/>
 
 ## Under the Hood
