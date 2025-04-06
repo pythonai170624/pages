@@ -196,7 +196,7 @@ Predicted minimum running time: 49.93 seconds
 
 הגרף שיוצג יראה את הפרבולה (קו אדום) שמתאימה לנתונים, כאשר הנקודה האופטימלית (ירוקה) מסמנת את מספר שעות האימון האופטימלי.
 
-# Understanding scikit-learn Pipeline for Polynomial Regression
+## Understanding scikit-learn Pipeline for Polynomial Regression
 
 ## The Code
 
