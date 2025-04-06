@@ -355,6 +355,11 @@ Optimal training hours: 17.92
 Predicted minimum running time: 48.87 seconds
 ```
 
+### Main Reasons for the Difference
+
+- PolynomialFeatures creates a feature matrix that includes a constant term (1), the original feature (x), and the squared feature (x²)
+- np.polyfit directly fits a polynomial of the form ax² + bx + c to the data
+
 ## יתרונות הרגרסיה הפולינומיאלית לעומת הרגרסיה הלינארית
 
 | היבט | רגרסיה לינארית | רגרסיה פולינומיאלית |
