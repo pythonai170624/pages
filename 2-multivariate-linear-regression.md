@@ -118,7 +118,7 @@ model.fit(X, y)
 print(f"Intercept (β₀): {model.intercept_:.2f}")
 print(f"Coefficients (β₁, β₂, β₃, β₄): {model.coef_}")
 ```
-<a href="mv-math">see complete calculation</a>
+<a href="mv-math.md">see complete calculation</a>
 
 Using the example data, we get the following coefficients:
 - $\beta_0 \approx 740.66$ (Intercept)
