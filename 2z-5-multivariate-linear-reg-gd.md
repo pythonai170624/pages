@@ -208,7 +208,7 @@ Standardized Data:
  [ 0.51539881  0.        ]]
 ```
 
-### The Complete Gradient Descent Algorithm
+## The Complete Gradient Descent Algorithm
 
 1. Scale features (optional but recommended)
 2. Initialize all coefficients ($\beta_0, \beta_1, ..., \beta_p$) to 0 or small random values
