@@ -355,10 +355,130 @@ Optimal training hours: 17.92
 Predicted minimum running time: 48.87 seconds
 ```
 
-### Main Reasons for the Difference
+# Difference Between Linear Regression and Polyfit
 
-- Polynomial Features creates a feature matrix that includes a constant term (1), the original feature (x), and the squared feature (x²)
-- np.polyfit directly fits a polynomial of the form ax² + bx + c to the data
+Linear regression (specifically sklearn.linear_model.LinearRegression) and NumPy's polyfit are both methods for fitting models to data, but they differ in several important ways:
+
+## Implementation and Approach
+
+**Linear Regression (sklearn)**:
+- Is a general-purpose implementation of Ordinary Least Squares
+- Works with multiple predictors/features simultaneously
+- Requires explicit feature engineering (like adding polynomial terms via PolynomialFeatures) 
+- Is part of a broader machine learning ecosystem
+
+**Polyfit (NumPy)**:
+- Is specifically designed for polynomial curve fitting
+- Works with a single predictor variable
+- Automatically generates the polynomial terms internally
+- Is more of a pure numerical method than a machine learning approach
+
+## Flexibility and Extensibility
+
+**Linear Regression**:
+- Can incorporate regularization (via Ridge, Lasso variants)
+- Integrates with scikit-learn's pipeline, cross-validation, and hyperparameter tuning
+- Includes various statistical metrics and diagnostics
+- Can handle sparse matrices and large datasets efficiently
+
+**Polyfit**:
+- Is more specialized and limited to polynomial fitting
+- Is simpler and more direct for single-variable polynomial relationships
+- Returns coefficients that can be used with NumPy's poly1d to create a function
+- Is primarily focused on the mathematical curve fitting problem
+
+## Mathematical Differences
+
+When used for polynomial regression:
+
+1. **Coefficient Ordering**:
+   - Linear Regression with PolynomialFeatures: Coefficients are in ascending power order (constant, x, x², ...)
+   - Polyfit: Coefficients are in descending power order (x², x, constant)
+
+2. **Feature Generation**:
+   - Linear Regression requires explicit polynomial feature generation
+   - Polyfit handles this internally using Vandermonde matrices
+
+3. **Under the Hood**:
+   - Linear Regression generally uses SVD or QR decomposition for solving
+   - Polyfit uses a least-squares approach with Vandermonde matrices
+
+## Practical Differences
+
+Using the same running times data, the methods produced different results:
+
+### NumPy's polyfit:
+```
+Intercept (β₀): 100.05
+Coefficient for x (β₁): -5.71
+Coefficient for x² (β₂): 0.16
+Polynomial equation: y = 100.05 + (-5.71)x + (0.16)x²
+Optimal training hours: 17.92
+Predicted minimum running time: 48.87 seconds
+```
+
+### scikit-learn's Pipeline:
+```
+Intercept (β₀): 110.56
+Coefficient for x (β₁): -5.32
+Coefficient for x² (β₂): 0.13
+Polynomial equation: y = 110.56 + (-5.32)x + (0.13)x²
+Optimal training hours: 20.46
+Predicted minimum running time: 49.93 seconds
+```
+
+These differences arise from the different implementations and numerical methods used by each approach.
+
+## Usage Context
+
+Choose **Linear Regression** when:
+- You need to build a more complex model with multiple features
+- You want to leverage scikit-learn's comprehensive ML tools
+- You need to incorporate the model into a larger ML pipeline
+- You plan to add regularization or other advanced techniques
+
+Choose **Polyfit** when:
+- You have a simple, single-variable polynomial curve fitting problem
+- You want a quick, direct solution with minimal dependencies
+- You're working primarily within the NumPy ecosystem
+- You need a callable polynomial function as a result
+
+## Code Comparison
+
+### scikit-learn Approach:
+```python
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.linear_model import LinearRegression
+from sklearn.pipeline import Pipeline
+
+# Create polynomial regression model
+polynomial_model = Pipeline([
+    ('poly', PolynomialFeatures(degree=2)),
+    ('linear', LinearRegression())
+])
+
+# Fit the model
+polynomial_model.fit(X.reshape(-1, 1), y)
+
+# Access coefficients
+coefficients = polynomial_model.named_steps['linear'].coef_
+intercept = polynomial_model.named_steps['linear'].intercept_
+```
+
+### NumPy Approach:
+```python
+import numpy as np
+
+# Fit a polynomial of degree 2
+coefficients = np.polyfit(X, y, 2)
+
+# Extract coefficients
+a, b, c = coefficients  # x², x, constant
+
+# Create callable function
+poly_function = np.poly1d(coefficients)
+```
+
 
 ## יתרונות הרגרסיה הפולינומיאלית לעומת הרגרסיה הלינארית
 
