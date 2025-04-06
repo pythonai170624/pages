@@ -255,15 +255,13 @@ The coefficients tell us:
 
 ## גרף התכנסות ואימות
 
-<img src="multi_gd_convergence.png" style="width:50%;"/>
-
 גרף ההתכנסות מראה כיצד פונקציית העלות יורדת עם מספר האיטרציות. אפשר לראות שהאלגוריתם מתכנס לאחר מספר איטרציות, כלומר הערך של פונקציית העלות לא יורד עוד באופן משמעותי.
 
-<img src="multi_gd_predictions.png" style="width:60%;"/>
+<img src="mv-cost1.png" style="width:60%;"/>
 
 הגרף השני משווה בין הערכים האמיתיים לערכים החזויים, ומדגים את דיוק המודל.
 
-<img src="multi_gd_correlations.png" style="width:60%;"/>
+<img src="mv-diff1.png" style="width:60%;"/>
 
 מטריצת הקורלציה מציגה את הקשרים בין המשתנים השונים. קורלציות חזקות בין משתנים מסבירים עלולות להוביל לבעיית מולטיקולינאריות (multicollinearity).
 
