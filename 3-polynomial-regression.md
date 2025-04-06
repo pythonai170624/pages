@@ -75,7 +75,7 @@ Let's calculate a quadratic polynomial regression for our training-performance d
 | 20                     | 53                   | 400     | 1060           | 21200              |
 | 25                     | 58                   | 625     | 1450           | 36250              |
 | 30                     | 70                   | 900     | 2100           | 63000              |
-| **Total:** | $\sum x_i = 129$ | $\sum y_i = 661$ | $\sum x_i^2 = 2493$ | $\sum x_i y_i = 7860$ | $\sum x_i^2 y_i = 152110$ |
+| $\sum x_i = 129$ | $\sum y_i = 661$ | $\sum x_i^2 = 2493$ | $\sum x_i y_i = 7860$ | $\sum x_i^2 y_i = 152110$ |
 
 For a quadratic model, we need to solve the following system of equations:
 
