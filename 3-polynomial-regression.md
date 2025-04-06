@@ -344,6 +344,16 @@ plt.text(5, 90, equation, fontsize=12)
 plt.show()
 ```
 
+כאשר נריץ את הקוד, נקבל תוצאות דומות לאלה:
+
+```
+Coefficient for x² (a): 0.16
+Coefficient for x (b): -5.71
+Intercept (c): 100.05
+Polynomial equation: y = 100.05 + (-5.71)x + (0.16)x²
+Optimal training hours: 17.92
+Predicted minimum running time: 48.87 seconds
+```
 
 ## יתרונות הרגרסיה הפולינומיאלית לעומת הרגרסיה הלינארית
 
