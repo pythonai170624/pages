@@ -286,7 +286,7 @@ The coefficients of the linear model (accessible via `polynomial_model.named_ste
 
 ## דוגמת הרצה עם np.polyfit
 
-```
+```python
 import numpy as np
 import matplotlib.pyplot as plt
 
