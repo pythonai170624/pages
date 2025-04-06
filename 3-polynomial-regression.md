@@ -443,42 +443,6 @@ Choose **Polyfit** when:
 - You're working primarily within the NumPy ecosystem
 - You need a callable polynomial function as a result
 
-## Code Comparison
-
-### scikit-learn Approach:
-```python
-from sklearn.preprocessing import PolynomialFeatures
-from sklearn.linear_model import LinearRegression
-from sklearn.pipeline import Pipeline
-
-# Create polynomial regression model
-polynomial_model = Pipeline([
-    ('poly', PolynomialFeatures(degree=2)),
-    ('linear', LinearRegression())
-])
-
-# Fit the model
-polynomial_model.fit(X.reshape(-1, 1), y)
-
-# Access coefficients
-coefficients = polynomial_model.named_steps['linear'].coef_
-intercept = polynomial_model.named_steps['linear'].intercept_
-```
-
-### NumPy Approach:
-```python
-import numpy as np
-
-# Fit a polynomial of degree 2
-coefficients = np.polyfit(X, y, 2)
-
-# Extract coefficients
-a, b, c = coefficients  # x², x, constant
-
-# Create callable function
-poly_function = np.poly1d(coefficients)
-```
-
 
 ## יתרונות הרגרסיה הפולינומיאלית לעומת הרגרסיה הלינארית
 
