@@ -131,7 +131,7 @@ from sklearn.pipeline import Pipeline
 training_hours = np.array([2, 3, 5, 7, 9, 12, 16, 20, 25, 30]).reshape(-1, 1)
 running_times = np.array([95, 85, 70, 65, 60, 55, 50, 53, 58, 70])
 
-# Create polynomial regression model (degree 2)
+# Create polynomial regression model (degree 2) -- see explanation below
 polynomial_model = Pipeline([
     ('poly', PolynomialFeatures(degree=2)),
     ('linear', LinearRegression())
