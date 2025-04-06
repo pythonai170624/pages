@@ -67,7 +67,7 @@ Where:
 
 <img src="formula3.jpg" />
 
-# Feature Scaling Techniques with Examples
+## Feature Scaling Techniques with Examples
 
 For gradient descent to work efficiently with multiple variables, it's important to scale the features to similar ranges. Common scaling techniques include:
 
