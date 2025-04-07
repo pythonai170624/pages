@@ -205,6 +205,10 @@ Maximum predicted plant height: 33.13 cm
 - חזקה 2: $x_1^2$, $x_1 x_2$, $x_2^2$
 - חזקה 3: $x_1^3$, $x_1^2 x_2$, $x_1 x_2^2$, $x_2^3$
 
+## פיתרון באמצעות PolynomialFeatures
+
+<a href="polynomial_features-python.py">see solution using Polynomial Features</a>
+
 ## יתרונות הרגרסיה הפולינומיאלית הרב-משתנית
 
 | היבט | רגרסיה לינארית רב-משתנית | רגרסיה פולינומיאלית רב-משתנית |
