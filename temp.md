@@ -5,7 +5,7 @@
 
 Standard linear regression minimizes the sum of squared residuals (RSS):
 
-$$\text{RSS} = \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 = \sum_{i=1}^{n} \left(y_i - \left(\beta_0 + \sum_{j=1}^{p} \beta_j x_{ij}\right)\right)^2$$
+$$ \text{RSS} = \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 = \sum_{i=1}^{n} \left(y_i - \left(\beta_0 + \sum_{j=1}^{p} \beta_j x_{ij}\right)\right)^2 $$
 
 While this approach works well for many scenarios, it can lead to:
 - **Overfitting**: Complex models with large coefficients that fit training data too well
