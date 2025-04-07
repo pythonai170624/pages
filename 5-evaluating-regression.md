@@ -168,6 +168,10 @@ RMSE: 0.878
 
 Let's demonstrate the three error metrics on linear regression data:
 
+<img src="ev-reg1.png" width="%80"/>
+
+<a href="ev-reg1-py.py">see code here</a>
+
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
