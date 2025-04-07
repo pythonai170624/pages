@@ -80,89 +80,93 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 from matplotlib import cm
 
-# הנתונים שלנו
+# Our data
 water = np.array([2, 3, 4, 5, 6, 7, 3, 4, 5, 6, 7, 4, 5, 6, 7])
 sunlight = np.array([3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5])
 plant_height = np.array([12, 18, 23, 26, 25, 22, 16, 24, 30, 32, 28, 22, 28, 34, 31])
 
-# פונקציה לייצור מאפיינים פולינומיאליים עבור שני משתנים
+
+# Function to generate polynomial features for two variables
 def generate_poly_features(x1, x2, degree=3):
     """
-    ייצור מאפיינים פולינומיאליים עד לדרגה מסוימת עבור שני משתנים.
-    מחזירה מטריצה שבה כל שורה היא שילוב של חזקות של x1 ו-x2.
+    Generate polynomial features up to a specified degree for two variables.
+    Returns a matrix where each row is a combination of powers of x1 and x2.
     """
     n = len(x1)
     features = []
-    
+
     for i in range(n):
         row = []
         for p1 in range(degree + 1):
             for p2 in range(degree + 1 - p1):
-                # דלג אם סכום החזקות גדול מהדרגה
+                # Skip if the sum of powers exceeds the degree
                 if p1 + p2 <= degree:
                     row.append((x1[i] ** p1) * (x2[i] ** p2))
         features.append(row)
-    
+
     return np.array(features)
 
-# ייצור מאפיינים פולינומיאליים
+
+# Generate polynomial features
 X_poly = generate_poly_features(water, sunlight, degree=3)
 
-# התאמת המודל באמצעות lstsq (שקול ל-polyfit)
+# Fit the model using lstsq (equivalent to polyfit)
 coeffs = np.linalg.lstsq(X_poly, plant_height, rcond=None)[0]
 
-# פונקציה לחיזוי תוצאה עבור קלטים חדשים
+
+# Function to predict output for new inputs
 def predict(x1, x2, coeffs, degree=3):
     """
-    חיזוי התוצאה עבור ערכי קלט חדשים באמצעות המקדמים שהותאמו.
+    Predict the output for new input values using the fitted coefficients.
     """
     index = 0
     result = 0
-    
+
     for p1 in range(degree + 1):
         for p2 in range(degree + 1 - p1):
             if p1 + p2 <= degree:
                 result += coeffs[index] * (x1 ** p1) * (x2 ** p2)
                 index += 1
-                
+
     return result
 
-# יצירת רשת לתרשים תלת-ממדי
+
+# Create a grid for 3D plotting
 water_grid = np.linspace(2, 8, 30)
 sunlight_grid = np.linspace(2, 6, 30)
 water_mesh, sunlight_mesh = np.meshgrid(water_grid, sunlight_grid)
 
-# חישוב הגובה החזוי לכל נקודה ברשת
+# Calculate the predicted height for each point in the grid
 height_pred = np.zeros(water_mesh.shape)
 for i in range(water_mesh.shape[0]):
     for j in range(water_mesh.shape[1]):
         height_pred[i, j] = predict(water_mesh[i, j], sunlight_mesh[i, j], coeffs)
 
-# מציאת הערכים האופטימליים
+# Find the optimal values
 max_height = np.max(height_pred)
 max_idx = np.unravel_index(np.argmax(height_pred), height_pred.shape)
 optimal_water = water_mesh[max_idx]
 optimal_sunlight = sunlight_mesh[max_idx]
 
-print(f"מקדמי המודל הפולינומיאלי: {coeffs}")
-print(f"כמות המים האופטימלית: {optimal_water:.2f} ליטר לשבוע")
-print(f"חשיפה אופטימלית לאור שמש: {optimal_sunlight:.2f} שעות ביום")
-print(f"גובה צמח מקסימלי חזוי: {max_height:.2f} ס\"מ")
+print(f"Model polynomial coefficients: {coeffs}")
+print(f"Optimal water amount: {optimal_water:.2f} liters per week")
+print(f"Optimal sunlight exposure: {optimal_sunlight:.2f} hours per day")
+print(f"Maximum predicted plant height: {max_height:.2f} cm")
 
-# תרשים משטח תלת-ממדי
+# 3D surface plot
 fig = plt.figure(figsize=(12, 10))
 ax = fig.add_subplot(111, projection='3d')
 
-surf = ax.plot_surface(water_mesh, sunlight_mesh, height_pred, 
+surf = ax.plot_surface(water_mesh, sunlight_mesh, height_pred,
                        cmap=cm.viridis, alpha=0.7, linewidth=0)
-ax.scatter(water, sunlight, plant_height, c='red', s=50, label='נקודות נתונים')
-ax.scatter([optimal_water], [optimal_sunlight], [max_height], 
-           c='yellow', s=100, label='נקודה אופטימלית')
+ax.scatter(water, sunlight, plant_height, c='red', s=50, label='Data points')
+ax.scatter([optimal_water], [optimal_sunlight], [max_height],
+           c='yellow', s=100, label='Optimal point')
 
-ax.set_xlabel('כמות מים (ליטר/שבוע)')
-ax.set_ylabel('חשיפה לשמש (שעות/יום)')
-ax.set_zlabel('גובה הצמח (ס"מ)')
-ax.set_title('מודל גדילת צמחים: מים, שמש מול גובה')
+ax.set_xlabel('Water amount (liters/week)')
+ax.set_ylabel('Sunlight exposure (hours/day)')
+ax.set_zlabel('Plant height (cm)')
+ax.set_title('Plant Growth Model: Water and Sunlight vs Height')
 fig.colorbar(surf, ax=ax, shrink=0.5, aspect=5)
 ax.legend()
 
@@ -174,11 +178,11 @@ plt.show()
 כאשר נריץ את הקוד, נקבל תוצאות דומות לאלה:
 
 ```
-מקדמי המודל הפולינומיאלי: [ 2.90e+01  3.55e+00 -2.87e+01  3.23e-01  3.84e+00 -1.23e+00
- -1.56e-02 -3.65e-01  5.93e-01  1.98e+00]
-כמות המים האופטימלית: 5.86 ליטר לשבוע
-חשיפה אופטימלית לאור שמש: 5.24 שעות ביום
-גובה צמח מקסימלי חזוי: 35.67 ס"מ
+Model polynomial coefficients: [  9.02375333  10.25633352  -4.92906339   0.2287636  -13.17245654
+   5.59088435   0.01437642   2.14489796  -0.35056689  -0.17407407]
+Optimal water amount: 6.14 liters per week
+Optimal sunlight exposure: 5.03 hours per day
+Maximum predicted plant height: 33.13 cm
 ```
 
 ## גרף
