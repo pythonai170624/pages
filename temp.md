@@ -61,14 +61,6 @@ RMSE is the square root of MSE. It's an attempt to preserve the advantages of MS
 - Sensitive to outliers, like MSE
 - More complex computation than MAE
 
-## Comparison Between Metrics
-
-| Metric | Formula | Units | Sensitivity to Outliers | Ease of Understanding |
-|--------|---------|-------|-------------------------|------------------------|
-| MAE | $\frac{1}{n} \sum |y_i - \hat{y}_i|$ | Same as original variable | Low | High |
-| MSE | $\frac{1}{n} \sum (y_i - \hat{y}_i)^2$ | Square of original variable | High | Medium |
-| RMSE | $\sqrt{\frac{1}{n} \sum (y_i - \hat{y}_i)^2}$ | Same as original variable | High | Medium |
-
 ## Numerical Examples
 
 Let's say we have a model that predicts housing prices. Here are some actual and predicted examples (in millions of dollars):
