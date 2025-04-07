@@ -7,7 +7,7 @@ Standard linear regression minimizes the sum of squared residuals (RSS):
 
 <img src="rss.jpg" />
 
-P is number of features
+$p$ is the number of features
 
 While this approach works well for many scenarios, it can lead to:
 - **Overfitting**: Complex models with large coefficients that fit training data too well
