@@ -1,161 +1,323 @@
-# שיטות איטרטיביות לפתרון משוואות רגרסיה לוגיסטית
+# שימוש ב-Pairplot, פיצול נתונים, ורגרסיה לינארית
 
-## למה נדרשות שיטות איטרטיביות?
+## 1. למה להשתמש ב-Pairplot לבדיקת פרמטרים?
 
-המשוואות שקיבלנו מגזירת פונקציית הלוג-נראות הן:
+### מהו Pairplot?
+`pairplot` הוא כלי ויזואליזציה מספריית Seaborn המאפשר לנו לראות במבט אחד את מערכת היחסים בין כל הזוגות האפשריים של משתנים במערך נתונים.
 
-$$\frac{\partial \ln L}{\partial \beta_0} = \sum_{i=1}^{n} [y_i - p_i] = 0$$
+### יתרונות השימוש ב-Pairplot
+- **זיהוי מהיר של קשרים**: מציג את כל היחסים בין המשתנים בבת אחת
+- **איתור דפוסים**: מאפשר לזהות מגמות לינאריות או לא-לינאריות בין משתנים
+- **זיהוי מתאמים**: עוזר לראות אילו משתנים מתואמים באופן חיובי או שלילי
+- **איתור חריגים**: מאפשר לראות נקודות נתונים חריגות בכמה ממדים
+- **יעילות בזמן**: חוסך את הצורך ליצור גרפים נפרדים לכל זוג משתנים
 
-$$\frac{\partial \ln L}{\partial \beta_1} = \sum_{i=1}^{n} [x_i(y_i - p_i)] = 0$$
+### דוגמה בסיסית לשימוש ב-Pairplot
 
-כאשר $p_i = \frac{1}{1 + e^{-(\beta_0 + \beta_1 x_i)}}$
+```python
+import seaborn as sns
+import matplotlib.pyplot as plt
+import pandas as pd
 
-משוואות אלה אינן פתירות באופן אנליטי ישיר (בניגוד לרגרסיה לינארית) מכיוון שהמשתנים $\beta_0$ ו-$\beta_1$ מופיעים בצורה לא-לינארית בתוך פונקציית הסיגמואיד $p_i$. לכן, אנו נדרשים לשיטות איטרטיביות כמו Newton-Raphson או IRLS (Iteratively Reweighted Least Squares).
+# Sample DataFrame with multiple columns
+df = pd.DataFrame({
+    'var1': [1, 2, 3, 4, 5],
+    'var2': [5, 4, 3, 2, 1],
+    'var3': [2, 3, 4, 5, 6],
+    'group': ['A', 'A', 'B', 'B', 'C']
+})
 
-## Newton-Raphson Method - הסבר עקרוני
+# Create a basic pairplot
+sns.pairplot(df)
+plt.show()
 
-שיטת Newton-Raphson היא טכניקה איטרטיבית למציאת שורשים של פונקציות. במקרה של רגרסיה לוגיסטית, אנו מחפשים את השורשים של נגזרות פונקציית הלוג-נראות.
+# Create a pairplot with coloring by group
+sns.pairplot(df, hue='group')
+plt.show()
+```
 
-האלגוריתם עובד כך:
-1. מתחילים עם ניחוש ראשוני של הפרמטרים $\beta_0$ ו-$\beta_1$
-2. מחשבים את הנגזרות ואת מטריצת ההסיאן (מטריצת הנגזרות השניות)
-3. מעדכנים את הפרמטרים לפי הנוסחה: $\beta^{(new)} = \beta^{(old)} - H^{-1} \nabla L$
-4. חוזרים על שלבים 2-3 עד להתכנסות
+### דוגמה מתקדמת - ניתוח מערך נתונים אמיתי
 
-## דוגמה מפורטת לאיטרציה אחת
+```python
+import seaborn as sns
+import matplotlib.pyplot as plt
+import pandas as pd
+import numpy as np
 
-נשתמש בנתונים מהטבלה המקורית ונראה איטרציה אחת של שיטת Newton-Raphson.
+# Load the iris dataset as an example
+iris = sns.load_dataset('iris')
 
-### שלב 1: ניחוש התחלתי
-נתחיל עם ניחוש שרירותי: $\beta_0 = 0$ ו-$\beta_1 = 0$
+# Create a pairplot with customized parameters
+sns.pairplot(iris, 
+             hue='species',                  # Color by species
+             diag_kind='kde',                # Show KDE plot on diagonal
+             plot_kws={'alpha': 0.6},        # Set transparency for scatter plots
+             height=2.5,                     # Set subplot size
+             markers=['o', 's', 'D'])        # Different markers for each species
+plt.suptitle('Iris Dataset Feature Relationships', y=1.02)
+plt.show()
 
-### שלב 2: חישוב הסתברויות לפי הפרמטרים הנוכחיים
+# Calculate and visualize correlation matrix as a heatmap
+correlation_matrix = iris.drop('species', axis=1).corr()
+plt.figure(figsize=(10, 8))
+sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', linewidths=0.5)
+plt.title('Correlation Matrix of Iris Features')
+plt.show()
+```
 
-עם $\beta_0 = 0$ ו-$\beta_1 = 0$, נחשב את $p_i$ לכל תצפית $i$:
+## 2. פיצול נתונים באמצעות `train_test_split`
 
-$p_i = \frac{1}{1 + e^{-(\beta_0 + \beta_1 x_i)}} = \frac{1}{1 + e^{-(0 + 0 \cdot x_i)}} = \frac{1}{1 + e^0} = \frac{1}{2}$
+### למה לפצל נתונים?
+פיצול נתונים למערכי אימון ובדיקה חיוני כדי:
+- למנוע התאמת יתר (overfitting)
+- להעריך את ביצועי המודל על נתונים חדשים
+- לבדוק את יכולת ההכללה של המודל
 
-כלומר, בניחוש ההתחלתי שלנו, ההסתברות לעבור את המבחן היא 50% ללא קשר למספר שעות הלימוד.
+### דוגמת שימוש
 
-### שלב 3: חישוב הנגזרות (Gradient)
+```python
+from sklearn.model_selection import train_test_split
+import numpy as np
+import pandas as pd
 
-נחשב את הנגזרות של פונקציית הלוג-נראות לפי הפרמטרים הנוכחיים:
+# Example data
+X = np.array([[1, 2], [3, 4], [5, 6], [7, 8], [9, 10], [11, 12]])  # features
+y = np.array([0, 0, 1, 1, 2, 2])  # labels
 
-$$\frac{\partial \ln L}{\partial \beta_0} = \sum_{i=1}^{n} [y_i - p_i]$$
+# Split data into 70% training and 30% testing
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.3, random_state=42)
 
-הנתונים שלנו הם:
-- עבור $i=1$ עד $i=4$: $y_i = 0$ (נכשל)
-- עבור $i=5$ עד $i=9$: $y_i = 1$ (עבר)
-- לכל $i$: $p_i = \frac{1}{2}$ (מהניחוש ההתחלתי)
+print("X training set:", X_train)
+print("X testing set:", X_test)
+print("y training labels:", y_train)
+print("y testing labels:", y_test)
+```
 
-לכן:
+### פרמטרים חשובים ב-`train_test_split`
+- **test_size**: החלק היחסי של הנתונים להקצאה למערך הבדיקה (בין 0 ל-1)
+- **random_state**: מספר שמבטיח שתקבלו תוצאות זהות בכל ריצה
+- **stratify**: משתנה שלפיו יש לשמור על יחס זהה של קטגוריות בשני המערכים
 
-$$\frac{\partial \ln L}{\partial \beta_0} = \sum_{i=1}^{9} [y_i - \frac{1}{2}] = (0-\frac{1}{2}) + (0-\frac{1}{2}) + (0-\frac{1}{2}) + (0-\frac{1}{2}) + (1-\frac{1}{2}) + (1-\frac{1}{2}) + (1-\frac{1}{2}) + (1-\frac{1}{2}) + (1-\frac{1}{2})$$
+### דוגמה עם מערך נתונים אמיתי
 
-$$= -\frac{1}{2} - \frac{1}{2} - \frac{1}{2} - \frac{1}{2} + \frac{1}{2} + \frac{1}{2} + \frac{1}{2} + \frac{1}{2} + \frac{1}{2} = \frac{1}{2}$$
+```python
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.datasets import load_boston
 
-וכעת עבור $\beta_1$:
+# Load dataset
+boston = load_boston()
+X = boston.data
+y = boston.target
 
-$$\frac{\partial \ln L}{\partial \beta_1} = \sum_{i=1}^{n} [x_i(y_i - p_i)]$$
+# Create a dataframe with feature names
+boston_df = pd.DataFrame(X, columns=boston.feature_names)
+boston_df['PRICE'] = y
 
-$$= 1 \cdot (0-\frac{1}{2}) + 2 \cdot (0-\frac{1}{2}) + 3 \cdot (0-\frac{1}{2}) + 4 \cdot (0-\frac{1}{2}) + 5 \cdot (1-\frac{1}{2}) + 6 \cdot (1-\frac{1}{2}) + 7 \cdot (1-\frac{1}{2}) + 8 \cdot (1-\frac{1}{2}) + 9 \cdot (1-\frac{1}{2})$$
+# Display first few rows and basic statistics
+print(boston_df.head())
+print("\nBasic statistics:")
+print(boston_df.describe())
 
-$$= -\frac{1}{2} - 1 - \frac{3}{2} - 2 + \frac{5}{2} + 3 + \frac{7}{2} + 4 + \frac{9}{2} = 10$$
+# Split the data with stratification
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42)
 
-כלומר, וקטור הגרדיאנט הוא $\nabla L = (\frac{1}{2}, 10)$.
+print(f"\nTraining set: {X_train.shape[0]} samples")
+print(f"Testing set: {X_test.shape[0]} samples")
+```
 
-### שלב 4: חישוב מטריצת ההסיאן (Hessian)
+## 3. בניית מודל רגרסיה לינארית עם scikit-learn
 
-מטריצת ההסיאן מכילה את הנגזרות השניות של פונקציית הלוג-נראות:
+### יצירת והתאמת מודל רגרסיה לינארית
 
-$$H = 
-\begin{pmatrix}
-\frac{\partial^2 \ln L}{\partial \beta_0^2} & \frac{\partial^2 \ln L}{\partial \beta_0 \partial \beta_1} \\
-\frac{\partial^2 \ln L}{\partial \beta_1 \partial \beta_0} & \frac{\partial^2 \ln L}{\partial \beta_1^2}
-\end{pmatrix}$$
+```python
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error, r2_score
 
-עבור רגרסיה לוגיסטית, הנגזרות השניות הן:
+# Create synthetic data
+np.random.seed(42)
+X = np.random.rand(100, 1) * 10
+y = 2 * X.squeeze() + 1 + np.random.randn(100) * 2  # y = 2x + 1 + noise
 
-$$\frac{\partial^2 \ln L}{\partial \beta_0^2} = -\sum_{i=1}^{n} p_i(1-p_i)$$
+# Split the data
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
-$$\frac{\partial^2 \ln L}{\partial \beta_0 \partial \beta_1} = \frac{\partial^2 \ln L}{\partial \beta_1 \partial \beta_0} = -\sum_{i=1}^{n} x_i p_i(1-p_i)$$
+# Create and train the model
+model = LinearRegression()
+model.fit(X_train, y_train)
 
-$$\frac{\partial^2 \ln L}{\partial \beta_1^2} = -\sum_{i=1}^{n} x_i^2 p_i(1-p_i)$$
+# Get model parameters
+slope = model.coef_[0]
+intercept = model.intercept_
+print(f"Model equation: y = {slope:.2f}x + {intercept:.2f}")
 
-במקרה שלנו, $p_i = \frac{1}{2}$ לכל $i$, ולכן $p_i(1-p_i) = \frac{1}{2} \cdot (1-\frac{1}{2}) = \frac{1}{4}$.
+# Make predictions
+y_train_pred = model.predict(X_train)
+y_test_pred = model.predict(X_test)
 
-נחשב כל אחד מהרכיבים:
+# Calculate metrics
+train_mse = mean_squared_error(y_train, y_train_pred)
+test_mse = mean_squared_error(y_test, y_test_pred)
+train_r2 = r2_score(y_train, y_train_pred)
+test_r2 = r2_score(y_test, y_test_pred)
 
-$$\frac{\partial^2 \ln L}{\partial \beta_0^2} = -\sum_{i=1}^{9} \frac{1}{4} = -9 \cdot \frac{1}{4} = -\frac{9}{4}$$
+print(f"Training MSE: {train_mse:.2f}")
+print(f"Testing MSE: {test_mse:.2f}")
+print(f"Training R²: {train_r2:.2f}")
+print(f"Testing R²: {test_r2:.2f}")
+```
 
-$$\frac{\partial^2 \ln L}{\partial \beta_0 \partial \beta_1} = -\sum_{i=1}^{9} x_i \cdot \frac{1}{4} = -\frac{1}{4} \cdot (1+2+3+4+5+6+7+8+9) = -\frac{1}{4} \cdot 45 = -\frac{45}{4}$$
+### ויזואליזציה של המודל והתוצאות
 
-$$\frac{\partial^2 \ln L}{\partial \beta_1^2} = -\sum_{i=1}^{9} x_i^2 \cdot \frac{1}{4} = -\frac{1}{4} \cdot (1^2+2^2+3^2+4^2+5^2+6^2+7^2+8^2+9^2) = -\frac{1}{4} \cdot 285 = -\frac{285}{4}$$
+```python
+# Create subplots
+fig, axes = plt.subplots(1, 2, figsize=(14, 6))
 
-לכן, מטריצת ההסיאן היא:
+# Plot training data and predictions
+axes[0].scatter(X_train, y_train, color='blue', alpha=0.7, label='Training data')
+axes[0].plot(X_train, y_train_pred, color='red', linewidth=2, label='Model predictions')
+axes[0].set_title(f'Training Data (R² = {train_r2:.2f})')
+axes[0].set_xlabel('X')
+axes[0].set_ylabel('y')
+axes[0].legend()
+axes[0].grid(True, alpha=0.3)
 
-$$H = 
-\begin{pmatrix}
--\frac{9}{4} & -\frac{45}{4} \\
--\frac{45}{4} & -\frac{285}{4}
-\end{pmatrix}$$
+# Plot testing data and predictions
+axes[1].scatter(X_test, y_test, color='green', alpha=0.7, label='Testing data')
+axes[1].plot(X_test, y_test_pred, color='red', linewidth=2, label='Model predictions')
+axes[1].set_title(f'Testing Data (R² = {test_r2:.2f})')
+axes[1].set_xlabel('X')
+axes[1].set_ylabel('y')
+axes[1].legend()
+axes[1].grid(True, alpha=0.3)
 
-### שלב 5: עדכון הפרמטרים
+plt.tight_layout()
+plt.show()
 
-כעת נשתמש בנוסחה: $\beta^{(new)} = \beta^{(old)} - H^{-1} \nabla L$
+# Plot residuals
+fig, axes = plt.subplots(1, 2, figsize=(14, 6))
 
-ראשית, נחשב את $H^{-1}$:
+# Training residuals
+train_residuals = y_train - y_train_pred
+axes[0].scatter(y_train_pred, train_residuals, alpha=0.7)
+axes[0].axhline(y=0, color='red', linestyle='-', linewidth=1)
+axes[0].set_title('Training Residuals vs Predictions')
+axes[0].set_xlabel('Predicted values')
+axes[0].set_ylabel('Residuals')
+axes[0].grid(True, alpha=0.3)
 
-$$\det(H) = (-\frac{9}{4}) \cdot (-\frac{285}{4}) - (-\frac{45}{4}) \cdot (-\frac{45}{4}) = \frac{9 \cdot 285}{16} - \frac{45 \cdot 45}{16} = \frac{2565 - 2025}{16} = \frac{540}{16} = \frac{135}{4}$$
+# Testing residuals
+test_residuals = y_test - y_test_pred
+axes[1].scatter(y_test_pred, test_residuals, alpha=0.7, color='green')
+axes[1].axhline(y=0, color='red', linestyle='-', linewidth=1)
+axes[1].set_title('Testing Residuals vs Predictions')
+axes[1].set_xlabel('Predicted values')
+axes[1].set_ylabel('Residuals')
+axes[1].grid(True, alpha=0.3)
 
-$$H^{-1} = \frac{1}{\det(H)}
-\begin{pmatrix}
--\frac{285}{4} & \frac{45}{4} \\
-\frac{45}{4} & -\frac{9}{4}
-\end{pmatrix} = \frac{4}{135}
-\begin{pmatrix}
--\frac{285}{4} & \frac{45}{4} \\
-\frac{45}{4} & -\frac{9}{4}
-\end{pmatrix} =
-\begin{pmatrix}
--\frac{285}{135} & \frac{45}{135} \\
-\frac{45}{135} & -\frac{9}{135}
-\end{pmatrix} =
-\begin{pmatrix}
--\frac{19}{9} & \frac{1}{3} \\
-\frac{1}{3} & -\frac{1}{15}
-\end{pmatrix}$$
+plt.tight_layout()
+plt.show()
+```
 
-כעת נעדכן את הפרמטרים:
+### דוגמה מלאה עם מערך נתונים אמיתי
 
-$$\begin{pmatrix} \beta_0^{(new)} \\ \beta_1^{(new)} \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix} - \begin{pmatrix} -\frac{19}{9} & \frac{1}{3} \\ \frac{1}{3} & -\frac{1}{15} \end{pmatrix} \begin{pmatrix} \frac{1}{2} \\ 10 \end{pmatrix}$$
+```python
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.datasets import fetch_california_housing
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error, r2_score
+from sklearn.preprocessing import StandardScaler
 
-$$= \begin{pmatrix} 0 \\ 0 \end{pmatrix} - \begin{pmatrix} -\frac{19}{9} \cdot \frac{1}{2} + \frac{1}{3} \cdot 10 \\ \frac{1}{3} \cdot \frac{1}{2} - \frac{1}{15} \cdot 10 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix} - \begin{pmatrix} -\frac{19}{18} + \frac{10}{3} \\ \frac{1}{6} - \frac{2}{3} \end{pmatrix}$$
+# Load the California housing dataset
+housing = fetch_california_housing()
+X = housing.data
+y = housing.target
 
-$$= \begin{pmatrix} 0 \\ 0 \end{pmatrix} - \begin{pmatrix} \frac{-19+60}{18} \\ \frac{1-4}{6} \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix} - \begin{pmatrix} \frac{41}{18} \\ -\frac{3}{6} \end{pmatrix} = \begin{pmatrix} -\frac{41}{18} \\ \frac{1}{2} \end{pmatrix}$$
+# Create a DataFrame
+housing_df = pd.DataFrame(X, columns=housing.feature_names)
+housing_df['Price'] = y
 
-לכן, לאחר איטרציה אחת, הפרמטרים המעודכנים הם $\beta_0 \approx -2.28$ ו-$\beta_1 \approx 0.5$.
+# Analysis with pairplot (using a sample to keep it fast)
+sample_indices = np.random.choice(len(housing_df), size=1000, replace=False)
+housing_sample = housing_df.iloc[sample_indices]
 
-### שלב 6: המשך האיטרציות
+print("Creating pairplot to examine relationships between features...")
+sns.pairplot(housing_sample[['MedInc', 'HouseAge', 'AveRooms', 'Price']])
+plt.suptitle('Feature Relationships in California Housing Dataset', y=1.02)
+plt.show()
 
-בשלב זה היינו ממשיכים לאיטרציה הבאה עם הפרמטרים החדשים, מחשבים מחדש את ההסתברויות $p_i$ עם הפרמטרים המעודכנים, את הגרדיאנט, את ההסיאן וכן הלאה, עד להתכנסות.
+# Create correlation matrix
+correlation_matrix = housing_df.corr()
+plt.figure(figsize=(10, 8))
+sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', linewidths=0.5)
+plt.title('Correlation Matrix of Housing Features')
+plt.show()
 
-האלגוריתם יתכנס כאשר השינוי בפרמטרים בין איטרציות רצופות הוא קטן מסף מסוים, או כאשר הגרדיאנט קרוב מספיק לאפס.
+# Split data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-## שיטות איטרטיביות נוספות
+# Scale the features
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
 
-מלבד Newton-Raphson, קיימות שיטות איטרטיביות נוספות:
+# Train a linear regression model
+model = LinearRegression()
+model.fit(X_train_scaled, y_train)
 
-1. **Gradient Descent**: עדכון הפרמטרים בכיוון הגרדיאנט, אך עם צעדים קטנים יותר:
-   $$\beta^{(new)} = \beta^{(old)} - \alpha \nabla L$$
-   כאשר $\alpha$ הוא קצב הלמידה.
+# Print the coefficients
+coefficients = pd.DataFrame({
+    'Feature': housing.feature_names,
+    'Coefficient': model.coef_
+})
+print("Model Coefficients:")
+print(coefficients.sort_values(by='Coefficient', ascending=False))
 
-2. **IRLS (Iteratively Reweighted Least Squares)**: שיטה שממירה את בעיית רגרסיה לוגיסטית לסדרה של בעיות ריבועים פחותים ממושקלים.
+# Make predictions
+y_train_pred = model.predict(X_train_scaled)
+y_test_pred = model.predict(X_test_scaled)
 
-3. **BFGS ו-L-BFGS**: שיטות קוואזי-ניוטוניות שמקרבות את ההסיאן במקום לחשב אותו ישירות, מה שמוזיל את העלות החישובית.
+# Calculate metrics
+train_mse = mean_squared_error(y_train, y_train_pred)
+test_mse = mean_squared_error(y_test, y_test_pred)
+train_r2 = r2_score(y_train, y_train_pred)
+test_r2 = r2_score(y_test, y_test_pred)
+
+print(f"\nTraining MSE: {train_mse:.4f}")
+print(f"Testing MSE: {test_mse:.4f}")
+print(f"Training R²: {train_r2:.4f}")
+print(f"Testing R²: {test_r2:.4f}")
+
+# Plot predictions vs actual values
+plt.figure(figsize=(10, 6))
+plt.scatter(y_test, y_test_pred, alpha=0.5)
+plt.plot([y.min(), y.max()], [y.min(), y.max()], 'r--')
+plt.xlabel('Actual Values')
+plt.ylabel('Predicted Values')
+plt.title('Predicted vs Actual Housing Prices')
+plt.grid(True, alpha=0.3)
+plt.show()
+```
 
 ## סיכום
 
-ראינו איטרציה אחת של שיטת Newton-Raphson, שהיא אחת השיטות הנפוצות לפתרון משוואות רגרסיה לוגיסטית. האלגוריתם מתחיל מניחוש ראשוני ומשפר את הפרמטרים באופן חוזר ונשנה עד להתכנסות. בדוגמה שלנו, ניחשנו $\beta_0 = 0$ ו-$\beta_1 = 0$, ולאחר איטרציה אחת קיבלנו $\beta_0 \approx -2.28$ ו-$\beta_1 \approx 0.5$. 
+שילוב של pairplot לבדיקת הקשרים בין המשתנים, train_test_split לפיצול נתונים ושימוש במודל רגרסיה לינארית מאפשר לנו לבצע תהליך מלא של ניתוח וחיזוי:
 
-איטרציות נוספות יובילו להתכנסות לערכים הסופיים של $\beta_0 \approx -5.6$ ו-$\beta_1 \approx 1.28$ כפי שחושב בדוגמה המלאה.
+1. **ניתוח חזותי** באמצעות pairplot מאפשר הבנה טובה יותר של הקשרים בין המשתנים ומסייע בבחירת המאפיינים הרלוונטיים למודל.
+
+2. **פיצול נתונים נכון** באמצעות train_test_split מבטיח שנוכל להעריך את המודל באופן אמין.
+
+3. **בניית מודל רגרסיה לינארית** מאפשרת לנו לחזות ערכים ולהבין את ההשפעה של כל מאפיין על התוצאה.
+
+שלושת הכלים הללו יחד מהווים בסיס חשוב בתהליך העבודה עם נתונים, וישיגו תוצאות טובות יותר מאשר שימוש בכל אחד מהם בנפרד.
