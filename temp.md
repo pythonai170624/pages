@@ -4,130 +4,130 @@
 
 כאשר בונים מודל רגרסיה (חיזוי ערכים רציפים), אנו רוצים להעריך את ביצועי המודל. מדדי שגיאה מאפשרים לנו להבין עד כמה הערכים שהמודל מנבא קרובים לערכים האמיתיים. שלושת המדדים הנפוצים ביותר הם MAE, MSE ו-RMSE.
 
-## MAE - Mean Absolute Error (שגיאה מוחלטת ממוצעת)
+## MAE - Mean Absolute Error
 
-### הנוסחה
+### Formula
 $$\text{MAE} = \frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i|$$
 
-כאשר:
-- $n$ הוא מספר הדגימות
-- $y_i$ הוא הערך האמיתי של הדגימה ה-$i$
-- $\hat{y}_i$ הוא הערך שהמודל חזה עבור הדגימה ה-$i$
+Where:
+- $n$ is the number of samples
+- $y_i$ is the actual value of the $i$-th sample
+- $\hat{y}_i$ is the value predicted by the model for the $i$-th sample
 
-### הסבר
-MAE מחשב את הממוצע של ערכי השגיאה המוחלטים. כלומר, מחשבים את ההפרש המוחלט בין הערך האמיתי לערך החזוי עבור כל דגימה, ואז מחשבים את הממוצע של כל ההפרשים האלה.
+### Explanation
+MAE computes the average of the absolute error values. That is, we calculate the absolute difference between the actual value and the predicted value for each sample, and then compute the average of all these differences.
 
-### יתרונות
-- קל להבנה - התוצאה היא באותן יחידות כמו המשתנה המקורי
-- עמיד יותר לחריגים (outliers) מאשר MSE
-- אינטואיטיבי - מייצג את השגיאה הממוצעת בערך מוחלט
+### Advantages
+- Easy to understand - the result is in the same units as the original variable
+- More robust to outliers than MSE
+- Intuitive - represents the average error in absolute terms
 
-### חסרונות
-- אינו מעניש שגיאות גדולות באופן פרופורציונלי יותר משגיאות קטנות
-- לא ניתן לגזירה בנקודת המינימום (בגלל הערך המוחלט), מה שעלול להקשות על אלגוריתמים מסוימים של אופטימיזציה
+### Disadvantages
+- Does not penalize large errors proportionally more than small errors
+- Not differentiable at the minimum point (due to the absolute value), which can complicate some optimization algorithms
 
-## MSE - Mean Squared Error (שגיאה ריבועית ממוצעת)
+## MSE - Mean Squared Error
 
-### הנוסחה
+### Formula
 $$\text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2$$
 
-### הסבר
-MSE מחשב את ממוצע ריבועי השגיאות. מרביעים את ההפרש בין הערך האמיתי לערך החזוי עבור כל דגימה, ואז מחשבים את הממוצע.
+### Explanation
+MSE computes the average of the squared errors. We square the difference between the actual value and the predicted value for each sample, and then calculate the average.
 
-### יתרונות
-- מעניש שגיאות גדולות יותר באופן ריבועי, מה שמתאים לבעיות רבות
-- תמיד ניתן לגזירה, לכן שימושי באלגוריתמים של אופטימיזציה
-- נפוץ מאוד בתחום הסטטיסטיקה ולמידת מכונה
+### Advantages
+- Penalizes larger errors more through squaring, which is appropriate for many problems
+- Always differentiable, making it useful for optimization algorithms
+- Very common in statistics and machine learning
 
-### חסרונות
-- התוצאה היא ביחידות ריבועיות של המשתנה המקורי (למשל, אם חוזים מחירים בש"ח, ה-MSE יהיה בש"ח בריבוע)
-- רגיש מאוד לחריגים בגלל הריבוע
-- פחות אינטואיטיבי להבנה בהשוואה ל-MAE
+### Disadvantages
+- The result is in squared units of the original variable (e.g., if predicting prices in dollars, MSE will be in dollars squared)
+- Very sensitive to outliers due to the squaring
+- Less intuitive to understand compared to MAE
 
-## RMSE - Root Mean Squared Error (שורש השגיאה הריבועית הממוצעת)
+## RMSE - Root Mean Squared Error
 
-### הנוסחה
+### Formula
 $$\text{RMSE} = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2} = \sqrt{\text{MSE}}$$
 
-### הסבר
-RMSE הוא השורש הריבועי של MSE. זהו ניסיון לשמר את היתרונות של MSE תוך החזרת התוצאה ליחידות המקוריות.
+### Explanation
+RMSE is the square root of MSE. It's an attempt to preserve the advantages of MSE while returning the result to the original units.
 
-### יתרונות
-- התוצאה היא באותן יחידות כמו המשתנה המקורי
-- עדיין מעניש שגיאות גדולות יותר באופן לא לינארי
-- אינטואיטיבי יותר מ-MSE, אך עדיין שומר על התכונות הסטטיסטיות שלו
+### Advantages
+- The result is in the same units as the original variable
+- Still penalizes larger errors more in a non-linear way
+- More intuitive than MSE, but still maintains its statistical properties
 
-### חסרונות
-- רגיש לחריגים, כמו MSE
-- חישוב מורכב יותר מ-MAE
+### Disadvantages
+- Sensitive to outliers, like MSE
+- More complex computation than MAE
 
-## השוואה בין המדדים
+## Comparison Between Metrics
 
-| מדד | נוסחה | יחידות | רגישות לחריגים | קלות הבנה |
-|-----|--------|---------|-----------------|------------|
-| MAE | $\frac{1}{n} \sum |y_i - \hat{y}_i|$ | כמו המשתנה המקורי | נמוכה | גבוהה |
-| MSE | $\frac{1}{n} \sum (y_i - \hat{y}_i)^2$ | ריבוע המשתנה המקורי | גבוהה | בינונית |
-| RMSE | $\sqrt{\frac{1}{n} \sum (y_i - \hat{y}_i)^2}$ | כמו המשתנה המקורי | גבוהה | בינונית |
+| Metric | Formula | Units | Sensitivity to Outliers | Ease of Understanding |
+|--------|---------|-------|-------------------------|------------------------|
+| MAE | $\frac{1}{n} \sum |y_i - \hat{y}_i|$ | Same as original variable | Low | High |
+| MSE | $\frac{1}{n} \sum (y_i - \hat{y}_i)^2$ | Square of original variable | High | Medium |
+| RMSE | $\sqrt{\frac{1}{n} \sum (y_i - \hat{y}_i)^2}$ | Same as original variable | High | Medium |
 
-## דוגמאות מספריות
+## Numerical Examples
 
-נניח שיש לנו מודל שחוזה מחירי דירות. להלן מספר דוגמאות אמיתיות וחזויות (במיליוני ש"ח):
+Let's say we have a model that predicts housing prices. Here are some actual and predicted examples (in millions of dollars):
 
-| דירה | מחיר אמיתי | מחיר חזוי | שגיאה | שגיאה מוחלטת | שגיאה בריבוע |
-|------|------------|------------|--------|--------------|--------------|
-| 1    | 1.5        | 1.7        | -0.2   | 0.2          | 0.04         |
-| 2    | 2.3        | 2.1        | 0.2    | 0.2          | 0.04         |
-| 3    | 3.0        | 2.8        | 0.2    | 0.2          | 0.04         |
-| 4    | 1.8        | 1.9        | -0.1   | 0.1          | 0.01         |
-| 5    | 4.2        | 3.5        | 0.7    | 0.7          | 0.49         |
+| House | Actual Price | Predicted Price | Error | Absolute Error | Squared Error |
+|-------|--------------|-----------------|-------|----------------|---------------|
+| 1     | 1.5          | 1.7             | -0.2  | 0.2            | 0.04          |
+| 2     | 2.3          | 2.1             | 0.2   | 0.2            | 0.04          |
+| 3     | 3.0          | 2.8             | 0.2   | 0.2            | 0.04          |
+| 4     | 1.8          | 1.9             | -0.1  | 0.1            | 0.01          |
+| 5     | 4.2          | 3.5             | 0.7   | 0.7            | 0.49          |
 
-### חישוב MAE
+### Calculating MAE
 $$\text{MAE} = \frac{1}{5} (0.2 + 0.2 + 0.2 + 0.1 + 0.7) = \frac{1.4}{5} = 0.28$$
 
-המשמעות: בממוצע, המודל שלנו טועה ב-0.28 מיליון ש"ח.
+Meaning: On average, our model is off by $0.28 million.
 
-### חישוב MSE
+### Calculating MSE
 $$\text{MSE} = \frac{1}{5} (0.04 + 0.04 + 0.04 + 0.01 + 0.49) = \frac{0.62}{5} = 0.124$$
 
-המשמעות: ממוצע ריבועי השגיאות הוא 0.124 מיליון ש"ח בריבוע.
+Meaning: The average of squared errors is $0.124 million squared.
 
-### חישוב RMSE
+### Calculating RMSE
 $$\text{RMSE} = \sqrt{\text{MSE}} = \sqrt{0.124} \approx 0.352$$
 
-המשמעות: השורש הריבועי של ממוצע ריבועי השגיאות הוא כ-0.35 מיליון ש"ח.
+Meaning: The square root of the average squared error is about $0.35 million.
 
-## דוגמה עם חריגים
+## Example with Outliers
 
-נוסיף דירה שישית עם טעות חיזוי גדולה:
+Let's add a sixth house with a large prediction error:
 
-| דירה | מחיר אמיתי | מחיר חזוי | שגיאה | שגיאה מוחלטת | שגיאה בריבוע |
-|------|------------|------------|--------|--------------|--------------|
-| 1    | 1.5        | 1.7        | -0.2   | 0.2          | 0.04         |
-| 2    | 2.3        | 2.1        | 0.2    | 0.2          | 0.04         |
-| 3    | 3.0        | 2.8        | 0.2    | 0.2          | 0.04         |
-| 4    | 1.8        | 1.9        | -0.1   | 0.1          | 0.01         |
-| 5    | 4.2        | 3.5        | 0.7    | 0.7          | 0.49         |
-| 6    | 5.0        | 3.0        | 2.0    | 2.0          | 4.00         |
+| House | Actual Price | Predicted Price | Error | Absolute Error | Squared Error |
+|-------|--------------|-----------------|-------|----------------|---------------|
+| 1     | 1.5          | 1.7             | -0.2  | 0.2            | 0.04          |
+| 2     | 2.3          | 2.1             | 0.2   | 0.2            | 0.04          |
+| 3     | 3.0          | 2.8             | 0.2   | 0.2            | 0.04          |
+| 4     | 1.8          | 1.9             | -0.1  | 0.1            | 0.01          |
+| 5     | 4.2          | 3.5             | 0.7   | 0.7            | 0.49          |
+| 6     | 5.0          | 3.0             | 2.0   | 2.0            | 4.00          |
 
-### חישוב MAE החדש
+### New MAE Calculation
 $$\text{MAE} = \frac{1}{6} (0.2 + 0.2 + 0.2 + 0.1 + 0.7 + 2.0) = \frac{3.4}{6} \approx 0.567$$
 
-### חישוב MSE החדש
+### New MSE Calculation
 $$\text{MSE} = \frac{1}{6} (0.04 + 0.04 + 0.04 + 0.01 + 0.49 + 4.0) = \frac{4.62}{6} = 0.77$$
 
-### חישוב RMSE החדש
+### New RMSE Calculation
 $$\text{RMSE} = \sqrt{\text{MSE}} = \sqrt{0.77} \approx 0.878$$
 
-שימו לב כיצד החריג (דירה 6) השפיע באופן שונה על כל מדד:
-- ה-MAE גדל פי 2 בערך (מ-0.28 ל-0.567)
-- ה-MSE גדל פי 6.2 בערך (מ-0.124 ל-0.77)
-- ה-RMSE גדל פי 2.5 בערך (מ-0.352 ל-0.878)
+Notice how the outlier (House 6) affected each metric differently:
+- MAE increased by about 2 times (from 0.28 to 0.567)
+- MSE increased by about 6.2 times (from 0.124 to 0.77)
+- RMSE increased by about 2.5 times (from 0.352 to 0.878)
 
-זה מדגים את הרגישות הגבוהה יותר של MSE ו-RMSE לחריגים.
+This demonstrates the higher sensitivity of MSE and RMSE to outliers.
 
-## יישום בפייתון
+## Implementation in Python
 
-להלן קוד פייתון שמחשב את שלושת המדדים:
+Here's Python code that calculates all three metrics:
 
 ```python
 import numpy as np
@@ -160,7 +160,7 @@ print(f"MSE: {manual_mse:.3f}")
 print(f"RMSE: {manual_rmse:.3f}")
 ```
 
-תוצאות הקוד:
+Output of the code:
 ```
 MAE: 0.567
 MSE: 0.770
@@ -172,9 +172,9 @@ MSE: 0.770
 RMSE: 0.878
 ```
 
-## ויזואליזציה ברגרסיה לינארית
+## Visualization in Linear Regression
 
-בואו נדגים את שלושת מדדי השגיאה על נתוני רגרסיה לינארית:
+Let's demonstrate the three error metrics on linear regression data:
 
 ```python
 import numpy as np
@@ -269,24 +269,24 @@ plt.tight_layout()
 plt.show()
 ```
 
-## סיכום ומתי להשתמש בכל מדד
+## Summary and When to Use Each Metric
 
 ### MAE
-משתמשים ב-MAE כאשר:
-- רוצים מדד שקל להסביר לאנשים ללא רקע טכני
-- הטעויות הגדולות לא בהכרח גרועות יותר באופן דרמטי מהטעויות הקטנות
-- יש חריגים בנתונים ואין רוצים שישפיעו יתר על המידה על הערכת המודל
+Use MAE when:
+- You want a metric that's easy to explain to people without a technical background
+- Larger errors are not necessarily dramatically worse than smaller errors
+- There are outliers in the data and you don't want them to overly influence the model evaluation
 
 ### MSE
-משתמשים ב-MSE כאשר:
-- צריכים פונקציית הפסד שניתנת לגזירה לצורך אופטימיזציה
-- טעויות גדולות הן בעייתיות מאוד ורוצים "להעניש" אותן יותר  
-- הנתונים אינם כוללים חריגים משמעותיים, או שהחריגים חשובים ורוצים להתחשב בהם
+Use MSE when:
+- You need a loss function that can be differentiated for optimization
+- Large errors are very problematic and you want to "punish" them more  
+- The data doesn't contain significant outliers, or the outliers are important and you want to account for them
 
 ### RMSE
-משתמשים ב-RMSE כאשר:
-- רוצים מדד שמעניש טעויות גדולות אך עדיין מפיק תוצאה ביחידות של המשתנה המקורי
-- נדרשת התאמה לשיטות סטטיסטיות אחרות
-- רוצים מדד שיהיה קל יותר להבנה מ-MSE אך עדיין ישמור על תכונותיו הסטטיסטיות
+Use RMSE when:
+- You want a metric that penalizes large errors but still produces a result in the original variable's units
+- Compatibility with other statistical methods is required
+- You want a metric that's easier to understand than MSE but still maintains its statistical properties
 
-לעתים קרובות כדאי לחשב את כל שלושת המדדים כדי לקבל תמונה מלאה של ביצועי המודל, במיוחד אם ייתכן שיש חריגים בנתונים.
+It's often a good idea to calculate all three metrics to get a complete picture of the model's performance, especially if there might be outliers in the data.
