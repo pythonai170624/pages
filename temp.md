@@ -293,6 +293,7 @@ When predicting housing prices, Ridge Regression performs well because most feat
 Lasso Regression adds the absolute value of coefficients as a penalty term, which can lead to sparse models.
 
 **Mathematical formula:**
+
 $$\text{Loss} = \text{MSE} + \lambda \sum_{i=1}^{n} |w_i|$$
 
 **Lasso Regression** is a predictive modeling technique (regression) that adds a *"penalty"* when the model’s weights (coefficients) get too large — but not just any penalty!  
