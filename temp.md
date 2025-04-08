@@ -400,7 +400,7 @@ print(f"Non-zero coefficients: {np.sum(lasso_cv.coef_ != 0)}")
 
 The optimal $\lambda$ balances between underfitting (high $\lambda$, too simple) and overfitting (low $\lambda$, too complex).
 
-<img src="lasso-cv.png" style="width: 80%" />
+<img src="lasso-cv.png" style="width: 90%" />
 
 **Real-Life Example:**
 In genomic studies, researchers often have thousands of genetic markers but only a few hundred patients. Lasso helps identify the most relevant genes associated with a disease by setting coefficients of irrelevant genes to zero.
