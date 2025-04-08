@@ -147,6 +147,7 @@ Regularization techniques help prevent overfitting by adding penalty terms to th
 Ridge Regression adds the squared magnitude of coefficients as a penalty term.
 
 **Mathematical formula:**
+
 $$\text{Loss} = \text{MSE} + \lambda \sum_{i=1}^{n} w_i^2$$
 
 Where:
