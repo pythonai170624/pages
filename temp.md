@@ -215,19 +215,66 @@ plt.show()
 RidgeCV is a cross-validation implementation that automatically selects the best regularization parameter ($\lambda$) from a given set.
 
 ```python
+import numpy as np
+import matplotlib.pyplot as plt
 from sklearn.linear_model import RidgeCV
+from sklearn.preprocessing import StandardScaler, PolynomialFeatures
+from sklearn.pipeline import Pipeline
 
-# Using RidgeCV to find optimal alpha
+# Generate synthetic data
+np.random.seed(42)
+X = np.sort(np.random.rand(100, 1), axis=0)
+y = np.sin(2 * np.pi * X).ravel() + np.random.normal(0, 0.3, X.shape[0])
+
+# Create polynomial features
+poly = PolynomialFeatures(degree=5)
+X_poly = poly.fit_transform(X)
+
+# Set up RidgeCV with a range of alphas
 alphas = np.logspace(-6, 6, 13)  # Range of alpha values to test
 ridge_cv = RidgeCV(alphas=alphas, cv=5, scoring='neg_mean_squared_error')
+
+# Create and fit the pipeline
 pipeline = Pipeline([
     ('scaler', StandardScaler()),
     ('ridge_cv', ridge_cv)
 ])
-
 pipeline.fit(X_poly, y)
-print(f"Best alpha: {ridge_cv.alpha_}")
+
+# Print the best alpha found
+best_alpha = pipeline.named_steps['ridge_cv'].alpha_
+print(f"Best alpha: {best_alpha}")
+
+# Visualize the results
+X_test = np.linspace(0, 1, 100).reshape(-1, 1)
+X_test_poly = poly.transform(X_test)
+X_test_poly_scaled = pipeline.named_steps['scaler'].transform(X_test_poly)
+y_pred = pipeline.predict(X_test_poly)
+
+plt.figure(figsize=(10, 6))
+plt.scatter(X, y, color='blue', label='Data points')
+plt.plot(X_test, y_pred, color='red', label=f'Ridge (α={best_alpha:.6f})')
+plt.title('Ridge Regression with Cross-Validation')
+plt.xlabel('X')
+plt.ylabel('y')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# You can also examine the coefficients
+coefficients = pipeline.named_steps['ridge_cv'].coef_
+feature_names = [f'X^{i}' for i in range(len(coefficients))]
+plt.figure(figsize=(10, 6))
+plt.bar(feature_names, coefficients)
+plt.title('Ridge Regression Coefficients')
+plt.xlabel('Features')
+plt.ylabel('Coefficient Value')
+plt.xticks(rotation=45)
+plt.grid(True, axis='y')
+plt.tight_layout()
+plt.show()
 ```
+<img src="ridgecv.png" style="width: 80%" />
 
 #### Scoring Metrics for RidgeCV
 
