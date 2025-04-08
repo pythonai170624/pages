@@ -87,6 +87,8 @@ Standardization transforms data to have zero mean and unit variance.
 **Mathematical formula:**
 $$X_{standardized} = \frac{X - \mu}{\sigma}$$
 
+<img src="std.jpg" />
+
 Where:
 - $\mu$ is the mean of the feature
 - $\sigma$ is the standard deviation
