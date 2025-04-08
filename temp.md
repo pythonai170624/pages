@@ -124,6 +124,8 @@ plt.tight_layout()
 plt.show()
 ```
 
+<img src="stand.png" style="width: 80%" />
+
 **Real-Life Example:**
 Blood test results often have different normal ranges. Standardization allows clinicians to compare multiple biomarkers with different units (like cholesterol in mg/dL and hemoglobin in g/dL) on a unified scale to identify abnormal patterns.
 
