@@ -400,29 +400,6 @@ print(f"Non-zero coefficients: {np.sum(lasso_cv.coef_ != 0)}")
 
 The optimal $\lambda$ balances between underfitting (high $\lambda$, too simple) and overfitting (low $\lambda$, too complex).
 
-**Visualization of coefficients path in Lasso:**
-
-```python
-from sklearn.linear_model import lasso_path
-
-# Compute coefficient paths
-alphas, coefs, _ = lasso_path(StandardScaler().fit_transform(X_poly), y, alphas=np.logspace(-5, 0, 100))
-
-# Plot coefficient paths
-plt.figure(figsize=(10, 6))
-for i, coef in enumerate(coefs):
-    plt.plot(alphas, coef, label=f'Feature {i+1}')
-
-plt.axvline(lasso_cv.alpha_, color='black', linestyle='--', label='Optimal λ')
-plt.xscale('log')
-plt.xlabel('Alpha (λ)')
-plt.ylabel('Coefficient values')
-plt.title('Lasso Path: Coefficient Values vs. λ')
-plt.legend(loc='best')
-plt.grid(True)
-plt.show()
-```
-
 **Real-Life Example:**
 In genomic studies, researchers often have thousands of genetic markers but only a few hundred patients. Lasso helps identify the most relevant genes associated with a disease by setting coefficients of irrelevant genes to zero.
 
