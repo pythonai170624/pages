@@ -73,8 +73,6 @@ Think of it as being too impressionable or inconsistent:
 
 ## The Bias-Variance Tradeoff
 
-<img src="bias-tradeoff.png" />
-
 The key insight is that these two types of errors are in tension with each other:
 - As you reduce bias (by using more complex models), variance tends to increase
 - As you reduce variance (by using simpler models), bias tends to increase
@@ -85,6 +83,15 @@ The total error in your model is the sum of:
 - Irreducible error (noise in the data)
 
 The goal is to find the sweet spot where the total error is minimized.
+
+### -- Visualization: 
+
+<img src="bias-tradeoff.png" />
+
+This graph shows:
+- Bias decreases as model complexity increases
+- Variance increases as model complexity increases
+- Total error (bias + variance) is minimized at an intermediate complexity level
 
 ## Finding the Optimal Model Complexity
 
@@ -117,15 +124,6 @@ When working with polynomial regression specifically:
    - Calculate error on both training and validation sets
 3. Plot both errors against the polynomial degree
 4. Choose the degree where validation error is minimized
-
-## Bias-Variance Tradeoff Visualization
-
-![Bias-Variance Tradeoff](https://placeholder.com/biasvariancetradeoff)
-
-This graph shows:
-- Bias decreases as model complexity increases
-- Variance increases as model complexity increases
-- Total error (bias + variance) is minimized at an intermediate complexity level
 
 ## Real-World Examples
 
