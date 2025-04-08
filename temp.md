@@ -301,6 +301,8 @@ Lasso Regression adds the absolute value of coefficients as a penalty term, whic
 
 $$\text{Loss} = \text{MSE} + \lambda \sum_{i=1}^{n} |w_i|$$
 
+$$\text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2$$
+
 **Lasso Regression** is a predictive modeling technique (regression) that adds a *"penalty"* when the model’s weights (coefficients) get too large — but not just any penalty!  
 It adds the **sum of the absolute values of the coefficients**.
 
