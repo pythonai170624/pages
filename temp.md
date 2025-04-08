@@ -437,57 +437,6 @@ In genomic studies, researchers often have thousands of genetic markers but only
 | Best use case | When all features contribute to the outcome | When feature selection is desired |
 | Handling correlated features | Distributes weight among correlated features | Tends to pick one feature from correlated groups |
 
-**Visualization of Ridge vs Lasso effect on coefficients:**
-
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.linear_model import Ridge, Lasso
-from sklearn.preprocessing import StandardScaler
-
-# Generate synthetic data with correlated features
-np.random.seed(42)
-n_samples, n_features = 50, 20
-X = np.random.randn(n_samples, n_features)
-# Add correlation between features
-X[:, 5:10] = X[:, 0:5] + np.random.randn(n_samples, 5) * 0.1
-# True coefficients: only first 5 features matter
-true_coef = np.zeros(n_features)
-true_coef[:5] = np.array([5, 4, 3, 2, 1])
-y = np.dot(X, true_coef) + np.random.randn(n_samples) * 0.1
-
-# Standardize data
-scaler = StandardScaler()
-X_scaled = scaler.fit_transform(X)
-
-# Fit models
-alpha = 0.1
-ridge = Ridge(alpha=alpha)
-lasso = Lasso(alpha=alpha)
-
-ridge.fit(X_scaled, y)
-lasso.fit(X_scaled, y)
-
-# Plot coefficients
-plt.figure(figsize=(12, 6))
-plt.subplot(1, 2, 1)
-plt.stem(range(n_features), ridge.coef_, markerfmt='ro', linefmt='r-', basefmt='b-')
-plt.title('Ridge Coefficients')
-plt.xlabel('Feature Index')
-plt.ylabel('Coefficient Value')
-plt.axhline(y=0, color='k', linestyle='-')
-
-plt.subplot(1, 2, 2)
-plt.stem(range(n_features), lasso.coef_, markerfmt='ro', linefmt='r-', basefmt='b-')
-plt.title('Lasso Coefficients')
-plt.xlabel('Feature Index')
-plt.ylabel('Coefficient Value')
-plt.axhline(y=0, color='k', linestyle='-')
-
-plt.tight_layout()
-plt.show()
-```
-
 ## Real-Life Applications
 
 1. **Healthcare Predictive Models**
