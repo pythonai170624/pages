@@ -152,6 +152,8 @@ Ridge Regression adds the squared magnitude of coefficients as a penalty term.
 
 $$\text{Loss} = \text{MSE} + \lambda \sum_{i=1}^{n} w_i^2$$
 
+$$\text{Loss} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 + \lambda \sum_{i=1}^{n} w_i^2$$
+
 Where:
 - MSE is the Mean Squared Error
 - $\lambda$ is the regularization strength (hyperparameter)
