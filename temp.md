@@ -24,6 +24,7 @@ Feature scaling is a preprocessing step that transforms numerical features to a 
 Normalization rescales features to a specific range, typically [0,1].
 
 **Mathematical formula:**
+
 $$X_{normalized} = \frac{X - X_{min}}{X_{max} - X_{min}}$$
 
 **Visualization:**
@@ -85,6 +86,7 @@ Imagine a bank is building a model to decide whether to approve a loan. The data
 Standardization transforms data to have zero mean and unit variance.
 
 **Mathematical formula:**
+
 $$X_{standardized} = \frac{X - \mu}{\sigma}$$
 
 Where:
@@ -403,6 +405,60 @@ print(f"Non-zero coefficients: {np.sum(lasso_cv.coef_ != 0)}")
 The optimal $\lambda$ balances between underfitting (high $\lambda$, too simple) and overfitting (low $\lambda$, too complex).
 
 <img src="lasso-cv.png" style="width: 90%" />
+
+
+# 📈 Understanding the Lasso Path Plot
+
+This plot is called a **Lasso Path**, and it shows how the coefficients of a Lasso regression model change as the regularization strength (`lambda`, or `alpha`) changes.
+
+---
+
+## 🔍 What does the plot show?
+
+### **X-axis**:
+- Values of **alpha (λ)**, the regularization strength.
+- It's on a **logarithmic scale** (e.g., 10⁻⁴ to 10¹).
+- As λ increases → stronger regularization.
+
+### **Y-axis**:
+- The **coefficient value** for each feature.
+- Each line represents how one feature’s weight changes with λ.
+
+---
+
+## 📊 Interpretation:
+
+### 🟢 On the left (small λ):
+- Regularization is **weak**.
+- Most features have **non-zero coefficients**.
+- The model includes more features (can overfit).
+
+### 🔴 Moving right (large λ):
+- Regularization gets **stronger**.
+- Lasso starts **shrinking coefficients toward 0**.
+- Many features are **zeroed out** (removed from the model).
+
+---
+
+## 🚩 The vertical dashed line:
+- Marks the **optimal alpha** chosen by `LassoCV` (via cross-validation).
+- At this λ, the model achieves **best generalization performance**.
+- Most irrelevant features have already been **eliminated**.
+
+---
+
+## ✅ Why is this plot useful?
+
+- Shows how **Lasso performs feature selection** automatically.
+- Helps you understand **which features are important** (those that survive when λ increases).
+- Gives insight into the **stability** of your model under different regularization strengths.
+
+---
+
+## 🧠 Bottom line:
+
+> As λ increases, Lasso simplifies the model by **zeroing out unimportant features**, leaving only the most relevant ones for prediction.
+
 
 **Real-Life Example:**
 In genomic studies, researchers often have thousands of genetic markers but only a few hundred patients. Lasso helps identify the most relevant genes associated with a disease by setting coefficients of irrelevant genes to zero.
