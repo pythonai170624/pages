@@ -373,9 +373,11 @@ ax5.set_title('Autocorrelation of Residuals')
 
 # 6. Residuals vs Index (for any time-related patterns)
 ax6 = fig.add_subplot(3, 2, 6)
-ax6.scatter(range(len(residuals)), residuals, alpha=0.5)
+# Fix: Convert range to numpy array
+indices = np.array(range(len(residuals)))
+ax6.scatter(indices, residuals, alpha=0.5)
 ax6.axhline(y=0, color='r', linestyle='-')
-sns.regplot(x=range(len(residuals)), y=residuals, ax=ax6, scatter=False, lowess=True, line_kws={'color': 'red'})
+sns.regplot(x=indices, y=residuals, ax=ax6, scatter=False, lowess=True, line_kws={'color': 'red'})
 ax6.set_xlabel('Index')
 ax6.set_ylabel('Residuals')
 ax6.set_title('Residuals vs Index')
