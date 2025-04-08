@@ -385,6 +385,7 @@ for i, alpha in enumerate(alphas):
 plt.tight_layout()
 plt.show()
 ```
+<img src="lasso.png" style="width: 80%" />
 
 #### LassoCV and Optimal Lambda Value
 
