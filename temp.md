@@ -302,16 +302,12 @@ It adds the **sum of the absolute values of the coefficients**.
 - **λ (lambda)** – Penalty strength
 - **|βᵢ|** – Absolute value of each coefficient (so negatives don't cancel out)
 
----
-
-### ✂️ Why does it create a Sparse Model?
+**✂️ Why does it create a Sparse Model?**
 
 Because **Lasso pushes some coefficients to exactly zero** if they are not important enough!  
 In other words: if a feature doesn't really add value to the prediction — the model sets its weight to zero.
 
----
-
-## 📦 Everyday Example:
+**📦 Everyday Example:**
 
 Imagine you're building a model to predict whether someone will like pizza based on:
 
@@ -324,9 +320,7 @@ Imagine you're building a model to predict whether someone will like pizza based
 🤷‍♂️ Probably eye color and number of cats don’t really matter.  
 So **Lasso will zero out those feature weights** → and keep only what's truly important (like age and being Italian).
 
----
-
-## ✅ What do we gain from this?
+**✅ What do we gain from this?**
 
 - Simpler models  
 - Faster models  
