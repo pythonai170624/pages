@@ -61,9 +61,6 @@ plt.show()
 
 <img src="min-max.png" style="width: 80%" />
 
-**Real-Life Example:**
-In image processing, pixel values are normalized from the range [0, 255] to [0, 1] before feeding into neural networks. This helps with gradient computation and stabilizes learning.
-
 ### 🔥 Real-Life Example: Credit Scoring in Banks
 
 Imagine a bank is building a model to decide whether to approve a loan. The dataset includes features like:
