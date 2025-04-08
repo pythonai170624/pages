@@ -292,56 +292,46 @@ When predicting housing prices, Ridge Regression performs well because most feat
 
 Lasso Regression adds the absolute value of coefficients as a penalty term, which can lead to sparse models.
 
-
-# 💡 מה זה Lasso Regression?
-
-**Lasso Regression** זו שיטה לחיזוי (רגרסיה) שמוסיפה *"עונש"* על המודל כשהמשקלים שלו גדולים מדי — אבל לא סתם עונש!  
-היא מוסיפה את **סכום הערכים המוחלטים של המקדמים (המשקלים)**.
-
-המשוואה של Lasso נראית ככה:
-
-```
-Loss = MSE + λ * Σ|βᵢ|
-```
-
-- **MSE** – טעות רגילה (כמו ברגרסיה רגילה)
-- **λ (lambda)** – עוצמת העונש
-- **|βᵢ|** – הערך המוחלט של כל מקדם (כדי שלא יהיו שליליים)
-
----
-
-## ✂️ למה זה יוצר מודל דליל (Sparse)?
-
-כי **Lasso "דוחף" משקלים לאפס** אם הם לא חשובים מספיק!  
-במילים אחרות: אם תכונה מסוימת לא ממש מוסיפה ערך לניבוי — המודל פשוט מאפס את המשקל שלה.
-
----
-
-## 📦 דוגמה יומית:
-
-נניח שאתה בונה מודל שמנבא אם מישהו יאהב פיצה לפי:
-
-- גיל
-- צבע עיניים
-- גובה
-- האם הוא איטלקי
-- מספר החתולים בבית
-
-🤷‍♂️ כנראה שלצבע עיניים או מספר החתולים אין באמת השפעה.  
-אז **Lasso יאפס את המשקלים של התכונות האלה** → ויישאר רק עם מה שבאמת חשוב (גיל ואיטלקיות, למשל).
-
----
-
-## ✅ מה יוצא לנו מזה?
-
-- מודלים פשוטים יותר  
-- מהירים יותר  
-- קל להסביר אותם  
-- ואין בזבוז זמן על שטויות 💁‍♀️
-
-
 **Mathematical formula:**
 $$\text{Loss} = \text{MSE} + \lambda \sum_{i=1}^{n} |w_i|$$
+
+**Lasso Regression** is a predictive modeling technique (regression) that adds a *"penalty"* when the model’s weights (coefficients) get too large — but not just any penalty!  
+It adds the **sum of the absolute values of the coefficients**.
+
+- **MSE** – Mean Squared Error (regular prediction error)
+- **λ (lambda)** – Penalty strength
+- **|βᵢ|** – Absolute value of each coefficient (so negatives don't cancel out)
+
+---
+
+### ✂️ Why does it create a Sparse Model?
+
+Because **Lasso pushes some coefficients to exactly zero** if they are not important enough!  
+In other words: if a feature doesn't really add value to the prediction — the model sets its weight to zero.
+
+---
+
+## 📦 Everyday Example:
+
+Imagine you're building a model to predict whether someone will like pizza based on:
+
+- Age
+- Eye color
+- Height
+- Whether they are Italian
+- Number of cats at home
+
+🤷‍♂️ Probably eye color and number of cats don’t really matter.  
+So **Lasso will zero out those feature weights** → and keep only what's truly important (like age and being Italian).
+
+---
+
+## ✅ What do we gain from this?
+
+- Simpler models  
+- Faster models  
+- Easier to interpret  
+- No time wasted on irrelevant features 💁‍♀️
 
 **Visualization - Effect of Lasso with different λ values:**
 
