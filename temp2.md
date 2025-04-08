@@ -55,7 +55,7 @@ You show the child 10 specific dogs and teach them to memorize every detail abou
 
 When analyzing model performance, the total expected prediction error can be mathematically decomposed into three fundamental components:
 
-$$\text{Total Error} = \text{Bias}^2 + \text{Variance} + \text{Irreducible Error}$$
+**$$\text{Total Error} = \text{Bias}^2 + \text{Variance} + \text{Irreducible Error}$$**
 
 Let's explore each of these components in detail:
 
