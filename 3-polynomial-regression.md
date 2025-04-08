@@ -194,7 +194,9 @@ Optimal training hours: 20.46
 Predicted minimum running time: 49.93 seconds
 ```
 
-הגרף שיוצג יראה את הפרבולה (קו אדום) שמתאימה לנתונים, כאשר הנקודה האופטימלית (ירוקה) מסמנת את מספר שעות האימון האופטימלי.
+<img src="poly2.png" style="width: 60%" />
+
+הגרף שיוצג יראה את הפרבולה (קו אדום) שמתאימה לנתונים, כאשר הנקודה האופטימלית (ירוקה) מסמנת את מספר שעות האימון האופטימלי
 
 ## Understanding scikit-learn Pipeline for Polynomial Regression
 
