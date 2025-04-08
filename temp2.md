@@ -56,6 +56,8 @@ Think of it as being too impressionable or inconsistent:
 
 ## The Bias-Variance Tradeoff
 
+<img src="bias-tradeoff.png" />
+
 The key insight is that these two types of errors are in tension with each other:
 - As you reduce bias (by using more complex models), variance tends to increase
 - As you reduce variance (by using simpler models), bias tends to increase
