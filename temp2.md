@@ -11,7 +11,7 @@ This balancing act is known as the **bias-variance tradeoff**, and it's at the h
 
 ## Overfitting and Underfitting Explained
 
-<image src="fit-1.png"/>
+<image src="fits-1.png"/>
 
 Imagine you're teaching a child to recognize dogs. There are three approaches you might take:
 
