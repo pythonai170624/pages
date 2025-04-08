@@ -11,8 +11,6 @@ This balancing act is known as the **bias-variance tradeoff**, and it's at the h
 
 ## Overfitting and Underfitting Explained
 
-<image src="fits-1.png"/>
-
 Imagine you're teaching a child to recognize dogs. There are three approaches you might take:
 
 ### 1. Underfitting (High Bias)
@@ -31,6 +29,23 @@ You show the child 10 specific dogs and teach them to memorize every detail abou
 - **Low bias**: Makes few assumptions about dogs in general
 - **High variance**: Will only recognize dogs that look exactly like the examples
 - **Problem**: The model has memorized the training examples rather than learning the general concept
+
+<image src="fits-1.png"/>
+
+**Underfitting (High Bias)**
+- The model (often a straight line) is too simple
+- It misses the true pattern in the data
+- It has high error on both training and test data
+
+**Good Fit (Balanced)**
+- The model captures the true pattern
+- It ignores the random noise
+- It has low error on both training and test data
+
+**Overfitting (High Variance)**
+- The model is too complex and fits the noise
+- It wiggles to hit every data point perfectly
+- It has very low error on training data but high error on test data
 
 ## Bias and Variance in Detail
 
@@ -68,26 +83,6 @@ The total error in your model is the sum of:
 - Irreducible error (noise in the data)
 
 The goal is to find the sweet spot where the total error is minimized.
-
-## Visualizing Model Fit
-
-### Underfitting (High Bias)
-![Underfitting visualization](https://placeholder.com/underfitting)
-- The model (often a straight line) is too simple
-- It misses the true pattern in the data
-- It has high error on both training and test data
-
-### Good Fit (Balanced)
-![Good fit visualization](https://placeholder.com/goodfit)
-- The model captures the true pattern
-- It ignores the random noise
-- It has low error on both training and test data
-
-### Overfitting (High Variance)
-![Overfitting visualization](https://placeholder.com/overfitting)
-- The model is too complex and fits the noise
-- It wiggles to hit every data point perfectly
-- It has very low error on training data but high error on test data
 
 ## Finding the Optimal Model Complexity
 
