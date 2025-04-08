@@ -114,8 +114,6 @@ In the graph above:
 
 ### Finding the Most Fit Polynomial Degree
 
-<img src="degree.png" />
-
 When working with polynomial regression specifically:
 
 1. Split your data into training and validation sets
@@ -124,6 +122,8 @@ When working with polynomial regression specifically:
    - Calculate error on both training and validation sets
 3. Plot both errors against the polynomial degree
 4. Choose the degree where validation error is minimized
+
+<img src="degree.png" />
 
 ## Real-World Examples
 
