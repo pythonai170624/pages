@@ -11,6 +11,8 @@ This balancing act is known as the **bias-variance tradeoff**, and it's at the h
 
 ## Overfitting and Underfitting Explained
 
+<src image="fit-1.png"/>
+
 Imagine you're teaching a child to recognize dogs. There are three approaches you might take:
 
 ### 1. Underfitting (High Bias)
