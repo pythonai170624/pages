@@ -30,7 +30,7 @@ You show the child 10 specific dogs and teach them to memorize every detail abou
 - **High variance**: Will only recognize dogs that look exactly like the examples
 - **Problem**: The model has memorized the training examples rather than learning the general concept
 
-### Visualization
+### -- Visualization: 
 
 <image src="fits-1.png"/>
 
