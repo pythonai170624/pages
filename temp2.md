@@ -66,7 +66,7 @@ Bias measures how far your model's predictions are from the true values on avera
 - **High bias** indicates that your model is making systematic errors and consistently missing the true pattern
 - **Examples of high-bias models**: Linear models trying to fit non-linear data, overly simplified decision trees
 
-## Why Bias²?
+### Why Bias²?
 
 In the mathematical decomposition of the expected prediction error, bias appears as a squared term for several important reasons:
 
@@ -80,7 +80,7 @@ In the mathematical decomposition of the expected prediction error, bias appears
 
 ### What is Variance?
 
-Variance measures how much your model's predictions would fluctuate if you trained it on different datasets. It represents the model's sensitivity to the specific data points used for training.
+Variance measures how much your model's predictions would fluctuate (=change frequently) if you trained it on different datasets. It represents the model's sensitivity to the specific data points used for training.
 
 - **High variance** indicates that your model is overly sensitive to small fluctuations in the training data
 - **Examples of high-variance models**: High-degree polynomials, deep decision trees, models with too many parameters
