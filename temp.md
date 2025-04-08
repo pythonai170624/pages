@@ -92,6 +92,17 @@ $$X_{standardized} = \frac{X - \mu}{\sigma}$$
 Where:
 - $\mu$ is the mean of the feature
 - $\sigma$ is the standard deviation
+  
+The standard deviation (σ) is calculated as:
+
+$$\sigma = \sqrt{\frac{1}{N} \sum_{i=1}^{N} (x_i - \mu)^2}$$
+
+Where:
+- N is the number of samples
+- x_i is each individual value
+- μ is the mean of the values
+
+
 
 **Visualization:**
 
