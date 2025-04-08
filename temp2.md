@@ -100,7 +100,7 @@ To find the right level of complexity for your model:
 3. Look for the "elbow point" where validation error starts to increase
 4. Choose the model complexity at this elbow point
 
-![Elbow curve](https://placeholder.com/elbowcurve)
+<img src="elbow.png" />
 
 In the graph above:
 - Very simple models (degree 1) have high training and validation error
