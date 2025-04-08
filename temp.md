@@ -64,6 +64,25 @@ plt.show()
 **Real-Life Example:**
 In image processing, pixel values are normalized from the range [0, 255] to [0, 1] before feeding into neural networks. This helps with gradient computation and stabilizes learning.
 
+### 🔥 Real-Life Example: Credit Scoring in Banks
+
+Imagine a bank is building a model to decide whether to approve a loan. The dataset includes features like:
+
+- **Salary** (e.g., ranges from $20,000 to $200,000)  
+- **Age** (e.g., 18 to 100)  
+- **Credit Card Debt** (e.g., $0 to $50,000)  
+- **Number of Late Payments** (e.g., 0 to 10)
+
+💡 Without normalization, the **salary** feature would dominate the others due to its large numerical range. This can bias the model and make training unstable or ineffective.
+
+✅ To prevent this, the bank **normalizes all features** to a common range (like `[0, 1]` or `[-1, 1]`). This ensures that:
+
+- All features contribute more equally to the learning process  
+- The model trains faster and more reliably  
+- Gradient descent behaves more consistently across features
+
+> 📌 **Normalization helps the model focus on patterns, not raw scale differences.**
+
 ### Standardization (Z-score Normalization)
 
 Standardization transforms data to have zero mean and unit variance.
