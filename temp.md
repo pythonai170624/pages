@@ -208,6 +208,7 @@ for i, alpha in enumerate(alphas):
 plt.tight_layout()
 plt.show()
 ```
+<img src="ridge1.png" style="width: 80%" />
 
 #### RidgeCV
 
