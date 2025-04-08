@@ -122,6 +122,8 @@ This equation represents a parabola (U-shaped curve) where:
 
 This parabola describes the relationship between training hours and running time, showing that it reaches a minimum (best time) and then increases again.
 
+<img src="graph_interp.png" style="width: 60%">
+
 ## Finding the optimal point
 
 To find the minimum point of the parabola, we differentiate the equation with respect to x and set it to zero:
