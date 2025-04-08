@@ -110,6 +110,8 @@ In the graph above:
 
 ### Finding the Most Fit Polynomial Degree
 
+<img src="degree.png" />
+
 When working with polynomial regression specifically:
 
 1. Split your data into training and validation sets
