@@ -406,56 +406,45 @@ The optimal $\lambda$ balances between underfitting (high $\lambda$, too simple)
 
 <img src="lasso-cv.png" style="width: 90%" />
 
-
-# 📈 Understanding the Lasso Path Plot
+**📈 Understanding the Lasso Path Plot**
 
 This plot is called a **Lasso Path**, and it shows how the coefficients of a Lasso regression model change as the regularization strength (`lambda`, or `alpha`) changes.
 
----
+**🔍 What does the plot show?**
 
-## 🔍 What does the plot show?
-
-### **X-axis**:
+**X-axis**:
 - Values of **alpha (λ)**, the regularization strength.
 - It's on a **logarithmic scale** (e.g., 10⁻⁴ to 10¹).
 - As λ increases → stronger regularization.
 
-### **Y-axis**:
+**Y-axis**:
 - The **coefficient value** for each feature.
 - Each line represents how one feature’s weight changes with λ.
 
----
+**📊 Interpretation:**
 
-## 📊 Interpretation:
-
-### 🟢 On the left (small λ):
+🟢 On the left (small λ):
 - Regularization is **weak**.
 - Most features have **non-zero coefficients**.
 - The model includes more features (can overfit).
 
-### 🔴 Moving right (large λ):
+🔴 Moving right (large λ):
 - Regularization gets **stronger**.
 - Lasso starts **shrinking coefficients toward 0**.
 - Many features are **zeroed out** (removed from the model).
 
----
-
-## 🚩 The vertical dashed line:
+🚩 The vertical dashed line:
 - Marks the **optimal alpha** chosen by `LassoCV` (via cross-validation).
 - At this λ, the model achieves **best generalization performance**.
 - Most irrelevant features have already been **eliminated**.
 
----
-
-## ✅ Why is this plot useful?
+✅ Why is this plot useful?
 
 - Shows how **Lasso performs feature selection** automatically.
 - Helps you understand **which features are important** (those that survive when λ increases).
 - Gives insight into the **stability** of your model under different regularization strengths.
 
----
-
-## 🧠 Bottom line:
+🧠 Bottom line:
 
 > As λ increases, Lasso simplifies the model by **zeroing out unimportant features**, leaving only the most relevant ones for prediction.
 
