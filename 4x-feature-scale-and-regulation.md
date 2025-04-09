@@ -187,6 +187,7 @@ plt.ylabel('√|Standardized Residuals|')
 plt.grid(True, alpha=0.3)
 plt.show()
 ```
+<img src="resid7.png" />
 
 #### 4. Residuals vs. Independent Variables Plots
 
