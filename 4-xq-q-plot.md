@@ -269,6 +269,53 @@ plt.show()
 
 <img src="qq3.png" style="width: 70%"  />
 
+## 📈 Q-Q Plot עבור התפלגות אקספוננציאלית
+
+## 🧪 מה עושה הקוד?
+הקוד מייצר **1000 ערכים בהתפלגות אקספוננציאלית** ומצייר **Q-Q Plot** – גרף שמטרתו לבדוק עד כמה הנתונים מתאימים להתפלגות תיאורטית (במקרה הזה – אקספוננציאלית).
+
+```python
+# Generate exponential data
+exponential_data = np.random.exponential(size=1000)
+
+# Create Q-Q plot comparing to exponential distribution
+plt.figure(figsize=(10, 6))
+stats.probplot(exponential_data, dist="expon", plot=plt)
+plt.title('Q-Q Plot: Exponential Data vs Exponential Distribution')
+plt.grid(True, alpha=0.3)
+plt.show()
+```
+
+---
+
+## 📊 מה זה Q-Q Plot?
+**Q-Q Plot** (Quantile-Quantile Plot) מציג את ההתאמה בין:
+- **הקואנטילים של הנתונים שנמדדו בפועל** (ציר Y)
+- **הקואנטילים התיאורטיים** לפי התפלגות מסוימת (ציר X)
+
+כאשר:
+- אם הנתונים מתאימים להתפלגות התיאורטית – הנקודות יהיו על קו ישר (האדום).
+- סטיות מהקו מרמזות על הבדל בין ההתפלגות האמיתית לבין התיאורטית.
+
+---
+
+## 📷 הפלט הגרפי
+![Q-Q Plot](image.png)
+
+---
+
+## 📌 מה רואים בגרף?
+- רוב הנקודות קרובות לקו האדום ⇒ הנתונים מתאימים באופן כללי להתפלגות האקספוננציאלית.
+- יש סטייה בקצוות (במיוחד בימין) ⇒ ייתכן שהקצוות של ההתפלגות פחות תואמים את המודל האקספוננציאלי.
+- הקו האדום מייצג את **ההתפלגות התאורטית** – כלומר, איך הנתונים היו נראים אם הם היו מתפלגים בדיוק לפי אקספוננציאלית.
+
+---
+
+## 🧠 סיכום
+- Q-Q Plot הוא כלי ויזואלי חשוב לבדיקת התאמה בין נתונים להתפלגות.
+- במקרה הזה – הנתונים מתאימים באופן כללי להתפלגות אקספוננציאלית, עם חריגות קלות בקצוות.
+
+
 ## Visual Patterns in Q-Q Plots
 
 Different patterns in Q-Q plots indicate specific characteristics of your data:
