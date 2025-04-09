@@ -329,6 +329,7 @@ plt.grid(True, alpha=0.3)
 plt.axis('equal')
 plt.show()
 ```
+<img src="q5.png" style="width: 70%" />
 
 ## Applications Beyond Normality Testing
 
