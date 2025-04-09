@@ -216,6 +216,7 @@ for i in range(3):
 plt.tight_layout()
 plt.show()
 ```
+<img src="resid7.png" />
 
 ##### Invalid Plot
 - Pattern indicates a missed relationship or incorrect model specification
@@ -245,6 +246,8 @@ for i in range(3):
 plt.tight_layout()
 plt.show()
 ```
+
+<img src="resid7.png" />
 
 ## Summary of Valid vs. Invalid Residual Patterns
 
