@@ -111,6 +111,7 @@ The "Q" in Q-Q stands for quantile, which refers to the fraction or percent of p
 | **Deciles**    | Divide data into **10 parts**                        | 10%, 20%, ..., 90%       |
 | **Percentiles**| Divide data into **100 parts**                       | 1%, 2%, ..., 99%         |
 
+<a hred="q-q-plot.md">see more on Q-Q Plot</a>
 
 This plot helps assess whether the residuals follow a normal distribution.
 
