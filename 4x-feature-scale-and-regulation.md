@@ -44,7 +44,7 @@ For a dataset to be suitable for linear regression modeling, the residuals shoul
 
 This is the most common plot used for residual analysis. It plots the residuals on the y-axis against the fitted (predicted) values on the x-axis.
 
-##### Valid Residual Pattern
+### Valid Residual Pattern
 In a well-fitted model, this plot should show:
 - Points randomly scattered around the horizontal line at y=0
 - No discernible pattern
@@ -80,59 +80,21 @@ plt.grid(True, alpha=0.3)
 plt.show()
 ```
 
-##### Invalid Residual Patterns
+<img src="resid1.png" />
+
+### Invalid Residual Patterns
 
 1. **Non-linear Pattern (Curvature)**:
    - Indicates that a linear model is not appropriate
    - Suggests adding polynomial terms or transforming variables
 
-```python
-# Generate data with a non-linear relationship
-X = np.linspace(-3, 3, 100).reshape(-1, 1)
-y = 3 * X.ravel() + 2 * X.ravel()**2 + np.random.normal(0, 2, 100)
+<img src="resid2.png" />
 
-# Fit a linear model (which is incorrect for this data)
-model = LinearRegression()
-model.fit(X, y)
-predictions = model.predict(X)
-residuals = y - predictions
-
-# Plot
-plt.figure(figsize=(10, 6))
-plt.scatter(predictions, residuals)
-plt.axhline(y=0, color='r', linestyle='-')
-plt.xlabel('Fitted Values')
-plt.ylabel('Residuals')
-plt.title('Invalid Residual Plot: Non-linear Pattern')
-plt.grid(True, alpha=0.3)
-plt.show()
-```
-
-2. **Heteroscedasticity (Funnel Shape)**:
+2. **Heteroscedasticity (The spread (or variance) of the errors changes across the data) Funnel Shape**:
    - Variance of residuals increases with the predicted values
    - Suggests using weighted least squares or transforming the response variable
 
-```python
-# Generate heteroscedastic data
-X = np.linspace(1, 10, 100).reshape(-1, 1)
-y = 5 * X.ravel() + np.random.normal(0, X.ravel(), 100)
-
-# Fit a linear model
-model = LinearRegression()
-model.fit(X, y)
-predictions = model.predict(X)
-residuals = y - predictions
-
-# Plot
-plt.figure(figsize=(10, 6))
-plt.scatter(predictions, residuals)
-plt.axhline(y=0, color='r', linestyle='-')
-plt.xlabel('Fitted Values')
-plt.ylabel('Residuals')
-plt.title('Invalid Residual Plot: Heteroscedasticity')
-plt.grid(True, alpha=0.3)
-plt.show()
-```
+<img src="resid3.png" />
 
 #### 2. Normal Q-Q Plot of Residuals
 
@@ -160,6 +122,8 @@ plt.grid(True, alpha=0.3)
 plt.show()
 ```
 
+<img src="resid4.png" />
+
 ##### Invalid Q-Q Plot
 - Significant deviations from the line indicate non-normality
 - S-shaped curves suggest skewness
@@ -185,9 +149,11 @@ plt.grid(True, alpha=0.3)
 plt.show()
 ```
 
+<img src="resid5.png" />
+
 #### 3. Scale-Location Plot (Square Root of Standardized Residuals vs. Fitted Values)
 
-This plot is useful for detecting heteroscedasticity.
+This plot is useful for detecting heteroscedasticity (=The spread (or variance) of the errors changes across the data)
 
 ##### Valid Scale-Location Plot
 - Horizontal line with points randomly scattered
@@ -213,6 +179,7 @@ plt.ylabel('√|Standardized Residuals|')
 plt.grid(True, alpha=0.3)
 plt.show()
 ```
+<img src="resid6.png" />
 
 ##### Invalid Scale-Location Plot
 - Trend or funnel shape indicates non-constant variance
@@ -308,7 +275,7 @@ plt.show()
 
 ### Invalid Patterns (Problems with Linear Regression Fit)
 - Curvature or systematic patterns in residuals
-- Funnel-shaped patterns indicating heteroscedasticity
+- Funnel-shaped patterns indicating heteroscedasticity (The spread (or variance) of the errors changes across the data)
 - Non-normal distribution of residuals
 - Clusters of residuals or outliers
 - Autocorrelation in the residuals
