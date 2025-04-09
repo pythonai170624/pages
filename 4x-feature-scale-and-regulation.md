@@ -103,6 +103,25 @@ This plot helps assess whether the residuals follow a normal distribution.
 ##### Valid Q-Q Plot
 - Points should approximately fall along the 45-degree line
 
+```python
+# Using the earlier valid data
+import scipy.stats as stats
+
+# Generate and fit valid data
+X, y = make_regression(n_samples=100, n_features=1, noise=15, random_state=42)
+model = LinearRegression()
+model.fit(X, y)
+predictions = model.predict(X)
+residuals = y - predictions
+
+# Create Q-Q plot
+plt.figure(figsize=(10, 6))
+stats.probplot(residuals, dist="norm", plot=plt)
+plt.title('Valid Q-Q Plot: Normally Distributed Residuals')
+plt.grid(True, alpha=0.3)
+plt.show()
+```
+
 <img src="resid4.png" />
 
 ##### Invalid Q-Q Plot
