@@ -274,18 +274,6 @@ plt.show()
 
 <img src="qq3.png" style="width: 70%"  />
 
-```python
-# Generate exponential data
-exponential_data = np.random.exponential(size=1000)
-
-# Create Q-Q plot comparing to exponential distribution
-plt.figure(figsize=(10, 6))
-stats.probplot(exponential_data, dist="expon", plot=plt)
-plt.title('Q-Q Plot: Exponential Data vs Exponential Distribution')
-plt.grid(True, alpha=0.3)
-plt.show()
-```
-
 ---
 
 ## Visual Patterns in Q-Q Plots
