@@ -87,6 +87,7 @@ plt.title('Q-Q Plot: Normal Distribution')
 plt.grid(True, alpha=0.3)
 plt.show()
 ```
+<img src="qq1.png" />
 
 ### 2. Uniform Distribution Q-Q Plot
 
@@ -108,6 +109,9 @@ plt.title('Q-Q Plot: Uniform Data vs Uniform Distribution')
 plt.grid(True, alpha=0.3)
 plt.show()
 ```
+<img src="qq2_1.png" />
+
+<img src="qq2_2.png" />
 
 ### 3. Exponential Distribution Q-Q Plot
 
@@ -122,6 +126,8 @@ plt.title('Q-Q Plot: Exponential Data vs Exponential Distribution')
 plt.grid(True, alpha=0.3)
 plt.show()
 ```
+
+<img src="qq3.png" />
 
 ## Visual Patterns in Q-Q Plots
 
