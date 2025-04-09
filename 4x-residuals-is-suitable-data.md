@@ -96,7 +96,9 @@ plt.show()
 
 <img src="resid3.png" />
 
-#### 2. Normal Q-Q Plot of Residuals
+#### 2. Normal Q-Q Plot of Residuals 
+
+## probplot graph
 
 **What is a Q-Q Plot?**
 
