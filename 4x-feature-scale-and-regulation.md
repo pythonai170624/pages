@@ -98,6 +98,20 @@ plt.show()
 
 #### 2. Normal Q-Q Plot of Residuals
 
+**What is a Q-Q Plot?**
+
+A Quantile-Quantile plot (Q-Q plot), also known as a probability plot, is a graphical technique used to determine if a dataset follows a particular theoretical distribution. The Q-Q plot is called that because it plots Quantiles vs. Quantiles
+— one from your data, one from a distribution you want to compare against.
+The "Q" in Q-Q stands for quantile, which refers to the fraction or percent of points below a given value.
+
+| **Name**       | **Description**                                      | **Percent**              |
+|----------------|------------------------------------------------------|--------------------------|
+| **Median**     | The 0.5 quantile — 50% of data is below this value   | 50%                      |
+| **Quartiles**  | Divide data into **4 parts**                         | 25%, 50%, 75%            |
+| **Deciles**    | Divide data into **10 parts**                        | 10%, 20%, ..., 90%       |
+| **Percentiles**| Divide data into **100 parts**                       | 1%, 2%, ..., 99%         |
+
+
 This plot helps assess whether the residuals follow a normal distribution.
 
 ##### Valid Q-Q Plot
