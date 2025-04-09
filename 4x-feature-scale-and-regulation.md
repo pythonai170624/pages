@@ -1,431 +1,325 @@
-# Assessing Linear Regression Suitability Through Residual Investigation
+# Understanding Residuals in Linear Regression
 
-Linear regression is a powerful statistical method for modeling relationships between a dependent variable and one or more independent variables. However, not all datasets are suitable for linear regression. Residual analysis is one of the most effective ways to determine if your multiple-feature dataset can be appropriately modeled using linear regression.
+## What is a Residual?
 
-## What Are Residuals?
+A residual is the difference between an observed value and the value predicted by a model:
 
-Residuals are the differences between the observed values and the values predicted by the model:
+**Residual = Observed Value - Predicted Value**
 
-$$\text{Residual}_i = y_i - \hat{y}_i$$
+In mathematical notation:
+- For an observation i: e_i = y_i - ŷ_i
+- Where:
+  - e_i is the residual
+  - y_i is the observed value
+  - ŷ_i is the predicted value from the regression model
 
-Where:
-- $y_i$ is the actual observed value
-- $\hat{y}_i$ is the predicted value from the model
+Residuals represent the portion of the dependent variable that is not explained by the model. They are the "leftover" values after the model has been fit to the data.
 
-## Key Assumptions of Linear Regression
+## Residual Investigation
 
-For a linear regression model to be valid and reliable, several assumptions about the residuals should be met:
+Investigating residuals helps us:
 
-1. **Linearity**: The relationship between predictors and the response is linear
-2. **Independence**: Residuals are independent of each other
-3. **Homoscedasticity**: Residuals have constant variance across all levels of predictors
-4. **Normality**: Residuals are normally distributed
-5. **No multicollinearity**: Predictor variables are not highly correlated with each other
+1. Assess if the linear regression assumptions have been met
+2. Detect patterns that indicate model inadequacy
+3. Identify outliers or influential points
+4. Determine if transformations are needed
+5. Evaluate the overall fit of the model
 
-## Residual Investigation Techniques
+Residual investigation is a critical step in regression diagnostics to ensure that our model is valid and that our inferences and predictions are reliable.
 
-### 1. Residuals vs. Fitted Values Plot
+## Determining Suitability for Linear Regression through Residual Analysis
 
-This plot helps check for linearity and homoscedasticity.
+For a dataset to be suitable for linear regression modeling, the residuals should satisfy several assumptions. We can visually inspect residual plots to check these assumptions.
+
+### Key Assumptions to Check via Residuals
+
+1. **Linearity**: The relationship between independent and dependent variables should be linear.
+2. **Independence**: The residuals should be independent of each other (no autocorrelation).
+3. **Homoscedasticity**: The residuals should have constant variance across all levels of predicted values.
+4. **Normality**: The residuals should be approximately normally distributed.
+
+### Graph Examples for Residual Analysis
+
+#### 1. Residuals vs. Fitted Values Plot
+
+This is the most common plot used for residual analysis. It plots the residuals on the y-axis against the fitted (predicted) values on the x-axis.
+
+##### Valid Residual Pattern
+In a well-fitted model, this plot should show:
+- Points randomly scattered around the horizontal line at y=0
+- No discernible pattern
+- Roughly equal spread of points above and below the zero line
+- No obvious trend or curvature
 
 ```python
 import numpy as np
-import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
-from sklearn.linear_model import LinearRegression
-from sklearn.model_selection import train_test_split
-from sklearn.datasets import fetch_california_housing
-
-# Load sample dataset
-housing = fetch_california_housing()
-X = pd.DataFrame(housing.data, columns=housing.feature_names)
-y = housing.target
-
-# Create and fit the model
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
-model = LinearRegression()
-model.fit(X_train, y_train)
-
-# Make predictions and calculate residuals
-y_pred = model.predict(X_train)
-residuals = y_train - y_pred
-
-# Create residuals vs. fitted values plot
-plt.figure(figsize=(10, 6))
-plt.scatter(y_pred, residuals, alpha=0.5)
-plt.axhline(y=0, color='r', linestyle='-')
-plt.xlabel('Fitted Values')
-plt.ylabel('Residuals')
-plt.title('Residuals vs. Fitted Values')
-
-# Add a smoothed line to help visualize patterns
-sns.regplot(x=y_pred, y=residuals, scatter=False, lowess=True, line_kws={'color': 'red'})
-
-plt.grid(True, alpha=0.3)
-plt.show()
-```
-
-**Interpretation:**
-- **Ideal pattern**: Residuals should be randomly scattered around zero with no discernible pattern
-- **Red flags**: 
-  - Curved patterns indicate non-linearity
-  - Funnel shapes indicate heteroscedasticity (non-constant variance)
-  - Clusters suggest issues with model specification
-
-### 2. Q-Q Plot for Normality
-
-This plot helps check if residuals follow a normal distribution.
-
-```python
-import scipy.stats as stats
-
-plt.figure(figsize=(10, 6))
-stats.probplot(residuals, dist="norm", plot=plt)
-plt.title('Q-Q Plot of Residuals')
-plt.grid(True, alpha=0.3)
-plt.show()
-```
-
-**Interpretation:**
-- **Ideal pattern**: Points should closely follow the diagonal line
-- **Red flags**:
-  - S-shaped curves indicate skewness
-  - Points deviating from the line at the ends suggest heavy or light tails
-
-### 3. Scale-Location Plot (Spread-Location)
-
-This plot specifically checks for homoscedasticity.
-
-```python
-plt.figure(figsize=(10, 6))
-plt.scatter(y_pred, np.sqrt(np.abs(residuals)), alpha=0.5)
-plt.xlabel('Fitted Values')
-plt.ylabel('√|Standardized Residuals|')
-plt.title('Scale-Location Plot')
-
-# Add a smoothed line
-sns.regplot(x=y_pred, y=np.sqrt(np.abs(residuals)), scatter=False, lowess=True, line_kws={'color': 'red'})
-
-plt.grid(True, alpha=0.3)
-plt.show()
-```
-
-**Interpretation:**
-- **Ideal pattern**: Horizontal line with equally spread points
-- **Red flags**: Funnel patterns or trends indicate heteroscedasticity
-
-### 4. Residuals vs. Predictors Plots
-
-These plots check if residuals have patterns related to specific predictors.
-
-```python
-# Create a multi-panel plot for each predictor
-fig, axes = plt.subplots(2, 4, figsize=(20, 10))
-axes = axes.flatten()
-
-for i, column in enumerate(X_train.columns):
-    if i < len(axes):
-        axes[i].scatter(X_train[column], residuals, alpha=0.5)
-        axes[i].axhline(y=0, color='r', linestyle='-')
-        axes[i].set_xlabel(column)
-        axes[i].set_ylabel('Residuals')
-        axes[i].set_title(f'Residuals vs. {column}')
-        axes[i].grid(True, alpha=0.3)
-        
-        # Add a smoothed line
-        sns.regplot(x=X_train[column], y=residuals, ax=axes[i], scatter=False, 
-                   lowess=True, line_kws={'color': 'red'})
-
-plt.tight_layout()
-plt.show()
-```
-
-**Interpretation:**
-- **Ideal pattern**: No pattern in any of the plots
-- **Red flags**: Any systematic patterns suggest relationships not captured by the model
-
-### 5. Autocorrelation of Residuals
-
-This helps check independence, especially for time series data.
-
-```python
-from statsmodels.graphics.tsaplots import plot_acf
-
-plt.figure(figsize=(10, 6))
-plot_acf(residuals, lags=20, alpha=0.05)
-plt.title('Autocorrelation of Residuals')
-plt.grid(True, alpha=0.3)
-plt.show()
-```
-
-**Interpretation:**
-- **Ideal pattern**: No significant autocorrelation (bars within confidence intervals)
-- **Red flags**: Significant spikes indicate dependence between observations
-
-### 6. Histogram of Residuals
-
-This plot offers another way to check the normality assumption.
-
-```python
-plt.figure(figsize=(10, 6))
-plt.hist(residuals, bins=30, edgecolor='black', alpha=0.7)
-plt.xlabel('Residuals')
-plt.ylabel('Frequency')
-plt.title('Histogram of Residuals')
-
-# Add a density curve
-sns.kdeplot(residuals, color='red', label='Kernel Density Estimate')
-# Add a normal distribution for comparison
-x = np.linspace(min(residuals), max(residuals), 100)
-plt.plot(x, stats.norm.pdf(x, np.mean(residuals), np.std(residuals)) * len(residuals) * (max(residuals) - min(residuals)) / 30,
-         'g--', label='Normal Distribution')
-
-plt.legend()
-plt.grid(True, alpha=0.3)
-plt.show()
-```
-
-**Interpretation:**
-- **Ideal pattern**: Bell-shaped distribution centered at zero
-- **Red flags**: Skewness, multiple peaks, or heavy tails
-
-## Formal Statistical Tests
-
-Beyond visual inspection, formal tests can help quantify the evidence for or against regression assumptions:
-
-### 1. Shapiro-Wilk Test for Normality
-
-```python
-from scipy import stats
-
-stat, p_value = stats.shapiro(residuals)
-print(f"Shapiro-Wilk Test: Statistic={stat:.4f}, p-value={p_value:.4f}")
-print(f"Interpretation: {'Residuals appear normal' if p_value > 0.05 else 'Residuals do not appear normal'}")
-```
-
-### 2. Breusch-Pagan Test for Homoscedasticity
-
-```python
-from statsmodels.stats.diagnostic import het_breuschpagan
 import statsmodels.api as sm
-
-# Add a constant for the intercept
-X_train_const = sm.add_constant(X_train)
-_, p_value, _, _ = het_breuschpagan(residuals, X_train_const)
-print(f"Breusch-Pagan Test p-value: {p_value:.4f}")
-print(f"Interpretation: {'Homoscedasticity assumption is met' if p_value > 0.05 else 'Heteroscedasticity detected'}")
-```
-
-### 3. Durbin-Watson Test for Autocorrelation
-
-```python
-from statsmodels.stats.stattools import durbin_watson
-
-dw_statistic = durbin_watson(residuals)
-print(f"Durbin-Watson Statistic: {dw_statistic:.4f}")
-print("Interpretation:")
-if dw_statistic < 1.5:
-    print("Positive autocorrelation detected")
-elif dw_statistic > 2.5:
-    print("Negative autocorrelation detected")
-else:
-    print("No significant autocorrelation")
-```
-
-### 4. Variance Inflation Factor (VIF) for Multicollinearity
-
-```python
-from statsmodels.stats.outliers_influence import variance_inflation_factor
-
-# Calculate VIF for each feature
-vif_data = pd.DataFrame()
-vif_data["Feature"] = X_train.columns
-vif_data["VIF"] = [variance_inflation_factor(X_train.values, i) for i in range(X_train.shape[1])]
-
-print("Variance Inflation Factors:")
-print(vif_data)
-print("Interpretation: VIF > 10 may indicate problematic multicollinearity")
-```
-
-## Addressing Issues Found in Residual Analysis
-
-If your residual analysis reveals problems, consider these remedies:
-
-1. **Non-linearity**: 
-   - Transform variables (log, square root, etc.)
-   - Add polynomial terms
-   - Use splines or more flexible models
-
-2. **Heteroscedasticity**:
-   - Transform the response variable
-   - Use weighted least squares
-   - Use robust standard errors
-
-3. **Non-normality**:
-   - Transform the response variable
-   - Use robust regression methods
-   - Consider quantile regression
-
-4. **Autocorrelation**:
-   - Include lagged variables
-   - Use time series models (ARIMA)
-   - Use generalized least squares
-
-5. **Multicollinearity**:
-   - Remove redundant features
-   - Use regularization (Ridge, Lasso)
-   - Use dimensionality reduction techniques
-
-## Complete Example: Assessing a Real Dataset
-
-Here's a unified example that brings together all the residual investigation techniques:
-
-```python
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
 from sklearn.linear_model import LinearRegression
-from sklearn.model_selection import train_test_split
-from sklearn.datasets import fetch_california_housing
-from sklearn.metrics import mean_squared_error, r2_score
-import statsmodels.api as sm
-from statsmodels.stats.diagnostic import het_breuschpagan
-from statsmodels.stats.stattools import durbin_watson
-from statsmodels.stats.outliers_influence import variance_inflation_factor
-from scipy import stats
-from statsmodels.graphics.tsaplots import plot_acf
+from sklearn.datasets import make_regression
 
-# Set the aesthetic style
-sns.set_style("whitegrid")
-plt.rcParams['figure.figsize'] = [12, 8]
-
-# Load the dataset
-housing = fetch_california_housing()
-X = pd.DataFrame(housing.data, columns=housing.feature_names)
-y = housing.target
-
-# Split the data
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+# Generate sample data for a valid linear model
+X, y = make_regression(n_samples=100, n_features=1, noise=15, random_state=42)
 
 # Fit the model
 model = LinearRegression()
-model.fit(X_train, y_train)
-
-# Make predictions
-y_train_pred = model.predict(X_train)
-y_test_pred = model.predict(X_test)
+model.fit(X, y)
+predictions = model.predict(X)
 
 # Calculate residuals
-residuals = y_train - y_train_pred
+residuals = y - predictions
 
-# Calculate performance metrics
-train_mse = mean_squared_error(y_train, y_train_pred)
-test_mse = mean_squared_error(y_test, y_test_pred)
-train_r2 = r2_score(y_train, y_train_pred)
-test_r2 = r2_score(y_test, y_test_pred)
+# Plot residuals vs fitted values
+plt.figure(figsize=(10, 6))
+plt.scatter(predictions, residuals)
+plt.axhline(y=0, color='r', linestyle='-')
+plt.xlabel('Fitted Values')
+plt.ylabel('Residuals')
+plt.title('Valid Residual Plot: Residuals vs. Fitted Values')
+plt.grid(True, alpha=0.3)
+plt.show()
+```
 
-print(f"Training MSE: {train_mse:.4f}, R²: {train_r2:.4f}")
-print(f"Testing MSE: {test_mse:.4f}, R²: {test_r2:.4f}")
+##### Invalid Residual Patterns
 
-# Create a comprehensive residual analysis with multiple plots
-fig = plt.figure(figsize=(15, 15))
+1. **Non-linear Pattern (Curvature)**:
+   - Indicates that a linear model is not appropriate
+   - Suggests adding polynomial terms or transforming variables
 
-# 1. Residuals vs Fitted
-ax1 = fig.add_subplot(3, 2, 1)
-ax1.scatter(y_train_pred, residuals, alpha=0.5)
-ax1.axhline(y=0, color='r', linestyle='-')
-sns.regplot(x=y_train_pred, y=residuals, ax=ax1, scatter=False, lowess=True, line_kws={'color': 'red'})
-ax1.set_xlabel('Fitted Values')
-ax1.set_ylabel('Residuals')
-ax1.set_title('Residuals vs Fitted Values')
+```python
+# Generate data with a non-linear relationship
+X = np.linspace(-3, 3, 100).reshape(-1, 1)
+y = 3 * X.ravel() + 2 * X.ravel()**2 + np.random.normal(0, 2, 100)
 
-# 2. Q-Q Plot
-ax2 = fig.add_subplot(3, 2, 2)
-stats.probplot(residuals, dist="norm", plot=ax2)
-ax2.set_title('Q-Q Plot of Residuals')
+# Fit a linear model (which is incorrect for this data)
+model = LinearRegression()
+model.fit(X, y)
+predictions = model.predict(X)
+residuals = y - predictions
 
-# 3. Scale-Location Plot
-ax3 = fig.add_subplot(3, 2, 3)
-ax3.scatter(y_train_pred, np.sqrt(np.abs(residuals)), alpha=0.5)
-sns.regplot(x=y_train_pred, y=np.sqrt(np.abs(residuals)), ax=ax3, scatter=False, lowess=True, line_kws={'color': 'red'})
-ax3.set_xlabel('Fitted Values')
-ax3.set_ylabel('√|Residuals|')
-ax3.set_title('Scale-Location Plot')
+# Plot
+plt.figure(figsize=(10, 6))
+plt.scatter(predictions, residuals)
+plt.axhline(y=0, color='r', linestyle='-')
+plt.xlabel('Fitted Values')
+plt.ylabel('Residuals')
+plt.title('Invalid Residual Plot: Non-linear Pattern')
+plt.grid(True, alpha=0.3)
+plt.show()
+```
 
-# 4. Residuals Histogram
-ax4 = fig.add_subplot(3, 2, 4)
-ax4.hist(residuals, bins=30, edgecolor='black', alpha=0.7)
-sns.kdeplot(residuals, ax=ax4, color='red')
-x = np.linspace(min(residuals), max(residuals), 100)
-ax4.plot(x, stats.norm.pdf(x, np.mean(residuals), np.std(residuals)) * len(residuals) * (max(residuals) - min(residuals)) / 30,
-       'g--', label='Normal')
-ax4.legend()
-ax4.set_xlabel('Residuals')
-ax4.set_ylabel('Frequency')
-ax4.set_title('Histogram of Residuals')
+2. **Heteroscedasticity (Funnel Shape)**:
+   - Variance of residuals increases with the predicted values
+   - Suggests using weighted least squares or transforming the response variable
 
-# 5. Autocorrelation Plot
-ax5 = fig.add_subplot(3, 2, 5)
-plot_acf(residuals, lags=20, alpha=0.05, ax=ax5)
-ax5.set_title('Autocorrelation of Residuals')
+```python
+# Generate heteroscedastic data
+X = np.linspace(1, 10, 100).reshape(-1, 1)
+y = 5 * X.ravel() + np.random.normal(0, X.ravel(), 100)
 
-# 6. Residuals vs Index (for any time-related patterns)
-ax6 = fig.add_subplot(3, 2, 6)
-# Fix: Convert range to numpy array
-indices = np.array(range(len(residuals)))
-ax6.scatter(indices, residuals, alpha=0.5)
-ax6.axhline(y=0, color='r', linestyle='-')
-sns.regplot(x=indices, y=residuals, ax=ax6, scatter=False, lowess=True, line_kws={'color': 'red'})
-ax6.set_xlabel('Index')
-ax6.set_ylabel('Residuals')
-ax6.set_title('Residuals vs Index')
+# Fit a linear model
+model = LinearRegression()
+model.fit(X, y)
+predictions = model.predict(X)
+residuals = y - predictions
 
+# Plot
+plt.figure(figsize=(10, 6))
+plt.scatter(predictions, residuals)
+plt.axhline(y=0, color='r', linestyle='-')
+plt.xlabel('Fitted Values')
+plt.ylabel('Residuals')
+plt.title('Invalid Residual Plot: Heteroscedasticity')
+plt.grid(True, alpha=0.3)
+plt.show()
+```
+
+#### 2. Normal Q-Q Plot of Residuals
+
+This plot helps assess whether the residuals follow a normal distribution.
+
+##### Valid Q-Q Plot
+- Points should approximately fall along the 45-degree line
+
+```python
+# Using the earlier valid data
+import scipy.stats as stats
+
+# Generate and fit valid data
+X, y = make_regression(n_samples=100, n_features=1, noise=15, random_state=42)
+model = LinearRegression()
+model.fit(X, y)
+predictions = model.predict(X)
+residuals = y - predictions
+
+# Create Q-Q plot
+plt.figure(figsize=(10, 6))
+stats.probplot(residuals, dist="norm", plot=plt)
+plt.title('Valid Q-Q Plot: Normally Distributed Residuals')
+plt.grid(True, alpha=0.3)
+plt.show()
+```
+
+##### Invalid Q-Q Plot
+- Significant deviations from the line indicate non-normality
+- S-shaped curves suggest skewness
+- Points way off the line indicate outliers
+
+```python
+# Generate data with non-normal residuals (skewed)
+X = np.linspace(0, 10, 100).reshape(-1, 1)
+error = np.random.exponential(scale=2, size=100)  # Skewed error term
+y = 3 * X.ravel() + error
+
+# Fit and get residuals
+model = LinearRegression()
+model.fit(X, y)
+predictions = model.predict(X)
+residuals = y - predictions
+
+# Q-Q plot
+plt.figure(figsize=(10, 6))
+stats.probplot(residuals, dist="norm", plot=plt)
+plt.title('Invalid Q-Q Plot: Non-normal Residuals')
+plt.grid(True, alpha=0.3)
+plt.show()
+```
+
+#### 3. Scale-Location Plot (Square Root of Standardized Residuals vs. Fitted Values)
+
+This plot is useful for detecting heteroscedasticity.
+
+##### Valid Scale-Location Plot
+- Horizontal line with points randomly scattered
+
+```python
+# Using the valid data from before
+X, y = make_regression(n_samples=100, n_features=1, noise=15, random_state=42)
+model = LinearRegression()
+model.fit(X, y)
+predictions = model.predict(X)
+residuals = y - predictions
+
+# Standardized residuals
+std_residuals = residuals / np.std(residuals)
+sqrt_std_residuals = np.sqrt(np.abs(std_residuals))
+
+# Plot
+plt.figure(figsize=(10, 6))
+plt.scatter(predictions, sqrt_std_residuals)
+plt.title('Valid Scale-Location Plot: Constant Variance')
+plt.xlabel('Fitted Values')
+plt.ylabel('√|Standardized Residuals|')
+plt.grid(True, alpha=0.3)
+plt.show()
+```
+
+##### Invalid Scale-Location Plot
+- Trend or funnel shape indicates non-constant variance
+
+```python
+# Using the heteroscedastic data from before
+X = np.linspace(1, 10, 100).reshape(-1, 1)
+y = 5 * X.ravel() + np.random.normal(0, X.ravel(), 100)
+model = LinearRegression()
+model.fit(X, y)
+predictions = model.predict(X)
+residuals = y - predictions
+
+# Standardized residuals
+std_residuals = residuals / np.std(residuals)
+sqrt_std_residuals = np.sqrt(np.abs(std_residuals))
+
+# Plot
+plt.figure(figsize=(10, 6))
+plt.scatter(predictions, sqrt_std_residuals)
+plt.title('Invalid Scale-Location Plot: Non-constant Variance')
+plt.xlabel('Fitted Values')
+plt.ylabel('√|Standardized Residuals|')
+plt.grid(True, alpha=0.3)
+plt.show()
+```
+
+#### 4. Residuals vs. Independent Variables Plots
+
+For multiple regression, it's important to check residual plots against each predictor variable.
+
+##### Valid Plot
+- No pattern or trend
+
+```python
+# Generate multivariate data
+X, y = make_regression(n_samples=100, n_features=3, noise=15, random_state=42)
+model = LinearRegression()
+model.fit(X, y)
+predictions = model.predict(X)
+residuals = y - predictions
+
+# Plot residuals against each feature
+fig, axes = plt.subplots(1, 3, figsize=(18, 5))
+for i in range(3):
+    axes[i].scatter(X[:, i], residuals)
+    axes[i].axhline(y=0, color='r', linestyle='-')
+    axes[i].set_xlabel(f'Feature {i+1}')
+    axes[i].set_ylabel('Residuals')
+    axes[i].set_title(f'Valid Residuals vs. Feature {i+1}')
+    axes[i].grid(True, alpha=0.3)
 plt.tight_layout()
 plt.show()
-
-# Statistical tests for regression assumptions
-print("\n--- Statistical Tests for Regression Assumptions ---\n")
-
-# Normality test
-stat, p_value = stats.shapiro(residuals)
-print(f"Shapiro-Wilk Test for Normality: Statistic={stat:.4f}, p-value={p_value:.6f}")
-print(f"Interpretation: {'Residuals appear normal' if p_value > 0.05 else 'Residuals do not appear normal'}")
-
-# Homoscedasticity test
-X_train_const = sm.add_constant(X_train)
-_, p_value, _, _ = het_breuschpagan(residuals, X_train_const)
-print(f"\nBreusch-Pagan Test for Homoscedasticity: p-value={p_value:.6f}")
-print(f"Interpretation: {'Homoscedasticity assumption is met' if p_value > 0.05 else 'Heteroscedasticity detected'}")
-
-# Autocorrelation test
-dw_statistic = durbin_watson(residuals)
-print(f"\nDurbin-Watson Test for Autocorrelation: {dw_statistic:.4f}")
-if dw_statistic < 1.5:
-    interpretation = "Positive autocorrelation detected"
-elif dw_statistic > 2.5:
-    interpretation = "Negative autocorrelation detected"
-else:
-    interpretation = "No significant autocorrelation"
-print(f"Interpretation: {interpretation}")
-
-# Multicollinearity test
-print("\nVariance Inflation Factors for Multicollinearity:")
-vif_data = pd.DataFrame()
-vif_data["Feature"] = X_train.columns
-vif_data["VIF"] = [variance_inflation_factor(X_train.values, i) for i in range(X_train.shape[1])]
-print(vif_data)
 ```
+
+##### Invalid Plot
+- Pattern indicates a missed relationship or incorrect model specification
+
+```python
+# Generate data with a non-linear relationship in one feature
+X = np.random.uniform(-3, 3, (100, 3))
+y = 2 * X[:, 0] + 3 * X[:, 1] + 4 * X[:, 2]**2 + np.random.normal(0, 1, 100)
+
+# Fit a linear model (missing the squared term)
+model = LinearRegression()
+model.fit(X, y)
+predictions = model.predict(X)
+residuals = y - predictions
+
+# Plot residuals against each feature
+fig, axes = plt.subplots(1, 3, figsize=(18, 5))
+for i in range(3):
+    axes[i].scatter(X[:, i], residuals)
+    axes[i].axhline(y=0, color='r', linestyle='-')
+    axes[i].set_xlabel(f'Feature {i+1}')
+    axes[i].set_ylabel('Residuals')
+    axes[i].set_title(f'Residuals vs. Feature {i+1}')
+    axes[i].grid(True, alpha=0.3)
+    if i == 2:
+        axes[i].set_title('Invalid: Non-linear Pattern in Feature 3')
+plt.tight_layout()
+plt.show()
+```
+
+## Summary of Valid vs. Invalid Residual Patterns
+
+### Valid Patterns (Suitable for Linear Regression)
+- Residuals randomly scattered around zero
+- No discernible patterns or trends
+- Constant variance across all fitted values
+- Normal distribution of residuals
+- No autocorrelation in the residuals
+
+### Invalid Patterns (Problems with Linear Regression Fit)
+- Curvature or systematic patterns in residuals
+- Funnel-shaped patterns indicating heteroscedasticity
+- Non-normal distribution of residuals
+- Clusters of residuals or outliers
+- Autocorrelation in the residuals
 
 ## Conclusion
 
-Residual investigation is an essential step in assessing whether linear regression is appropriate for your dataset. By examining residual plots and conducting statistical tests, you can identify violations of linear regression assumptions and take appropriate corrective actions.
+Residual analysis is a powerful tool for assessing the appropriateness of a linear regression model. By examining residual plots, we can identify potential issues with our model and make necessary adjustments such as:
 
-Remember that perfectly meeting all assumptions is rare in real-world data. The goal is to identify serious violations that might affect your model's reliability and take corrective action as needed. Minor deviations from assumptions might be acceptable depending on your analysis goals.
+1. Adding polynomial terms or transforming variables if non-linearity is detected
+2. Applying transformations (like log, square root) to the response variable if heteroscedasticity is present
+3. Using robust regression methods if outliers are influencing the model
+4. Using time series methods if autocorrelation is detected
 
-## References
-
-1. Fox, J. (2015). *Applied Regression Analysis and Generalized Linear Models*. Sage Publications.
-2. Kutner, M.H., Nachtsheim, C.J., Neter, J., & Li, W. (2004). *Applied Linear Statistical Models*. McGraw-Hill/Irwin.
-3. James, G., Witten, D., Hastie, T., & Tibshirani, R. (2013). *An Introduction to Statistical Learning*. Springer.
+Always inspect residuals before drawing conclusions from a linear regression model. They tell the story of what your model missed and guide you toward improvements.
