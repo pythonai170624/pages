@@ -269,12 +269,6 @@ plt.show()
 
 <img src="qq3.png" style="width: 70%"  />
 
-
-## 📈 Q-Q Plot עבור התפלגות אקספוננציאלית
-
-## 🧪 מה עושה הקוד?
-הקוד מייצר **1000 ערכים שהתפלגו לפי התפלגות אקספוננציאלית**, ויוצר **Q-Q Plot** (גרף קואנטילים) כדי לבדוק האם הנתונים האלו באמת מתאימים להתפלגות האקספוננציאלית.
-
 ```python
 # Generate exponential data
 exponential_data = np.random.exponential(size=1000)
