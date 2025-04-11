@@ -38,8 +38,8 @@ from sklearn.preprocessing import PolynomialFeatures
 
 ```python
 import numpy as np
-np.polyfit(x, y, deg=3)
-np.poly1d(...)
+np.polyfit(x, y, deg=3)  # calc Beta 0..n
+np.poly1d(...)  # generate the function in order to predict
 ```
 
 - ✅ הכי קל ופשוט לשימוש עם וקטורים
