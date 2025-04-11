@@ -109,7 +109,7 @@ sns.regplot(x=X, y=Y)
 | `sns.regplot`            | ✅ (`order=2`)               | ❌ (ויזואלי בלבד)     | ❌ | ויזואליזציה מהירה של קשרים             |
 ---
 
-## 📘 5. `Ridge` (Regularized Linear Regression - L2)
+## 📘 6. `Ridge` (Regularized Linear Regression - L2)
 
 ```python
 from sklearn.linear_model import Ridge
@@ -123,7 +123,7 @@ from sklearn.linear_model import Ridge
 
 ---
 
-## 📘 6. `Lasso` (Regularized Linear Regression - L1)
+## 📘 7. `Lasso` (Regularized Linear Regression - L1)
 
 ```python
 from sklearn.linear_model import Lasso
