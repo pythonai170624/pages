@@ -83,13 +83,30 @@ model = sm.OLS(y, X).fit()
 
 ---
 
+## 📘 5. `sns.regplot` (Seaborn Visual Regression)
+
+```python
+import seaborn as sns
+sns.regplot(x=X, y=Y)
+```
+
+- ✅ **מבצע רגרסיה לינארית בפועל** ומצייר את קו הרגרסיה על הדאטה
+- ✅ מאפשר הוספת תחום סמך (confidence interval)
+- ✅ תומך בפולינום עם `order=2` ומעלה
+- ❌ לא מחזיר מודל שניתן להשתמש בו אחר כך (כמו `fit`), אלא רק ציור ויזואלי
+- ❌ אין תמיכה ישירה בסטטיסטיקה כמו `coef_`, `intercept_`, `p-values` או `R^2`
+
+💡 **שימושי מאוד לניתוח ויזואלי מהיר של קשרים בין משתנים**.
+---
+
 ## 📊 סיכום השוואתי
 
 | Library                  | Supports Polynomial? | Supports R²? | Supports p-values? | Best Suited For                        |
-|--------------------------|------------------|--------------|--------------------|----------------------------------------|
+|--------------------------|----------------------|--------------|--------------------|----------------------------------------|
 | `sklearn.linear_model`   | ✅ (עם `PolynomialFeatures`) | ✅ | ❌ | Machine learning ו־pipeline             |
 | `numpy.polyfit`          | ✅ (פיצ’ר אחד בלבד)         | ❌ (צריך לחשב בנפרד) | ❌ | גרפים פשוטים ומהירים                  |
 | `statsmodels.OLS`        | ✅ (ידנית)                  | ✅ | ✅ | ניתוח סטטיסטי מתקדם (כמו מאמרים)       |
+| `sns.regplot`            | ✅ (`order=2`)               | ❌ (ויזואלי בלבד)     | ❌ | ויזואליזציה מהירה של קשרים             |
 ---
 
 ## 📘 5. `Ridge` (Regularized Linear Regression - L2)
@@ -127,5 +144,6 @@ from sklearn.linear_model import Lasso
 | `sklearn.linear_model` | ✅ (with `PolynomialFeatures`)   | ✅                                | ❌                  | ❌             | ML workflows and pipelines                          |
 | `numpy.polyfit`        | ✅ (single feature only)         | ❌ (manual calculation needed)   | ❌                  | ❌             | Simple and quick curve fitting                      |
 | `statsmodels.OLS`      | ✅ (manual expansion)            | ✅                                | ✅                  | ❌             | Advanced statistical analysis                       |
+| `sns.regplot`          | ✅ (`order=2`)                   | ❌ (visual only)                | ❌                  | ❌             | Fast visual regression and exploration              |
 | `Ridge`                | ✅ (with `PolynomialFeatures`)   | ✅                                | ❌                  | ✅ (L2)        | Handles multicollinearity and improves generalization |
 | `Lasso`                | ✅ (with `PolynomialFeatures`)   | ✅                                | ❌                  | ✅ (L1)        | Automatic feature selection and sparsity            |
