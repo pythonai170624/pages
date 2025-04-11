@@ -106,10 +106,10 @@ from sklearn.linear_model import Lasso
 
 ## 📊 סיכום מעודכן:
 
-| ספרייה                  | תומכת בפולינום? | תומכת ב־R²? | תומכת ב־p-values? | רגולריזציה | הכי מתאימה ל־                        |
-|--------------------------|------------------|--------------|--------------------|--------------|----------------------------------------|
-| `sklearn.linear_model`   | ✅ (with `PolynomialFeatures`) | ✅ | ❌ | ❌           | ML workflows and pipelines             |
-| `numpy.polyfit`          | ✅ (single feature only)         | ❌ (manual calculation needed) | ❌ | ❌           | Simple and quick curve fitting         |
-| `statsmodels.OLS`        | ✅ (manual expansion)            | ✅ | ✅ | ❌           | Advanced statistical analysis          |
-| `Ridge`                  | ✅ (with `PolynomialFeatures`)   | ✅ | ❌ | ✅ (L2)     | Handles multicollinearity and improves generalization |
-| `Lasso`                  | ✅ (with `PolynomialFeatures`)   | ✅ | ❌ | ✅ (L1)     | Automatic feature selection and sparsity |
+| Library                | Supports Polynomial?             | Supports R²?                    | Supports p-values? | Regularization | Best Suited For                                      |
+|------------------------|----------------------------------|----------------------------------|---------------------|----------------|------------------------------------------------------|
+| `sklearn.linear_model` | ✅ (with `PolynomialFeatures`)   | ✅                                | ❌                  | ❌             | ML workflows and pipelines                          |
+| `numpy.polyfit`        | ✅ (single feature only)         | ❌ (manual calculation needed)   | ❌                  | ❌             | Simple and quick curve fitting                      |
+| `statsmodels.OLS`      | ✅ (manual expansion)            | ✅                                | ✅                  | ❌             | Advanced statistical analysis                       |
+| `Ridge`                | ✅ (with `PolynomialFeatures`)   | ✅                                | ❌                  | ✅ (L2)        | Handles multicollinearity and improves generalization |
+| `Lasso`                | ✅ (with `PolynomialFeatures`)   | ✅                                | ❌                  | ✅ (L1)        | Automatic feature selection and sparsity            |
