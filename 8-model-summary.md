@@ -69,7 +69,7 @@ model = sm.OLS(y, X).fit()
 
 ## 📊 סיכום השוואתי
 
-| ספרייה                  | תומכת בפולינום? | תומכת ב־R²? | תומכת ב־p-values? | הכי מתאימה ל־                        |
+| Library                  | Supports Polynomial? | Supports R²? | Supports p-values? | Best Suited For                        |
 |--------------------------|------------------|--------------|--------------------|----------------------------------------|
 | `sklearn.linear_model`   | ✅ (עם `PolynomialFeatures`) | ✅ | ❌ | Machine learning ו־pipeline             |
 | `numpy.polyfit`          | ✅ (פיצ’ר אחד בלבד)         | ❌ (צריך לחשב בנפרד) | ❌ | גרפים פשוטים ומהירים                  |
@@ -108,8 +108,8 @@ from sklearn.linear_model import Lasso
 
 | ספרייה                  | תומכת בפולינום? | תומכת ב־R²? | תומכת ב־p-values? | רגולריזציה | הכי מתאימה ל־                        |
 |--------------------------|------------------|--------------|--------------------|--------------|----------------------------------------|
-| `sklearn.linear_model`   | ✅ (עם `PolynomialFeatures`) | ✅ | ❌ | ❌           | Machine learning ו־pipeline             |
-| `numpy.polyfit`          | ✅ (פיצ’ר אחד בלבד)         | ❌ (צריך לחשב בנפרד) | ❌ | ❌           | גרפים פשוטים ומהירים                  |
-| `statsmodels.OLS`        | ✅ (ידנית)                  | ✅ | ✅ | ❌           | ניתוח סטטיסטי מתקדם (כמו מאמרים)       |
-| `Ridge`                  | ✅ (עם `PolynomialFeatures`) | ✅ | ❌ | ✅ (L2)     | יציבות מול הרבה פיצ’רים                |
-| `Lasso`                  | ✅ (עם `PolynomialFeatures`) | ✅ | ❌ | ✅ (L1)     | רגרסיה עם בחירת פיצ’רים                |
+| `sklearn.linear_model`   | ✅ (with `PolynomialFeatures`) | ✅ | ❌ | ❌           | ML workflows and pipelines             |
+| `numpy.polyfit`          | ✅ (single feature only)         | ❌ (manual calculation needed) | ❌ | ❌           | Simple and quick curve fitting         |
+| `statsmodels.OLS`        | ✅ (manual expansion)            | ✅ | ✅ | ❌           | Advanced statistical analysis          |
+| `Ridge`                  | ✅ (with `PolynomialFeatures`)   | ✅ | ❌ | ✅ (L2)     | Handles multicollinearity and improves generalization |
+| `Lasso`                  | ✅ (with `PolynomialFeatures`)   | ✅ | ❌ | ✅ (L1)     | Automatic feature selection and sparsity |
