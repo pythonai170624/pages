@@ -11,7 +11,7 @@ from sklearn.linear_model import LinearRegression
 ```
 
 - ✅ מתאימה לרגרסיה לינארית (פיצ'ר אחד או יותר)
-- ✅ תומכת בהכשרה נוחה עם `.fit(X, y)`
+- ✅ תומכת בהכשרה נוחה עם `fit(X, y)`
 - ✅ מספקת `predict(X)`, וגם `coef_`, `intercept_`
 - ❌ לא תומכת ישירות ב־p-values או סטטיסטיקה מתקדמת
 
