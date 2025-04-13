@@ -95,6 +95,15 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.linear_model import Ridge
 from sklearn.model_selection import cross_val_score
+from sklearn.preprocessing import StandardScaler
+from sklearn.datasets import make_regression
+
+# Create a synthetic dataset
+X, y = make_regression(n_samples=100, n_features=5, noise=0.5, random_state=42)
+
+# Scale the features
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
 
 # Test different alpha values
 alphas = [0.1, 1, 10, 100]
@@ -102,9 +111,18 @@ cv_scores = []
 
 for alpha in alphas:
     ridge = Ridge(alpha=alpha)
-    scores = cross_val_score(ridge, X_scaled, y, 
+
+    # Error metrics like mean squared error (MSE),
+    # mean absolute error (MAE),
+    # and root mean squared error (RMSE)
+    # are typically represented with negative values
+    # in scikit-learn's cross-validation
+    # functions for a specific reason related to how the library
+    # handles optimization.
+    scores = cross_val_score(ridge, X_scaled, y,
                              cv=5, scoring='neg_mean_squared_error')
     cv_scores.append(abs(scores.mean()))
+    print(abs(scores.mean()))
 
 # Plot results
 plt.figure(figsize=(10, 6))
@@ -116,8 +134,14 @@ plt.title('Ridge Regression: Alpha vs MSE using cross_val_score()')
 plt.grid(True)
 plt.show()
 ```
-
-![Cross Val Score Example](https://scikit-learn.org/stable/_images/sphx_glr_plot_cv_predict_001.png)
+output:
+```
+0.3120474252351334
+4.705394279474865
+340.16504915144077
+7078.28159151424
+```
+<img src="cv-1.png" />
 
 ### cross_validate()
 
