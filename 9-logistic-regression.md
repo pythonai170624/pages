@@ -86,8 +86,6 @@ $$
 המטרה שלנו:
 > לחשב את ההסתברות ש־Y יהיה 1 בהינתן X.
 
----
-
 ### שלב 2: נגדיר את הפונקציה הלוגיסטית
 
 זו הפונקציה שאיתה נבנה את המודל:
@@ -97,8 +95,6 @@ P(Y = 1 \mid X) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 X)}}
 $$
 
 היא תמיד מחזירה ערכים בין 0 ל־1 – מושלם להסתברויות.
-
----
 
 ### שלב 3: נבנה את פונקציית ההסתברות הכוללת (Likelihood)
 
@@ -334,56 +330,6 @@ $$
 - אין נוסחה סגורה למציאת β₀ ו־β₁
 - הפתרון מתקבל בעזרת אופטימיזציה מתמטית (נומרית)
 - הפונקציה שאנחנו ממקסמים נקראת log-likelihood
-
-
-### The Logit Transformation
-
-The logistic regression model can also be expressed using the logit transformation, which is the logarithm of the odds:
-
-$$\text{logit}(P) = \ln\left(\frac{P}{1-P}\right) = \beta_0 + \beta_1 X$$
-
-This transformation allows us to express the logistic regression model as a linear equation, making it easier to work with mathematically.
-
-### Maximum Likelihood Estimation
-
-Unlike linear regression, where we can find the parameters using the least squares method, logistic regression typically uses maximum likelihood estimation (MLE). This approach finds the values of the parameters $\beta_0$ and $\beta_1$ that maximize the likelihood of observing the given data.
-
-The likelihood function for logistic regression is:
-
-$$L(\beta_0, \beta_1) = \prod_{i=1}^{n} P(Y_i=1|X_i)^{Y_i} \times (1-P(Y_i=1|X_i))^{1-Y_i}$$
-
-Taking the logarithm for computational convenience, we get the log-likelihood:
-
-$$\ln L(\beta_0, \beta_1) = \sum_{i=1}^{n} [Y_i \ln(P(Y_i=1|X_i)) + (1-Y_i) \ln(1-P(Y_i=1|X_i))]$$
-
-To find the values of $\beta_0$ and $\beta_1$ that maximize this function, we would take the partial derivatives with respect to each parameter, set them to zero, and solve. However, unlike linear regression, there's no closed-form solution, so iterative numerical methods like Newton-Raphson or gradient descent are used.
-
-### Fitting the Model to Our Example
-
-For our example data, iterative methods would yield parameter estimates approximately:
-
-$\beta_0 \approx -6.7$
-$\beta_1 \approx 1.5$
-
-So our logistic regression equation would be:
-
-$$P(\text{pass}|\text{hours}) = \frac{1}{1 + e^{-(-6.7 + 1.5 \times \text{hours})}}$$
-
-### Making Predictions
-
-Using this model, we can predict the probability of passing for different study hours:
-
-1. For 4 hours of study:
-
-$$P(\text{pass}|4) = \frac{1}{1 + e^{-(-6.7 + 1.5 \times 4)}} = \frac{1}{1 + e^{-(-6.7 + 6)}} = \frac{1}{1 + e^{0.7}} \approx 0.33$$
-
-This means there's approximately a 33% chance of passing with 4 hours of study.
-
-2. For 6 hours of study:
-
-$$P(\text{pass}|6) = \frac{1}{1 + e^{-(-6.7 + 1.5 \times 6)}} = \frac{1}{1 + e^{-(-6.7 + 9)}} = \frac{1}{1 + e^{-2.3}} \approx 0.91$$
-
-This means there's approximately a 91% chance of passing with 6 hours of study.
 
 ### Decision Boundary
 
