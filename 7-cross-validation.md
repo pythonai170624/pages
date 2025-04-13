@@ -238,6 +238,71 @@ plt.show()
 
 <img src="cv-alpha.png" />
 
+## Using LinearRegression and Pipeline with Cross-Validation
+
+Using cross-validation is particularly useful for hyperparameter tuning, such as finding the optimal alpha value in Ridge regression:
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.linear_model import LinearRegression
+from sklearn.pipeline import Pipeline
+from sklearn.model_selection import cross_validate
+from sklearn.preprocessing import StandardScaler
+from sklearn.datasets import make_regression
+
+# Create a synthetic dataset with non-linear relationship
+np.random.seed(42)
+X = np.sort(np.random.rand(100, 1), axis=0)
+y = np.sin(2 * np.pi * X).ravel() + np.random.normal(0, 0.3, X.shape[0])
+
+# Compare different polynomial degrees with cross-validation
+degrees = [1, 2, 3, 4, 5, 7, 10]  # Different polynomial degrees to try
+results = {}
+
+for degree in degrees:
+    # Create a pipeline with polynomial features and linear regression
+    model = Pipeline([
+        ('poly', PolynomialFeatures(degree=degree)),
+        ('scaler', StandardScaler()),  # Scale features after polynomial transformation
+        ('linear', LinearRegression())
+    ])
+
+    # Perform cross-validation
+    cv_results = cross_validate(
+        model, X, y,
+        cv=5,
+        scoring={'MSE': 'neg_mean_squared_error', 'MAE': 'neg_mean_absolute_error'}
+    )
+
+    # Store results
+    results[degree] = {
+        'MSE': abs(cv_results['test_MSE'].mean()),
+        'MAE': abs(cv_results['test_MAE'].mean())
+    }
+
+# Visualize results
+fig, ax = plt.subplots(1, 2, figsize=(14, 6))
+
+# Plot MSE
+mse_values = [results[degree]['MSE'] for degree in degrees]
+ax[0].bar([str(degree) for degree in degrees], mse_values)
+ax[0].set_title('Mean Squared Error by Polynomial Degree')
+ax[0].set_xlabel('Polynomial Degree')
+ax[0].set_ylabel('MSE')
+
+# Plot MAE
+mae_values = [results[degree]['MAE'] for degree in degrees]
+ax[1].bar([str(degree) for degree in degrees], mae_values)
+ax[1].set_title('Mean Absolute Error by Polynomial Degree')
+ax[1].set_xlabel('Polynomial Degree')
+ax[1].set_ylabel('MAE')
+
+plt.tight_layout()
+plt.show()
+```
+
 ## Summary
 
 Cross-validation is essential for:
