@@ -282,25 +282,20 @@ for degree in degrees:
         'MAE': abs(cv_results['test_MAE'].mean())
     }
 
-# Visualize results
-fig, ax = plt.subplots(1, 2, figsize=(14, 6))
-
-# Plot MSE
 mse_values = [results[degree]['MSE'] for degree in degrees]
-ax[0].bar([str(degree) for degree in degrees], mse_values)
-ax[0].set_title('Mean Squared Error by Polynomial Degree')
-ax[0].set_xlabel('Polynomial Degree')
-ax[0].set_ylabel('MSE')
-
-# Plot MAE
 mae_values = [results[degree]['MAE'] for degree in degrees]
-ax[1].bar([str(degree) for degree in degrees], mae_values)
-ax[1].set_title('Mean Absolute Error by Polynomial Degree')
-ax[1].set_xlabel('Polynomial Degree')
-ax[1].set_ylabel('MAE')
+```
 
-plt.tight_layout()
-plt.show()
+results:
+```
+Degree       MSE       MAE
+      1  0.224837  0.383312
+      2  0.118023  0.277151
+      3  0.089143  0.235771
+      4  0.093571  0.240753
+      5  0.098345  0.244723
+      7  0.110872  0.258347
+     10  0.139451  0.287291
 ```
 
 ## Summary
