@@ -2,9 +2,8 @@
 
 ## Introduction to Cross-Validation
 
-Cross-validation is a fundamental technique in supervised machine learning used to assess how well a model will generalize to an independent dataset. It helps in understanding the model's effectiveness and minimizes overfitting by testing the model on data it hasn't seen during training.
-
-The process involves partitioning the data set into multiple subsets, training the model on some subsets, and validating it on others. This approach provides a more robust evaluation compared to a single train-test split.
+אימות צולב הוא טכניקה בסיסית בלמידה מונחית (supervised learning) המשמשת להערכת יכולת ההכללה של מודל למידת מכונה למערך נתונים עצמאי. טכניקה זו עוזרת בהבנת האפקטיביות של המודל ומצמצמת את בעיית ה-overfitting (התאמת יתר) על ידי בדיקת המודל על נתונים שלא נחשף אליהם במהלך האימון.
+התהליך כולל חלוקת מערך הנתונים למספר תתי-קבוצות, אימון המודל על חלק מהתתי-קבוצות, ואימות המודל על התתי-קבוצות האחרות. גישה זו מספקת הערכה מדויקת ואמינה יותר בהשוואה לחלוקה פשוטה של הנתונים לקבוצת אימון וקבוצת בדיקה.
 
 ## Types of Cross-Validation
 
