@@ -223,8 +223,6 @@ $$
 \frac{\partial}{\partial \beta_0} \log L = \sum_{i=1}^{n} (y_i - \hat{p}_i)
 $$
 
-נכניס את הערכים:
-
 $$
 \sum (y_i - \hat{p}_i) =
 (1 - 0.5) + (0 - 0.5)  =
