@@ -38,6 +38,8 @@ For a dataset to be suitable for linear regression modeling, the residuals shoul
 3. **Homoscedasticity**: The residuals should have constant variance across all levels of predicted values.
 4. **Normality**: The residuals should be approximately normally distributed.
 
+See examples below 
+
 ### Graph Examples for Residual Analysis
 
 #### 1. Residuals vs. Fitted Values Plot
