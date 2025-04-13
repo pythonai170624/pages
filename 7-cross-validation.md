@@ -172,6 +172,10 @@ import pandas as pd
 results_df = pd.DataFrame(cv_results)
 
 # Display average scores
+# Error metrics are typically represented with negative values
+# in scikit-learn's cross-validation
+# functions for a specific reason related to how the library
+# handles optimization.
 print("Test MSE:", abs(results_df['test_MSE'].mean()))
 print("Test MAE:", abs(results_df['test_MAE'].mean()))
 print("Train MSE:", abs(results_df['train_MSE'].mean()))
@@ -183,12 +187,12 @@ print("Average fit time:", results_df['fit_time'].mean())
 
 | Fold | Fit Time | Score Time | Test MSE | Test MAE | Train MSE | Train MAE |
 |------|----------|------------|----------|----------|-----------|-----------|
-| 0    | 0.0019   | 0.0016     | -3.44    | -1.56    | -0.22     | -0.37     |
-| 1    | 0.0018   | 0.0014     | -1.40    | -1.03    | -0.31     | -0.42     |
-| 2    | 0.0012   | 0.0007     | -5.77    | -1.52    | -0.25     | -0.38     |
-| 3    | 0.0012   | 0.0003     | -2.18    | -1.06    | -0.33     | -0.45     |
-| 4    | 0.0005   | 0.0003     | -4.65    | -1.52    | -0.26     | -0.40     |
-| Mean | 0.0013   | 0.0009     | -3.49    | -1.33    | -0.27     | -0.40     |
+| 0    | 0.0019   | 0.0016     | 3.44     | 1.56     | 0.22      | 0.37      |
+| 1    | 0.0018   | 0.0014     | 1.40     | 1.03     | 0.31      | 0.42      |
+| 2    | 0.0012   | 0.0007     | 5.77     | 1.52     | 0.25      | 0.38      |
+| 3    | 0.0012   | 0.0003     | 2.18     | 1.06     | 0.33      | 0.45      |
+| 4    | 0.0005   | 0.0003     | 4.65     | 1.52     | 0.26      | 0.40      |
+| Mean | 0.0013   | 0.0009     | 3.49     | 1.33     | 0.27      | 0.40      |
 
 ## Comparing Alpha Values in Ridge Regression with Cross-Validation
 
