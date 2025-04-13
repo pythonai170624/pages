@@ -36,7 +36,7 @@ $$
 \hat{p}_i = \frac{1}{1 + e^{-(\beta_0 + \beta_1 x_i)}}
 $$
 
-🎯 דוגמה לחישוב פונקציית Likelihood
+**🎯 דוגמה לחישוב פונקציית Likelihood**
 
 נניח שיש לנו שתי דוגמאות בלבד:
 
