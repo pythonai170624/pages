@@ -190,7 +190,7 @@ $$
 #### שלב 1: חישוב ההסתברויות (p-hat)
 
 $$
-\frac{\partial}{\partial \beta_1} \log L = \sum_{i=1}^{n} (y_i - \hat{p}_i) \cdot x_i
+\hat{p}_1 = \frac{1}{1 + e^{-(0 + 0 \cdot 1)}} = 0.5
 $$
 
 $$
