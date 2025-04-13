@@ -236,7 +236,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-![Alpha Comparison](https://miro.medium.com/v2/resize:fit:1400/1*JQkIr3JEvbwCSTXjgaFvtQ.png)
+<img src="cv-alpha.png" />
 
 ## Summary
 
