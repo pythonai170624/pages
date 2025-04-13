@@ -408,7 +408,7 @@ Ridge (α=1.0)        0.1790       0.6569       0.3340
 Ridge (α=0.000001)   0.0892       0.8290       0.2217  
 ```
 
-<img src="ridge-cv.png" />
+<img src="ridge-cv.png" style="width: 100%"/>
 
 **Real-Life Example:**
 When predicting housing prices, Ridge Regression performs well because most features (like square footage, number of rooms, neighborhood characteristics) contribute to the price, but with varying importance.
