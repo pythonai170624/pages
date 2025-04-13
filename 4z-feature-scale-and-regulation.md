@@ -215,6 +215,16 @@ plt.show()
 ```
 <img src="ridge1.png" style="width: 80%" />
 
+**Coefficient Shrinkage**
+
+<img src="l2-coef.png" style="width: 80%" />
+
+As λ increases:
+
+- Coefficient values decrease, resulting in a simpler model
+- The impact of less important features is reduced
+- The model becomes more stable, especially with multicollinearity
+
 #### RidgeCV
 
 RidgeCV is a cross-validation implementation that automatically selects the best regularization parameter ($\lambda$) from a given set.
