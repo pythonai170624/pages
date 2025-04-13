@@ -172,7 +172,7 @@ $$
 \frac{\partial}{\partial \beta} \log L = 0
 $$
 
-אבל... לא ניתן לפתור את זה ביד, לכן נעבור לפתרון נומרי (כמו Gradient Descent).
+אבל... לא ניתן לפתור ישירות, לכן נעבור לפתרון נומרי (כמו Gradient Descent)
 
 ### 🧸 דוגמה 
 
@@ -199,7 +199,7 @@ $$
 
 #### שלב 2: 
 
-חישוב נגזרת לפי $$\beta_1$$
+**חישוב נגזרת לפי $$\beta_1$$**
 
 $$
 \sum (y_i - \hat{p}_i) \cdot x_i =
@@ -213,7 +213,7 @@ $$
 
 חישוב נגזרת לפי $$\beta_0$$
 
-הנגזרת לפי β₀ היא:
+**הנגזרת לפי β₀ היא:**
 
 $$
 \frac{\partial}{\partial \beta_0} \log L = \sum_{i=1}^{n} (y_i - \hat{p}_i)
