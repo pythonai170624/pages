@@ -302,6 +302,114 @@ Common scoring metrics for cross-validation:
 - **Mean Absolute Error (MAE)**: Average absolute difference between predicted and actual values
 - **Negative Mean Squared Error**: Used in scikit-learn's cross-validation (which maximizes scores)
 
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.linear_model import Ridge, RidgeCV
+from sklearn.preprocessing import StandardScaler, PolynomialFeatures
+from sklearn.pipeline import Pipeline
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
+
+# Set random seed for reproducibility
+np.random.seed(42)
+
+# Generate synthetic data with some noise
+X = np.sort(np.random.rand(150, 1), axis=0)
+y = np.sin(2 * np.pi * X).ravel() + 0.4 * np.cos(5 * np.pi * X).ravel() + np.random.normal(0, 0.3, X.shape[0])
+
+# Split data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# Create polynomial features
+degree = 8  # Higher degree to demonstrate overfitting without regularization
+poly = PolynomialFeatures(degree=degree)
+X_train_poly = poly.fit_transform(X_train)
+X_test_poly = poly.transform(X_test)
+
+# Scale the features
+scaler = StandardScaler()
+X_train_poly_scaled = scaler.fit_transform(X_train_poly)
+X_test_poly_scaled = scaler.transform(X_test_poly)
+
+# Range of alpha values to test (regularization strengths)
+alphas = np.logspace(-6, 3, 20)
+
+# 1. First, use Ridge with a fixed small alpha (minimal regularization)
+ridge_small = Ridge(alpha=0.001)
+ridge_small.fit(X_train_poly_scaled, y_train)
+
+# 2. Use Ridge with alpha=1 (moderate regularization)
+ridge_medium = Ridge(alpha=1.0)
+ridge_medium.fit(X_train_poly_scaled, y_train)
+
+# 3. Then use RidgeCV to find the optimal alpha
+ridge_cv = RidgeCV(alphas=alphas, cv=5, scoring='neg_mean_squared_error')
+ridge_cv.fit(X_train_poly_scaled, y_train)
+best_alpha = ridge_cv.alpha_
+
+# 4. Create a Ridge model with the best alpha
+ridge_best = Ridge(alpha=best_alpha)
+ridge_best.fit(X_train_poly_scaled, y_train)
+
+# Make predictions on test data
+y_pred_small = ridge_small.predict(X_test_poly_scaled)
+y_pred_medium = ridge_medium.predict(X_test_poly_scaled)
+y_pred_best = ridge_best.predict(X_test_poly_scaled)
+
+# Calculate and compare metrics
+metrics = {
+    'Model': ['Ridge (α=0.001)', 'Ridge (α=1.0)', f'Ridge (α={best_alpha:.6f})'],
+    'MSE': [
+        mean_squared_error(y_test, y_pred_small),
+        mean_squared_error(y_test, y_pred_medium),
+        mean_squared_error(y_test, y_pred_best)
+    ],
+    'R²': [
+        r2_score(y_test, y_pred_small),
+        r2_score(y_test, y_pred_medium),
+        r2_score(y_test, y_pred_best)
+    ],
+    'MAE': [
+        mean_absolute_error(y_test, y_pred_small),
+        mean_absolute_error(y_test, y_pred_medium),
+        mean_absolute_error(y_test, y_pred_best)
+    ]
+}
+
+# Print the metrics
+print(f"Best alpha selected by RidgeCV: {best_alpha:.6f}")
+print("\nPerformance Metrics:")
+print(f"{'Model':<20} {'MSE':<12} {'R²':<12} {'MAE':<12}")
+print("-" * 56)
+for i in range(len(metrics['Model'])):
+    print(f"{metrics['Model'][i]:<20} {metrics['MSE'][i]:<12.4f} {metrics['R²'][i]:<12.4f} {metrics['MAE'][i]:<12.4f}")
+
+# Visual comparison of the models
+X_plot = np.linspace(0, 1, 100).reshape(-1, 1)
+X_plot_poly = poly.transform(X_plot)
+X_plot_poly_scaled = scaler.transform(X_plot_poly)
+
+y_plot_small = ridge_small.predict(X_plot_poly_scaled)
+y_plot_medium = ridge_medium.predict(X_plot_poly_scaled)
+y_plot_best = ridge_best.predict(X_plot_poly_scaled)
+
+# plot the data ...
+```
+
+כאשר נריץ את הקוד, נקבל פלט דומה לזה:
+
+```
+Performance Metrics:
+Model                MSE          R²           MAE         
+--------------------------------------------------------
+Ridge (α=0.001)      0.1105       0.7881       0.2555      
+Ridge (α=1.0)        0.1790       0.6569       0.3340      
+Ridge (α=0.000001)   0.0892       0.8290       0.2217  
+```
+
+<img src="ridge-cv.png" style="width: 70%" />
+
 **Real-Life Example:**
 When predicting housing prices, Ridge Regression performs well because most features (like square footage, number of rooms, neighborhood characteristics) contribute to the price, but with varying importance.
 
