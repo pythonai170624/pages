@@ -250,6 +250,8 @@ alphas = np.logspace(-6, 6, 13)  # Range of alpha values to test
 ridge_cv = RidgeCV(alphas=alphas, cv=5, scoring='neg_mean_squared_error')
 
 # Create and fit the pipeline
+# We use StandardScaler before RidgeCV to ensure all features are on the same scale,
+# so regularization works fairly and effectively
 pipeline = Pipeline([
     ('scaler', StandardScaler()),
     ('ridge_cv', ridge_cv)
