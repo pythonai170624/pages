@@ -34,6 +34,51 @@ Where:
 
 The logistic function always outputs a value between 0 and 1, which can be interpreted as a probability.
 
+### 📊 Logistic Regression – הסבר פשוט על הנוסחה
+
+Logistic Regression מחשבת הסתברות שמשהו יקרה, לפי ערך של משתנה X (למשל: כמה שעות למידה).
+
+### הנוסחה:
+
+$$
+P(Y = 1 \mid X) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 X)}}
+$$
+
+זו נקראת **פונקציית סיגמואיד (sigmoid function)** – היא מחזירה ערכים בין 0 ל־1, ולכן מתאימה לחיזוי הסתברויות.
+
+---
+
+### 🧠 הסברים:
+
+- $$P(Y = 1 \mid X)$$ – ההסתברות ש-Y יהיה 1 בהינתן X  
+- $$\beta_0$$ – הקבוע (intercept)  
+- $$\beta_1$$ – מקדם של X  
+- $$e$$ – הבסיס של הלוגריתם הטבעי (בערך 2.718)
+
+---
+
+### 🧮 דוגמה חישובית:
+
+אם:
+- $$X = 5$$ (שעות למידה)
+- $$\beta_0 = -4$$
+- $$\beta_1 = 1$$
+
+אז:
+
+$$
+P = \frac{1}{1 + e^{-(-4 + 1 \cdot 5)}} = \frac{1}{1 + e^{-1}} \approx 0.73
+$$
+
+כלומר: ההסתברות לעבור את המבחן אחרי 5 שעות למידה היא בערך **73%** ✅
+
+---
+
+### ✨ למה Logistic Regression שימושית?
+
+- מחזירה ערכים בין 0 ל־1 → מושלם להסתברויות.
+- מאפשרת להבין את הקשר בין משתנה רציף (כמו שעות לימוד) לתוצאה בינארית (כמו הצלחה/כישלון).
+
 ### The Logit Transformation
 
 The logistic regression model can also be expressed using the logit transformation, which is the logarithm of the odds:
