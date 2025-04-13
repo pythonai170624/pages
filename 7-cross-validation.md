@@ -51,15 +51,13 @@ print(f"Average MSE across all folds: {mean_score}")
 
 ### Leave-One-Out Cross-Validation (LOOCV)
 
-LOOCV is a special case of k-fold cross-validation where k equals the total number of observations in the dataset. The model is trained on all data points except one and then tested on that single left-out observation.
+LOOCV is a special case of k-fold cross-validation where k equals the total number of observations in the dataset. The model is trained on **all data points except one** and then tested on that single left-out observation.
 
 **Key characteristics:**
 - Maximum use of available data for training
 - Each training set contains n-1 samples (where n is the total dataset size)
 - Computationally expensive for large datasets
 - Less biased but can have high variance
-
-![Leave-One-Out Cross-Validation](https://miro.medium.com/v2/resize:fit:1400/1*jQ5ij0X-lR4e4PwbFMpDGw.png)
 
 ```python
 # LOOCV example
