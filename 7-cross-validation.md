@@ -288,7 +288,7 @@ mae_values = [results[degree]['MAE'] for degree in degrees]
 
 results:
 ```
-Degree       MSE       MAE
+Degree   avg. MSE  avg. MAE
       1  0.224837  0.383312
       2  0.118023  0.277151
       3  0.089143  0.235771
