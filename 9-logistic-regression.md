@@ -34,7 +34,7 @@ Where:
 
 The logistic function always outputs a value between 0 and 1, which can be interpreted as a probability.
 
-### 📊 Logistic Regression – הסבר פשוט על הנוסחה
+### 📊 הסבר פשוט על הנוסחה
 
 Logistic Regression מחשבת הסתברות שמשהו יקרה, לפי ערך של משתנה X (למשל: כמה שעות למידה).
 
