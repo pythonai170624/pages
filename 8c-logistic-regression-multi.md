@@ -30,6 +30,8 @@ $$
 
 ## 🌸 דוגמה – על בסיס נתוני Iris:
 
+<img src="iris.jpg" />
+
 ננסה לחזות את סוג הפרח (setosa, versicolor, virginica) על סמך 4 משתנים:
 - sepal length (X₁)
 - sepal width (X₂)
