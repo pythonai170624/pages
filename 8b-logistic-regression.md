@@ -108,7 +108,7 @@ print(f"Precision: {precision:.2f}")
 print(f"F1 Score:  {f1:.2f}")
 ```
 
-Output:
+Output (using a small sample we will get 100%):
 
 ```
 Accuracy:  1.00
