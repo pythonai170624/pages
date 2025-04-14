@@ -43,6 +43,7 @@ Where:
 For our fruit example, we have three features (color, size, weight). However, these features have different scales, which can bias the distance calculation. To address this, we should normalize the data:
 
 1. **Normalization formula:**
+2. 
 $$x_{norm} = \frac{x - x_{min}}{x_{max} - x_{min}}$$
 
 Normalized data:
