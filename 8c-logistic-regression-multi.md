@@ -40,9 +40,9 @@ $$
 
 למשל:
 
-\[
+$$
 P(y = \text{setosa}) = \frac{e^{\beta_{0} + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_3 + \beta_4 x_4}}{\text{sum of all classes}}
-\]
+$$
 
 ---
 
