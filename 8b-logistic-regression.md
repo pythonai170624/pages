@@ -108,6 +108,15 @@ print(f"Precision: {precision:.2f}")
 print(f"F1 Score:  {f1:.2f}")
 ```
 
+Output:
+
+```
+Accuracy:  1.00
+Recall:    1.00
+Precision: 1.00
+F1 Score:  1.00
+```
+
 ---
 
 ## 🌡️ הצגת המודל עם Heatmap
