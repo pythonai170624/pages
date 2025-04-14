@@ -127,6 +127,72 @@ $$
 
 ---
 
+
+## 🔍 LogisticRegressionCV – Key Parameters Explained
+
+`LogisticRegressionCV` is a version of logistic regression that automatically performs cross-validation to choose the best regularization parameter (`C`). It is ideal for both binary and multiclass classification.
+
+### 🔧 Important Parameters:
+
+- **`solver`** – Optimization algorithm used for fitting the model:
+  - `'lbfgs'` – Default. Efficient for multiclass problems and large datasets.
+  - `'liblinear'` – Good for small datasets and binary classification; supports L1 penalty.
+  - `'saga'` – Handles large datasets; supports both L1 and L2 penalties; supports `multinomial`.
+  - `'newton-cg'`, `'sag'` – Also suitable for multiclass, but less commonly used.
+
+- **`multi_class`** – Defines the strategy for handling multiple classes:
+  - `'ovr'` – "One-vs-Rest": Trains one binary classifier per class. Suitable for binary and multiclass (less preferred).
+  - `'multinomial'` – Performs true multiclass classification using softmax. More accurate when the number of classes > 2 (requires `lbfgs`, `saga`, `newton-cg`, or `sag`).
+
+- **`cv`** – Number of cross-validation folds (default is 5). For example, `cv=5` splits the training data into 5 parts and uses each part as validation once.
+
+- **`max_iter`** – Maximum number of iterations taken by the solver to converge. If your model does not converge, increase this value (e.g., 500, 1000).
+
+### 🎯 What is Binary vs Multiclass Classification?
+
+- **Binary classification**: The target `y` has **only 2 classes**  
+  Example: `['yes', 'no']`, `['spam', 'not spam']`, `['approved', 'denied']`
+
+- **Multiclass classification**: The target `y` has **more than 2 classes**  
+  Example: `['studio', 'apartment', 'garden', 'penthouse']`
+
+### ⚙️ `multi_class` – How to Handle Multiple Classes
+
+- `'ovr'` (One-vs-Rest):
+  - Trains one binary model **per class**
+  - Simpler, but less accurate in real multiclass problems
+  - Example: for 4 classes, builds 4 separate models
+
+- `'multinomial'` (recommended):
+  - Uses **softmax** to handle all classes in one model
+  - Better for accuracy, especially when classes are related
+  - Requires solver: `'lbfgs'`, `'saga'`, `'newton-cg'`, or `'sag'`
+
+### 🛠️ `solver` – Optimization Algorithm
+
+The solver handles how the model is trained. Each one has different features:
+
+| Solver      | Supports L1 | Supports L2 | Works with Multinomial | Notes                      |
+|-------------|-------------|-------------|--------------------------|-----------------------------|
+| `'lbfgs'`   | ❌          | ✅          | ✅                       | Fast, stable, default choice |
+| `'liblinear'` | ✅        | ✅          | ❌                       | Binary only, good for small data |
+| `'saga'`    | ✅          | ✅          | ✅                       | Best for large datasets & L1 |
+| `'newton-cg'` | ❌        | ✅          | ✅                       | Accurate but slower |
+| `'sag'`     | ❌          | ✅          | ✅                       | For large datasets, not sparse |
+
+---
+
+### 🧮 `penalty='l1'` – L1 Regularization (a.k.a. Lasso)
+
+- L1 pushes some coefficients to **zero** → simplifies the model
+- You **don’t apply it manually** — you specify it in the model:
+
+```python
+LogisticRegressionCV(penalty='l1', solver='saga')
+```
+
+---
+
 ## 🧪 קוד פייתון לדוגמה:
 
 ```python
@@ -228,74 +294,6 @@ Class probabilities:
 ```
 
 ---
-
-## 🔍 LogisticRegressionCV – Key Parameters Explained
-
-`LogisticRegressionCV` is a version of logistic regression that automatically performs cross-validation to choose the best regularization parameter (`C`). It is ideal for both binary and multiclass classification.
-
-### 🔧 Important Parameters:
-
-- **`solver`** – Optimization algorithm used for fitting the model:
-  - `'lbfgs'` – Default. Efficient for multiclass problems and large datasets.
-  - `'liblinear'` – Good for small datasets and binary classification; supports L1 penalty.
-  - `'saga'` – Handles large datasets; supports both L1 and L2 penalties; supports `multinomial`.
-  - `'newton-cg'`, `'sag'` – Also suitable for multiclass, but less commonly used.
-
-- **`multi_class`** – Defines the strategy for handling multiple classes:
-  - `'ovr'` – "One-vs-Rest": Trains one binary classifier per class. Suitable for binary and multiclass (less preferred).
-  - `'multinomial'` – Performs true multiclass classification using softmax. More accurate when the number of classes > 2 (requires `lbfgs`, `saga`, `newton-cg`, or `sag`).
-
-- **`cv`** – Number of cross-validation folds (default is 5). For example, `cv=5` splits the training data into 5 parts and uses each part as validation once.
-
-- **`max_iter`** – Maximum number of iterations taken by the solver to converge. If your model does not converge, increase this value (e.g., 500, 1000).
-
-### 🎯 What is Binary vs Multiclass Classification?
-
-- **Binary classification**: The target `y` has **only 2 classes**  
-  Example: `['yes', 'no']`, `['spam', 'not spam']`, `['approved', 'denied']`
-
-- **Multiclass classification**: The target `y` has **more than 2 classes**  
-  Example: `['studio', 'apartment', 'garden', 'penthouse']`
-
----
-
-### ⚙️ `multi_class` – How to Handle Multiple Classes
-
-- `'ovr'` (One-vs-Rest):
-  - Trains one binary model **per class**
-  - Simpler, but less accurate in real multiclass problems
-  - Example: for 4 classes, builds 4 separate models
-
-- `'multinomial'` (recommended):
-  - Uses **softmax** to handle all classes in one model
-  - Better for accuracy, especially when classes are related
-  - Requires solver: `'lbfgs'`, `'saga'`, `'newton-cg'`, or `'sag'`
-
----
-
-### 🛠️ `solver` – Optimization Algorithm
-
-The solver handles how the model is trained. Each one has different features:
-
-| Solver      | Supports L1 | Supports L2 | Works with Multinomial | Notes                      |
-|-------------|-------------|-------------|--------------------------|-----------------------------|
-| `'lbfgs'`   | ❌          | ✅          | ✅                       | Fast, stable, default choice |
-| `'liblinear'` | ✅        | ✅          | ❌                       | Binary only, good for small data |
-| `'saga'`    | ✅          | ✅          | ✅                       | Best for large datasets & L1 |
-| `'newton-cg'` | ❌        | ✅          | ✅                       | Accurate but slower |
-| `'sag'`     | ❌          | ✅          | ✅                       | For large datasets, not sparse |
-
----
-
-### 🧮 `penalty='l1'` – L1 Regularization (a.k.a. Lasso)
-
-- L1 pushes some coefficients to **zero** → simplifies the model
-- You **don’t apply it manually** — you specify it in the model:
-
-```python
-LogisticRegressionCV(penalty='l1', solver='saga')
-```
-
 
 # 🏠 תרגיל: חיזוי סוג הדירה בעזרת רגרסיה לוגיסטית מרובת משתנים
 
