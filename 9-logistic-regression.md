@@ -305,6 +305,35 @@ $$
 
 ---
 
+**מציאת המקדמים בפייטון:**
+
+```python
+from sklearn.linear_model import LogisticRegression
+import numpy as np
+
+# Data: Annual income and loan repayment (1=yes, 0=no)
+X = np.array([30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90]).reshape(-1, 1)
+y = np.array([0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1])
+
+# Fit logistic regression model
+model = LogisticRegression(solver='liblinear')
+model.fit(X, y)
+
+# Get coefficients
+b0 = model.intercept_[0]
+b1 = model.coef_[0][0]
+
+# Print the logistic regression equation
+print(f"Logistic regression equation:")
+print(f"P(return) = 1 / (1 + e^-({b0:.2f} + {b1:.2f} * income))")
+```
+output:
+```
+Logistic regression equation:
+P(return) = 1 / (1 + e^-(-1.17 + 0.03 * income))
+```
+
+
 ### Decision Boundary
 
 In logistic regression, we often need to make a binary decision based on the predicted probability. The most common threshold is 0.5, meaning:
