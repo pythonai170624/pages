@@ -267,7 +267,8 @@ Class probabilities:
 1. **ייבא את הנתונים** ל־`pandas.DataFrame`
 2. הפרד בין `type` (המשתנה התלוי) לבין שאר המשתנים (`X`)
 3. חלק את הנתונים ל־Train/Test
-4. אימן מודל `LogisticRegressionCV` עם:
+4. נרמל באמצעות StandardScaler
+5. אימן מודל `LogisticRegressionCV` עם:
    - `multi_class='multinomial'`
    - `solver='lbfgs'`
    5. הדפס:
