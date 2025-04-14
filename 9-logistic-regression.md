@@ -362,7 +362,8 @@ So according to our model, students need to study approximately 4.47 hours to ha
 
 <img src="log1.png" style="width:80%;"/>
 
-הגרף מציג את עקומת הרגרסיה הלוגיסטית (הקו הכחול) שמתאר את ההסתברות לעבור את המבחן כפונקציה של שעות הלימוד. שימו לב לצורה האופיינית של עקומת ה-S (סיגמואיד) של הרגרסיה הלוגיסטית. הנקודות האדומות הן הנתונים המקוריים, והקו המקווקו האנכי מציין את הגבול שבו ההסתברות לעבור את המבחן היא 0.5.
+הגרף מציג את עקומת הרגרסיה הלוגיסטית (הקו הכחול) שמתאר את ההסתברות לעבור את המבחן כפונקציה של שעות הלימוד. שימו לב לצורה האופיינית של עקומת ה-S (סיגמואיד) של
+הרגרסיה הלוגיסטית. הנקודות האדומות הן הנתונים המקוריים, והקו המקווקו האנכי מציין את הגבול שבו ההסתברות לעבור את המבחן היא 0.5.
 
 ## קוד פייטון
 
@@ -426,17 +427,13 @@ for hours in [3, 4, 5, 6]:
 
 כאשר נריץ את הקוד, נקבל:
 
-```
-Intercept (β₀): -6.73
-Coefficient (β₁): 1.52
-Logistic equation: P(pass) = 1 / (1 + e^-(-6.73 + 1.52 × hours))
-Decision boundary: 4.43 hours
+<img src="log1.png" />
 
-Predictions:
-3 hours: 0.20 probability of passing (Fail)
-4 hours: 0.37 probability of passing (Fail)
-5 hours: 0.59 probability of passing (Pass)
-6 hours: 0.78 probability of passing (Pass)
+```
+Intercept (β₀): -1.04
+Coefficient (β₁): 0.38
+Logistic equation: P(pass) = 1 / (1 + e^-(-1.04 + 0.38 × hours))
+Decision boundary: 2.72 hours
 ```
 
 התוצאות מראות שתלמיד צריך ללמוד לפחות 4.43 שעות כדי שהסיכוי שלו לעבור את המבחן יהיה מעל 50%. כמו כן, תלמיד שלומד 6 שעות יש לו סיכוי של כ-78% לעבור את המבחן.
