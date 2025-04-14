@@ -261,6 +261,12 @@ Class probabilities:
 | 110       | 5      | 10               | 3                        | garden         |
 | 55        | 2      | 18               | 3                        | studio         |
 | 130       | 5      | 7                | 7                        | garden         |
+| 75        | 3      | 9                | 4                        | apartment      |
+| 95        | 4      | 6                | 2                        | garden         |
+| 45        | 2      | 22               | 1                        | studio         |
+| 170       | 6      | 3                | 9                        | penthouse      |
+| 120       | 5      | 11               | 6                        | apartment      |
+
 
 ## 📌 מה עליך לעשות?
 
