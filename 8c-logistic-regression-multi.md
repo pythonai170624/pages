@@ -131,10 +131,13 @@ $$
 
 ```python
 import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
 from sklearn.linear_model import LogisticRegressionCV
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
-from sklearn.metrics import classification_report
+from sklearn.metrics import classification_report, confusion_matrix
 
 # Load dataset
 df = pd.read_csv("iris.csv")
@@ -149,15 +152,70 @@ scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 
-# Train logistic regression with multinomial softmax
+# Train logistic regression model
 model = LogisticRegressionCV(
-    solver='lbfgs',           # Efficient for multiclass problems
-    multi_class='multinomial',# Uses softmax across all classes
+    solver='lbfgs',             # Efficient for multiclass
+    multi_class='multinomial', # Softmax-based multiclass prediction
     cv=5,
     max_iter=500
 )
 model.fit(X_train_scaled, y_train)
 
-# Predict and evaluate
+# Predict on test set and print report
 y_pred = model.predict(X_test_scaled)
+print("Classification Report:")
 print(classification_report(y_test, y_pred))
+
+# Print learned coefficients
+print("\nModel Coefficients (per class):")
+coef_df = pd.DataFrame(model.coef_, columns=X.columns, index=model.classes_)
+print(coef_df)
+
+# Predict a specific custom case
+sample = np.array([[5.0, 3.0, 1.5, 0.2]])  # Example input
+sample_scaled = scaler.transform(sample)
+predicted_class = model.predict(sample_scaled)[0]
+predicted_proba = model.predict_proba(sample_scaled)
+
+print(f"\nPrediction for input [5.0, 3.0, 1.5, 0.2]: {predicted_class}")
+print("Class probabilities:", predicted_proba[0])
+
+# Plot confusion matrix heatmap
+cm = confusion_matrix(y_test, y_pred)
+plt.figure(figsize=(6, 4))
+sns.heatmap(cm, annot=True, fmt="d", cmap="Blues",
+            xticklabels=model.classes_,
+            yticklabels=model.classes_)
+plt.xlabel("Predicted")
+plt.ylabel("Actual")
+plt.title("Confusion Matrix Heatmap")
+plt.tight_layout()
+plt.show()
+```
+
+<img src="log4.png" />
+
+output:
+```
+lassification Report:
+              precision    recall  f1-score   support
+
+      setosa       1.00      1.00      1.00        19
+  versicolor       1.00      1.00      1.00        13
+   virginica       1.00      1.00      1.00        13
+
+    accuracy                           1.00        45
+   macro avg       1.00      1.00      1.00        45
+weighted avg       1.00      1.00      1.00        45
+
+
+Model Coefficients (per class):
+            sepal_length  sepal_width  petal_length  petal_width
+setosa         -2.379596     2.721570     -5.890557    -5.505229
+versicolor      1.922642    -0.167737     -2.672822    -2.181061
+virginica       0.456954    -2.553833      8.563378     7.686290
+
+Prediction for input [5.0, 3.0, 1.5, 0.2]: setosa
+```
+
+
