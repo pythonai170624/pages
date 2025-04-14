@@ -229,6 +229,36 @@ Class probabilities:
 
 ---
 
+## 🔍 LogisticRegressionCV – Key Parameters Explained
+
+`LogisticRegressionCV` is a version of logistic regression that automatically performs cross-validation to choose the best regularization parameter (`C`). It is ideal for both binary and multiclass classification.
+
+### 🔧 Important Parameters:
+
+- **`solver`** – Optimization algorithm used for fitting the model:
+  - `'lbfgs'` – Default. Efficient for multiclass problems and large datasets.
+  - `'liblinear'` – Good for small datasets and binary classification; supports L1 penalty.
+  - `'saga'` – Handles large datasets; supports both L1 and L2 penalties; supports `multinomial`.
+  - `'newton-cg'`, `'sag'` – Also suitable for multiclass, but less commonly used.
+
+- **`multi_class`** – Defines the strategy for handling multiple classes:
+  - `'ovr'` – "One-vs-Rest": Trains one binary classifier per class. Suitable for binary and multiclass (less preferred).
+  - `'multinomial'` – Performs true multiclass classification using softmax. More accurate when the number of classes > 2 (requires `lbfgs`, `saga`, `newton-cg`, or `sag`).
+
+- **`cv`** – Number of cross-validation folds (default is 5). For example, `cv=5` splits the training data into 5 parts and uses each part as validation once.
+
+- **`max_iter`** – Maximum number of iterations taken by the solver to converge. If your model does not converge, increase this value (e.g., 500, 1000).
+
+### 📝 Example:
+
+```python
+model = LogisticRegressionCV(
+    solver='lbfgs',
+    multi_class='multinomial',
+    cv=5,
+    max_iter=500
+)
+
 # 🏠 תרגיל: חיזוי סוג הדירה בעזרת רגרסיה לוגיסטית מרובת משתנים
 
 ## 🎯 מטרת התרגיל:
