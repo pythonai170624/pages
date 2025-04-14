@@ -313,7 +313,7 @@ import numpy as np
 
 # Data: Annual income and loan repayment (1=yes, 0=no)
 X = np.array([30, 35, 40, 45, 50, 55, 60, 65, 70, 75]).reshape(-1, 1)
-y = np.array([0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1])
+y = np.array([0, 0, 0, 0, 0, 1, 0, 1, 1, 1])
 
 # Fit logistic regression model
 model = LogisticRegression(solver='liblinear')
