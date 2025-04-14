@@ -434,6 +434,14 @@ Intercept (β₀): -1.04
 Coefficient (β₁): 0.38
 Logistic equation: P(pass) = 1 / (1 + e^-(-1.04 + 0.38 × hours))
 Decision boundary: 2.72 hours
+
+Predictions:
+1 hours: 0.34 probability of passing (Fail)
+2 hours: 0.43 probability of passing (Fail)
+3 hours: 0.53 probability of passing (Pass)
+4 hours: 0.62 probability of passing (Pass)
+5 hours: 0.70 probability of passing (Pass)
+6 hours: 0.78 probability of passing (Pass)
 ```
 
 התוצאות מראות שתלמיד צריך ללמוד לפחות 4.43 שעות כדי שהסיכוי שלו לעבור את המבחן יהיה מעל 50%. כמו כן, תלמיד שלומד 6 שעות יש לו סיכוי של כ-78% לעבור את המבחן.
