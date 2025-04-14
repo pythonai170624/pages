@@ -53,15 +53,15 @@
 
 ## ✅ מדד הדיוק (Accuracy)
 
-\[
-\text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}
-\]
-
 נחשב:
 
-\[
+$$
+\text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}
+$$
+
+$$
 \frac{40 + 45}{100} = 0.85 = 85\%
-\]
+$$
 
 ---
 
