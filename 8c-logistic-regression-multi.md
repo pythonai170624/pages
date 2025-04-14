@@ -273,5 +273,6 @@ Class probabilities:
    - `solver='lbfgs'`
    5. הדפס:
    - דיוק המודל (`accuracy`)
+     את ה- confusion matrix
    - תחזית לדוגמה: דירה עם 90 מ״ר, 4 חדרים, גיל 10, מרחק 4 ק״מ
 
