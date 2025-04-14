@@ -271,4 +271,7 @@ Class probabilities:
 4. אימן מודל `LogisticRegression` עם:
    - `multi_class='multinomial'`
    - `solver='lbfgs'`
+   5. הדפס:
+   - דיוק המודל (`accuracy`)
+   - תחזית לדוגמה: דירה עם 90 מ״ר, 4 חדרים, גיל 10, מרחק 4 ק״מ
 
