@@ -74,6 +74,40 @@ $$
 \text{F1} = \frac{2 \cdot 0.666 \cdot 0.8}{0.666 + 0.8} \approx 0.72
 $$
 
+**דוגמה בפייתון:**
+
+```python
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+from sklearn.model_selection import train_test_split
+import numpy as np
+
+# Example data: study hours and exam result
+X = np.array([[1], [2], [3], [4], [5], [6], [7], [8], [9]])
+y = np.array([0, 0, 0, 0, 1, 1, 1, 1, 1])  # 0 = fail, 1 = pass
+
+# Split into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# Create and train the logistic regression model
+model = LogisticRegression(solver='liblinear')
+model.fit(X_train, y_train)
+
+# Predict the test set
+y_pred = model.predict(X_test)
+
+# Calculate and print evaluation metrics
+accuracy = accuracy_score(y_test, y_pred)
+recall = recall_score(y_test, y_pred)
+precision = precision_score(y_test, y_pred)
+f1 = f1_score(y_test, y_pred)
+
+print(f"Accuracy:  {accuracy:.2f}")
+print(f"Recall:    {recall:.2f}")
+print(f"Precision: {precision:.2f}")
+print(f"F1 Score:  {f1:.2f}")
+```
+
 ---
 
 ## 🌡️ הצגת המודל עם Heatmap
