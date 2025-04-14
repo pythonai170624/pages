@@ -178,7 +178,12 @@ predicted_class = model.predict(sample_scaled)[0]
 predicted_proba = model.predict_proba(sample_scaled)
 
 print(f"\nPrediction for input [5.0, 3.0, 1.5, 0.2]: {predicted_class}")
-print("Class probabilities:", predicted_proba[0])
+probs = predicted_proba[0]
+class_labels = model.classes_
+
+print("Class probabilities:")
+for label, prob in zip(class_labels, probs):
+    print(f"  {label}: {prob:.4f}")
 
 # Plot confusion matrix heatmap
 cm = confusion_matrix(y_test, y_pred)
@@ -216,6 +221,10 @@ versicolor      1.922642    -0.167737     -2.672822    -2.181061
 virginica       0.456954    -2.553833      8.563378     7.686290
 
 Prediction for input [5.0, 3.0, 1.5, 0.2]: setosa
+Class probabilities:
+  setosa: 0.9980
+  versicolor: 0.0020
+  virginica: 0.0000
 ```
 
 
