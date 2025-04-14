@@ -249,24 +249,9 @@ Class probabilities:
 
 ## 📋 טבלת נתונים:
 
-| שטח (מ״ר) | חדרים | גיל המבנה (שנים) | מרחק ממרכז העיר (ק״מ) | סוג הדירה     |
-|-----------|--------|------------------|--------------------------|----------------|
-| 30        | 1      | 20               | 2                        | studio         |
-| 85        | 4      | 12               | 6                        | apartment      |
-| 60        | 3      | 15               | 4                        | apartment      |
-| 150       | 5      | 5                | 10                       | penthouse      |
-| 40        | 2      | 25               | 1                        | studio         |
-| 100       | 4      | 8                | 5                        | apartment      |
-| 200       | 6      | 4                | 12                       | penthouse      |
-| 110       | 5      | 10               | 3                        | garden         |
-| 55        | 2      | 18               | 3                        | studio         |
-| 130       | 5      | 7                | 7                        | garden         |
-| 75        | 3      | 9                | 4                        | apartment      |
-| 95        | 4      | 6                | 2                        | garden         |
-| 45        | 2      | 22               | 1                        | studio         |
-| 170       | 6      | 3                | 9                        | penthouse      |
-| 120       | 5      | 11               | 6                        | apartment      |
+<img src="apart.jpg" />
 
+נמצא בקובץ apartments.csv 
 
 ## 📌 מה עליך לעשות?
 
