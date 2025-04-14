@@ -114,7 +114,7 @@ In this case, 3 out of 5 are oranges, so our classification would still be orang
 
 ## גרף
 
-<img src="knn1.png" style="width:40%;"/>
+<img src="knn1.png" style="width:80%;"/>
 
 בגרף זה אנו רואים ויזואליזציה דו-ממדית של נתוני הפירות, כאשר הנקודה הכחולה מסמנת את הפרי החדש, והמעגל מסמן את K=3 השכנים הקרובים ביותר. רוב השכנים מסווגים כתפוזים, ולכן הפרי החדש מסווג כתפוז.
 
