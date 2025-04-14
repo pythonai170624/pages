@@ -374,6 +374,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LogisticRegression
 import pandas as pd
+from math import log
 
 # Our data
 hours_studied = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9]).reshape(-1, 1)  # Study hours
@@ -391,8 +392,20 @@ print(f"Coefficient (β₁): {model.coef_[0][0]:.2f}")
 equation = f"P(pass) = 1 / (1 + e^-({model.intercept_[0]:.2f} + {model.coef_[0][0]:.2f} × hours))"
 print(f"Logistic equation: {equation}")
 
+# Helper: get boundary for any probability
+def get_threshold(probability):
+    logit = log(probability / (1 - probability))
+    return (logit - b0) / b1
+
+# Coefficients
+b0 = model.intercept_[0]
+b1 = model.coef_[0][0]
+
 # Find decision boundary (probability = 0.5)
 decision_boundary = -model.intercept_[0] / model.coef_[0][0]
+# or
+decision_boundary = get_threshold(0.5)
+
 print(f"Decision boundary: {decision_boundary:.2f} hours")
 
 # Generate points for the logistic curve
@@ -417,7 +430,7 @@ plt.show()
 
 # Make predictions for specific study hours
 print("\nPredictions:")
-for hours in [3, 4, 5, 6]:
+for hours in [1, 2, 3, 4, 5, 6]:
     probability = 1 / (1 + np.exp(-(model.intercept_[0] + model.coef_[0][0] * hours)))
     outcome = "Pass" if probability >= 0.5 else "Fail"
     print(f"{hours} hours: {probability:.2f} probability of passing ({outcome})")
