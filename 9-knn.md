@@ -130,37 +130,37 @@ from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, classification_report
 
-# נתוני פירות
+# Fruit data
 colors = np.array([200, 50, 220, 240, 250, 230, 30, 40, 20])
 sizes = np.array([7, 7, 6, 9, 8, 9, 12, 13, 11])
 weights = np.array([150, 160, 140, 170, 165, 180, 120, 130, 115])
 fruit_types = np.array(['apple', 'apple', 'apple', 'orange', 'orange', 'orange', 'banana', 'banana', 'banana'])
 
-# יצירת מסד נתונים
+# Create feature matrix
 X = np.column_stack((colors, sizes, weights))
 y = fruit_types
 
-# תקנון הנתונים
+# Normalize data
 scaler = MinMaxScaler()
 X_scaled = scaler.fit_transform(X)
 
-# אימון המודל
-k = 3  # מספר השכנים
+# Train the KNN model
+k = 3  # number of neighbors
 model = KNeighborsClassifier(n_neighbors=k)
 model.fit(X_scaled, y)
 
-# פרי חדש לחיזוי
+# New fruit to classify
 new_fruit = np.array([[220, 8, 155]])
 new_fruit_scaled = scaler.transform(new_fruit)
 prediction = model.predict(new_fruit_scaled)
 probabilities = model.predict_proba(new_fruit_scaled)
 
-# הדפסת תוצאות
-print(f"חיזוי: הפרי החדש הוא {prediction[0]}")
+# Output result
+print(f"Prediction: The new fruit is a {prediction[0]}")
 
-# הדפסת ההסתברויות (אם המודל תומך בכך)
+# Print class probabilities
 class_names = model.classes_
-print("\nהסתברויות:")
+print("\nClass probabilities:")
 for cls, prob in zip(class_names, probabilities[0]):
     print(f"{cls}: {prob:.2f}")
 
@@ -171,9 +171,9 @@ for cls, prob in zip(class_names, probabilities[0]):
 כאשר נריץ את הקוד, נקבל:
 
 ```
-חיזוי: הפרי החדש הוא orange
+Prediction: The new fruit is a orange
 
-הסתברויות:
+Class probabilities:
 apple: 0.33
 banana: 0.00
 orange: 0.67
