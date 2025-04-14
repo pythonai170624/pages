@@ -262,7 +262,7 @@ Class probabilities:
 5. אימן מודל `LogisticRegressionCV` עם:
    - `multi_class='multinomial'`
    - `solver='lbfgs'`
-   - cv=5
+   - `cv=5`
    5. הדפס:
    - דיוק המודל (`accuracy`)
    - את ה- confusion matrix
