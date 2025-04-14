@@ -184,8 +184,6 @@ The solver handles how the model is trained. Each one has different features:
 | `'newton-cg'` | ❌        | ✅          | ✅                       | Accurate but slower |
 | `'sag'`     | ❌          | ✅          | ✅                       | For large datasets, not sparse |
 
----
-
 ### 🧮 `penalty='l1'` – L1 Regularization (a.k.a. Lasso)
 
 - L1 pushes some coefficients to **zero** → simplifies the model
