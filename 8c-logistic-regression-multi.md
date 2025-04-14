@@ -249,15 +249,6 @@ Class probabilities:
 
 - **`max_iter`** – Maximum number of iterations taken by the solver to converge. If your model does not converge, increase this value (e.g., 500, 1000).
 
-### 📝 Example:
-
-```python
-model = LogisticRegressionCV(
-    solver='lbfgs',
-    multi_class='multinomial',
-    cv=5,
-    max_iter=500
-)
 
 # 🏠 תרגיל: חיזוי סוג הדירה בעזרת רגרסיה לוגיסטית מרובת משתנים
 
