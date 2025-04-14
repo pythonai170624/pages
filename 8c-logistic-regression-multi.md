@@ -227,4 +227,48 @@ Class probabilities:
   virginica: 0.0000
 ```
 
+# 🏠 תרגיל: חיזוי סוג הדירה בעזרת רגרסיה לוגיסטית מרובת משתנים
+
+## 🎯 מטרת התרגיל:
+לבנות מודל רגרסיה לוגיסטית מרובת משתנים (Multivariable Logistic Regression) שיחזה את **סוג הדירה** על פי מאפיינים כמותיים של הנכס.
+
+---
+
+## 🧠 משתנים:
+
+| משתנה            | תיאור                                   |
+|------------------|-------------------------------------------|
+| `area`           | שטח הדירה במ״ר                           |
+| `rooms`          | מספר חדרים                                |
+| `age`            | גיל הבניין בשנים                         |
+| `distance`       | מרחק ממרכז העיר בק\"מ                   |
+| `type`           | סוג הדירה (המשתנה שנרצה לחזות): `studio`, `apartment`, `penthouse`, `garden`
+
+---
+
+## 📋 טבלת נתונים:
+
+| שטח (מ״ר) | חדרים | גיל המבנה (שנים) | מרחק ממרכז העיר (ק״מ) | סוג הדירה     |
+|-----------|--------|------------------|--------------------------|----------------|
+| 30        | 1      | 20               | 2                        | studio         |
+| 85        | 4      | 12               | 6                        | apartment      |
+| 60        | 3      | 15               | 4                        | apartment      |
+| 150       | 5      | 5                | 10                       | penthouse      |
+| 40        | 2      | 25               | 1                        | studio         |
+| 100       | 4      | 8                | 5                        | apartment      |
+| 200       | 6      | 4                | 12                       | penthouse      |
+| 110       | 5      | 10               | 3                        | garden         |
+| 55        | 2      | 18               | 3                        | studio         |
+| 130       | 5      | 7                | 7                        | garden         |
+
+---
+
+## 📌 מה עליך לעשות?
+
+1. **ייבא את הנתונים** ל־`pandas.DataFrame`
+2. הפרד בין `type` (המשתנה התלוי) לבין שאר המשתנים (`X`)
+3. חלק את הנתונים ל־Train/Test
+4. אימן מודל `LogisticRegression` עם:
+   - `multi_class='multinomial'`
+   - `solver='lbfgs'`
 
