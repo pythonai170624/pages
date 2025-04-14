@@ -249,7 +249,7 @@ Class probabilities:
 
 ## 📋 טבלת נתונים:
 
-<img src="apart.jpg" />
+<img src="apart.jpg"  style="width: 60%" />
 
 נמצא בקובץ apartments.csv 
 
