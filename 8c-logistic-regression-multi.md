@@ -249,6 +249,53 @@ Class probabilities:
 
 - **`max_iter`** – Maximum number of iterations taken by the solver to converge. If your model does not converge, increase this value (e.g., 500, 1000).
 
+### 🎯 What is Binary vs Multiclass Classification?
+
+- **Binary classification**: The target `y` has **only 2 classes**  
+  Example: `['yes', 'no']`, `['spam', 'not spam']`, `['approved', 'denied']`
+
+- **Multiclass classification**: The target `y` has **more than 2 classes**  
+  Example: `['studio', 'apartment', 'garden', 'penthouse']`
+
+---
+
+### ⚙️ `multi_class` – How to Handle Multiple Classes
+
+- `'ovr'` (One-vs-Rest):
+  - Trains one binary model **per class**
+  - Simpler, but less accurate in real multiclass problems
+  - Example: for 4 classes, builds 4 separate models
+
+- `'multinomial'` (recommended):
+  - Uses **softmax** to handle all classes in one model
+  - Better for accuracy, especially when classes are related
+  - Requires solver: `'lbfgs'`, `'saga'`, `'newton-cg'`, or `'sag'`
+
+---
+
+### 🛠️ `solver` – Optimization Algorithm
+
+The solver handles how the model is trained. Each one has different features:
+
+| Solver      | Supports L1 | Supports L2 | Works with Multinomial | Notes                      |
+|-------------|-------------|-------------|--------------------------|-----------------------------|
+| `'lbfgs'`   | ❌          | ✅          | ✅                       | Fast, stable, default choice |
+| `'liblinear'` | ✅        | ✅          | ❌                       | Binary only, good for small data |
+| `'saga'`    | ✅          | ✅          | ✅                       | Best for large datasets & L1 |
+| `'newton-cg'` | ❌        | ✅          | ✅                       | Accurate but slower |
+| `'sag'`     | ❌          | ✅          | ✅                       | For large datasets, not sparse |
+
+---
+
+### 🧮 `penalty='l1'` – L1 Regularization (a.k.a. Lasso)
+
+- L1 pushes some coefficients to **zero** → simplifies the model
+- You **don’t apply it manually** — you specify it in the model:
+
+```python
+LogisticRegressionCV(penalty='l1', solver='saga')
+```
+
 
 # 🏠 תרגיל: חיזוי סוג הדירה בעזרת רגרסיה לוגיסטית מרובת משתנים
 
