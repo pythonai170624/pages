@@ -1,9 +1,9 @@
 # 🌟 רגרסיה לוגיסטית עם כמה משתנים (Multivariable Logistic Regression)
 
 ## 📘 מה זה רגרסיה לוגיסטית?
-רגרסיה לוגיסטית היא שיטה סטטיסטית לחיזוי משתנה תלוי בינארי או רב־קטגורי (כמו: כן/לא, סוג פרח), על סמך ערכים של משתנים מסבירים (תכונות).
+רגרסיה לוגיסטית היא שיטה סטטיסטית לחיזוי משתנה תלוי בינארי או רב־קטגורי (כמו: כן/לא, סוג פרח), על סמך ערכים של משתנים מסבירים (תכונות)
 
-במקרה של מספר משתנים מסבירים (features), מדובר ברגרסיה לוגיסטית עם **כמה נעלמים**.
+במקרה של מספר משתנים מסבירים (features), מדובר ברגרסיה לוגיסטית עם **כמה נעלמים**
 
 ---
 
@@ -130,7 +130,11 @@ $$
 
 ## 🔍 LogisticRegressionCV – Key Parameters Explained
 
-`LogisticRegressionCV` is a version of logistic regression that automatically performs cross-validation to choose the best regularization parameter (`C`). It is ideal for both binary and multiclass classification.
+`LogisticRegressionCV` is a version of logistic regression that automatically performs cross-validation to choose the best regularization parameter (`C`). It is ideal for both binary and multiclass classification
+
+C is a hyperparameter that controls the strength of regularization in logistic regression
+
+C controls how much we trust our training data versus how much we want to simplify the model to avoid overfitting
 
 ### 🔧 Important Parameters:
 
