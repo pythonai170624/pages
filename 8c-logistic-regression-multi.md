@@ -227,12 +227,14 @@ Class probabilities:
   virginica: 0.0000
 ```
 
+---
+
 # 🏠 תרגיל: חיזוי סוג הדירה בעזרת רגרסיה לוגיסטית מרובת משתנים
 
 ## 🎯 מטרת התרגיל:
 לבנות מודל רגרסיה לוגיסטית מרובת משתנים (Multivariable Logistic Regression) שיחזה את **סוג הדירה** על פי מאפיינים כמותיים של הנכס.
 
----
+
 
 ## 🧠 משתנים:
 
@@ -244,7 +246,6 @@ Class probabilities:
 | `distance`       | מרחק ממרכז העיר בק\"מ                   |
 | `type`           | סוג הדירה (המשתנה שנרצה לחזות): `studio`, `apartment`, `penthouse`, `garden`
 
----
 
 ## 📋 טבלת נתונים:
 
@@ -260,8 +261,6 @@ Class probabilities:
 | 110       | 5      | 10               | 3                        | garden         |
 | 55        | 2      | 18               | 3                        | studio         |
 | 130       | 5      | 7                | 7                        | garden         |
-
----
 
 ## 📌 מה עליך לעשות?
 
