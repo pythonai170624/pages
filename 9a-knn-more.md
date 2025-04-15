@@ -329,7 +329,8 @@ You might want to try different values for:
   - `'distance'` — closer neighbors get more weight
 - `metric`: 
   - `'euclidean'` — standard distance  
-  - `'manhattan'` — city block distance
+  - `'manhattan'` — city block distance. It measures the distance between two points by only moving horizontally and vertically, like you would in a city with square blocks
+    abs(x1-x2) + abs(y1-y2)
 
 #### ⚙️ How it works:
 
