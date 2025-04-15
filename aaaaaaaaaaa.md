@@ -9,7 +9,7 @@ SVM היא שיטת **למידת מכונה מונחית (Supervised Learning)**
 המטרה העיקרית:  
 **למצוא את הגבול שמפריד בצורה הכי טובה בין קבוצות שונות של דוגמאות**.
 
-![SVM Basic Concept](https://miro.medium.com/v2/resize:fit:1400/1*TudH6YvvH7-h5ZyF2eN3EQ.jpeg)
+<img src="svm1.png" />
 
 ---
 
