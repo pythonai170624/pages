@@ -399,7 +399,7 @@ Best accuracy: 0.8239
 
 ## דוגמא עם fetch_openml
 
-<a href="">read here</a>
+<a href="9z-fetch_openml.md">read here about fetch_openml</a>
 
 
 ```python
