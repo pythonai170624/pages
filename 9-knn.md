@@ -24,7 +24,7 @@ HHHHHHHN MN# K-Nearest Neighbors (KNN)
 
 ## Mathematical Formula and Complete Calculation
 
-<img src="knn3.png" />
+<img src="knn2.png" />
 
 K-Nearest Neighbors doesn't have a "formula" in the traditional sense, but rather works by:
 1. Calculating the distance between a new data point and all existing points
