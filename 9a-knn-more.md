@@ -232,7 +232,7 @@ optimal_k = k_range[np.argmax(scores)]
 print(f"ערך K האופטימלי הוא: {optimal_k} עם דיוק של: {max(scores):.4f}")
 ```
 
-<img src="elbow_method.png" style="width:60%;"/>
+<img src="knn4.png" style="width:60%;"/>
 
 בשיטת ה-Elbow, אנו מחפשים את הנקודה שבה השיפור בדיוק מתחיל להתמתן משמעותית, כמו "מרפק" בגרף.
 
