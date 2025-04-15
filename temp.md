@@ -21,21 +21,22 @@ $K(x, y) = \phi(x) \cdot \phi(y)$
 
 כאשר $\phi$ היא פונקציית הטרנספורמציה למרחב הגבוה יותר.
 
-### סוגים נפוצים של פונקציות Kernel:
+### Common types of Kernel Functions:
 
-1. **Linear Kernel (לינארי)**:
+1. **Linear Kernel**:
    $K(x, y) = x \cdot y$
 
-2. **Polynomial Kernel (פולינומיאלי)**:
+2. **Polynomial Kernel**:
    $K(x, y) = (\gamma x \cdot y + c)^d$
-   כאשר $\gamma > 0$, $c \geq 0$, ו-$d$ הוא מספר שלם שמייצג את מעלת הפולינום.
+   where $\gamma > 0$, $c \geq 0$, and $d$ is an integer representing the degree of the polynomial.
 
-3. **Radial Basis Function (RBF) או Gaussian Kernel**:
+3. **Radial Basis Function (RBF) or Gaussian Kernel**:
    $K(x, y) = \exp(-\gamma \|x - y\|^2)$
-   כאשר $\gamma > 0$, בדרך כלל $\gamma = \frac{1}{2\sigma^2}$.
+   where $\gamma > 0$, typically $\gamma = \frac{1}{2\sigma^2}$.
 
 4. **Sigmoid Kernel**:
    $K(x, y) = \tanh(\gamma x \cdot y + c)$
+   where $\gamma > 0$ and $c \geq 0$.
    כאשר $\gamma > 0$ ו-$c \geq 0$.
 
 ## Kernel Trick (טריק הגרעין)
@@ -62,3 +63,4 @@ $K(x, y) = \phi(x) \cdot \phi(y)$
 4. במקום לחשב במפורש את הטרנספורמציה הזו, אנחנו יכולים להשתמש ב-Kernel (לדוגמה Gaussian Kernel) שמשיג את אותה תוצאה
 
 ה-Kernel Trick מאפשר לנו לעבוד עם מרחבים בעלי ממדים גבוהים, לעתים אפילו אינסופיים, מבלי לשלם את המחיר החישובי של עבודה במרחבים אלו.
+
