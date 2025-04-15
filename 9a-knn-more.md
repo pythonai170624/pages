@@ -515,6 +515,37 @@ print(classification_report(y_test, test_predictions))
 
 ```
 
+output:
+```
+Loading dataset...
+Dataset shape: (5000, 784), with 10 classes
+Training set: (3000, 784)
+Validation set: (1000, 784)
+Test set: (1000, 784)
+Setting up GridSearchCV...
+Training model with GridSearchCV...
+Fitting 5 folds for each of 60 candidates, totalling 300 fits
+GridSearchCV completed in 50.65 seconds
+Best parameters: {'knn__n_neighbors': np.int64(5), 'knn__p': 1, 'knn__weights': 'distance'}
+Best cross-validation score: 0.7917
+Validation accuracy: 0.7870
+Test accuracy: 0.8120
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.77      0.84      0.81       108
+           1       1.00      0.92      0.96        92
+           2       0.73      0.59      0.65       103
+           3       0.86      0.84      0.85        95
+           4       0.60      0.84      0.70        90
+           5       0.97      0.81      0.88       122
+           6       0.57      0.48      0.53        95
+           7       0.81      0.92      0.86       104
+           8       0.97      0.92      0.94        97
+           9       0.88      0.95      0.91        94
+```
+
 <a href="9zz-full-demo.py"/>see complete code...</a>
 
 
