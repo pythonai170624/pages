@@ -90,6 +90,8 @@ For vectors $x = [1, 2]$ and $y = [3, 4]$ with $\gamma = 0.5$:
 ## 4. Sigmoid Kernel
 **Formula**: $K(x, y) = \tanh(\gamma x \cdot y + c)$
 
+htan = Hyperbolic Tangent 
+
 where $\gamma > 0$ and $c \geq 0$.
 
 **Example**:
