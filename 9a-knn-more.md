@@ -524,9 +524,6 @@ print(classification_report(y_test, test_predictions))
 
 <img src="knn-ex3.png" />
 
-<img src="knn-ex4.png" />
-
-<img src="knn-ex5.png" />
 
 
 
