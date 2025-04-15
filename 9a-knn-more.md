@@ -321,6 +321,7 @@ grid.fit(X, y)
 # Show best results
 print("Best parameters:", grid.best_params_)
 print("Best accuracy:", grid.best_score_)
+```
 
 
 
