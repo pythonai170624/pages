@@ -268,40 +268,61 @@ print(f"ערך K האופטימלי (CV) הוא: {optimal_k_cv} עם דיוק מ
 ```
 
 <img src="knn5.png" style="width:60%;"/>
-### השוואה בין שיטות בחירת K
+
+# 🔍 GridSearchCV with KNN – Explanation & Example
+
+## What is GridSearchCV?
+
+GridSearchCV מספריית Scikit-learn עוזרת לך למצוא את הפרמטרים הטובים ביותר למודל שלך
+על ידי בדיקה של כל השילובים האפשריים של פרמטרים (רשת – Grid).
+
+## 📦 In the context of KNN:
+
+You might want to try different values for:
+
+- `n_neighbors`: Number of neighbors (K)
+- `weights`: 
+  - `'uniform'` — all neighbors have equal weight  
+  - `'distance'` — closer neighbors get more weight
+- `metric`: 
+  - `'euclidean'` — standard distance  
+  - `'manhattan'` — city block distance
+
+## ⚙️ How it works:
+
+1. You define a **grid of parameters** to test.
+2. `GridSearchCV` trains the model using **cross-validation** for each combination.
+3. It evaluates each setup using a scoring metric (e.g., accuracy).
+4. It returns the **best parameter combination** based on results.
+
+## 🧠 Python Example:
 
 ```python
 from sklearn.model_selection import GridSearchCV
+from sklearn.neighbors import KNeighborsClassifier
 
-# הגדרת פרמטרים לחיפוש
-param_grid = {'n_neighbors': list(range(1, 31))}
+# Example data (X, y)
+# Assume X and y are already defined
 
-# שימוש ב-GridSearchCV לחיפוש אוטומטי
-grid_search = GridSearchCV(KNeighborsClassifier(), param_grid, cv=10)
-grid_search.fit(X, y)
+# Base model
+knn = KNeighborsClassifier()
 
-# הצגת תוצאות החיפוש
-print(f"ערך K האופטימלי (GridSearchCV): {grid_search.best_params_['n_neighbors']}")
-print(f"דיוק מיטבי: {grid_search.best_score_:.4f}")
+# Grid of parameters to try
+param_grid = {
+    'n_neighbors': list(range(1, 31)),
+    'weights': ['uniform', 'distance'],
+    'metric': ['euclidean', 'manhattan']
+}
 
-# השוואת כל השיטות
-plt.figure(figsize=(12, 6))
-plt.plot(k_range, scores, marker='o', label='Test Accuracy')
-plt.plot(k_range, cv_scores, marker='s', label='CV Accuracy')
-plt.axvline(x=optimal_k, color='r', linestyle='--', label=f'Best K (Test): {optimal_k}')
-plt.axvline(x=optimal_k_cv, color='g', linestyle='--', label=f'Best K (CV): {optimal_k_cv}')
-plt.axvline(x=grid_search.best_params_['n_neighbors'], color='m', linestyle='--', 
-            label=f"Best K (GridSearchCV): {grid_search.best_params_['n_neighbors']}")
-plt.title('Comparison of Methods for Selecting Optimal K')
-plt.xlabel('K Value')
-plt.ylabel('Accuracy')
-plt.xticks(k_range[::2])
-plt.legend()
-plt.grid(True)
-plt.show()
-```
+# Grid Search with 5-fold cross-validation
+grid = GridSearchCV(knn, param_grid, cv=5, scoring='accuracy')
+grid.fit(X, y)
 
-<img src="k_comparison.png" style="width:60%;"/>
+# Show best results
+print("Best parameters:", grid.best_params_)
+print("Best accuracy:", grid.best_score_)
+
+
 
 ### כיצד לבחור את K המתאים?
 
