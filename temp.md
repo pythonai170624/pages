@@ -37,7 +37,6 @@ $K(x, y) = \phi(x) \cdot \phi(y)$
 4. **Sigmoid Kernel**:
    $K(x, y) = \tanh(\gamma x \cdot y + c)$
    where $\gamma > 0$ and $c \geq 0$.
-   where $\gamma > 0$ ו-$c \geq 0$.
 
 # Kernel Functions with Examples
 
