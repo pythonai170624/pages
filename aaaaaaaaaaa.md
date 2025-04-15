@@ -18,7 +18,17 @@ SVM היא שיטת **למידת מכונה מונחית (Supervised Learning)**
 למצוא את **הקו/מישור (Hyperplane)** שמפריד בצורה מקסימלית בין קבוצות.  
 המטרה היא להגדיל את המרחק מהקו אל הנקודות הקרובות ביותר – הנקראות **וקטורים תומכים**.
 
-![Maximum Margin](https://miro.medium.com/max/1396/1*ZpkLQf2FNfzfH4HXeMjJEA.png)
+**וקטורים תומכים – Support Vectors**
+
+הנקודות הקרובות ביותר לקו ההפרדה.
+
+- הן אלו שקובעות את מיקום הקו
+- אם תזיז נקודה אחרת – הקו לא יזוז
+- אם תזיז וקטור תומך – הקו ישתנה
+
+📌 אלה "הנקודות החשובות ביותר" באימון של SVM.
+
+<img src="svm2.png" />
 
 ---
 
@@ -28,19 +38,10 @@ SVM היא שיטת **למידת מכונה מונחית (Supervised Learning)**
 - ב־3D: משטח
 - ב־4D ומעלה: פשוט נקרא "Hyperplane"
 
-![Hyperplanes in Different Dimensions](https://miro.medium.com/max/941/1*KfH7D_qUwwe6anOGDTJdkQ.png)
+<img src="svm3.png" />
 
 ---
 
-## 🎯 וקטורים תומכים – Support Vectors
-
-הנקודות הקרובות ביותר לקו ההפרדה.
-
-- הן אלו שקובעות את מיקום הקו
-- אם תזיז נקודה אחרת – הקו לא יזוז
-- אם תזיז וקטור תומך – הקו ישתנה
-
-📌 אלה "הנקודות החשובות ביותר" באימון של SVM.
 
 ![Support Vectors Highlighted](https://miro.medium.com/max/1400/1*0S7J1RYX2m9mvq2_zLzQRw.png)
 
