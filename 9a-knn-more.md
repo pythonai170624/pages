@@ -138,11 +138,22 @@ weighted avg      0.86      0.86      0.86        50
 קוד פייתון להצגת מדדי ביצוע:
 
 ```python
+import numpy as np
+import pandas as pd
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report, confusion_matrix
 import matplotlib.pyplot as plt
 import seaborn as sns
+
+colors = np.array([200, 50, 220, 240, 250, 230, 30, 40, 20])
+sizes = np.array([7, 7, 6, 9, 8, 9, 12, 13, 11])
+weights = np.array([150, 160, 140, 170, 165, 180, 120, 130, 115])
+fruit_types = np.array(['apple', 'apple', 'apple', 'orange', 'orange', 'orange', 'banana', 'banana', 'banana'])
+
+# Create feature matrix
+X = np.column_stack((colors, sizes, weights))
+y = fruit_types
 
 # אימון המודל
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
@@ -150,19 +161,34 @@ model = KNeighborsClassifier(n_neighbors=3)
 model.fit(X_train, y_train)
 y_pred = model.predict(X_test)
 
-# הצגת מטריצת הבלבול בצורה גרפית
-plt.figure(figsize=(8, 6))
-cm = confusion_matrix(y_test, y_pred)
-sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', 
-            xticklabels=model.classes_, 
-            yticklabels=model.classes_)
-plt.title('Confusion Matrix')
-plt.ylabel('Actual')
-plt.xlabel('Predicted')
-plt.show()
+# Calculate and display classification report (precision, recall, f1-score, support)
+print("Classification Report:")
+report = classification_report(y_test, y_pred)
+print(report)
 
-# הצגת דוח סיווג מפורט
-print(classification_report(y_test, y_pred))
+# Calculate and display confusion matrix
+cm = confusion_matrix(y_test, y_pred)
+print("\nConfusion Matrix:")
+print(cm)
+
+# Create prettier confusion matrix display with labels
+fruit_labels = ['apple', 'orange', 'banana']
+cm_df = pd.DataFrame(cm,
+                    index=[f'Actual: {label}' for label in fruit_labels],
+                    columns=[f'Predicted: {label}' for label in fruit_labels])
+print("\nConfusion Matrix (labeled):")
+print(cm_df)
+
+# Visualize confusion matrix with heatmap
+plt.figure(figsize=(8, 6))
+sns.heatmap(cm, annot=True, fmt='d', cmap='Blues',
+            xticklabels=fruit_labels,
+            yticklabels=fruit_labels)
+plt.xlabel('Predicted Label')
+plt.ylabel('True Label')
+plt.title('Confusion Matrix for Fruit Classification')
+plt.tight_layout()
+plt.show()
 ```
 
 ## שיטות לבחירת K אופטימלי
