@@ -140,7 +140,7 @@ weighted avg      0.86      0.86      0.86        50
 כאשר אנו משתמשים בפונקציה `classification_report` מ־Scikit-learn, אנו מקבלים טבלה עם מדדים לכל קטגוריה, כמו:
 - **precision** – דיוק התחזיות
 - **recall** – יכולת לזהות את המקרים הנכונים
-- **f1-score** – ממוצע הרמוני בין precision ל־recall
+- **f1-score** – the harmonic mean between precision and recall
 - **support** – מספר הדוגמאות של כל קטגוריה
 
 מה זה `macro avg`?
