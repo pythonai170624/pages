@@ -267,8 +267,7 @@ optimal_k_cv = k_range[np.argmax(cv_scores)]
 print(f"ערך K האופטימלי (CV) הוא: {optimal_k_cv} עם דיוק ממוצע של: {max(cv_scores):.4f}")
 ```
 
-<img src="cross_validation.png" style="width:60%;"/>
-
+<img src="knn5.png" style="width:60%;"/>
 ### השוואה בין שיטות בחירת K
 
 ```python
