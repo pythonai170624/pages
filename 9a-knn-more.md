@@ -551,7 +551,7 @@ warnings.filterwarnings('ignore')
 # Load or create dataset
 print("Loading dataset...")
 
-# You can try different datasets like these:
+# fetch_openml has different datasets like:
 # mnist_784, fashion-mnist, covertype, shuttle, letter
 dataset = fetch_openml('fashion-mnist', version=1, as_frame=False)
 X, y = dataset.data, dataset.target
@@ -620,27 +620,6 @@ print(f"Test accuracy: {test_accuracy:.4f}")
 # Print classification report
 print("\nClassification Report:")
 print(classification_report(y_test, test_predictions))
-
-# Plot confusion matrix
-plt.figure(figsize=(10, 8))
-cm = confusion_matrix(y_test, test_predictions)
-sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
-plt.title('Confusion Matrix')
-plt.ylabel('True Label')
-plt.xlabel('Predicted Label')
-
-results = pd.DataFrame(grid_search.cv_results_)
-
-# Extract K values and corresponding scores
-k_values = [params['knn__n_neighbors'] for params in grid_search.cv_results_['params']]
-mean_test_scores = grid_search.cv_results_['mean_test_score']
-mean_train_scores = grid_search.cv_results_['mean_train_score']
-
-# Group by K and get best score for each K
-results_k = results.copy()
-results_k['k'] = k_values
-best_scores_by_k = results_k.groupby('k').agg({'mean_test_score': 'max'}).reset_index()
-optimal_k = best_scores_by_k.loc[best_scores_by_k['mean_test_score'].idxmax()]
 
 ### Visualize
 
