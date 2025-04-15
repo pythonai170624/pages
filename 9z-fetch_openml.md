@@ -131,4 +131,4 @@ plt.show()
 
 Output:
 
-<img srv="fashion.png" />
+<img src="fashion.png" />
