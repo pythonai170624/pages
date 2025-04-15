@@ -112,7 +112,7 @@ SVM היא שיטת **למידת מכונה מונחית (Supervised Learning)**
 | גבוה  | פחות סלחני לטעויות (מודל קשיח, פחות גמיש) |
 | נמוך  | סלחני יותר – מאפשר שגיאות קטנות (מודל כללי יותר) |
 
-![Different C Values Effect](https://scikit-learn.org/stable/_images/sphx_glr_plot_svm_regularization_001.png)
+<img src="svm5.png" style="width: 60%"/>
 
 ---
 
