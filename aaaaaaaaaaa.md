@@ -123,7 +123,7 @@ SVM היא שיטת **למידת מכונה מונחית (Supervised Learning)**
 - נבצע **מיפוי ל־מרחב חדש** (לרוב גבוה יותר)
 - במרחב החדש – כן ניתן להפריד ביניהם בקו ישר!
 
-![Kernel Transformation](https://miro.medium.com/max/1400/1*E4OabHDrKKXXID8TrfCJpA.png)
+<img src="svm6.png" style="width: 80%"/>
 
 ---
 
