@@ -129,4 +129,6 @@ plt.tight_layout()
 plt.show()
 ```
 
-This will display a 5x5 grid of example images from the Fashion-MNIST dataset with their class labels.
+Output:
+
+<img srv="fashion.png" />
