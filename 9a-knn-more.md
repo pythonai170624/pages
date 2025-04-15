@@ -369,6 +369,13 @@ print("Best parameters:", grid.best_params_)
 print("Best accuracy:", grid.best_score_)
 ```
 
+Demo output:
+```
+GridSearchCV completed in 3.64 seconds
+Best parameters: {'knn__n_neighbors': np.int64(11), 'knn__p': 2, 'knn__weights': 'distance'}
+Best accuracy: 0.8239
+```
+
 
 
 ### כיצד לבחור את K המתאים?
