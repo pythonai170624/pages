@@ -70,11 +70,6 @@ SVM היא שיטת **למידת מכונה מונחית (Supervised Learning)**
 
 ---
 
-
-![Support Vectors Highlighted](https://miro.medium.com/max/1400/1*0S7J1RYX2m9mvq2_zLzQRw.png)
-
----
-
 ## 🔓 מרווח רך – Soft Margin
 
 בעולם האמיתי הנתונים לא תמיד מופרדים בצורה מושלמת.
