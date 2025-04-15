@@ -39,6 +39,80 @@ $K(x, y) = \phi(x) \cdot \phi(y)$
    where $\gamma > 0$ and $c \geq 0$.
    כאשר $\gamma > 0$ ו-$c \geq 0$.
 
+# Kernel Functions with Examples
+
+## 1. Linear Kernel
+**Formula**: $K(x, y) = x \cdot y$
+
+**Example**:
+For two 2D vectors $x = [1, 2]$ and $y = [3, 4]$:
+
+$K(x, y) = x \cdot y = 1 \times 3 + 2 \times 4 = 3 + 8 = 11$
+
+**Use case**: Linear kernels work well when the data is already linearly separable. They're computationally efficient but cannot handle non-linear relationships in data.
+
+## 2. Polynomial Kernel
+**Formula**: $K(x, y) = (\gamma x \cdot y + c)^d$
+
+where $\gamma > 0$, $c \geq 0$, and $d$ is the polynomial degree.
+
+**Example**:
+For vectors $x = [1, 2]$ and $y = [3, 4]$, with $\gamma = 1$, $c = 1$, and $d = 2$:
+
+$K(x, y) = (1 \times (1 \times 3 + 2 \times 4) + 1)^2 = (11 + 1)^2 = 12^2 = 144$
+
+**Use case**: Polynomial kernels are useful for problems where training data is not linearly separable. The degree $d$ determines the flexibility of the decision boundary. Common choices are $d = 2$ (quadratic) or $d = 3$ (cubic).
+
+## 3. Radial Basis Function (RBF) / Gaussian Kernel
+**Formula**: $K(x, y) = \exp(-\gamma \|x - y\|^2)$
+
+where $\gamma > 0$, typically $\gamma = \frac{1}{2\sigma^2}$.
+
+**Example**:
+For vectors $x = [1, 2]$ and $y = [3, 4]$ with $\gamma = 0.5$:
+
+1. Calculate the squared Euclidean distance: 
+   $\|x - y\|^2 = (1-3)^2 + (2-4)^2 = 4 + 4 = 8$
+
+2. Apply the RBF formula:
+   $K(x, y) = \exp(-0.5 \times 8) = \exp(-4) \approx 0.018$
+
+**Use case**: RBF kernels are versatile and work well for most types of data. They're especially effective when the relationship between classes is non-linear. The parameter $\gamma$ controls the "reach" of a single training example's influence.
+
+## 4. Sigmoid Kernel
+**Formula**: $K(x, y) = \tanh(\gamma x \cdot y + c)$
+
+where $\gamma > 0$ and $c \geq 0$.
+
+**Example**:
+For vectors $x = [1, 2]$ and $y = [3, 4]$, with $\gamma = 0.1$ and $c = 0$:
+
+$K(x, y) = \tanh(0.1 \times (1 \times 3 + 2 \times 4)) = \tanh(0.1 \times 11) = \tanh(1.1) \approx 0.8$
+
+**Use case**: The sigmoid kernel comes from neural networks (it's similar to using a neural network with one hidden layer). It's less commonly used in SVMs than RBF kernels but can be effective for specific problems.
+
+## Choosing the Right Kernel
+
+The choice of kernel depends on the specific problem:
+
+- **Linear kernel**: When data is linearly separable
+- **Polynomial kernel**: When you need a more flexible decision boundary with clear degree of separation
+- **RBF kernel**: Most versatile, works well for most datasets when properly tuned
+- **Sigmoid kernel**: Works for specific types of problems, often related to neural networks
+
+In practice, it's common to try different kernels and use cross-validation to determine which one performs best for your specific dataset.
+
+## Visual Intuition
+
+To understand how kernels transform data:
+
+1. **Linear**: Data remains in the same space, separated by a straight line
+2. **Polynomial**: Data is mapped to a higher-dimensional space where curved boundaries in original space become linear boundaries
+3. **RBF**: Essentially creates a "bump" around each data point, with the width controlled by $\gamma$
+4. **Sigmoid**: Creates a decision boundary similar to that of a neural network
+
+The kernel trick allows us to compute these separations without explicitly transforming the data to higher dimensions, making SVMs computationally efficient even for complex decision boundaries.
+
 ## Kernel Trick (טריק הגרעין)
 ה-Kernel Trick הוא הטכניקה שמאפשרת ל-SVM להתמודד עם בעיות סיווג לא-לינאריות מבלי לחשב במפורש את הטרנספורמציה למרחב גבוה-ממדי. הרעיון הבסיסי הוא:
 
