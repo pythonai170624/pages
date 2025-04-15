@@ -99,7 +99,7 @@ SVM היא שיטת **למידת מכונה מונחית (Supervised Learning)**
 
 לא מתאים לרוב המקרים האמיתיים
 
-<img src="svm4.png" style="width: 80%"/>
+<img src="svm4.png" style="width: 60%"/>
 
 ---
 
