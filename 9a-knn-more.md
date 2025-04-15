@@ -126,9 +126,9 @@ Actual: Banana    |         0        |         1         |        13
 
 ```
               precision    recall  f1-score   support
-       תפוח      0.82      0.82      0.82        17
-       תפוז      0.84      0.84      0.84        19
-       בננה      0.93      0.93      0.93        14
+       APPLE      0.82      0.82      0.82        17
+       ORANGE     0.84      0.84      0.84        19
+       BANANA     0.93      0.93      0.93        14
 
     accuracy                          0.86        50
    macro avg      0.86      0.86      0.86        50
