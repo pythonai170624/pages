@@ -215,7 +215,7 @@ for k in k_range:
     model = KNeighborsClassifier(n_neighbors=k)
     model.fit(X_train, y_train)
     y_pred = model.predict(X_test)
-    scores.append(accuracy_score(y_test, y_pred))
+    scores.append(accuracy_score(y_test, y_pred))  # accuracy = (TP + TN) / (TP + TN + FP + FN)
 
 # הצגת התוצאות בגרף
 plt.figure(figsize=(10, 6))
