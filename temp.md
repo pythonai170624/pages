@@ -41,6 +41,9 @@ $K(x, y) = \phi(x) \cdot \phi(y)$
 
 # Kernel Functions with Examples
 
+What is γ (Gamma)?
+Gamma is a hyperparameter that appears in several kernel functions, including the Polynomial kernel, RBF/Gaussian kernel, and Sigmoid kernel. It controls different aspects of the kernel's behavior:
+
 ## 1. Linear Kernel
 **Formula**: $K(x, y) = x \cdot y$
 
