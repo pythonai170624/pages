@@ -314,6 +314,8 @@ print(f"ערך K האופטימלי (CV) הוא: {optimal_k_cv} עם דיוק מ
 
 <img src="knn5.png" style="width:60%;"/>
 
+# שיטות לבחירת פרמטרים אופטימליים
+
 ### GridSearchCV with KNN – Explanation & Example
 
 `GridSearchCV` from Scikit-learn helps you **find the best parameters** for your model  
