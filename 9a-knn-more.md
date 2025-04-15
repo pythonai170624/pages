@@ -399,46 +399,7 @@ Best accuracy: 0.8239
 
 ## דוגמא עם fetch_openml
 
-# `fetch_openml` and Fashion-MNIST Dataset
-
-## `fetch_openml` Function
-
-`fetch_openml` is a function provided by scikit-learn that allows you to download datasets from the [OpenML](https://www.openml.org/) repository. OpenML is a public repository of machine learning datasets and experiments that makes it easy to share and access datasets.
-
-### Syntax
-
-```python
-from sklearn.datasets import fetch_openml
-
-X, y = fetch_openml(name=None, version='active', data_id=None, 
-                    data_home=None, target_column=None, 
-                    cache=True, return_X_y=False, as_frame=True)
-```
-
-### Key Parameters
-
-| Parameter | Description |
-|-----------|-------------|
-| `name` | String name of the dataset. If provided, `data_id` is ignored. |
-| `version` | Version of the dataset. Can be 'active' (default), 'all', or a specific version number. |
-| `data_id` | OpenML ID of the dataset. Used only if `name` is not provided. |
-| `data_home` | Directory where data is stored. |
-| `target_column` | Specify which column is the target. By default, the last column is used. |
-| `cache` | Whether to cache downloaded datasets. |
-| `return_X_y` | If True, returns `(X, y)` instead of a Bunch object. |
-| `as_frame` | If True, returns data as pandas DataFrames. If False, returns as numpy arrays. |
-
-### Return Value
-
-By default, `fetch_openml` returns a Bunch object containing:
-
-- `data`: Features matrix (X)
-- `target`: Target values (y)
-- `feature_names`: Names of the features
-- `categories`: Dictionary containing categorical feature information
-- `details`: Additional information about the dataset
-
-If `return_X_y=True`, it returns a tuple `(X, y)` instead.
+<a href="">read here</a>
 
 
 ```python
@@ -533,6 +494,8 @@ print(classification_report(y_test, test_predictions))
 ### Visualize
 
 ```
+
+<a href="9zz-full-demo.py"/>see complete code...</a>
 ## סיכום
 
 בחירת ערך K האופטימלי היא מפתח להצלחת אלגוריתם KNN:
@@ -553,10 +516,3 @@ print(classification_report(y_test, test_predictions))
    - שקילת שימוש בשיטות הפחתת ממדים (כמו PCA)
    - התאמת מדד מרחק לסוג הנתונים (מנהטן, יוקלידי, מינקובסקי)
 
-## תרגיל
-
-**תרגיל**: חברת אשראי משתמשת באלגוריתם KNN לניבוי סיכון הלוואות. הנתונים כוללים 100 לקוחות. בניסיון לקבוע את ערך K האופטימלי, התקבלו התוצאות הבאות:
-
-| K | דיוק (Accuracy) | Precision | Recall | F1 Score |
-|---|----------------|-----------|--------|----------|
-| 1 | 0.82           | 0.75      | 0
