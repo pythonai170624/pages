@@ -42,7 +42,12 @@ $K(x, y) = \phi(x) \cdot \phi(y)$
 # Kernel Functions with Examples
 
 What is γ (Gamma)?
+
 Gamma is a hyperparameter that appears in several kernel functions, including the Polynomial kernel, RBF/Gaussian kernel, and Sigmoid kernel. It controls different aspects of the kernel's behavior:
+
+The "exp" in the RBF/Gaussian kernel formula refers to the exponential function, which is commonly written as "exp" in mathematics and programming
+
+The exponential function exp(x) is equivalent to e^x, where "e" is Euler's number (approximately 2.71828...), a mathematical constant that forms the base of natural logarithms
 
 ## 1. Linear Kernel
 **Formula**: $K(x, y) = x \cdot y$
