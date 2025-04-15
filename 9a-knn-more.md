@@ -294,6 +294,7 @@ cv_scores = []
 for k in k_range:
     model = KNeighborsClassifier(n_neighbors=k)
     scores = cross_val_score(model, X, y, cv=10, scoring='accuracy')  # 10-fold CV
+    # accuracy = (TP + TN) / (TP + TN + FP + FN)
     cv_scores.append(scores.mean())
 
 # הצגת התוצאות בגרף
