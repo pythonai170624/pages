@@ -269,14 +269,15 @@ print(f"ערך K האופטימלי (CV) הוא: {optimal_k_cv} עם דיוק מ
 
 <img src="knn5.png" style="width:60%;"/>
 
-# 🔍 GridSearchCV with KNN – Explanation & Example
+### GridSearchCV with KNN – Explanation & Example
 
-## What is GridSearchCV?
+GridSearchCV מספריית Scikit-learn
 
-GridSearchCV מספריית Scikit-learn עוזרת לך למצוא את הפרמטרים הטובים ביותר למודל שלך
-על ידי בדיקה של כל השילובים האפשריים של פרמטרים (רשת – Grid).
+עוזרת לך למצוא את הפרמטרים הטובים ביותר למודל שלך
 
-## 📦 In the context of KNN:
+על ידי בדיקה של כל השילובים האפשריים של פרמטרים (רשת – Grid)
+
+#### 📦 In the context of KNN:
 
 You might want to try different values for:
 
@@ -288,14 +289,14 @@ You might want to try different values for:
   - `'euclidean'` — standard distance  
   - `'manhattan'` — city block distance
 
-## ⚙️ How it works:
+#### ⚙️ How it works:
 
 1. You define a **grid of parameters** to test.
 2. `GridSearchCV` trains the model using **cross-validation** for each combination.
 3. It evaluates each setup using a scoring metric (e.g., accuracy).
 4. It returns the **best parameter combination** based on results.
 
-## 🧠 Python Example:
+#### 🧠 Python Example:
 
 ```python
 from sklearn.model_selection import GridSearchCV
