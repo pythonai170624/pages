@@ -373,6 +373,7 @@ Demo output:
 ```
 GridSearchCV completed in 3.64 seconds
 Best parameters: {'knn__n_neighbors': np.int64(11), 'knn__p': 2, 'knn__weights': 'distance'}
+  It stands for the p value in the Minkowski distance formula: if p = 1 → Manhattan (city block) distance if p = 2 → Euclidean distance
 Best accuracy: 0.8239
 ```
 
