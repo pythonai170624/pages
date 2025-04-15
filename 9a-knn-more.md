@@ -417,7 +417,7 @@ Best accuracy: 0.8239
    - שקילת שימוש בשיטות הפחתת ממדים (כמו PCA)
    - התאמת מדד מרחק לסוג הנתונים (מנהטן, יוקלידי, מינקובסקי)
 
-## דוגמא עם fetch_openml
+## נספח א': דוגמא עם fetch_openml
 
 <a href="9z-fetch_openml.md">read here about fetch_openml</a>
 
