@@ -22,7 +22,7 @@ $$
 
 נניח שהשתמשנו ב-K=4 והשכנים הקרובים ביותר לפרי חדש הם:
 
-| Neighbor | Class     | Distance from new fruit \( d \) | Weight $$ \frac{1}{d} $$ |
+| Neighbor | Class     | Distance from new fruit \( d \) | Weight $\frac{1}{d}$ |
 |----------|-----------|-------------------------------|--------------------------|
 | 1        | Apple 🍎   | 1.0                           | 1.00                     |
 | 2        | Apple 🍎   | 2.0                           | 0.50                     |
