@@ -301,13 +301,9 @@ plt.show()
 
 ## 📊 דוגמאות ויזואליות
 
-### השפעת פרמטר C
-
-![C Parameter Effect](https://scikit-learn.org/stable/_images/sphx_glr_plot_svm_scale_c_001.png)
-
 ### השוואה בין סוגי קרנלים שונים על אותו סט נתונים:
 
-![Kernel Comparison](https://scikit-learn.org/stable/_images/sphx_glr_plot_iris_svc_001.png)
+<img src="svm9.png" style="width: 80%" />
 
 ---
 
