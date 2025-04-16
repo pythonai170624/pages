@@ -357,3 +357,93 @@ plt.show()
 - **ניתוח רגשות בטקסט**
 
 ![SVM Applications](https://miro.medium.com/max/1400/1*0XjuZBNyTA0XKT7q0YYLXg.png)
+
+
+## בדיקת דיוק
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn import svm
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
+from sklearn.preprocessing import StandardScaler
+import seaborn as sns
+
+# Create a dataset with 20 points manually
+# Class 0: Points forming a cluster on the left
+# Class 1: Points forming a cluster on the right
+X = np.array([
+    # 10 points for Class 0
+    [2, 3], [1, 2], [2, 2], [1, 3], [3, 2],
+    [2, 1], [1, 1], [3, 3], [2.5, 2], [1.5, 2.5],
+    
+    # 10 points for Class 1
+    [6, 5], [5, 6], [7, 6], [6, 7], [5, 5],
+    [7, 5], [6, 6], [5, 7], [7, 7], [6, 4]
+])
+
+# Create labels (0 for first 10 points, 1 for last 10 points)
+y = np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])
+
+# Split the data into training and testing sets (70% train, 30% test)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42, stratify=y)
+
+# Scale the features for better SVM performance
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+# Create and train the SVM model
+clf = svm.SVC(kernel='linear', C=1.0)
+clf.fit(X_train_scaled, y_train)
+
+# Make predictions on the test set
+y_pred = clf.predict(X_test_scaled)
+
+# Evaluate the model
+accuracy = accuracy_score(y_test, y_pred)
+conf_matrix = confusion_matrix(y_test, y_pred)
+class_report = classification_report(y_test, y_pred)
+
+# Print performance metrics
+print(f"Model Accuracy: {accuracy:.2f}")
+print("\nConfusion Matrix:")
+print(conf_matrix)
+print("\nClassification Report:")
+print(class_report)
+
+# Plot the confusion matrix as a heatmap
+plt.figure(figsize=(8, 6))
+sns.heatmap(conf_matrix, annot=True, fmt='d', cmap='Blues',
+            xticklabels=['Class 0', 'Class 1'],
+            yticklabels=['Class 0', 'Class 1'])
+plt.title('Confusion Matrix')
+plt.xlabel('Predicted Label')
+plt.ylabel('True Label')
+plt.tight_layout()
+plt.show()
+```
+
+<img src="svm12.png" style="width: 70%" />
+
+<img src="svm13.png" style="width: 70%" />
+
+Output:
+```
+Model Accuracy: 1.00
+
+Confusion Matrix:
+[[3 0]
+ [0 3]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00         3
+           1       1.00      1.00      1.00         3
+
+    accuracy                           1.00         6
+   macro avg       1.00      1.00      1.00         6
+weighted avg       1.00      1.00      1.00         6
+```
