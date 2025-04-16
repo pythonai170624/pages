@@ -67,6 +67,31 @@ Only **one** of the two (<img src="https://latex.codecogs.com/gif.latex?\alpha_i
   
 This is what enables SVR (and SVM in general) to model complex, nonlinear functions without computational cost of actual transformation. That’s the **kernel trick**!
   
+  
+When we call `model.predict(x)` in SVR, the model already knows **which training points to use** — the **support vectors**.
+  
+✅ Steps Under the Hood:
+  
+1. **Training phase (`.fit`)**:
+   - The model solves the SVR optimization problem.
+   - It computes the values <img src="https://latex.codecogs.com/gif.latex?\alpha_i"/> and <img src="https://latex.codecogs.com/gif.latex?\alpha_i^*"/> for each training point.
+   - Only the points where <img src="https://latex.codecogs.com/gif.latex?\alpha_i%20-%20\alpha_i^*%20\neq%200"/> are kept — these are the **support vectors**.
+  
+2. **Prediction phase (`.predict`)**:
+   - The model uses only the saved support vectors.
+   - For a new input point <img src="https://latex.codecogs.com/gif.latex?x"/>, it calculates:
+  
+   <p align="center"><img src="https://latex.codecogs.com/gif.latex?f(x)%20=%20\sum_i%20(\alpha_i%20-%20\alpha_i^*)%20K(x_i,%20x)%20+%20b"/></p>  
+  
+  
+   - Each <img src="https://latex.codecogs.com/gif.latex?x_i"/> is a support vector, and the kernel function <img src="https://latex.codecogs.com/gif.latex?K(x_i,%20x)"/> measures similarity to the new point.
+   - The result is a weighted sum of similarities plus the bias <img src="https://latex.codecogs.com/gif.latex?b"/>.
+  
+Why This Is Efficient:
+  
+- You **don’t need to compare with every training point**, only the support vectors.
+- This keeps prediction fast and focused only on the most important examples.
+  
 ---
   
 ## ⚙️ General SVR Optimization Formula

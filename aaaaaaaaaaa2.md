@@ -68,6 +68,32 @@ Only **one** of the two (\( \alpha_i \) or \( \alpha_i^* \)) is non-zero for a g
 
 This is what enables SVR (and SVM in general) to model complex, nonlinear functions without computational cost of actual transformation. That’s the **kernel trick**!
 
+
+When we call `model.predict(x)` in SVR, the model already knows **which training points to use** — the **support vectors**.
+
+✅ Steps Under the Hood:
+
+1. **Training phase (`.fit`)**:
+   - The model solves the SVR optimization problem.
+   - It computes the values \( \alpha_i \) and \( \alpha_i^* \) for each training point.
+   - Only the points where \( \alpha_i - \alpha_i^* \neq 0 \) are kept — these are the **support vectors**.
+
+2. **Prediction phase (`.predict`)**:
+   - The model uses only the saved support vectors.
+   - For a new input point \( x \), it calculates:
+
+   $$
+   f(x) = \sum_i (\alpha_i - \alpha_i^*) K(x_i, x) + b
+   $$
+
+   - Each \( x_i \) is a support vector, and the kernel function \( K(x_i, x) \) measures similarity to the new point.
+   - The result is a weighted sum of similarities plus the bias \( b \).
+
+Why This Is Efficient:
+
+- You **don’t need to compare with every training point**, only the support vectors.
+- This keeps prediction fast and focused only on the most important examples.
+
 ---
 
 ## ⚙️ General SVR Optimization Formula

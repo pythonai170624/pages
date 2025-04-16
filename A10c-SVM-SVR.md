@@ -15,17 +15,17 @@ SVR (Support Vector Regression)
   
 # 🎯 Core Idea
   
-Instead of requiring the model to fit every point exactly, SVR allows a **tolerance margin (ε)** around the function. As long as the error is within this ε — we don't care. Only points **above or below this margin** matter.
+Instead of requiring the model to fit every point exactly, SVR allows a **tolerance margin (ε)** around the function. As long as the error is within this ε — we don't care. Only points **above or below this margin** matter
   
-> ✨ Goal: Find a function where **as many points as possible fall within ±ε**.
+> ✨ Goal: Find a function where **as many points as possible fall within ±ε**
   
 ---
   
 ## 📐 The SVR Tube – "ε-Tube"
   
-- This is a region of ±ε around the predicted function.
-- Points **inside the tube** → do not affect the function.
-- Points **outside the tube** → affect it (Support Vectors).
+- This is a region of ±ε around the predicted function
+- Points **inside the tube** → do not affect the function
+- Points **outside the tube** → affect it (Support Vectors)
   
 ---
   
@@ -55,30 +55,30 @@ Only **one** of the two (<img src="https://latex.codecogs.com/gif.latex?\alpha_i
 - <img src="https://latex.codecogs.com/gif.latex?\alpha_i"/> pulls the function **down** (penalizing overestimation)
 - <img src="https://latex.codecogs.com/gif.latex?\alpha_i^*"/> pulls the function **up** (penalizing underestimation)
   
-> So the support vectors collectively shape the regression line based on whether the model over- or under-shoots the true value.
+> So the support vectors collectively shape the regression line based on whether the model over- or under-shoots the true value
   
 ##### 🔍 But what is <img src="https://latex.codecogs.com/gif.latex?K(x_i,%20x)"/>?
   
-- <img src="https://latex.codecogs.com/gif.latex?K(x_i,%20x)"/> is the **kernel function**.
+- <img src="https://latex.codecogs.com/gif.latex?K(x_i,%20x)"/> is the **kernel function**
 - It measures the **similarity** between a training point <img src="https://latex.codecogs.com/gif.latex?x_i"/> and a prediction point <img src="https://latex.codecogs.com/gif.latex?x"/>.
 - But here’s the magic:
   
-> 🪄 The kernel allows us to act as if we’ve mapped the data into a higher-dimensional space — **without actually doing it**.
+> 🪄 The kernel allows us to act as if we’ve mapped the data into a higher-dimensional space — **without actually doing it**
   
 This is what enables SVR (and SVM in general) to model complex, nonlinear functions without computational cost of actual transformation. That’s the **kernel trick**!
   
   
-When we call `model.predict(x)` in SVR, the model already knows **which training points to use** — the **support vectors**.
+When we call `model.predict(x)` in SVR, the model already knows **which training points to use** — the **support vectors**
   
 ✅ Steps Under the Hood:
   
 1. **Training phase (`.fit`)**:
-   - The model solves the SVR optimization problem.
-   - It computes the values <img src="https://latex.codecogs.com/gif.latex?\alpha_i"/> and <img src="https://latex.codecogs.com/gif.latex?\alpha_i^*"/> for each training point.
-   - Only the points where <img src="https://latex.codecogs.com/gif.latex?\alpha_i%20-%20\alpha_i^*%20\neq%200"/> are kept — these are the **support vectors**.
+   - The model solves the SVR optimization problem
+   - It computes the values <img src="https://latex.codecogs.com/gif.latex?\alpha_i"/> and <img src="https://latex.codecogs.com/gif.latex?\alpha_i^*"/> for each training point
+   - Only the points where <img src="https://latex.codecogs.com/gif.latex?\alpha_i%20-%20\alpha_i^*%20\neq%200"/> are kept — these are the **support vectors**
   
 2. **Prediction phase (`.predict`)**:
-   - The model uses only the saved support vectors.
+   - The model uses only the saved support vectors
    - For a new input point <img src="https://latex.codecogs.com/gif.latex?x"/>, it calculates:
   
    <p align="center"><img src="https://latex.codecogs.com/gif.latex?f(x)%20=%20\sum_i%20(\alpha_i%20-%20\alpha_i^*)%20K(x_i,%20x)%20+%20b"/></p>  
@@ -89,8 +89,8 @@ When we call `model.predict(x)` in SVR, the model already knows **which training
   
 Why This Is Efficient:
   
-- You **don’t need to compare with every training point**, only the support vectors.
-- This keeps prediction fast and focused only on the most important examples.
+- You **don’t need to compare with every training point**, only the support vectors
+- This keeps prediction fast and focused only on the most important examples
   
 ---
   
