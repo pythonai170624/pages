@@ -116,6 +116,51 @@ SVM היא שיטת **למידת מכונה מונחית (Supervised Learning)**
 
 ---
 
+## דוגמא בפייטון
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn import svm
+
+# Create a simple dataset for apples and bananas
+# Using two features: sweetness (x-axis) and weight (y-axis)
+apples = np.array([[3, 150], [4, 130], [2, 160], [3, 140], [3.5, 145]])
+bananas = np.array([[7, 120], [6, 110], [8, 115], [7.5, 125], [6.5, 118]])
+
+# Combine features and create labels (-1 for apples, 1 for bananas)
+X = np.vstack([apples, bananas])
+y = np.array([-1, -1, -1, -1, -1, 1, 1, 1, 1, 1])
+
+# Create and train the SVM model
+# Using a linear kernel for simplicity
+clf = svm.SVC(kernel='linear', C=1000)
+clf.fit(X, y)
+
+# Extract the model parameters
+w = clf.coef_[0]  # The weights (normal vector to the hyperplane)
+b = clf.intercept_[0]  # The bias (b in w·x + b = 0)
+print(f"Model weights (w): {w}")
+print(f"Model bias (b): {b}")
+
+# Create a new test point
+test_point = np.array([[5, 135]])  # A point with sweetness=5, weight=135
+prediction = clf.predict(test_point)[0]
+class_name = "Banana" if prediction == 1 else "Apple"
+print(class_name)
+```
+
+<img src="svm7.png" style="width: 80%" />
+
+Output:
+```
+Model weights (w): [ 0.18791946 -0.26845638]
+Model bias (b): 33.14765100671113
+Apple
+
+Decision boundary equation: 0.19*x1 + -0.27*x2 + 33.15 = 0
+```
+
 ## 🌌 גרעין – Kernel
 
 כאשר הנתונים **לא ניתנים להפרדה בקו ישר**, נשתמש בקרנלים כדי להפוך את המרחב:
