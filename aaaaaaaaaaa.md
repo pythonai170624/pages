@@ -495,7 +495,7 @@ X_test_scaled = scaler.transform(X_test)
 # but still diverse enough to show differences between kernels
 param_grid = {
     'C': [0.1, 1, 10],
-    'gamma': ['scale', 0.01, 0.1],
+    'gamma': ['scale', 0.01, 0.1],  # scale gamma:  1 / (n_features * [variance of X.var])
     'kernel': ['linear', 'rbf', 'poly', 'sigmoid'],
     'degree': [2, 3]  # Only relevant for poly kernel
 }
