@@ -54,6 +54,7 @@ $$
 $$
 
 תחת ההגבלה:
+
 $$
 y_i (w^T x_i + b) \geq 1 \quad \forall i
 $$
