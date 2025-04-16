@@ -230,7 +230,7 @@ $$
 $$
 
 -  הם פרמטרים שקובעים את חשיבות כל דוגמה
-- רק עבור ה־support vectors יש \( \alpha_i \neq 0 \).
+- רק עבור ה־support vectors יש alpha שונה מאפס
 
 ---
 
