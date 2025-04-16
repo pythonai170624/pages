@@ -447,3 +447,82 @@ Classification Report:
    macro avg       1.00      1.00      1.00         6
 weighted avg       1.00      1.00      1.00         6
 ```
+
+## שימוש ב- GridSearchCV למציאת הפרמטרים האידיאליים
+
+```python
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn import svm, datasets
+from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
+from sklearn.preprocessing import StandardScaler
+import seaborn as sns
+from time import time
+
+# Load the digits dataset (larger dataset with 1797 samples, 64 features, 10 classes)
+digits = datasets.load_digits()
+X = digits.data
+y = digits.target
+
+print(f"Dataset shape: {X.shape} - {X.shape[0]} samples, {X.shape[1]} features")
+print(f"Number of classes: {len(np.unique(y))}")
+
+# Split the data into training and testing sets (80% train, 20% test)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
+
+# Scale the features
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+# Define a smaller parameter grid to make computation more manageable
+# but still diverse enough to show differences between kernels
+param_grid = {
+    'C': [0.1, 1, 10],
+    'gamma': ['scale', 0.01, 0.1],
+    'kernel': ['linear', 'rbf', 'poly', 'sigmoid'],
+    'degree': [2, 3]  # Only relevant for poly kernel
+}
+
+# Create an SVM classifier
+svm_clf = svm.SVC(probability=True, random_state=42)
+
+# Set up GridSearchCV
+print("Starting grid search. This might take a few minutes with this larger dataset...")
+start_time = time()
+grid_search = GridSearchCV(
+    estimator=svm_clf,
+    param_grid=param_grid,
+    cv=3,  # Reduce to 3-fold cross-validation for speed
+    n_jobs=-1,  # Use all available cores
+    verbose=1,
+    scoring='accuracy',
+    return_train_score=True
+)
+
+# Perform the grid search
+grid_search.fit(X_train_scaled, y_train)
+search_time = time() - start_time
+
+# Print the best parameters
+print(f"\nGrid search completed in {search_time:.2f} seconds")
+print(f"Best parameters: {grid_search.best_params_}")
+
+```
+
+<img src="svm14.png" style="width: 70%" />
+
+Output:
+```
+Dataset shape: (1797, 64) - 1797 samples, 64 features
+Number of classes: 10
+Starting grid search. This might take a few minutes with this larger dataset...
+Fitting 3 folds for each of 72 candidates, totalling 216 fits
+
+Grid search completed in 5.38 seconds
+Best parameters: {'C': 10, 'degree': 2, 'gamma': 0.01, 'kernel': 'rbf'}
+```
+
+
