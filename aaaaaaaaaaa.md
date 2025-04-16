@@ -450,6 +450,18 @@ weighted avg       1.00      1.00      1.00         6
 
 ## שימוש ב- GridSearchCV למציאת הפרמטרים האידיאליים
 
+The gamma parameter is a crucial hyperparameter in SVM that determines the influence of individual training examples. It's primarily used in non-linear kernels like 
+
+RBF (Radial Basis Function), polynomial, and sigmoid
+
+High gamma values (e.g., 10, 100):
+
+Creates a decision boundary with "tight" curves around individual data points
+
+Low gamma values (e.g., 0.001, 0.01):
+
+Creates a decision boundary with smoother, wider curves
+
 ```python
 import numpy as np
 import pandas as pd
