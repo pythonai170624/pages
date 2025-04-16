@@ -390,6 +390,8 @@ $K(x, y) = \phi(x) \cdot \phi(y)$
 
 ### Common types of Kernel Functions:
 
+<img src="svm10.jpg" style="width: 80%" />
+
 1. **Linear Kernel**:
    $K(x, y) = x \cdot y$
 
