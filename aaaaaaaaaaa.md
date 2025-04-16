@@ -462,6 +462,8 @@ Low gamma values (e.g., 0.001, 0.01):
 
 Creates a decision boundary with smoother, wider curves
 
+<img src="svm15.png" style="width: 70%" />
+
 ```python
 import numpy as np
 import pandas as pd
