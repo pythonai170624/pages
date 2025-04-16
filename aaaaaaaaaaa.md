@@ -134,7 +134,7 @@ y = np.array([-1, -1, -1, -1, -1, 1, 1, 1, 1, 1])
 
 # Create and train the SVM model
 # Using a linear kernel for simplicity
-clf = svm.SVC(kernel='linear', C=1000)
+clf = svm.SVC(kernel='linear', C=1000)  # clf=classifier
 clf.fit(X, y)
 
 # Extract the model parameters
