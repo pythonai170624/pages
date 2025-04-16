@@ -156,4 +156,3 @@ plt.show()
 
 ---
 
-Want me to add a plot showing the ε-tube and the support vectors? 😘
