@@ -359,7 +359,7 @@ plt.show()
 ![SVM Applications](https://miro.medium.com/max/1400/1*0XjuZBNyTA0XKT7q0YYLXg.png)
 
 
-## בדיקת דיוק
+## חלוקה ל train-test ובדיקת דיוק
 
 ```python
 import numpy as np
