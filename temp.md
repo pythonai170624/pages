@@ -319,6 +319,57 @@ $$
 
 ---
 
+## דוגמא בפייתון עבור 3 קבוצות
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn import svm
+from sklearn.preprocessing import StandardScaler
+from itertools import combinations
+
+# Create a dataset for apples, bananas, and oranges
+# Features: sweetness (x-axis) and weight (y-axis)
+apples = np.array([[3, 150], [4, 130], [2, 160], [3, 140], [3.5, 145]])
+bananas = np.array([[7, 120], [6, 110], [8, 115], [7.5, 125], [6.5, 118]])
+oranges = np.array([[5, 180], [4.5, 195], [5.5, 185], [6, 175], [4.8, 190]])
+
+# Combine features and create labels (0 for apples, 1 for bananas, 2 for oranges)
+X = np.vstack([apples, bananas, oranges])
+y = np.array([0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2])
+
+# Scale the features (important for SVM)
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+# Create and train the SVM model
+# For multiclass problems, SVM creates multiple binary classifiers (one-vs-one by default)
+clf = svm.SVC(kernel='linear', C=1000, decision_function_shape='ovr')
+clf.fit(X_scaled, y)
+
+# Create a test point
+test_point = np.array([[5, 150]])  # A point with sweetness=5, weight=150
+test_point_scaled = scaler.transform(test_point)
+prediction = clf.predict(test_point_scaled)[0]
+class_names = ["Apple", "Banana", "Orange"]
+predicted_class = class_names[prediction]
+
+print(f"Test point: Sweetness={test_point[0][0]}, Weight={test_point[0][1]}")
+print(f"Predicted class: {predicted_class}")
+```
+
+<img src="svm8.png" style="width: 80%" />
+
+Output:
+```
+Test point: Sweetness=5, Weight=150
+Predicted class: Apple
+
+Decision function values for test point:
+Apple: 2.15989923461655
+Banana: -0.18143598271709815
+Orange: 1.071382786408734
+```
 
 ## Kernel (גרעין)
 קרנל הוא פונקציה מתמטית המאפשרת ל-SVM לטפל בנתונים לא-לינאריים. הוא מאפשר חישוב של מכפלת הנקודות במרחב תכונות גבוה-ממדי מבלי לחשב במפורש את הטרנספורמציה של וקטורי הקלט למרחב זה
