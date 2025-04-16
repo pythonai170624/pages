@@ -450,7 +450,7 @@ weighted avg       1.00      1.00      1.00         6
 
 ## שימוש ב- GridSearchCV למציאת הפרמטרים האידיאליים
 
-The gamma parameter is a crucial hyperparameter in SVM that determines the influence of individual training examples. It's primarily used in non-linear kernels like 
+The **gamma parameter** is a crucial hyperparameter in SVM that determines the influence of individual training examples. It's primarily used in non-linear kernels like 
 
 RBF (Radial Basis Function), polynomial, and sigmoid
 
