@@ -1,6 +1,6 @@
 # 📈 Support Vector Regression (SVR)
   
-## מה זה SVR?
+## What is SVR?
   
 SVR (Support Vector Regression) 
   
