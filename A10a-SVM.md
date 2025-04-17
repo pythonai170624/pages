@@ -323,6 +323,8 @@ Decision boundary equation: 0.19*x1 + -0.27*x2 + 33.15 = 0
 - **RBF (Gaussian)** – ברירת מחדל, מתאים להרבה בעיות
 - **Sigmoid** – כמו נוירונים ברשת עצבית
 
+
+דוגמא להפרדה לסוגי פרחים שונים על פי אורך עלי הכותרת SEPAL
 <img src="svm9.png" style="width: 80%" />
 
 ---
