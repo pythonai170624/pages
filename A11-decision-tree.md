@@ -200,34 +200,40 @@ When a subtree is pruned, it's typically replaced with a leaf node that represen
 
 ```
 Before Pruning:
-       ┌─────────┐
-       │  Root   │
-       └────┬────┘
-            │
-    ┌───────┴───────┐
-    │               │
-┌───▼───┐       ┌───▼───┐
-│ NodeA │       │ NodeB │
-└───┬───┘       └───┬───┘
-    │               │
-┌───▼───┐       ┌───▼───┐   ┌───────┐
-│LeafA:2│       │LeafB:6│   │ For regression:
-└───────┘       └───────┘   │ LeafB' = avg(2, 6) = 4
-                           │
-After Pruning (NodeB's subtree is pruned): │ For classification:
-       ┌─────────┐          │ LeafB' = majority class
-       │  Root   │          └───────┘
-       └────┬────┘
-            │
-    ┌───────┴───────┐
-    │               │
-┌───▼───┐       ┌───▼───┐
-│ NodeA │       │LeafB':4│ ← Replaced with average/majority value
-└───┬───┘       └───────┘
-    │               
-┌───▼───┐       
-│LeafA:2│       
-└───────┘       
+       +-------+
+       |  Root |
+       +---+---+
+           |
+     +-----+-----+
+     |           |
++----+----+  +---+----+
+| NodeA   |  | NodeB  |
++----+----+  +---+----+
+     |           |
++----+----+  +---+----+
+|LeafA: 2 |  |LeafB: 6|
++---------+  +--------+
+
+For regression:
+LeafB' = avg(2, 6) = 4
+
+For classification:
+LeafB' = majority class
+
+After Pruning (NodeB's subtree is pruned):
+       +-------+
+       |  Root |
+       +---+---+
+           |
+     +-----+-----+
+     |           |
++----+----+  +---+-----+
+| NodeA   |  |LeafB': 4| <- Replaced with average/majority value
++----+----+  +---------+
+     |           
++----+----+  
+|LeafA: 2 |  
++---------+  
 ```
 
 ## Measure of Impurity
