@@ -23,6 +23,8 @@
 
 ## Basic Components
 
+<img src="dec3.png" style="width: 70%"/>
+
 ### NODE
 A node is an entity that contains a value or data and can be connected by links to other nodes. In a decision tree, a node typically represents a feature or an outcome.
 
