@@ -196,6 +196,8 @@ Tree Height = 2
 ### PRUNING
 Pruning is a technique in machine learning that reduces the size of decision trees by removing sections that provide little power to classify instances. The goal is to reduce complexity and prevent overfitting.
 
+When a subtree is pruned, it's typically replaced with a leaf node that represents the average value (for regression) or the majority class (for classification) of the original subtree's leaves.
+
 ```
 Before Pruning:
        ┌─────────┐
@@ -208,23 +210,23 @@ Before Pruning:
 │ NodeA │       │ NodeB │
 └───┬───┘       └───┬───┘
     │               │
-┌───▼───┐       ┌───▼───┐
-│ LeafA │       │ LeafB │
-└───────┘       └───────┘
-
-After Pruning (NodeB's subtree is pruned):
-       ┌─────────┐
-       │  Root   │
+┌───▼───┐       ┌───▼───┐   ┌───────┐
+│LeafA:2│       │LeafB:6│   │ For regression:
+└───────┘       └───────┘   │ LeafB' = avg(2, 6) = 4
+                           │
+After Pruning (NodeB's subtree is pruned): │ For classification:
+       ┌─────────┐          │ LeafB' = majority class
+       │  Root   │          └───────┘
        └────┬────┘
             │
     ┌───────┴───────┐
     │               │
 ┌───▼───┐       ┌───▼───┐
-│ NodeA │       │ LeafB'│ ← Pruned
+│ NodeA │       │LeafB':4│ ← Replaced with average/majority value
 └───┬───┘       └───────┘
     │               
 ┌───▼───┐       
-│ LeafA │       
+│LeafA:2│       
 └───────┘       
 ```
 
