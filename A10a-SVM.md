@@ -11,6 +11,14 @@ SVM היא שיטת **למידת מכונה מונחית (Supervised Learning)**
 
 <img src="svm1.png" />
 
+## 📈 שימושים נפוצים של SVM
+
+- **זיהוי טקסט וכתב יד**
+- **סיווג תמונות**
+- **זיהוי פנים**
+- **חיזוי במדעי הרפואה**
+- **ניתוח רגשות בטקסט**
+
 ---
 
 ## 🎯 מה המטרה של SVM?
@@ -278,7 +286,7 @@ Decision boundary equation: 0.19*x1 + -0.27*x2 + 33.15 = 0
 
 <img src="svm6.png" style="width: 80%"/>
 
----
+
 
 ## 🎩 Kernel Trick
 
@@ -288,9 +296,6 @@ Decision boundary equation: 0.19*x1 + -0.27*x2 + 33.15 = 0
 
 זה חוסך **הרבה מאוד זמן וזיכרון**.
 
-![Kernel Trick Visualization](https://miro.medium.com/max/1400/1*ssR5NtQmwTbqg5A0e0FSxw.png)
-
----
 
 ## 📌 סוגי Kernels נפוצים:
 
@@ -299,7 +304,7 @@ Decision boundary equation: 0.19*x1 + -0.27*x2 + 33.15 = 0
 - **RBF (Gaussian)** – ברירת מחדל, מתאים להרבה בעיות
 - **Sigmoid** – כמו נוירונים ברשת עצבית
 
-![Different Kernel Types](https://scikit-learn.org/stable/_images/sphx_glr_plot_svm_kernels_001.png)
+<img src="svm9.png" style="width: 80%" />
 
 ---
 
@@ -334,12 +339,6 @@ plt.xlabel('מאפיין 1')
 plt.ylabel('מאפיין 2')
 plt.show()
 ```
-
-## 📊 דוגמאות ויזואליות
-
-### השוואה בין סוגי קרנלים שונים על אותו סט נתונים:
-
-<img src="svm9.png" style="width: 80%" />
 
 ---
 
@@ -380,20 +379,7 @@ plt.title('פתרון בעיית XOR באמצעות SVM עם קרנל RBF')
 plt.show()
 ```
 
-![XOR Solution with RBF Kernel](https://miro.medium.com/max/1400/1*6HwPal0z7VZ9HRJzoVb5XA.png)
-
 ---
-
-## 📈 שימושים נפוצים של SVM
-
-- **זיהוי טקסט וכתב יד**
-- **סיווג תמונות**
-- **זיהוי פנים**
-- **חיזוי במדעי הרפואה**
-- **ניתוח רגשות בטקסט**
-
-![SVM Applications](https://miro.medium.com/max/1400/1*0XjuZBNyTA0XKT7q0YYLXg.png)
-
 
 ## חלוקה ל train-test ובדיקת דיוק
 
