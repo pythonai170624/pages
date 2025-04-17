@@ -131,7 +131,19 @@ $K(x, y) = \phi(x) \cdot \phi(y)$
 
 **What is γ (Gamma)?**
 
-Gamma is a hyperparameter that appears in several kernel functions, including the Polynomial kernel, RBF/Gaussian kernel, and Sigmoid kernel. It controls different aspects of the kernel's behavior:
+The **gamma parameter** is a crucial hyperparameter in SVM that determines the influence of individual training examples. It's primarily used in non-linear kernels like 
+
+RBF (Radial Basis Function), polynomial, and sigmoid
+
+High gamma values (e.g., 10, 100):
+
+Creates a decision boundary with "tight" curves around individual data points
+
+Low gamma values (e.g., 0.001, 0.01):
+
+Creates a decision boundary with smoother, wider curves
+
+<img src="svm15.png" style="width: 70%" />
 
 **The "exp"** in the RBF/Gaussian kernel formula refers to the exponential function, which is commonly written as "exp" in mathematics and programming
 
