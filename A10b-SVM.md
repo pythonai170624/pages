@@ -331,6 +331,7 @@ Apple: 2.15989923461655
 Banana: -0.18143598271709815
 Orange: 1.071382786408734
 
-the negative value for Banana simply indicates that the binary classifier for "Banana vs. not-Banana" believes your test point is in the "not-Banana" category (rest)
-because we are using One-vs-Rest (OvR)
+the negative value for Banana simply indicates that the binary classifier for 
+  "Banana vs. not-Banana" believes your test point is in the "not-Banana" category (rest)
+  because we are using One-vs-Rest (OvR)
 ```
