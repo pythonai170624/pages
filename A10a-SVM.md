@@ -329,45 +329,11 @@ Decision boundary equation: 0.19*x1 + -0.27*x2 + 33.15 = 0
 
 ---
 
-## 🧪 דוגמה קצרה בקוד (Python)
-
-```python
-from sklearn import datasets
-from sklearn.svm import SVC
-import matplotlib.pyplot as plt
-import numpy as np
-from mlxtend.plotting import plot_decision_regions
-
-# יצירת סט נתונים פשוט
-X, y = datasets.make_classification(n_samples=100, n_features=2, 
-                                    n_classes=2, n_informative=2, 
-                                    n_redundant=0, random_state=42)
-
-# יצירת מודל SVM עם Kernel לינארי
-model = SVC(kernel='linear', C=1)
-model.fit(X, y)
-
-# הדמיה של תוצאות המודל
-plt.figure(figsize=(10, 6))
-plot_decision_regions(X, y, clf=model, legend=2)
-
-# סימון הוקטורים התומכים
-plt.scatter(model.support_vectors_[:, 0], model.support_vectors_[:, 1],
-            s=100, facecolors='none', edgecolors='k', alpha=0.5)
-
-plt.title('SVM עם גרעין לינארי')
-plt.xlabel('מאפיין 1')
-plt.ylabel('מאפיין 2')
-plt.show()
-```
-
----
-
 ## 🔍 דוגמא - בעיית XOR
 
 בעיית XOR היא דוגמא קלאסית לנתונים שלא ניתנים להפרדה בקו ישר:
 
-![XOR Problem](https://miro.medium.com/max/1400/1*_7OPgojau8hkiPUiHoGK_w.png)
+<img src="svm17.png" style="width: 70%" />
 
 ### עם קרנל RBF ניתן לפתור את בעיית XOR:
 
@@ -396,9 +362,15 @@ Z = Z.reshape(xx.shape)
 
 plt.contourf(xx, yy, Z, cmap=plt.cm.Paired, alpha=0.8)
 plt.scatter(X[:, 0], X[:, 1], c=y, cmap=plt.cm.Paired)
-plt.title('פתרון בעיית XOR באמצעות SVM עם קרנל RBF')
+plt.title('Solving XOR using RBF')
 plt.show()
 ```
+
+
+
+מבנים שלא ניתנים לחלוקה על ידי קו ישר:
+
+![XOR Problem](https://miro.medium.com/max/1400/1*_7OPgojau8hkiPUiHoGK_w.png)
 
 ---
 
