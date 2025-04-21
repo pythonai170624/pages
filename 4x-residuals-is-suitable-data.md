@@ -20,12 +20,12 @@ Residuals represent the portion of the dependent variable that is not explained 
 Investigating residuals helps us:
 
 1. Assess if the linear regression assumptions have been met
-2. Detect patterns that indicate model inadequacy (“The model just isn’t good enough to capture what's really going on.”)
+2. Detect patterns that indicate model inadequacy (“The model just isn’t good enough to capture what's really going on”)
 3. Identify outliers or influential points
-4. Determine if transformations are needed
+4. Determine if transformations are needed (transformations=any change you apply to your data to make it more suitable for modeling. i.e. MinMaxScaler)
 5. Evaluate the overall fit of the model
 
-Residual investigation is a critical step in regression diagnostics to ensure that our model is valid and that our inferences and predictions are reliable.
+Residual investigation is a critical step in regression diagnostics to ensure that our model is valid and that our inferences and predictions are reliable
 
 ## Determining Suitability for Linear Regression through Residual Analysis
 
@@ -33,10 +33,10 @@ For a dataset to be suitable for linear regression modeling, the residuals shoul
 
 ### Key Assumptions to Check via Residuals
 
-1. **Linearity**: The relationship between independent and dependent variables should be linear.
-2. **Independence**: The residuals should be independent of each other (no autocorrelation).
-3. **Homoscedasticity**: The residuals should have constant variance across all levels of predicted values.
-4. **Normality**: The residuals should be approximately normally distributed.
+1. **Linearity**: The relationship between independent and dependent variables should be linear
+2. **Independence**: The residuals should be independent of each other (no autocorrelation)
+3. **Homoscedasticity**: The residuals should have constant variance across all levels of predicted values
+4. **Normality**: The residuals should be approximately normally distributed
 
 See examples below 
 
@@ -170,7 +170,7 @@ plt.show()
 
 <img src="resid5.png" />
 
-#### 3. Scale-Location Plot (Square Root of Standardized Residuals vs. Fitted Values)
+#### 3. Scale-Location Plot (Square Root of Std Residuals vs. Fitted Values)
 
 This plot is useful for detecting heteroscedasticity (=The spread (or variance) of the errors changes across the data)
 
