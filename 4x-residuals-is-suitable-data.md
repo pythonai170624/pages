@@ -269,7 +269,7 @@ plt.show()
 ```
 <img src="resid8.png" />
 
-why is this valid?
+**why is this valid?**
 
 All three scatter plots show residuals randomly scattered above and below the red line
 
