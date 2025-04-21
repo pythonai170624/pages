@@ -111,8 +111,8 @@ $$
 $$
 
 #### ✅ משמעות:
-- <img src="https://latex.codecogs.com/gif.latex?\hat{p}_i"/> היא ההסתברות של המודל לכך שהתצפית ה-<img src="https://latex.codecogs.com/gif.latex?i"/> תהיה 1.
-- <img src="https://latex.codecogs.com/gif.latex?y_i"/> הוא הערך בפועל — או 0 או 1.
+- <img src="https://latex.codecogs.com/gif.latex?\hat{p}_i"/> היא ההסתברות של המודל לכך שהתצפית ה-<img src="https://latex.codecogs.com/gif.latex?i"/> תהיה 1
+- <img src="https://latex.codecogs.com/gif.latex?y_i"/> הוא הערך בפועל — או 0 או 1
 - כאשר <img src="https://latex.codecogs.com/gif.latex?y_i%20=%201"/>, מקבלים: <img src="https://latex.codecogs.com/gif.latex?\hat{p}_i"/>
 - כאשר <img src="https://latex.codecogs.com/gif.latex?y_i%20=%200"/>, מקבלים: <img src="https://latex.codecogs.com/gif.latex?1%20-%20\hat{p}_i"/>
   
