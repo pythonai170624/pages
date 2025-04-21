@@ -227,7 +227,7 @@ plt.show()
 ```
 <img src="resid7.png" />
 
-why invalid?
+**why invalid?**
 
 the blue dots should appear randomly scattered with a flat (horizontal) trend
 
@@ -267,7 +267,7 @@ for i in range(3):
 plt.tight_layout()
 plt.show()
 ```
-<img src="resid7.png" />
+<img src="resid8.png" />
 
 ##### Invalid Plot
 - Pattern indicates a missed relationship or incorrect model specification
@@ -298,7 +298,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-<img src="resid7.png" />
+<img src="resid9.png" />
 
 ## Summary of Valid vs. Invalid Residual Patterns
 
