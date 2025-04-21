@@ -594,7 +594,7 @@ In genomic studies, researchers often have thousands of genetic markers but only
 ## Real-Life Applications
 
 1. **Healthcare Predictive Models**
-   - **Problem**: Predicting patient readmission risk using hundreds of medical variables
+   - **Problem**: Predicting patient re-admission risk using hundreds of medical variables
    - **Solution**: Feature scaling + Lasso regression to identify key risk factors
    - **Benefit**: Simplified model focusing on the most important predictors, improving clinical usability
 
