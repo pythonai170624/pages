@@ -269,6 +269,14 @@ plt.show()
 ```
 <img src="resid8.png" />
 
+why is this valid?
+
+All three scatter plots show residuals randomly scattered above and below the red line
+
+There’s no clear pattern, curve, funnel shape, or clustering
+
+The variance appears consistent across the range of each feature
+
 ##### Invalid Plot
 - Pattern indicates a missed relationship or incorrect model specification
 
