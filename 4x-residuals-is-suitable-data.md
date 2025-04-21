@@ -227,7 +227,7 @@ plt.show()
 ```
 <img src="resid7.png" />
 
-**why invalid?**
+**why is this valid?**
 
 the blue dots should appear randomly scattered with a flat (horizontal) trend
 
@@ -307,6 +307,12 @@ plt.show()
 ```
 
 <img src="resid9.png"  style="width: 100%" />
+
+**is this valid?**
+
+Feature 1 and Feature 2: Residuals look randomly scattered — ✅ These look fine.
+
+Feature 3: The residuals show a clear U-shaped pattern — ❌ This is the problem.
 
 ## Summary of Valid vs. Invalid Residual Patterns
 
