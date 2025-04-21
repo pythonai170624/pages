@@ -298,7 +298,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-<img src="resid9.png" />
+<img src="resid9.png"  style="width: 80%" />
 
 ## Summary of Valid vs. Invalid Residual Patterns
 
