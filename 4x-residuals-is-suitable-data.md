@@ -20,7 +20,7 @@ Residuals represent the portion of the dependent variable that is not explained 
 Investigating residuals helps us:
 
 1. Assess if the linear regression assumptions have been met
-2. Detect patterns that indicate model inadequacy
+2. Detect patterns that indicate model inadequacy (“The model just isn’t good enough to capture what's really going on.”)
 3. Identify outliers or influential points
 4. Determine if transformations are needed
 5. Evaluate the overall fit of the model
