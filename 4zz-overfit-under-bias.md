@@ -49,61 +49,6 @@ You show the child 10 specific dogs and teach them to memorize every detail abou
 - It wiggles to hit every data point perfectly
 - It has very low error on training data but high error on test data
 
-## Bias and Variance in Detail
-
-**The Bias-Variance Decomposition**
-
-When analyzing model performance, the total expected prediction error can be mathematically decomposed into three fundamental components:
-
-**$$\text{Total Error} = \text{Bias}^2 + \text{Variance} + \text{Irreducible Error}$$**
-
-Let's explore each of these components in detail:
-
-### What is Bias?
-
-Bias measures how far your model's predictions are from the true values on average. It represents the error introduced by approximating a complex real-life problem with a simpler model.
-
-- **High bias** indicates that your model is making systematic errors and consistently missing the true pattern
-- **Examples of high-bias models**: Linear models trying to fit non-linear data, overly simplified decision trees
-
-### Why Bias²?
-
-In the mathematical decomposition of the expected prediction error, bias appears as a squared term for several important reasons:
-
-1. **Mathematical derivation**: When you derive the expected prediction error formula, the bias term naturally appears squared in the equations.
-
-2. **Directionality**: Bias can be positive (overestimation) or negative (underestimation), but its contribution to error must always be positive. Squaring ensures that both positive and negative bias contribute positively to the total error.
-
-3. **Consistency with variance**: Since variance is already defined as a squared quantity, having bias squared keeps the units and scale consistent across the formula.
-
-4. **Emphasis on larger errors**: Squaring gives more weight to larger biases, which aligns with how we typically want to penalize prediction errors in machine learning.
-
-### What is Variance?
-
-Variance measures how much your model's predictions would fluctuate (=change frequently) if you trained it on different datasets. It represents the model's sensitivity to the specific data points used for training.
-
-- **High variance** indicates that your model is overly sensitive to small fluctuations in the training data
-- **Examples of high-variance models**: High-degree polynomials, deep decision trees, models with too many parameters
-
-### What is Irreducible Error?
-
-Irreducible error (also called "noise term" or "Bayes error") represents the lower bound on the error you can achieve with any model. This error comes from:
-
-1. **Inherent randomness** in the system you're trying to model
-2. **Unmeasured variables** that influence the outcome but aren't captured in your data
-3. **Measurement errors** in the data collection process
-
-The irreducible error is the error that would remain even if you had a perfect model that correctly captured all patterns in your data.
-
-### Real-World Example:
-
-If you're predicting house prices, irreducible error exists because:
-- Some buyers might pay more for subjective, unmeasurable reasons
-- Random market fluctuations affect prices unpredictably
-- Not all factors affecting price can be measured (e.g., future neighborhood development plans)
-
-Even if you knew every measurable feature of a house, some randomness would remain in its selling price.
-
 ### The Bias-Variance Tradeoff in Practice
 
 Understanding this decomposition helps explain why there's a fundamental tradeoff between bias and variance:
@@ -238,3 +183,58 @@ When working with polynomial regression specifically:
 Finding the right model complexity is both an art and a science. By understanding the bias-variance tradeoff, you can build models that generalize well to new data, rather than models that are either too simplistic or that merely memorize the training data.
 
 The key is to use validation techniques to find the sweet spot where your model captures the true patterns in the data without being led astray by noise. This balanced approach leads to models that make reliable predictions on new, unseen data — which is the ultimate goal of machine learning.
+
+## Bias and Variance in Detail
+
+**The Bias-Variance Decomposition**
+
+When analyzing model performance, the total expected prediction error can be mathematically decomposed into three fundamental components:
+
+**$$\text{Total Error} = \text{Bias}^2 + \text{Variance} + \text{Irreducible Error}$$**
+
+Let's explore each of these components in detail:
+
+### What is Bias?
+
+Bias measures how far your model's predictions are from the true values on average. It represents the error introduced by approximating a complex real-life problem with a simpler model.
+
+- **High bias** indicates that your model is making systematic errors and consistently missing the true pattern
+- **Examples of high-bias models**: Linear models trying to fit non-linear data, overly simplified decision trees
+
+### Why should we use Bias²?
+
+In the mathematical decomposition of the expected prediction error, bias appears as a squared term for several important reasons:
+
+1. **Mathematical derivation**: When you derive the expected prediction error formula, the bias term naturally appears squared in the equations.
+
+2. **Directionality**: Bias can be positive (overestimation) or negative (underestimation), but its contribution to error must always be positive. Squaring ensures that both positive and negative bias contribute positively to the total error.
+
+3. **Consistency with variance**: Since variance is already defined as a squared quantity, having bias squared keeps the units and scale consistent across the formula.
+
+4. **Emphasis on larger errors**: Squaring gives more weight to larger biases, which aligns with how we typically want to penalize prediction errors in machine learning.
+
+### What is Variance?
+
+Variance measures how much your model's predictions would fluctuate (=change frequently) if you trained it on different datasets. It represents the model's sensitivity to the specific data points used for training.
+
+- **High variance** indicates that your model is overly sensitive to small fluctuations in the training data
+- **Examples of high-variance models**: High-degree polynomials, deep decision trees, models with too many parameters
+
+### What is Irreducible Error?
+
+Irreducible error (also called "noise term" or "Bayes error") represents the lower bound on the error you can achieve with any model. This error comes from:
+
+1. **Inherent randomness** in the system you're trying to model
+2. **Unmeasured variables** that influence the outcome but aren't captured in your data
+3. **Measurement errors** in the data collection process
+
+The irreducible error is the error that would remain even if you had a perfect model that correctly captured all patterns in your data.
+
+### Real-World Example:
+
+If you're predicting house prices, irreducible error exists because:
+- Some buyers might pay more for subjective, unmeasurable reasons
+- Random market fluctuations affect prices unpredictably
+- Not all factors affecting price can be measured (e.g., future neighborhood development plans)
+
+Even if you knew every measurable feature of a house, some randomness would remain in its selling price.
