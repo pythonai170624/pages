@@ -227,6 +227,19 @@ plt.show()
 ```
 <img src="resid7.png" />
 
+why invalid?
+
+the blue dots should appear randomly scattered with a flat (horizontal) trend
+
+You can see the red line (the LOESS smoothing line) going upward
+
+hat means as the fitted values increase, the spread (variance) of the residuals increases too
+
+this is a funnel shape, and it's a classic sign of heteroscedasticity — non-constant variance — which violates one of the key linear regression assumptions
+
+What would a valid plot look like? Dots scattered randomly around a horizontal line
+
+
 #### 4. Residuals vs. Independent Variables Plots
 
 For multiple regression, it's important to check residual plots against each predictor variable.
