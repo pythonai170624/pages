@@ -184,7 +184,7 @@ Finding the right model complexity is both an art and a science. By understandin
 
 The key is to use validation techniques to find the sweet spot where your model captures the true patterns in the data without being led astray by noise. This balanced approach leads to models that make reliable predictions on new, unseen data — which is the ultimate goal of machine learning.
 
-## Bias and Variance in Detail
+## Appendix A - Bias and Variance in Detail
 
 **The Bias-Variance Decomposition**
 
