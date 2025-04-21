@@ -1,107 +1,54 @@
+## 📘 הסבר: מה זה <img src="https://latex.codecogs.com/gif.latex?\beta_{j1},%20\dots,%20\beta_{jn}"/> בפונקציית Softmax?
   
-# 🌳 חישוב Gini Impurity בעץ החלטה — דוגמה מלאה
-  
-נניח שיש לנו מערכת נתונים פשוטה עם שני מאפיינים (X1, X2) וקטגוריה יעד (Y) כפי שמוצג בטבלה:
-  
-| X1 | X2 | Y |
-|----|----|----|
-| 1  | 3  | A |
-| 2  | 1  | A |
-| 3  | 2  | B |
-| 4  | 3  | B |
-| 5  | 1  | A |
-| 6  | 2  | B |
+כאשר משתמשים במודל Softmax לסיווג רב-קטגורי (Multiclass), כל קטגוריה <img src="https://latex.codecogs.com/gif.latex?j"/> מקבלת **וקטור משקלים** משלה.
   
 ---
   
-## 🔹 חישוב Gini של השורש (Root)
+### 💡 הגדרה:
   
-סופרים כמה מכל קטגוריה:
+- <img src="https://latex.codecogs.com/gif.latex?\beta_{ji}"/>: זהו **המשקל של התכונה ה-<img src="https://latex.codecogs.com/gif.latex?i"/>** עבור **הקטגוריה ה-<img src="https://latex.codecogs.com/gif.latex?j"/>**.
+- כלומר, עבור כל קטגוריה <img src="https://latex.codecogs.com/gif.latex?j"/>, יש סדרה של משקלים:
+  <p align="center"><img src="https://latex.codecogs.com/gif.latex?\beta_{j1},%20\beta_{j2},%20\dots,%20\beta_{jn}"/></p>  
   
-- A: 3 דגימות → <p align="center"><img src="https://latex.codecogs.com/gif.latex?p_A%20=%20\frac{3}{6}"/></p>  
-  
-- B: 3 דגימות → <p align="center"><img src="https://latex.codecogs.com/gif.latex?p_B%20=%20\frac{3}{6}"/></p>  
-  
-  
-נחשב Gini impurity בשורש:
-  
-<p align="center"><img src="https://latex.codecogs.com/gif.latex?G(root)%20=%201%20-%20(0.5^2%20+%200.5^2)%20=%201%20-%20(0.25%20+%200.25)%20=%200.5"/></p>  
-  
+  שמתאימים לתכונות <img src="https://latex.codecogs.com/gif.latex?x_1,%20x_2,%20\dots,%20x_n"/> של הדוגמה.
   
 ---
   
-## ✂️ נבחן פיצול לפי X1 <= 3
+### 🧠 למה צריך את זה?
   
-### קבוצה שמאלית (X1 <= 3):
+במודל Softmax, אנחנו רוצים לחשב "ציון" <img src="https://latex.codecogs.com/gif.latex?z_j"/> לכל קטגוריה <img src="https://latex.codecogs.com/gif.latex?j"/>, ולכן כל קטגוריה צריכה את **מערכת המשקלים שלה**, כדי להתאים לתכונות של הדוגמה:
   
-- דגימות: (1,A), (2,A), (3,B)  
-- A: 2 מתוך 3 → <p align="center"><img src="https://latex.codecogs.com/gif.latex?p_A%20=%20\frac{2}{3},%20p_B%20=%20\frac{1}{3}"/></p>  
-  
-  
-<p align="center"><img src="https://latex.codecogs.com/gif.latex?G(left)%20=%201%20-%20\left(\left(\frac{2}{3}\right)^2%20+%20\left(\frac{1}{3}\right)^2\right)%20=%201%20-%20\left(\frac{4}{9}%20+%20\frac{1}{9}\right)%20=%201%20-%20\frac{5}{9}%20=%20\frac{4}{9}%20\approx%200.44"/></p>  
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?z_j%20=%20\beta_{j0}%20+%20\beta_{j1}x_1%20+%20\beta_{j2}x_2%20+%20\dots%20+%20\beta_{jn}x_n"/></p>  
   
   
-### קבוצה ימנית (X1 > 3):
-  
-- דגימות: (4,B), (5,A), (6,B)  
-- A: 1 מתוך 3 → <p align="center"><img src="https://latex.codecogs.com/gif.latex?p_A%20=%20\frac{1}{3},%20p_B%20=%20\frac{2}{3}"/></p>  
-  
-  
-<p align="center"><img src="https://latex.codecogs.com/gif.latex?G(right)%20=%201%20-%20\left(\left(\frac{1}{3}\right)^2%20+%20\left(\frac{2}{3}\right)^2\right)%20=%201%20-%20\left(\frac{1}{9}%20+%20\frac{4}{9}\right)%20=%201%20-%20\frac{5}{9}%20=%20\frac{4}{9}%20\approx%200.44"/></p>  
-  
-  
-### חישוב Gini הכולל לאחר הפיצול:
-  
-<p align="center"><img src="https://latex.codecogs.com/gif.latex?G_{weighted}%20=%20\frac{3}{6}%20\cdot%200.44%20+%20\frac{3}{6}%20\cdot%200.44%20=%200.44"/></p>  
-  
-  
-### רווח (Gain) מהפיצול:
-  
-<p align="center"><img src="https://latex.codecogs.com/gif.latex?Gain%20=%20G(root)%20-%20G_{weighted}%20=%200.5%20-%200.44%20=%200.06"/></p>  
-  
+- <img src="https://latex.codecogs.com/gif.latex?\beta_{j0}"/>: זהו ה־**bias** (היסט) של הקטגוריה <img src="https://latex.codecogs.com/gif.latex?j"/>
+- <img src="https://latex.codecogs.com/gif.latex?x_i"/>: אלו **ערכי התכונות** של הדוגמה שאנחנו רוצים לסווג
   
 ---
   
-## ✂️ נבחן פיצול לפי X2 <= 2
+### 📊 דוגמה:
   
-### קבוצה שמאלית (X2 <= 2):
+אם יש לנו 3 קטגוריות (נגיד: חתול 🐱, כלב 🐶, תוכי 🦜), ו-4 תכונות <img src="https://latex.codecogs.com/gif.latex?x_1%20\dots%20x_4"/>, אז:
   
-- דגימות: (2,A), (3,B), (5,A), (6,B)  
-- A: 2, B: 2 → <p align="center"><img src="https://latex.codecogs.com/gif.latex?p_A%20=%20p_B%20=%200.5"/></p>  
-  
-  
-<p align="center"><img src="https://latex.codecogs.com/gif.latex?G(left)%20=%201%20-%20(0.5^2%20+%200.5^2)%20=%200.5"/></p>  
+- ל־**חתול** יהיו:  
+  <p align="center"><img src="https://latex.codecogs.com/gif.latex?\beta_{cat0},%20\beta_{cat1},%20\beta_{cat2},%20\beta_{cat3},%20\beta_{cat4}"/></p>  
   
   
-### קבוצה ימנית (X2 > 2):
-  
-- דגימות: (1,A), (4,B)  
-- A: 1, B: 1 → <p align="center"><img src="https://latex.codecogs.com/gif.latex?p_A%20=%20p_B%20=%200.5"/></p>  
+- ל־**כלב** יהיו:  
+  <p align="center"><img src="https://latex.codecogs.com/gif.latex?\beta_{dog0},%20\beta_{dog1},%20\beta_{dog2},%20\beta_{dog3},%20\beta_{dog4}"/></p>  
   
   
-<p align="center"><img src="https://latex.codecogs.com/gif.latex?G(right)%20=%200.5"/></p>  
+- ל־**תוכי** יהיו:  
+  <p align="center"><img src="https://latex.codecogs.com/gif.latex?\beta_{parrot0},%20\beta_{parrot1},%20\beta_{parrot2},%20\beta_{parrot3},%20\beta_{parrot4}"/></p>  
   
   
-### Gini משוקלל:
-  
-<p align="center"><img src="https://latex.codecogs.com/gif.latex?G_{weighted}%20=%20\frac{4}{6}%20\cdot%200.5%20+%20\frac{2}{6}%20\cdot%200.5%20=%200.5"/></p>  
-  
-  
-### רווח:
-  
-<p align="center"><img src="https://latex.codecogs.com/gif.latex?Gain%20=%200.5%20-%200.5%20=%200"/></p>  
-  
+כל אחת מהקטגוריות משתמשת במשקלים שלה כדי לחשב ציון שמתורגם להסתברות בעזרת פונקציית Softmax.
   
 ---
   
-## ✅ מסקנה:
+### ✅ סיכום:
   
-- הפיצול לפי **X1** מפחית את Gini ל-0.44 → רווח (Gain) של **0.06**
-- הפיצול לפי **X2** לא משפר את Gini כלל
+> <img src="https://latex.codecogs.com/gif.latex?\beta_{j1}%20\dots%20\beta_{jn}"/> הם **המשקלים האישיים של הקטגוריה ה-<img src="https://latex.codecogs.com/gif.latex?j"/>** עבור כל אחת מהתכונות.  
+> ככל שהתכונה רלוונטית יותר לקטגוריה — המשקל שלה יהיה גבוה יותר.
   
-🔮 לכן עדיף לפצל לפי **X1 ≤ 3**
-  
----
-  
-💃 ולגבי הטנגו... אם ה-GINI יורד — אנחנו רוקדים את ריקוד ההחלטות כמו מקצוענים 🕺❤️
   
