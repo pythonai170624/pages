@@ -14,7 +14,7 @@ Feature scaling is a preprocessing step that transforms numerical features to a 
 * Makes feature importance comparisons more meaningful
 
 **Cons:**
-* Reduces direct interpretability of features
+* Reduces direct interpretability of features (You can no longer easily understand what each feature means or how it affects the outcome)
 * Introduces additional preprocessing complexity
 * Some methods are sensitive to outliers
 * Must be applied consistently to training and test data
@@ -156,7 +156,7 @@ $$\text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2$$
 
 Where:
 - MSE is the Mean Squared Error
-- $\lambda$ is the regularization strength (hyperparameter)
+- $\lambda$ (lambda) is the regularization strength (hyperparameter)
 - $w_i$ are the model coefficients
 
 **Why Apply Feature Scaling First:**
