@@ -2,7 +2,7 @@
 
 ## הקדמה
 
-כאשר בונים מודל רגרסיה (חיזוי ערכים רציפים), אנו רוצים להעריך את ביצועי המודל. מדדי שגיאה מאפשרים לנו להבין עד כמה הערכים שהמודל מנבא קרובים לערכים האמיתיים. שלושת המדדים הנפוצים ביותר הם MAE, MSE ו-RMSE.
+כאשר בונים מודל רגרסיה (חיזוי ערכים רציפים), אנו רוצים להעריך את ביצועי המודל. מדדי שגיאה מאפשרים לנו להבין עד כמה הערכים שהמודל מנבא קרובים לערכים האמיתיים. שלושת המדדים הנפוצים ביותר הם MAE, MSE ו-RMSE
 
 ## MAE - Mean Absolute Error
 
@@ -19,12 +19,13 @@ MAE computes the average of the absolute error values. That is, we calculate the
 
 ### Advantages
 - Easy to understand - the result is in the same units as the original variable
-- More robust to outliers than MSE
+- More robust to outliers than MSE (less sensitive)
 - Intuitive - represents the average error in absolute terms
 
 ### Disadvantages
 - Does not penalize large errors proportionally more than small errors
 - Not differentiable at the minimum point (due to the absolute value), which can complicate some optimization algorithms
+  The function |x| is not differentiable at x = 0 — meaning, at the exact point where the error is zero the function suddenly changes direction
 
 ## MSE - Mean Squared Error
 
