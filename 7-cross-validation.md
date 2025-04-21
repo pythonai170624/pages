@@ -18,6 +18,12 @@ K-fold cross-validation involves splitting the data into 'k' equal folds or grou
 
 ![K-Fold Cross-Validation](https://miro.medium.com/v2/resize:fit:1400/1*Nv2NNALuokZEcV6hYEHdGA.png)
 
+Train - Used to fit (train) the model
+
+Validation - Used to tune the model (e.g. choose hyperparameters, detect overfitting)
+
+Test - Used to evaluate final performance on completely unseen data
+
 **Example of 5-fold cross-validation process:**
 
 1. Split dataset into 5 equal parts (folds)
