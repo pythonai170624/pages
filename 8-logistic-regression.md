@@ -213,7 +213,7 @@ P(return) = 1 / (1 + e^-(-0.89 + 0.02 * income))
 ```
 
 
-### Decision Boundary
+## מושג --  Decision Boundary
 
 In logistic regression, we often need to make a binary decision based on the predicted probability. The most common threshold is 0.5, meaning:
 - If $P(Y=1|X) \geq 0.5$, we predict Y=1 (pass)
@@ -385,7 +385,7 @@ Predictions:
 2. מה ההסתברות שלקוח עם הכנסה שנתית של 58 אלף ש"ח יחזיר את ההלוואה?
 3. מהי ההכנסה השנתית המינימלית שלקוח צריך כדי שההסתברות שיחזיר את ההלוואה תהיה לפחות 75%?
 
-## כיצד למצוא את β₀ ו־β₁
+## נספח א'- כיצד למצוא את β₀ ו־β₁
 
 - מחשבים נגזרות של הפונקציה לפי β₀ ו־β₁
 - משווים ל־0 כדי למצוא נקודת קיצון
