@@ -416,7 +416,9 @@ When predicting housing prices, Ridge Regression performs well because most feat
 
 ### L1 Regularization (Lasso Regression)
 
-Lasso Regression adds the absolute value of coefficients as a penalty term, which can lead to sparse models.
+Lasso Regression adds the absolute value of coefficients as a penalty term, which can lead to sparse models
+
+spares = מדולל
 
 **Mathematical formula:**
 
