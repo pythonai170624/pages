@@ -4,7 +4,9 @@
 
 מדריך זה מציג כיצד לאמן, לשמור ולטעון מודל רגרסיה לינארית באמצעות scikit-learn ו-joblib. Joblib מספק כלים יעילים לסריאליזציה ודה-סריאליזציה של אובייקטים בפייתון, מה שהופך אותו לאידיאלי עבור פריסת מודלים של למידת מכונה בסביבות ייצור.
 
-## Required Libraries
+## Training a Linear Regression Model
+
+First, let's create and train a simple linear regression model:
 
 ```python
 import numpy as np
@@ -12,15 +14,9 @@ import pandas as pd
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error, r2_score
-import joblib
+import joblib  # required
 import matplotlib.pyplot as plt
-```
 
-## Training a Linear Regression Model
-
-First, let's create and train a simple linear regression model:
-
-```python
 # Create sample data
 np.random.seed(42)
 X = 2 * np.random.rand(100, 1)
