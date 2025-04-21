@@ -143,7 +143,7 @@ plt.show()
 
 <img src="resid4.png" />
 
-##### Invalid Q-Q Plot
+#### Invalid Q-Q Plot
 - Significant deviations from the line indicate non-normality
 - S-shaped curves suggest skewness
 - Points way off the line indicate outliers
@@ -170,7 +170,7 @@ plt.show()
 
 <img src="resid5.png" />
 
-#### 3. Scale-Location Plot (Square Root of Std Residuals vs. Fitted Values)
+#### 3. Scale-Location Plot (Square Root of Residuals Std vs. Fitted Values)
 
 This plot is useful for detecting heteroscedasticity (=The spread (or variance) of the errors changes across the data)
 
@@ -200,7 +200,7 @@ plt.show()
 ```
 <img src="resid6.png" />
 
-##### Invalid Scale-Location Plot
+#### Invalid Scale-Location Plot
 - Trend or funnel shape indicates non-constant variance
 
 ```python
