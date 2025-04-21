@@ -140,7 +140,7 @@ plt.show()
 **Real-Life Example:**
 Blood test results often have different normal ranges. Standardization allows clinicians to compare multiple biomarkers with different units (like cholesterol in mg/dL and hemoglobin in g/dL) on a unified scale to identify abnormal patterns.
 
-## Regularization
+## Regularization -- Prevent overfitting !
 
 Regularization techniques help prevent overfitting by adding penalty terms to the model's loss function.
 
@@ -160,7 +160,7 @@ Where:
 - $w_i$ are the model coefficients
 
 **Why Apply Feature Scaling First:**
-Ridge Regression's penalty term depends on coefficient magnitude. Without scaling, features with larger scales would be penalized more heavily, leading to biased shrinkage.
+Ridge Regression's penalty term depends on coefficient magnitude. Without scaling, features with larger scales would be penalized more heavily, leading to biased shrinkage
 
 **Visualization - Effect of Ridge with different λ values:**
 
@@ -246,6 +246,7 @@ poly = PolynomialFeatures(degree=5)
 X_poly = poly.fit_transform(X)
 
 # Set up RidgeCV with a range of alphas
+# 10^(-6) ... 10^(6) divided to 13 intervals
 alphas = np.logspace(-6, 6, 13)  # Range of alpha values to test
 ridge_cv = RidgeCV(alphas=alphas, cv=5, scoring='neg_mean_squared_error')
 
