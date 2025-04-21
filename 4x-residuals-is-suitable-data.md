@@ -93,6 +93,7 @@ plt.show()
 <img src="resid2.png" />
 
 2. **Heteroscedasticity (The spread (or variance) of the errors changes across the data) Funnel Shape**:
+   - Funnel Shape = צורה של משפך
    - Variance of residuals increases with the predicted values
    - Suggests using weighted least squares or transforming the response variable
 
