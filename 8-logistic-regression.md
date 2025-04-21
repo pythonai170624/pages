@@ -184,7 +184,7 @@ $$
 
 ראה בהמשך ... נספח א'
 
-## **כיצד למצוא המקדמים בפייטון:**
+## כיצד למצוא את המקדמים בפייטון
 
 ```python
 from sklearn.linear_model import LogisticRegression
