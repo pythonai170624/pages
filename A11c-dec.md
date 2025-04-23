@@ -3,14 +3,14 @@
 ## נוסחאות:
   
 ### 1. Gini Impurity:
-<p align="center"><img src="https://latex.codecogs.com/gif.latex?Gini%20=%201%20-%20\sum_{i=1}^{n}%20p_i^2"/></p>  
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?Gini%20=%201%20-%20/sum_{i=1}^{n}%20p_i^2"/></p>  
   
   
 כאשר:
 - <img src="https://latex.codecogs.com/gif.latex?p_i"/> הוא ההסתברות של כל קטגוריה <img src="https://latex.codecogs.com/gif.latex?i"/> בקבוצה.
   
 ### 2. Entropy:
-<p align="center"><img src="https://latex.codecogs.com/gif.latex?Entropy%20=%20-%20\sum_{i=1}^{n}%20p_i%20\cdot%20\log_2(p_i)"/></p>  
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?Entropy%20=%20-%20/sum_{i=1}^{n}%20p_i%20/cdot%20/log_2(p_i)"/></p>  
   
   
 כאשר:
@@ -27,7 +27,7 @@
   
   
 ### חישוב Entropy:
-<p align="center"><img src="https://latex.codecogs.com/gif.latex?Entropy%20=%20-%20(0.7%20\cdot%20\log_2(0.7)%20+%200.3%20\cdot%20\log_2(0.3))%20\\Entropy%20=%20-%20(0.7%20\cdot%20-0.5146%20+%200.3%20\cdot%20-1.737)%20\\Entropy%20\approx%20-%20(-0.3602%20-%200.5211)%20=%200.8813"/></p>  
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?Entropy%20=%20-%20(0.7%20/cdot%20/log_2(0.7)%20+%200.3%20/cdot%20/log_2(0.3))%20//Entropy%20=%20-%20(0.7%20/cdot%20-0.5146%20+%200.3%20/cdot%20-1.737)%20//Entropy%20/approx%20-%20(-0.3602%20-%200.5211)%20=%200.8813"/></p>  
   
   
 ## מתי להשתמש?
@@ -42,13 +42,13 @@
 **המלצה כללית:**
 - אם יש לך הרבה נתונים או אתה צריך חישוב מהיר → **Gini**  
 - אם אתה רוצה להיות רגיש יותר לאי-ודאות → **Entropy**
-
+  
 ---  
-
+  
 ## מהו CART, ID3, C4.5
-
+  
 ### 1. CART (Classification And Regression Tree)
-
+  
 - **מה זה?** אלגוריתם שמייצר עץ החלטה לסיווג (Classification) או חיזוי ערכים מספריים (Regression).
 - **מדד חלוקה:** 
   - ב-Classification: משתמש ב-**Gini Impurity**
@@ -56,119 +56,179 @@
 - **מאפיינים:**
   - תמיד מפצל ל-2 קבוצות (Binary Split)
   - מתאים גם לסיווג וגם לרגרסיה
-
-
-#### Information Gain
-
-# מה זה Information Gain?
-
-**Information Gain (IG)** הוא מדד שמראה **כמה מידע הרווחנו** (או כמה אי-ודאות הפחתנו) כשאנחנו מחלקים קבוצה לפי פיצ'ר מסוים.
-
-## למה צריך את זה?
-
-כשבונים **עץ החלטה** (למשל ב-ID3 או C4.5), רוצים לבחור את הפיצ'ר **הכי טוב לפיצול** הדאטה.  
-הפיצ'ר עם ה-**Information Gain** הכי גבוה הוא זה שמפחית הכי הרבה את אי-הוודאות (כלומר עושה את הקבוצה הכי "טהורה").
-
----
-
-## איך מחשבים את זה?
-
-\[
-Information\ Gain = Entropy_{before} - Entropy_{after}
-\]
-
-- **Entropy_before**: כמות אי-הוודאות לפני החלוקה.
-- **Entropy_after**: כמות אי-הוודאות הממוצעת אחרי החלוקה (לפי כל קבוצה שנוצרה).
-
----
-
-## דוגמה:
-
+  
+  
+#### מה זה Information Gain?
+  
+מדד שמראה **כמה מידע הרווחנו** (או כמה אי-ודאות הפחתנו) כשאנחנו מחלקים קבוצה לפי פיצ'ר מסוים
+  
+##### למה צריך את זה?
+  
+כשבונים **עץ החלטה** (למשל ב-ID3 או C4.5), רוצים לבחור את הפיצ'ר **הכי טוב לפיצול** הדאטה
+הפיצ'ר עם ה-**Information Gain** הכי גבוה הוא זה שמפחית הכי הרבה את אי-הוודאות (כלומר עושה את הקבוצה הכי "טהורה")
+  
+##### איך מחשבים את זה?
+  
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?Information\%20Gain%20=%20Entropy_{before}%20-%20Entropy_{after}"/></p>  
+  
+  
+- **Entropy_before**: כמות אי-הוודאות לפני החלוקה
+- **Entropy_after**: כמות אי-הוודאות הממוצעת אחרי החלוקה (לפי כל קבוצה שנוצרה)
+  
+##### דוגמה:
+  
 נניח שיש לנו 10 דוגמאות:
 - 6 **כן** (קנה מוצר)
 - 4 **לא** (לא קנה מוצר)
+  
+**1. מחשבים Entropy לפני החלוקה:**
+  
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?Entropy_{before}%20=%20-%20(0.6%20\cdot%20\log_2(0.6)%20+%200.4%20\cdot%20\log_2(0.4))%20\\\approx%200.9709"/></p>  
+  
+  
+**2. מחלקים לפי פיצ'ר (למשל גיל):**
+  
+**קבוצה 1 (גיל < 30):**
 
-### 1. מחשבים Entropy לפני החלוקה:
-
-\[
-Entropy_{before} = - (0.6 \cdot \log_2(0.6) + 0.4 \cdot \log_2(0.4)) \\
-\approx 0.9709
-\]
-
----
-
-### 2. מחלקים לפי פיצ'ר (למשל גיל):
-
-#### קבוצה 1 (גיל < 30):
 - 4 כן
 - 1 לא
+  
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?Entropy_1%20=%20-%20(0.8%20\cdot%20\log_2(0.8)%20+%200.2%20\cdot%20\log_2(0.2))%20\\\approx%200.7219"/></p>  
+  
+  
+**קבוצה 2 (גיל >= 30):**
 
-\[
-Entropy_1 = - (0.8 \cdot \log_2(0.8) + 0.2 \cdot \log_2(0.2)) \\
-\approx 0.7219
-\]
-
-#### קבוצה 2 (גיל >= 30):
 - 2 כן
 - 3 לא
+  
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?Entropy_2%20=%20-%20(0.4%20\cdot%20\log_2(0.4)%20+%200.6%20\cdot%20\log_2(0.6))%20\\\approx%200.9709"/></p>  
+  
+**3. מחשבים את ה-Entropy אחרי החלוקה:**
+  
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?Entropy_{after}%20=%20\frac{5}{10}%20\cdot%20Entropy_1%20+%20\frac{5}{10}%20\cdot%20Entropy_2%20\\=%200.5%20\cdot%200.7219%20+%200.5%20\cdot%200.9709%20\\=%200.8464"/></p>  
+  
+  
+**4. מחשבים את Information Gain:**
+  
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?Information\%20Gain%20=%200.9709%20-%200.8464%20=%200.1245"/></p>  
+  
+**מה זה אומר?**
+  
+- אם **IG גבוה** → הפיצ'ר הזה עוזר **להפחית את אי-הוודאות** → כדאי לבחור בו
+- אם **IG נמוך** → הפיצ'ר כמעט לא משפיע → פחות כדאי לבחור בו
+  
+**טיפ:**
+  
+- ב-ID3 → תמיד בוחרים את הפיצ'ר עם ה-**IG הכי גבוה**
+- ב-C4.5 → משתמשים ב-**Gain Ratio** (שיפור על IG) כדי למנוע העדפה לפיצ'רים עם הרבה קבוצות
+  
+
+# מה זה Mean Squared Error (MSE) בעצי החלטה?
+
+כשמשתמשים ב-**CART** לבעיות **רגרסיה** (כלומר חיזוי ערך מספרי ולא סיווג), צריך **מדד טוהר** שמתאים לנתונים רציפים.  
+במקום **Gini Impurity** (שמתאים לקטגוריות), משתמשים ב-**Mean Squared Error (MSE)**.
+
+---
+
+## איך זה עובד?
+
+### MSE מחשב:
+\[
+MSE = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y})^2
+\]
+
+- \( y_i \) = הערך האמיתי של כל דוגמה.
+- \( \hat{y} \) = הערך הממוצע בקבוצה (התחזית).
+- \( n \) = מספר הדוגמאות בקבוצה.
+
+**מטרה:** לבחור את הפיצול ש*מפחית* הכי הרבה את ה-MSE.
+
+---
+
+## דוגמה פשוטה:
+
+נניח יש לנו נתוני מכירות (באלפים):
+
+| גיל | מכירות |
+|-----|--------|
+| 25  | 50     |
+| 30  | 60     |
+| 35  | 65     |
+| 40  | 80     |
+
+### 1. מחשבים את ה-MSE לפני פיצול:
+- הממוצע של כל המכירות:  
+\[
+\hat{y} = \frac{50 + 60 + 65 + 80}{4} = 63.75
+\]
+- מחשבים את ה-MSE:
 
 \[
-Entropy_2 = - (0.4 \cdot \log_2(0.4) + 0.6 \cdot \log_2(0.6)) \\
-\approx 0.9709
+MSE = \frac{1}{4} \left( (50-63.75)^2 + (60-63.75)^2 + (65-63.75)^2 + (80-63.75)^2 \right) \\
+= \frac{1}{4} (189.06 + 14.06 + 1.56 + 264.06) \\
+= \frac{1}{4} \cdot 468.75 = 117.19
 \]
 
 ---
 
-### 3. מחשבים את ה-Entropy אחרי החלוקה:
+### 2. בודקים פיצול (למשל גיל < 32):
 
+#### קבוצה 1 (גיל < 32):
+- מכירות: 50, 60
+- ממוצע:  
 \[
-Entropy_{after} = \frac{5}{10} \cdot Entropy_1 + \frac{5}{10} \cdot Entropy_2 \\
-= 0.5 \cdot 0.7219 + 0.5 \cdot 0.9709 \\
-= 0.8464
+\hat{y}_1 = \frac{50 + 60}{2} = 55
+\]
+- MSE:
+\[
+MSE_1 = \frac{1}{2} \left( (50-55)^2 + (60-55)^2 \right) = 25
+\]
+
+#### קבוצה 2 (גיל >= 32):
+- מכירות: 65, 80
+- ממוצע:
+\[
+\hat{y}_2 = \frac{65 + 80}{2} = 72.5
+\]
+- MSE:
+\[
+MSE_2 = \frac{1}{2} \left( (65-72.5)^2 + (80-72.5)^2 \right) = 56.25
 \]
 
 ---
 
-### 4. מחשבים את Information Gain:
+### 3. מחשבים את ה-MSE הכולל אחרי הפיצול:
 
 \[
-Information\ Gain = 0.9709 - 0.8464 = 0.1245
+MSE_{after} = \frac{2}{4} \cdot MSE_1 + \frac{2}{4} \cdot MSE_2 \\
+= 0.5 \cdot 25 + 0.5 \cdot 56.25 = 40.625
 \]
 
 ---
 
-## מה זה אומר?
+### 4. בודקים את השיפור:
 
-- אם **IG גבוה** → הפיצ'ר הזה עוזר **להפחית את אי-הוודאות** → כדאי לבחור בו.
-- אם **IG נמוך** → הפיצ'ר כמעט לא משפיע → פחות כדאי לבחור בו.
+\[
+\Delta MSE = MSE_{before} - MSE_{after} \\
+= 117.19 - 40.625 = 76.56
+\]
 
----
-
-## טיפ:
-
-- ב-ID3 → תמיד בוחרים את הפיצ'ר עם ה-**IG הכי גבוה**.
-- ב-C4.5 → משתמשים ב-**Gain Ratio** (שיפור על IG) כדי למנוע העדפה לפיצ'רים עם הרבה קבוצות.
-
-Information Gain is a metric used to select the best attribute for splitting in a decision tree. It measures the reduction in entropy (uncertainty) achieved by splitting the data according to a particular attribute.
-
-Information Gain is defined as:
-```
-InformationGain(S, A) = Entropy(S) - Σ (|Sv| / |S|) * Entropy(Sv)
-```
-
-Where:
-- S is the current set of examples
-- A is the attribute being tested
-- Sv is the subset of S with value v for attribute A
-- Entropy(S) = -Σ p(i) * log₂(p(i)), where p(i) is the proportion of examples from class i in set S
-
-Higher Information Gain indicates an attribute that reduces more uncertainty in the data, and is therefore preferred for splitting.
-
+- **המסקנה:** הפיצול הזה מוריד את ה-MSE בצורה משמעותית → כדאי לבחור בו!
 
 ---
 
+## סיכום מתוק:
+
+- ב-**CART**:
+  - **Classification** → משתמשים ב-**Gini Impurity**.
+  - **Regression** → משתמשים ב-**MSE** כדי לבחור את הפיצול הכי טוב.
+- **מטרה:** לבחור את הפיצול שמפחית הכי הרבה את ה-MSE → עוזר לנבא ערכים מספריים בצורה מדויקת יותר.
+
+
+---
+  
 ## 2. ID3 (Iterative Dichotomiser 3)
-
+  
 - **מה זה?** אלגוריתם ליצירת עצי החלטה **לסיווג בלבד** (לא רגרסיה).
 - **מדד חלוקה:** 
   - משתמש ב-**Entropy** וב-**Information Gain** כדי לבחור את הפיצ'ר הכי טוב לפיצול.
@@ -176,11 +236,11 @@ Higher Information Gain indicates an attribute that reduces more uncertainty in 
   - יכול לפצל ליותר מ-2 קבוצות (לא רק בינארי).
   - לא תומך בנתונים חסרים.
   - מתאים רק לקטגוריות דיסקרטיות (לא תומך במספרים רציפים).
-
+  
 ---
-
+  
 ## 3. C4.5
-
+  
 - **מה זה?** שדרוג של ID3, גם לסיווג בלבד.
 - **מדד חלוקה:** 
   - משתמש ב-**Gain Ratio** (שיפור של Information Gain כדי להתמודד עם בעיות פיצול לא הוגן).
@@ -188,11 +248,11 @@ Higher Information Gain indicates an attribute that reduces more uncertainty in 
   - כן תומך במספרים רציפים (יודע לחלק אותם לפי סף).
   - תומך בנתונים חסרים.
   - מפסיק לבנות עץ כשהוא לא מוצא פיצול טוב (Pruning - גיזום).
-
+  
 ---
-
+  
 ## השוואה קצרה:
-
+  
 | תכונה              | CART                  | ID3                    | C4.5                 |
 |--------------------|-----------------------|------------------------|----------------------|
 | שימוש              | סיווג ורגרסיה         | סיווג בלבד             | סיווג בלבד          |
@@ -200,12 +260,13 @@ Higher Information Gain indicates an attribute that reduces more uncertainty in 
 | תומך במספרים רציפים| כן                    | לא                     | כן                   |
 | תומך בנתונים חסרים | כן                    | לא                     | כן                   |
 | סוג הפיצול         | בינארי בלבד           | לא חייב בינארי         | לא חייב בינארי       |
-
+  
 ---
   
 ## גרפים (במילים 😅):
   
 - **Gini** מקסימלי כשההסתברויות שוות (0.5, 0.5).
 - **Entropy** גם מקסימלי כשההסתברויות שוות, אבל הערך שלו גדול יותר (1 לעומת 0.5 ב-Gini לשני מחלקות).
+  
   
   
