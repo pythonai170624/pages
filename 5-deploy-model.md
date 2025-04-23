@@ -100,7 +100,7 @@ R² Score: 0.8926
 
 ## what about scaling ?
 
-### 1. in pipe-line its automatially
+### 1. in Pipeline its automatially
 
 ```python
 import numpy as np
@@ -138,6 +138,58 @@ X_new = np.array([[6, 10], [7, 11]])
 # AUTOMATIC SCALING (happens inside the pipeline)
 predictions = loaded_model.predict(X_new)
 print(f"Predictions with automatic scaling: {predictions}")
+```
+
+### 2. manually
+
+```python
+import numpy as np
+from sklearn.linear_model import LinearRegression
+from sklearn.preprocessing import StandardScaler
+import joblib
+
+# 1. Generate sample data
+X = np.array([[1, 5], [2, 6], [3, 7], [4, 8], [5, 9]])
+y = np.array([10, 20, 30, 40, 50])
+
+# 2. Create and fit the scaler
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+print("Data scaled")
+
+# 3. Create and fit the model (on scaled data)
+model = LinearRegression()
+model.fit(X_scaled, y)
+print("Model trained on scaled data")
+
+# 4. Save both the scaler and model separately
+scaler_filename = 'scaler.joblib'
+model_filename = 'linear_model.joblib'
+joblib.dump(scaler, scaler_filename)
+joblib.dump(model, model_filename)
+print(f"Scaler saved to {scaler_filename}")
+print(f"Model saved to {model_filename}")
+
+# 5. Load the scaler and model
+loaded_scaler = joblib.load(scaler_filename)
+loaded_model = joblib.load(model_filename)
+print(f"Scaler and model loaded from disk")
+
+# 6. Make predictions with loaded model (with explicit scaling)
+X_new = np.array([[6, 10], [7, 11]])
+# Scale the new data using the loaded scaler
+X_new_scaled = loaded_scaler.transform(X_new)
+# Make predictions using the loaded model
+predictions = loaded_model.predict(X_new_scaled)
+
+print(f"Original new data: \n{X_new}")
+print(f"Scaled new data: \n{X_new_scaled}")
+print(f"Predictions: {predictions}")
+
+# 7. Verify it works correctly by comparing with original scaler/model
+original_X_new_scaled = scaler.transform(X_new)
+original_predictions = model.predict(original_X_new_scaled)
+print(f"Do the predictions match? {np.allclose(predictions, original_predictions)}")
 ```
 
 ## Complete Example
