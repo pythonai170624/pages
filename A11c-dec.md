@@ -217,8 +217,6 @@ MSE_{after} = \frac{2}{4} \cdot MSE_1 + \frac{2}{4} \cdot MSE_2 \\
 
 ---
 
-## סיכום מתוק:
-
 - ב-**CART**:
   - **Classification** → משתמשים ב-**Gini Impurity**.
   - **Regression** → משתמשים ב-**MSE** כדי לבחור את הפיצול הכי טוב.
