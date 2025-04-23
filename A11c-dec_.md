@@ -51,14 +51,104 @@
 
 - **מה זה?** אלגוריתם שמייצר עץ החלטה לסיווג (Classification) או חיזוי ערכים מספריים (Regression).
 - **מדד חלוקה:** 
-  - ב-Classification: משתמש ב-**Gini Impurity**.
-  - ברגרסיה: משתמש ב-**Mean Squared Error (MSE)**.
+  - ב-Classification: משתמש ב-**Gini Impurity**
+  - ברגרסיה: משתמש ב-**Mean Squared Error (MSE)**
 - **מאפיינים:**
-  - תמיד מפצל ל-2 קבוצות (Binary Split).
-  - מתאים גם לסיווג וגם לרגרסיה.
+  - תמיד מפצל ל-2 קבוצות (Binary Split)
+  - מתאים גם לסיווג וגם לרגרסיה
 
 
 #### Information Gain
+
+# מה זה Information Gain?
+
+**Information Gain (IG)** הוא מדד שמראה **כמה מידע הרווחנו** (או כמה אי-ודאות הפחתנו) כשאנחנו מחלקים קבוצה לפי פיצ'ר מסוים.
+
+## למה צריך את זה?
+
+כשבונים **עץ החלטה** (למשל ב-ID3 או C4.5), רוצים לבחור את הפיצ'ר **הכי טוב לפיצול** הדאטה.  
+הפיצ'ר עם ה-**Information Gain** הכי גבוה הוא זה שמפחית הכי הרבה את אי-הוודאות (כלומר עושה את הקבוצה הכי "טהורה").
+
+---
+
+## איך מחשבים את זה?
+
+\[
+Information\ Gain = Entropy_{before} - Entropy_{after}
+\]
+
+- **Entropy_before**: כמות אי-הוודאות לפני החלוקה.
+- **Entropy_after**: כמות אי-הוודאות הממוצעת אחרי החלוקה (לפי כל קבוצה שנוצרה).
+
+---
+
+## דוגמה:
+
+נניח שיש לנו 10 דוגמאות:
+- 6 **כן** (קנה מוצר)
+- 4 **לא** (לא קנה מוצר)
+
+### 1. מחשבים Entropy לפני החלוקה:
+
+\[
+Entropy_{before} = - (0.6 \cdot \log_2(0.6) + 0.4 \cdot \log_2(0.4)) \\
+\approx 0.9709
+\]
+
+---
+
+### 2. מחלקים לפי פיצ'ר (למשל גיל):
+
+#### קבוצה 1 (גיל < 30):
+- 4 כן
+- 1 לא
+
+\[
+Entropy_1 = - (0.8 \cdot \log_2(0.8) + 0.2 \cdot \log_2(0.2)) \\
+\approx 0.7219
+\]
+
+#### קבוצה 2 (גיל >= 30):
+- 2 כן
+- 3 לא
+
+\[
+Entropy_2 = - (0.4 \cdot \log_2(0.4) + 0.6 \cdot \log_2(0.6)) \\
+\approx 0.9709
+\]
+
+---
+
+### 3. מחשבים את ה-Entropy אחרי החלוקה:
+
+\[
+Entropy_{after} = \frac{5}{10} \cdot Entropy_1 + \frac{5}{10} \cdot Entropy_2 \\
+= 0.5 \cdot 0.7219 + 0.5 \cdot 0.9709 \\
+= 0.8464
+\]
+
+---
+
+### 4. מחשבים את Information Gain:
+
+\[
+Information\ Gain = 0.9709 - 0.8464 = 0.1245
+\]
+
+---
+
+## מה זה אומר?
+
+- אם **IG גבוה** → הפיצ'ר הזה עוזר **להפחית את אי-הוודאות** → כדאי לבחור בו.
+- אם **IG נמוך** → הפיצ'ר כמעט לא משפיע → פחות כדאי לבחור בו.
+
+---
+
+## טיפ:
+
+- ב-ID3 → תמיד בוחרים את הפיצ'ר עם ה-**IG הכי גבוה**.
+- ב-C4.5 → משתמשים ב-**Gain Ratio** (שיפור על IG) כדי למנוע העדפה לפיצ'רים עם הרבה קבוצות.
+
 Information Gain is a metric used to select the best attribute for splitting in a decision tree. It measures the reduction in entropy (uncertainty) achieved by splitting the data according to a particular attribute.
 
 Information Gain is defined as:
