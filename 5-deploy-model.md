@@ -98,6 +98,66 @@ Mean Squared Error: 0.8603
 R² Score: 0.8926
 ```
 
+
+## Complete Example
+
+Here's a complete example with error handling:
+
+```python
+import numpy as np
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error, r2_score
+import joblib
+
+# Create sample data
+np.random.seed(42)
+X = 2 * np.random.rand(100, 1)
+y = 4 + 3 * X + np.random.randn(100, 1)
+
+# Split data
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Train model
+print("Training linear regression model...")
+model = LinearRegression()
+model.fit(X, y)
+print(f"Model trained. Intercept: {model.intercept_[0]:.4f}, Coefficient: {model.coef_[0][0]:.4f}")
+
+# Save model
+joblib.dump(model, "linear_regression_model.joblib")
+
+# Load model
+loaded_model = joblib.load("linear_regression_model.joblib")
+
+if (loaded_model.intercept_[0] == model.intercept_[0] and
+    loaded_model.coef_[0][0] == model.coef_[0][0]):
+    print("Verification successful: Original and loaded models have identical coefficients")
+else:
+    print("Verification failed: Models have different coefficients")
+
+# Make predictions
+y_pred = loaded_model.predict(X_test)
+
+# Evaluate
+mse = mean_squared_error(y_test, y_pred)
+r2 = r2_score(y_test, y_pred)
+
+print(f"Model Evaluation Results:")
+print(f"Mean Squared Error: {mse:.4f}")
+print(f"R² Score: {r2:.4f}")
+```
+
+## Saving with Compression
+
+For larger models, you might want to use compression:
+
+```python
+# Save with compression
+joblib.dump(model, 'linear_regression_model_compressed.joblib.gz', compress=('gzip', 3))
+print("Compressed model saved successfully!")
+```
+
 ## What about Scaling ?
 
 ### 1. In Pipeline its automatically
@@ -254,63 +314,4 @@ X_new = np.array([[7.5, 8.2], [4.3, 5.1]])
 X_new_scaled = loaded_scaler.transform(X_new)  # Scale new data
 new_predictions = loaded_model.predict(X_new_scaled)
 print(f"New data predictions: {new_predictions}")
-```
-
-## Complete Example
-
-Here's a complete example with error handling:
-
-```python
-import numpy as np
-from sklearn.linear_model import LinearRegression
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import mean_squared_error, r2_score
-import joblib
-
-# Create sample data
-np.random.seed(42)
-X = 2 * np.random.rand(100, 1)
-y = 4 + 3 * X + np.random.randn(100, 1)
-
-# Split data
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
-# Train model
-print("Training linear regression model...")
-model = LinearRegression()
-model.fit(X, y)
-print(f"Model trained. Intercept: {model.intercept_[0]:.4f}, Coefficient: {model.coef_[0][0]:.4f}")
-
-# Save model
-joblib.dump(model, "linear_regression_model.joblib")
-
-# Load model
-loaded_model = joblib.load("linear_regression_model.joblib")
-
-if (loaded_model.intercept_[0] == model.intercept_[0] and
-    loaded_model.coef_[0][0] == model.coef_[0][0]):
-    print("Verification successful: Original and loaded models have identical coefficients")
-else:
-    print("Verification failed: Models have different coefficients")
-
-# Make predictions
-y_pred = loaded_model.predict(X_test)
-
-# Evaluate
-mse = mean_squared_error(y_test, y_pred)
-r2 = r2_score(y_test, y_pred)
-
-print(f"Model Evaluation Results:")
-print(f"Mean Squared Error: {mse:.4f}")
-print(f"R² Score: {r2:.4f}")
-```
-
-## Saving with Compression
-
-For larger models, you might want to use compression:
-
-```python
-# Save with compression
-joblib.dump(model, 'linear_regression_model_compressed.joblib.gz', compress=('gzip', 3))
-print("Compressed model saved successfully!")
 ```
