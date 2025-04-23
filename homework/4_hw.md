@@ -31,3 +31,7 @@ y_pred = np.array([
 # calculate here
 
 ```
+
+## Question 2:
+
+dump the model then load the model 
