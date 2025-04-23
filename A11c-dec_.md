@@ -204,7 +204,7 @@
   
 ---
   
-## סיכום מתוק:
+## סיכום 
   
 - ב-**CART**:
   - **Classification** → משתמשים ב-**Gini Impurity**.
