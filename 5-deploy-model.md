@@ -98,6 +98,48 @@ Mean Squared Error: 0.8603
 R² Score: 0.8926
 ```
 
+## what about scaling ?
+
+### 1. in pipe-line its automatially
+
+```python
+import numpy as np
+from sklearn.linear_model import LinearRegression
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import Pipeline
+import joblib
+
+# 1. Generate sample data
+X = np.array([[1, 5], [2, 6], [3, 7], [4, 8], [5, 9]])
+y = np.array([10, 20, 30, 40, 50])
+
+# 2. Create pipeline with scaler and model
+model = Pipeline([
+    ('scaler', StandardScaler()),
+    ('regressor', LinearRegression())
+])
+
+# 3. Train the model
+model.fit(X, y)
+print("Model trained")
+
+# 4. Save the model (with scaler)
+model_filename = 'linear_model_with_scaler.joblib'
+joblib.dump(model, model_filename)
+print(f"Model saved to {model_filename}")
+
+# 5. Load the model
+loaded_model = joblib.load(model_filename)
+print(f"Model loaded from {model_filename}")
+
+# 6. Make predictions with loaded model
+X_new = np.array([[6, 10], [7, 11]])
+
+# AUTOMATIC SCALING (happens inside the pipeline)
+predictions = loaded_model.predict(X_new)
+print(f"Predictions with automatic scaling: {predictions}")
+```
+
 ## Complete Example
 
 Here's a complete example with error handling:
