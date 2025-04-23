@@ -7,7 +7,7 @@
 2. Calculate the **Mean Squared Error (MSE)**.  
 3. Calculate the **Root Mean Squared Error (RMSE)**.
 
-<a href="https://github.com/pythonai170624/pages/blob/main/5-deploy-model.md">see example here</a>
+<a href="https://github.com/pythonai170624/pages/blob/main/4-evaluating-regression-error-func.md">see example here</a>
 
 ```python
 import numpy as np
@@ -38,6 +38,8 @@ y_pred = np.array([
 1. use the code below
 2. save the model
 3. in a new program, load the model and ask the user to input a number, show the prediction for this value
+
+<a href="https://github.com/pythonai170624/pages/blob/main/5-deploy-model.md">see example here</a>
 
 ```python
 import numpy as np
