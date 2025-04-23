@@ -69,7 +69,7 @@
   
 ##### איך מחשבים את זה?
   
-<p align="center"><img src="https://latex.codecogs.com/gif.latex?Information\%20Gain%20=%20Entropy_{before}%20-%20Entropy_{after}"/></p>  
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?Information/%20Gain%20=%20Entropy_{before}%20-%20Entropy_{after}"/></p>  
   
   
 - **Entropy_before**: כמות אי-הוודאות לפני החלוקה
@@ -83,34 +83,34 @@
   
 **1. מחשבים Entropy לפני החלוקה:**
   
-<p align="center"><img src="https://latex.codecogs.com/gif.latex?Entropy_{before}%20=%20-%20(0.6%20\cdot%20\log_2(0.6)%20+%200.4%20\cdot%20\log_2(0.4))%20\\\approx%200.9709"/></p>  
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?Entropy_{before}%20=%20-%20(0.6%20/cdot%20/log_2(0.6)%20+%200.4%20/cdot%20/log_2(0.4))%20///approx%200.9709"/></p>  
   
   
 **2. מחלקים לפי פיצ'ר (למשל גיל):**
   
 **קבוצה 1 (גיל < 30):**
-
+  
 - 4 כן
 - 1 לא
   
-<p align="center"><img src="https://latex.codecogs.com/gif.latex?Entropy_1%20=%20-%20(0.8%20\cdot%20\log_2(0.8)%20+%200.2%20\cdot%20\log_2(0.2))%20\\\approx%200.7219"/></p>  
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?Entropy_1%20=%20-%20(0.8%20/cdot%20/log_2(0.8)%20+%200.2%20/cdot%20/log_2(0.2))%20///approx%200.7219"/></p>  
   
   
 **קבוצה 2 (גיל >= 30):**
-
+  
 - 2 כן
 - 3 לא
   
-<p align="center"><img src="https://latex.codecogs.com/gif.latex?Entropy_2%20=%20-%20(0.4%20\cdot%20\log_2(0.4)%20+%200.6%20\cdot%20\log_2(0.6))%20\\\approx%200.9709"/></p>  
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?Entropy_2%20=%20-%20(0.4%20/cdot%20/log_2(0.4)%20+%200.6%20/cdot%20/log_2(0.6))%20///approx%200.9709"/></p>  
   
 **3. מחשבים את ה-Entropy אחרי החלוקה:**
   
-<p align="center"><img src="https://latex.codecogs.com/gif.latex?Entropy_{after}%20=%20\frac{5}{10}%20\cdot%20Entropy_1%20+%20\frac{5}{10}%20\cdot%20Entropy_2%20\\=%200.5%20\cdot%200.7219%20+%200.5%20\cdot%200.9709%20\\=%200.8464"/></p>  
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?Entropy_{after}%20=%20/frac{5}{10}%20/cdot%20Entropy_1%20+%20/frac{5}{10}%20/cdot%20Entropy_2%20//=%200.5%20/cdot%200.7219%20+%200.5%20/cdot%200.9709%20//=%200.8464"/></p>  
   
   
 **4. מחשבים את Information Gain:**
   
-<p align="center"><img src="https://latex.codecogs.com/gif.latex?Information\%20Gain%20=%200.9709%20-%200.8464%20=%200.1245"/></p>  
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?Information/%20Gain%20=%200.9709%20-%200.8464%20=%200.1245"/></p>  
   
 **מה זה אומר?**
   
@@ -122,7 +122,97 @@
 - ב-ID3 → תמיד בוחרים את הפיצ'ר עם ה-**IG הכי גבוה**
 - ב-C4.5 → משתמשים ב-**Gain Ratio** (שיפור על IG) כדי למנוע העדפה לפיצ'רים עם הרבה קבוצות
   
-
+---
+  
+# מה זה Mean Squared Error (MSE) בעצי החלטה?
+  
+כשמשתמשים ב-**CART** לבעיות **רגרסיה** (כלומר חיזוי ערך מספרי ולא סיווג), צריך **מדד טוהר** שמתאים לנתונים רציפים.  
+במקום **Gini Impurity** (שמתאים לקטגוריות), משתמשים ב-**Mean Squared Error (MSE)**.
+  
+---
+  
+## איך זה עובד?
+  
+### MSE מחשב:
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?MSE%20=%20\frac{1}{n}%20\sum_{i=1}^{n}%20(y_i%20-%20\hat{y})^2"/></p>  
+  
+  
+- <img src="https://latex.codecogs.com/gif.latex?y_i"/> = הערך האמיתי של כל דוגמה.
+- <img src="https://latex.codecogs.com/gif.latex?\hat{y}"/> = הערך הממוצע בקבוצה (התחזית).
+- <img src="https://latex.codecogs.com/gif.latex?n"/> = מספר הדוגמאות בקבוצה.
+  
+**מטרה:** לבחור את הפיצול ש*מפחית* הכי הרבה את ה-MSE.
+  
+---
+  
+## דוגמה פשוטה:
+  
+נניח יש לנו נתוני מכירות (באלפים):
+  
+| גיל | מכירות |
+|-----|--------|
+| 25  | 50     |
+| 30  | 60     |
+| 35  | 65     |
+| 40  | 80     |
+  
+### 1. מחשבים את ה-MSE לפני פיצול:
+- הממוצע של כל המכירות:  
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?\hat{y}%20=%20\frac{50%20+%2060%20+%2065%20+%2080}{4}%20=%2063.75"/></p>  
+  
+- מחשבים את ה-MSE:
+  
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?MSE%20=%20\frac{1}{4}%20\left(%20(50-63.75)^2%20+%20(60-63.75)^2%20+%20(65-63.75)^2%20+%20(80-63.75)^2%20\right)%20\\=%20\frac{1}{4}%20(189.06%20+%2014.06%20+%201.56%20+%20264.06)%20\\=%20\frac{1}{4}%20\cdot%20468.75%20=%20117.19"/></p>  
+  
+  
+---
+  
+### 2. בודקים פיצול (למשל גיל < 32):
+  
+#### קבוצה 1 (גיל < 32):
+- מכירות: 50, 60
+- ממוצע:  
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?\hat{y}_1%20=%20\frac{50%20+%2060}{2}%20=%2055"/></p>  
+  
+- MSE:
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?MSE_1%20=%20\frac{1}{2}%20\left(%20(50-55)^2%20+%20(60-55)^2%20\right)%20=%2025"/></p>  
+  
+  
+#### קבוצה 2 (גיל >= 32):
+- מכירות: 65, 80
+- ממוצע:
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?\hat{y}_2%20=%20\frac{65%20+%2080}{2}%20=%2072.5"/></p>  
+  
+- MSE:
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?MSE_2%20=%20\frac{1}{2}%20\left(%20(65-72.5)^2%20+%20(80-72.5)^2%20\right)%20=%2056.25"/></p>  
+  
+  
+---
+  
+### 3. מחשבים את ה-MSE הכולל אחרי הפיצול:
+  
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?MSE_{after}%20=%20\frac{2}{4}%20\cdot%20MSE_1%20+%20\frac{2}{4}%20\cdot%20MSE_2%20\\=%200.5%20\cdot%2025%20+%200.5%20\cdot%2056.25%20=%2040.625"/></p>  
+  
+  
+---
+  
+### 4. בודקים את השיפור:
+  
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?\Delta%20MSE%20=%20MSE_{before}%20-%20MSE_{after}%20\\=%20117.19%20-%2040.625%20=%2076.56"/></p>  
+  
+  
+- **המסקנה:** הפיצול הזה מוריד את ה-MSE בצורה משמעותית → כדאי לבחור בו!
+  
+---
+  
+## סיכום מתוק 😘:
+  
+- ב-**CART**:
+  - **Classification** → משתמשים ב-**Gini Impurity**.
+  - **Regression** → משתמשים ב-**MSE** כדי לבחור את הפיצול הכי טוב.
+- **מטרה:** לבחור את הפיצול שמפחית הכי הרבה את ה-MSE → עוזר לנבא ערכים מספריים בצורה מדויקת יותר.
+  
+  
   
 ---
   
@@ -136,111 +226,6 @@
   - לא תומך בנתונים חסרים.
   - מתאים רק לקטגוריות דיסקרטיות (לא תומך במספרים רציפים).
   
----
-
-# מה זה Mean Squared Error (MSE) בעצי החלטה?
-
-כשמשתמשים ב-**CART** לבעיות **רגרסיה** (כלומר חיזוי ערך מספרי ולא סיווג), צריך **מדד טוהר** שמתאים לנתונים רציפים.  
-במקום **Gini Impurity** (שמתאים לקטגוריות), משתמשים ב-**Mean Squared Error (MSE)**.
-
----
-
-## איך זה עובד?
-
-### MSE מחשב:
-\[
-MSE = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y})^2
-\]
-
-- \( y_i \) = הערך האמיתי של כל דוגמה.
-- \( \hat{y} \) = הערך הממוצע בקבוצה (התחזית).
-- \( n \) = מספר הדוגמאות בקבוצה.
-
-**מטרה:** לבחור את הפיצול ש*מפחית* הכי הרבה את ה-MSE.
-
----
-
-## דוגמה פשוטה:
-
-נניח יש לנו נתוני מכירות (באלפים):
-
-| גיל | מכירות |
-|-----|--------|
-| 25  | 50     |
-| 30  | 60     |
-| 35  | 65     |
-| 40  | 80     |
-
-### 1. מחשבים את ה-MSE לפני פיצול:
-- הממוצע של כל המכירות:  
-\[
-\hat{y} = \frac{50 + 60 + 65 + 80}{4} = 63.75
-\]
-- מחשבים את ה-MSE:
-
-\[
-MSE = \frac{1}{4} \left( (50-63.75)^2 + (60-63.75)^2 + (65-63.75)^2 + (80-63.75)^2 \right) \\
-= \frac{1}{4} (189.06 + 14.06 + 1.56 + 264.06) \\
-= \frac{1}{4} \cdot 468.75 = 117.19
-\]
-
----
-
-### 2. בודקים פיצול (למשל גיל < 32):
-
-#### קבוצה 1 (גיל < 32):
-- מכירות: 50, 60
-- ממוצע:  
-\[
-\hat{y}_1 = \frac{50 + 60}{2} = 55
-\]
-- MSE:
-\[
-MSE_1 = \frac{1}{2} \left( (50-55)^2 + (60-55)^2 \right) = 25
-\]
-
-#### קבוצה 2 (גיל >= 32):
-- מכירות: 65, 80
-- ממוצע:
-\[
-\hat{y}_2 = \frac{65 + 80}{2} = 72.5
-\]
-- MSE:
-\[
-MSE_2 = \frac{1}{2} \left( (65-72.5)^2 + (80-72.5)^2 \right) = 56.25
-\]
-
----
-
-### 3. מחשבים את ה-MSE הכולל אחרי הפיצול:
-
-\[
-MSE_{after} = \frac{2}{4} \cdot MSE_1 + \frac{2}{4} \cdot MSE_2 \\
-= 0.5 \cdot 25 + 0.5 \cdot 56.25 = 40.625
-\]
-
----
-
-### 4. בודקים את השיפור:
-
-\[
-\Delta MSE = MSE_{before} - MSE_{after} \\
-= 117.19 - 40.625 = 76.56
-\]
-
-- **המסקנה:** הפיצול הזה מוריד את ה-MSE בצורה משמעותית → כדאי לבחור בו!
-
----
-
-## סיכום  :
-
-- ב-**CART**:
-  - **Classification** → משתמשים ב-**Gini Impurity**.
-  - **Regression** → משתמשים ב-**MSE** כדי לבחור את הפיצול הכי טוב.
-- **מטרה:** לבחור את הפיצול שמפחית הכי הרבה את ה-MSE → עוזר לנבא ערכים מספריים בצורה מדויקת יותר.
-
-
-
 ---
   
 ## 3. C4.5
@@ -271,6 +256,7 @@ MSE_{after} = \frac{2}{4} \cdot MSE_1 + \frac{2}{4} \cdot MSE_2 \\
   
 - **Gini** מקסימלי כשההסתברויות שוות (0.5, 0.5).
 - **Entropy** גם מקסימלי כשההסתברויות שוות, אבל הערך שלו גדול יותר (1 לעומת 0.5 ב-Gini לשני מחלקות).
+  
   
   
   
