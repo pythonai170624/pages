@@ -114,6 +114,11 @@ in the following graph:
 <img src="hw_4_elbow.png" style="width: 70%" />
 
 where is the underfit? where is the overfit?
-where is the ideal are
+
+where is the ideal area?
 
 use the dotted line in your answer, i.e. left to the dotted line
+
+---
+
+submit to: pythonai170624+HWAI4@gmail.com
