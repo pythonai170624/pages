@@ -1,71 +1,169 @@
 # השוואה בין Gini Impurity ל-Entropy
-
+  
 ## נוסחאות:
-
+  
 ### 1. Gini Impurity:
-\[
-Gini = 1 - \sum_{i=1}^{n} p_i^2
-\]
-
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?Gini%20=%201%20-%20\sum_{i=1}^{n}%20p_i^2"/></p>  
+  
+  
 כאשר:
-- \(p_i\) הוא ההסתברות של כל קטגוריה \(i\) בקבוצה
-
----
-
+- <img src="https://latex.codecogs.com/gif.latex?p_i"/> הוא ההסתברות של כל קטגוריה <img src="https://latex.codecogs.com/gif.latex?i"/> בקבוצה.
+  
 ### 2. Entropy:
-\[
-Entropy = - \sum_{i=1}^{n} p_i \cdot \log_2(p_i)
-\]
-
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?Entropy%20=%20-%20\sum_{i=1}^{n}%20p_i%20\cdot%20\log_2(p_i)"/></p>  
+  
+  
 כאשר:
-- \(p_i\) הוא ההסתברות של כל קטגוריה \(i\) בקבוצה
-
----
-
+- <img src="https://latex.codecogs.com/gif.latex?p_i"/> הוא ההסתברות של כל קטגוריה <img src="https://latex.codecogs.com/gif.latex?i"/> בקבוצה.
+  
 ## דוגמה מספרית:
-
+  
 נניח שיש לנו קבוצה עם שתי קטגוריות:
-- חיובי (Positive) עם הסתברות \(p_1 = 0.7\)
-- שלילי (Negative) עם הסתברות \(p_2 = 0.3\)
-
+- חיובי (Positive) עם הסתברות <img src="https://latex.codecogs.com/gif.latex?p_1%20=%200.7"/>
+- שלילי (Negative) עם הסתברות <img src="https://latex.codecogs.com/gif.latex?p_2%20=%200.3"/>
+  
 ### חישוב Gini:
-\[
-Gini = 1 - (0.7^2 + 0.3^2) = 1 - (0.49 + 0.09) = 0.42
-\]
-
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?Gini%20=%201%20-%20(0.7^2%20+%200.3^2)%20=%201%20-%20(0.49%20+%200.09)%20=%200.42"/></p>  
+  
+  
 ### חישוב Entropy:
-\[
-Entropy = - (0.7 \cdot \log_2(0.7) + 0.3 \cdot \log_2(0.3)) \\
-Entropy = - (0.7 \cdot -0.5146 + 0.3 \cdot -1.737) \\
-Entropy \approx - (-0.3602 - 0.5211) = 0.8813
-\]
-
----
-
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?Entropy%20=%20-%20(0.7%20\cdot%20\log_2(0.7)%20+%200.3%20\cdot%20\log_2(0.3))%20\\Entropy%20=%20-%20(0.7%20\cdot%20-0.5146%20+%200.3%20\cdot%20-1.737)%20\\Entropy%20\approx%20-%20(-0.3602%20-%200.5211)%20=%200.8813"/></p>  
+  
+  
 ## מתי להשתמש?
-
+  
 | מאפיין            | Gini Impurity           | Entropy                  |
 |-------------------|-------------------------|--------------------------|
 | חישוביות          | מהיר יותר (ללא לוגריתם) | איטי יותר (יש לוגריתם)   |
 | רגישות            | פחות רגיש להבדלים קטנים | יותר רגיש להבדלים קטנים  |
-| מתי לבחור         | כשחשובה מהירות          | כשחשוב דיוק/מידע         |
+| מתי לבחור         | כשחשובה מהירות          | כשחשובה דיוק/מידע         |
 | שימוש נפוץ        | Decision Tree (CART)    | Decision Tree (ID3, C4.5)|
-
+  
 **המלצה כללית:**
 - אם יש לך הרבה נתונים או אתה צריך חישוב מהיר → **Gini**  
 - אם אתה רוצה להיות רגיש יותר לאי-ודאות → **Entropy**
 
-# סיכום: CART, ID3, C4.5
+---  
 
-## 1. CART (Classification And Regression Tree)
+## מהו CART, ID3, C4.5
+
+### 1. CART (Classification And Regression Tree)
 
 - **מה זה?** אלגוריתם שמייצר עץ החלטה לסיווג (Classification) או חיזוי ערכים מספריים (Regression).
 - **מדד חלוקה:** 
-  - ב-Classification: משתמש ב-**Gini Impurity**.
-  - ברגרסיה: משתמש ב-**Mean Squared Error (MSE)**.
+  - ב-Classification: משתמש ב-**Gini Impurity**
+  - ברגרסיה: משתמש ב-**Mean Squared Error (MSE)**
 - **מאפיינים:**
-  - תמיד מפצל ל-2 קבוצות (Binary Split).
-  - מתאים גם לסיווג וגם לרגרסיה.
+  - תמיד מפצל ל-2 קבוצות (Binary Split)
+  - מתאים גם לסיווג וגם לרגרסיה
+
+
+#### Information Gain
+
+# מה זה Information Gain?
+
+**Information Gain (IG)** הוא מדד שמראה **כמה מידע הרווחנו** (או כמה אי-ודאות הפחתנו) כשאנחנו מחלקים קבוצה לפי פיצ'ר מסוים.
+
+## למה צריך את זה?
+
+כשבונים **עץ החלטה** (למשל ב-ID3 או C4.5), רוצים לבחור את הפיצ'ר **הכי טוב לפיצול** הדאטה.  
+הפיצ'ר עם ה-**Information Gain** הכי גבוה הוא זה שמפחית הכי הרבה את אי-הוודאות (כלומר עושה את הקבוצה הכי "טהורה").
+
+---
+
+## איך מחשבים את זה?
+
+\[
+Information\ Gain = Entropy_{before} - Entropy_{after}
+\]
+
+- **Entropy_before**: כמות אי-הוודאות לפני החלוקה.
+- **Entropy_after**: כמות אי-הוודאות הממוצעת אחרי החלוקה (לפי כל קבוצה שנוצרה).
+
+---
+
+## דוגמה:
+
+נניח שיש לנו 10 דוגמאות:
+- 6 **כן** (קנה מוצר)
+- 4 **לא** (לא קנה מוצר)
+
+### 1. מחשבים Entropy לפני החלוקה:
+
+\[
+Entropy_{before} = - (0.6 \cdot \log_2(0.6) + 0.4 \cdot \log_2(0.4)) \\
+\approx 0.9709
+\]
+
+---
+
+### 2. מחלקים לפי פיצ'ר (למשל גיל):
+
+#### קבוצה 1 (גיל < 30):
+- 4 כן
+- 1 לא
+
+\[
+Entropy_1 = - (0.8 \cdot \log_2(0.8) + 0.2 \cdot \log_2(0.2)) \\
+\approx 0.7219
+\]
+
+#### קבוצה 2 (גיל >= 30):
+- 2 כן
+- 3 לא
+
+\[
+Entropy_2 = - (0.4 \cdot \log_2(0.4) + 0.6 \cdot \log_2(0.6)) \\
+\approx 0.9709
+\]
+
+---
+
+### 3. מחשבים את ה-Entropy אחרי החלוקה:
+
+\[
+Entropy_{after} = \frac{5}{10} \cdot Entropy_1 + \frac{5}{10} \cdot Entropy_2 \\
+= 0.5 \cdot 0.7219 + 0.5 \cdot 0.9709 \\
+= 0.8464
+\]
+
+---
+
+### 4. מחשבים את Information Gain:
+
+\[
+Information\ Gain = 0.9709 - 0.8464 = 0.1245
+\]
+
+---
+
+## מה זה אומר?
+
+- אם **IG גבוה** → הפיצ'ר הזה עוזר **להפחית את אי-הוודאות** → כדאי לבחור בו.
+- אם **IG נמוך** → הפיצ'ר כמעט לא משפיע → פחות כדאי לבחור בו.
+
+---
+
+## טיפ:
+
+- ב-ID3 → תמיד בוחרים את הפיצ'ר עם ה-**IG הכי גבוה**.
+- ב-C4.5 → משתמשים ב-**Gain Ratio** (שיפור על IG) כדי למנוע העדפה לפיצ'רים עם הרבה קבוצות.
+
+Information Gain is a metric used to select the best attribute for splitting in a decision tree. It measures the reduction in entropy (uncertainty) achieved by splitting the data according to a particular attribute.
+
+Information Gain is defined as:
+```
+InformationGain(S, A) = Entropy(S) - Σ (|Sv| / |S|) * Entropy(Sv)
+```
+
+Where:
+- S is the current set of examples
+- A is the attribute being tested
+- Sv is the subset of S with value v for attribute A
+- Entropy(S) = -Σ p(i) * log₂(p(i)), where p(i) is the proportion of examples from class i in set S
+
+Higher Information Gain indicates an attribute that reduces more uncertainty in the data, and is therefore preferred for splitting.
+
 
 ---
 
@@ -103,11 +201,11 @@ Entropy \approx - (-0.3602 - 0.5211) = 0.8813
 | תומך בנתונים חסרים | כן                    | לא                     | כן                   |
 | סוג הפיצול         | בינארי בלבד           | לא חייב בינארי         | לא חייב בינארי       |
 
-
 ---
-
+  
 ## גרפים (במילים 😅):
-
-- **Gini** מקסימלי כשההסתברויות שוות (0.5, 0.5)
-- **Entropy** גם מקסימלי כשההסתברויות שוות, אבל הערך שלו גדול יותר (1 לעומת 0.5 ב-Gini לשני מחלקות)
-
+  
+- **Gini** מקסימלי כשההסתברויות שוות (0.5, 0.5).
+- **Entropy** גם מקסימלי כשההסתברויות שוות, אבל הערך שלו גדול יותר (1 לעומת 0.5 ב-Gini לשני מחלקות).
+  
+  
