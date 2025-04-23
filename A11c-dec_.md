@@ -49,9 +49,9 @@
 - אם יש לך הרבה נתונים או אתה צריך חישוב מהיר → **Gini**  
 - אם אתה רוצה להיות רגיש יותר לאי-ודאות → **Entropy**
   
-# סיכום: CART, ID3, C4.5
+## CART, ID3, C4.5
 
-## 1. CART (Classification And Regression Tree)
+### 1. CART (Classification And Regression Tree)
 
 - **מה זה?** אלגוריתם שמייצר עץ החלטה לסיווג (Classification) או חיזוי ערכים מספריים (Regression).
 - **מדד חלוקה:** 
@@ -60,6 +60,24 @@
 - **מאפיינים:**
   - תמיד מפצל ל-2 קבוצות (Binary Split).
   - מתאים גם לסיווג וגם לרגרסיה.
+
+
+#### Information Gain
+Information Gain is a metric used to select the best attribute for splitting in a decision tree. It measures the reduction in entropy (uncertainty) achieved by splitting the data according to a particular attribute.
+
+Information Gain is defined as:
+```
+InformationGain(S, A) = Entropy(S) - Σ (|Sv| / |S|) * Entropy(Sv)
+```
+
+Where:
+- S is the current set of examples
+- A is the attribute being tested
+- Sv is the subset of S with value v for attribute A
+- Entropy(S) = -Σ p(i) * log₂(p(i)), where p(i) is the proportion of examples from class i in set S
+
+Higher Information Gain indicates an attribute that reduces more uncertainty in the data, and is therefore preferred for splitting.
+
 
 ---
 
