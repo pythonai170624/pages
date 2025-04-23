@@ -1,35 +1,33 @@
 # Homework Assignment
 
 ## Question 1:  
-Given two lists of numbers:
-
-- **Actual values:**  
-`[3.0, -0.5, 2.0, 7.0]`  
-- **Predicted values:**  
-`[2.5, 0.0, 2.1, 7.8]`  
 
 ### Tasks:
 1. Calculate the **Mean Absolute Error (MAE)**.  
 2. Calculate the **Mean Squared Error (MSE)**.  
 3. Calculate the **Root Mean Squared Error (RMSE)**.
 
-### Formulas:
-- **MAE** =  
-\[
-\frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i|
-\]
+<a href="https://github.com/pythonai170624/pages/blob/main/4-evaluating-regression-error-func.md">see example here</a>
 
-- **MSE** =  
-\[
-\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
-\]
+```python
+import numpy as np
+from sklearn.metrics import mean_absolute_error, mean_squared_error
 
-- **RMSE** =  
-\[
-\sqrt{MSE}
-\]
+y_true = np.array([
+    10.5, 8.2, 7.3, 15.4, 12.0,
+    9.8, 6.7, 11.2, 13.5, 9.0,
+    8.1, 14.2, 10.0, 7.5, 12.8,
+    9.3, 11.8, 8.9, 10.7, 13.1
+])
 
-Where:  
-- \( y_i \) = actual value  
-- \( \hat{y}_i \) = predicted value  
-- \( n \) = number of data points
+# predicted values
+y_pred = np.array([
+    11.2, 7.8, 7.0, 16.1, 11.5,
+    9.5, 7.2, 10.8, 14.0, 8.7,
+    8.5, 13.9, 10.4, 7.8, 12.5,
+    9.0, 12.3, 9.4, 11.1, 12.8
+])
+
+# calculate here
+
+```
