@@ -9,16 +9,12 @@
 כאשר:
 - <img src="https://latex.codecogs.com/gif.latex?p_i"/> הוא ההסתברות של כל קטגוריה <img src="https://latex.codecogs.com/gif.latex?i"/> בקבוצה.
   
----
-  
 ### 2. Entropy:
 <p align="center"><img src="https://latex.codecogs.com/gif.latex?Entropy%20=%20-%20\sum_{i=1}^{n}%20p_i%20\cdot%20\log_2(p_i)"/></p>  
   
   
 כאשר:
 - <img src="https://latex.codecogs.com/gif.latex?p_i"/> הוא ההסתברות של כל קטגוריה <img src="https://latex.codecogs.com/gif.latex?i"/> בקבוצה.
-  
----
   
 ## דוגמה מספרית:
   
@@ -49,7 +45,7 @@
 - אם יש לך הרבה נתונים או אתה צריך חישוב מהיר → **Gini**  
 - אם אתה רוצה להיות רגיש יותר לאי-ודאות → **Entropy**
   
-## CART, ID3, C4.5
+## מהו CART, ID3, C4.5
 
 ### 1. CART (Classification And Regression Tree)
 
