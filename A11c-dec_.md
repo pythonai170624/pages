@@ -30,8 +30,6 @@
 <p align="center"><img src="https://latex.codecogs.com/gif.latex?Entropy%20=%20-%20(0.7%20\cdot%20\log_2(0.7)%20+%200.3%20\cdot%20\log_2(0.3))%20\\Entropy%20=%20-%20(0.7%20\cdot%20-0.5146%20+%200.3%20\cdot%20-1.737)%20\\Entropy%20\approx%20-%20(-0.3602%20-%200.5211)%20=%200.8813"/></p>  
   
   
----
-  
 ## מתי להשתמש?
   
 | מאפיין            | Gini Impurity           | Entropy                  |
@@ -44,7 +42,9 @@
 **המלצה כללית:**
 - אם יש לך הרבה נתונים או אתה צריך חישוב מהיר → **Gini**  
 - אם אתה רוצה להיות רגיש יותר לאי-ודאות → **Entropy**
-  
+
+---  
+
 ## מהו CART, ID3, C4.5
 
 ### 1. CART (Classification And Regression Tree)
