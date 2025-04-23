@@ -74,7 +74,9 @@ joblib.dump(model, 'linear_model.joblib')
 
 ## Question 3:
 
-1. You have trained a linear regression model, and you notice the following:
+#### 1
+
+You have trained a linear regression model, and you notice the following:
 
 The model performs very well on the training set but poorly on the validation set.
 
@@ -84,10 +86,13 @@ The model seems to be overfitting.
 
 Which regularization technique would help reduce the variance and prevent overfitting in this scenario?
 
-A. L1 regularization (Lasso) 
-B. L2 regularization (Ridge) 
+- L1 regularization (Lasso) 
 
-2. You are working with a linear regression model that includes many input features, and you suspect that some features are irrelevant (they contribute little to the prediction).
+- L2 regularization (Ridge) 
+
+#### 2
+
+You are working with a linear regression model that includes many input features, and you suspect that some features are irrelevant (they contribute little to the prediction).
 
 You want to:
 
@@ -97,8 +102,10 @@ Encourage the model to automatically set some coefficients to zero (effectively 
 
 Which regularization method should you use?
 
-A. L1 regularization (Lasso) 
-B. L2 regularization (Ridge) 
+- L1 regularization (Lasso) 
+
+- L2 regularization (Ridge) 
+
 
 ## Question 4:
 
