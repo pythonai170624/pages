@@ -98,9 +98,9 @@ Mean Squared Error: 0.8603
 R² Score: 0.8926
 ```
 
-## what about scaling ?
+## What about Scaling ?
 
-### 1. in Pipeline its automatially
+### 1. In Pipeline its automatically
 
 ```python
 import numpy as np
@@ -140,7 +140,7 @@ predictions = loaded_model.predict(X_new)
 print(f"Predictions with automatic scaling: {predictions}")
 ```
 
-### 2. manually
+### 2. Manually
 
 ```python
 import numpy as np
@@ -190,6 +190,70 @@ print(f"Predictions: {predictions}")
 original_X_new_scaled = scaler.transform(X_new)
 original_predictions = model.predict(original_X_new_scaled)
 print(f"Do the predictions match? {np.allclose(predictions, original_predictions)}")
+```
+
+### 3. Manually train-test
+
+```python
+import numpy as np
+from sklearn.linear_model import LinearRegression
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error, r2_score
+import joblib
+
+# 1. Generate sample data
+np.random.seed(42)  # for reproducibility
+X = np.random.rand(100, 2) * 10  # 100 samples, 2 features
+y = 3*X[:, 0] + 2*X[:, 1] + np.random.randn(100) * 2  # target with noise
+
+# 2. Split data into train and test sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+print(f"Training set: {X_train.shape[0]} samples")
+print(f"Test set: {X_test.shape[0]} samples")
+
+# 3. Create and fit the scaler on training data only
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+print("Training data scaled")
+
+# 4. Create and fit the model (on scaled training data)
+model = LinearRegression()
+model.fit(X_train_scaled, y_train)
+print("Model trained on scaled data")
+
+# 5. Evaluate on test set (with scaling)
+X_test_scaled = scaler.transform(X_test)  # Scale test data using same scaler
+y_pred = model.predict(X_test_scaled)
+
+# Calculate metrics
+mse = mean_squared_error(y_test, y_pred)
+r2 = r2_score(y_test, y_pred)
+print(f"Test set MSE: {mse:.4f}")
+print(f"Test set R²: {r2:.4f}")
+
+# 6. Save both the scaler and model separately
+scaler_filename = 'scaler.joblib'
+model_filename = 'linear_model.joblib'
+joblib.dump(scaler, scaler_filename)
+joblib.dump(model, model_filename)
+print(f"Scaler saved to {scaler_filename}")
+print(f"Model saved to {model_filename}")
+
+# 7. Load the scaler and model
+loaded_scaler = joblib.load(scaler_filename)
+loaded_model = joblib.load(model_filename)
+print(f"Scaler and model loaded from disk")
+
+# 8. Verify loaded model performs the same on test data
+X_test_scaled_loaded = loaded_scaler.transform(X_test)  # Scale with loaded scaler
+y_pred_loaded = loaded_model.predict(X_test_scaled_loaded)
+
+# 9. Make predictions with new data
+X_new = np.array([[7.5, 8.2], [4.3, 5.1]])
+X_new_scaled = loaded_scaler.transform(X_new)  # Scale new data
+new_predictions = loaded_model.predict(X_new_scaled)
+print(f"New data predictions: {new_predictions}")
 ```
 
 ## Complete Example
