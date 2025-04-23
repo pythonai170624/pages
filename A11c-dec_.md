@@ -58,20 +58,16 @@
   - מתאים גם לסיווג וגם לרגרסיה
   
   
-#### Information Gain
-  
-# מה זה Information Gain?
+#### מה זה Information Gain?
   
 **Information Gain (IG)** הוא מדד שמראה **כמה מידע הרווחנו** (או כמה אי-ודאות הפחתנו) כשאנחנו מחלקים קבוצה לפי פיצ'ר מסוים.
   
-## למה צריך את זה?
+##### למה צריך את זה?
   
 כשבונים **עץ החלטה** (למשל ב-ID3 או C4.5), רוצים לבחור את הפיצ'ר **הכי טוב לפיצול** הדאטה.  
 הפיצ'ר עם ה-**Information Gain** הכי גבוה הוא זה שמפחית הכי הרבה את אי-הוודאות (כלומר עושה את הקבוצה הכי "טהורה").
   
----
-  
-## איך מחשבים את זה?
+##### איך מחשבים את זה?
   
 <p align="center"><img src="https://latex.codecogs.com/gif.latex?Information\%20Gain%20=%20Entropy_{before}%20-%20Entropy_{after}"/></p>  
   
@@ -79,80 +75,52 @@
 - **Entropy_before**: כמות אי-הוודאות לפני החלוקה.
 - **Entropy_after**: כמות אי-הוודאות הממוצעת אחרי החלוקה (לפי כל קבוצה שנוצרה).
   
----
-  
-## דוגמה:
+##### דוגמה:
   
 נניח שיש לנו 10 דוגמאות:
 - 6 **כן** (קנה מוצר)
 - 4 **לא** (לא קנה מוצר)
   
-### 1. מחשבים Entropy לפני החלוקה:
+**1. מחשבים Entropy לפני החלוקה:**
   
 <p align="center"><img src="https://latex.codecogs.com/gif.latex?Entropy_{before}%20=%20-%20(0.6%20\cdot%20\log_2(0.6)%20+%200.4%20\cdot%20\log_2(0.4))%20\\\approx%200.9709"/></p>  
   
   
----
+**2. מחלקים לפי פיצ'ר (למשל גיל):**
   
-### 2. מחלקים לפי פיצ'ר (למשל גיל):
-  
-#### קבוצה 1 (גיל < 30):
+**קבוצה 1 (גיל < 30):**
+
 - 4 כן
 - 1 לא
   
 <p align="center"><img src="https://latex.codecogs.com/gif.latex?Entropy_1%20=%20-%20(0.8%20\cdot%20\log_2(0.8)%20+%200.2%20\cdot%20\log_2(0.2))%20\\\approx%200.7219"/></p>  
   
   
-#### קבוצה 2 (גיל >= 30):
+**קבוצה 2 (גיל >= 30):**
+
 - 2 כן
 - 3 לא
   
 <p align="center"><img src="https://latex.codecogs.com/gif.latex?Entropy_2%20=%20-%20(0.4%20\cdot%20\log_2(0.4)%20+%200.6%20\cdot%20\log_2(0.6))%20\\\approx%200.9709"/></p>  
   
-  
----
-  
-### 3. מחשבים את ה-Entropy אחרי החלוקה:
+**3. מחשבים את ה-Entropy אחרי החלוקה:**
   
 <p align="center"><img src="https://latex.codecogs.com/gif.latex?Entropy_{after}%20=%20\frac{5}{10}%20\cdot%20Entropy_1%20+%20\frac{5}{10}%20\cdot%20Entropy_2%20\\=%200.5%20\cdot%200.7219%20+%200.5%20\cdot%200.9709%20\\=%200.8464"/></p>  
   
   
----
-  
-### 4. מחשבים את Information Gain:
+**4. מחשבים את Information Gain:**
   
 <p align="center"><img src="https://latex.codecogs.com/gif.latex?Information\%20Gain%20=%200.9709%20-%200.8464%20=%200.1245"/></p>  
   
-  
----
-  
-## מה זה אומר?
+**מה זה אומר?**
   
 - אם **IG גבוה** → הפיצ'ר הזה עוזר **להפחית את אי-הוודאות** → כדאי לבחור בו.
 - אם **IG נמוך** → הפיצ'ר כמעט לא משפיע → פחות כדאי לבחור בו.
   
----
-  
-## טיפ:
+**טיפ:**
   
 - ב-ID3 → תמיד בוחרים את הפיצ'ר עם ה-**IG הכי גבוה**.
 - ב-C4.5 → משתמשים ב-**Gain Ratio** (שיפור על IG) כדי למנוע העדפה לפיצ'רים עם הרבה קבוצות.
-  
-Information Gain is a metric used to select the best attribute for splitting in a decision tree. It measures the reduction in entropy (uncertainty) achieved by splitting the data according to a particular attribute.
-  
-Information Gain is defined as:
-```
-InformationGain(S, A) = Entropy(S) - Σ (|Sv| / |S|) * Entropy(Sv)
-```
-  
-Where:
-- S is the current set of examples
-- A is the attribute being tested
-- Sv is the subset of S with value v for attribute A
-- Entropy(S) = -Σ p(i) * log₂(p(i)), where p(i) is the proportion of examples from class i in set S
-  
-Higher Information Gain indicates an attribute that reduces more uncertainty in the data, and is therefore preferred for splitting.
-  
   
 ---
   
