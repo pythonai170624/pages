@@ -52,7 +52,7 @@ y = np.array([2, 4, 5, 4, 5, 7, 8, 9, 11, 12])
 # Fit the model
 model = LinearRegression()
 model.fit(X, y)
-print("\nModel fitted")
+print("Model fitted")
 print(f"Coefficient: {model.coef_[0]:.4f}")
 print(f"Intercept: {model.intercept_:.4f}")
 
@@ -61,4 +61,13 @@ new_predictions = model.predict(new_data)
 print("Predictions on new data:", new_predictions)
 ```
 
-dump the model then load the model 
+4. in the code below, does the dump also include the scaler? do we also need to add code that scales before prediction?
+
+```python
+model = Pipeline([
+    ('scaler', StandardScaler()),
+    ('regressor', LinearRegression())
+])
+model.fit(X, y)
+joblib.dump(model, 'linear_model.joblib')
+```
