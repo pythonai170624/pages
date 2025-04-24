@@ -56,14 +56,6 @@
   
 ---
   
-## באיזה לבחור?
-  
-- **Gini** is more commonly used in decision trees like **CART** (Classification And Regression Tree) because of its simpler computation
-- **Entropy** is often used when information gain is meaningful, such as in the ID3 tree
-  
-  
-  
-  
 ## מתי להשתמש?
   
 | מאפיין            | Gini Impurity           | Entropy                  |
@@ -77,11 +69,12 @@
 - אם יש לך הרבה נתונים או אתה צריך חישוב מהיר → **Gini**  
 - אם אתה רוצה להיות רגיש יותר לאי-ודאות → **Entropy**
   
+- **Gini** is more commonly used in decision trees like **CART** (Classification And Regression Tree) because of its simpler computation
+- **Entropy** is often used when information gain is meaningful, such as in the ID3 tree
+  
 ---  
   
-## סוגים שונים של עצי החלטה
-  
-# סוגי עצי החלטה
+## סוגי עצי החלטה
   
 ---
   
@@ -99,6 +92,93 @@
 - **Gini impurity** (לבעיות סיווג)  
 - **Mean Squared Error (MSE)** (לבעיות רגרסיה)
   
+  
+# מה זה Mean Squared Error (MSE) בעצי החלטה?
+  
+**Mean Squared Error (MSE)** הוא **מדד חלוקה** שנמצא בשימוש בעצי החלטה מסוג **רגרסיה** (Regression Trees)  
+המטרה של המדד היא להעריך **כמה טוב הפיצול מנבא את הערכים הרציפים** (כמו מחיר, גיל, משקל)  
+ככל שה-MSE קטן יותר, כך הפיצול נחשב **טוב יותר**  
+  
+---
+  
+## הנוסחה של MSE
+  
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?MSE%20=%20\frac{1}{n}%20\sum_{i=1}^{n}%20(y_i%20-%20\hat{y})^2"/></p>  
+  
+  
+- <img src="https://latex.codecogs.com/gif.latex?n"/> – מספר הדגימות בצומת  
+- <img src="https://latex.codecogs.com/gif.latex?y_i"/> – הערך האמיתי של דגימה <img src="https://latex.codecogs.com/gif.latex?i"/>  
+- <img src="https://latex.codecogs.com/gif.latex?\hat{y}"/> – ממוצע הערכים בצומת (תחזית העץ)
+  
+---
+  
+## איך זה עובד?
+  
+1. בכל צומת בעץ, העץ שוקל **פיצולים אפשריים** (למשל: האם לפצל לפי גיל גדול מ-30 או לא)  
+2. עבור כל פיצול אפשרי, העץ מחשב את ה-MSE בכל תת-קבוצה שנוצרת  
+3. העץ בוחר את הפיצול שמביא ל**ירידה הכי גדולה ב-MSE הכולל** (כלומר, שמקטין את השגיאה הכי הרבה)
+  
+---
+  
+## דוגמה פשוטה
+  
+נניח שיש לנו את הנתונים הבאים (ננסה לנבא **מחיר דירה** לפי **שטח**):
+  
+| שטח (מ"ר) | מחיר (אלפי ₪) |
+|------------|---------------|
+| 50         | 1000          |
+| 60         | 1200          |
+| 70         | 1300          |
+| 80         | 1500          |
+  
+### צומת ראשי (לפני פיצול):
+  
+- ממוצע המחירים:  
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?\hat{y}%20=%20\frac{1000%20+%201200%20+%201300%20+%201500}{4}%20=%201250"/></p>  
+  
+  
+- חישוב ה-MSE:  
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?MSE%20=%20\frac{1}{4}%20\left(%20(1000%20-%201250)^2%20+%20(1200%20-%201250)^2%20+%20(1300%20-%201250)^2%20+%20(1500%20-%201250)^2%20\right)"/></p>  
+  
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?MSE%20=%20\frac{1}{4}%20(62500%20+%202500%20+%202500%20+%2062500)%20=%20\frac{130000}{4}%20=%2032500"/></p>  
+  
+  
+### אחרי פיצול (למשל לפי שטח גדול מ-65):
+  
+- קבוצה 1 (שטח ≤ 65):  
+  - דירות: 50 מ"ר (1000), 60 מ"ר (1200)  
+  - ממוצע: 1100  
+  - MSE:  
+  <p align="center"><img src="https://latex.codecogs.com/gif.latex?\frac{1}{2}%20\left(%20(1000%20-%201100)^2%20+%20(1200%20-%201100)^2%20\right)%20=%20\frac{1}{2}%20(10000%20+%2010000)%20=%2010000"/></p>  
+  
+  
+- קבוצה 2 (שטח > 65):  
+  - דירות: 70 מ"ר (1300), 80 מ"ר (1500)  
+  - ממוצע: 1400  
+  - MSE:  
+  <p align="center"><img src="https://latex.codecogs.com/gif.latex?\frac{1}{2}%20\left(%20(1300%20-%201400)^2%20+%20(1500%20-%201400)^2%20\right)%20=%20\frac{1}{2}%20(10000%20+%2010000)%20=%2010000"/></p>  
+  
+  
+- MSE כולל אחרי פיצול:  
+  <p align="center"><img src="https://latex.codecogs.com/gif.latex?\frac{2}{4}%20\cdot%2010000%20+%20\frac{2}{4}%20\cdot%2010000%20=%2010000"/></p>  
+  
+  
+### סיכום:
+  
+- לפני פיצול: **MSE = 32500**  
+- אחרי פיצול: **MSE = 10000**
+  
+מכאן שהפיצול **שיפר את הדיוק** (כי ה-MSE ירד)
+  
+---
+  
+  
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?<img src="https://latex.codecogs.com/gif.latex?&quot;/&gt;&lt;/p&gt;%20%20&lt;p%20align=&quot;center&quot;&gt;&lt;img%20src=&quot;https://latex.codecogs.com/gif.latex?"/>"/></p>  
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?<img src="https://latex.codecogs.com/gif.latex?&quot;/&gt;&lt;/p&gt;%20%20&lt;p%20align=&quot;center&quot;&gt;&lt;img%20src=&quot;https://latex.codecogs.com/gif.latex?"/>"/></p>  
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?<img src="https://latex.codecogs.com/gif.latex?&quot;/&gt;&lt;/p&gt;%20%20&lt;p%20align=&quot;center&quot;&gt;&lt;img%20src=&quot;https://latex.codecogs.com/gif.latex?"/>"/></p>  
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?<img src="https://latex.codecogs.com/gif.latex?&quot;/&gt;&lt;/p&gt;%20%20&lt;p%20align=&quot;center&quot;&gt;&lt;img%20src=&quot;https://latex.codecogs.com/gif.latex?"/>"/></p>  
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?<img src="https://latex.codecogs.com/gif.latex?&quot;/&gt;&lt;/p&gt;%20%20&lt;p%20align=&quot;center&quot;&gt;&lt;img%20src=&quot;https://latex.codecogs.com/gif.latex?"/>"/></p>  
+$
 ---
   
 ### 2. ID3 (Iterative Dichotomiser 3)
