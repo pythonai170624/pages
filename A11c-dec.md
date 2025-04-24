@@ -45,7 +45,7 @@ Entropy = - (p_A \cdot \log_2(p_A) + p_B \cdot \log_2(p_B)) = - (0.5 \cdot \log_
 
 ## השוואה כללית:
 
-<img src="dec5.png" style="width: 70%" />
+<img src="dec5.png" style="width: 50%" />
 
 | מאפיין              | Gini Impurity            | Entropy                |
 |----------------------|---------------------------|------------------------|
