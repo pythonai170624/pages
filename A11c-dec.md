@@ -1,33 +1,71 @@
 # השוואה בין Gini Impurity ל-Entropy
-  
+
+## מטרת המדדים:
+- **Gini Impurity** ו-**Entropy** הם מדדים שמודדים **"חוסר טוהר"** או **מידת ערבוב** בקבוצה.
+- משתמשים בהם בעצי החלטה (**Classification Trees**) כדי לבחור את הפיצול הכי טוב.
+
 ## נוסחאות:
-  
+
 ### 1. Gini Impurity:
-<p align="center"><img src="https://latex.codecogs.com/gif.latex?Gini%20=%201%20-%20/sum_{i=1}^{n}%20p_i^2"/></p>  
-  
-  
-כאשר:
-- <img src="https://latex.codecogs.com/gif.latex?p_i"/> הוא ההסתברות של כל קטגוריה <img src="https://latex.codecogs.com/gif.latex?i"/> בקבוצה.
-  
+
+\[
+Gini = 1 - \sum_{i=1}^{k} p_i^2
+\]
+
+- \(p_i\) זה ההסתברות של כל מחלקה (class).
+- הערך המקסימלי מתקבל כשהמחלקות מעורבבות שווה בשווה.
+
+---
+
 ### 2. Entropy:
-<p align="center"><img src="https://latex.codecogs.com/gif.latex?Entropy%20=%20-%20/sum_{i=1}^{n}%20p_i%20/cdot%20/log_2(p_i)"/></p>  
-  
-  
-כאשר:
-- <img src="https://latex.codecogs.com/gif.latex?p_i"/> הוא ההסתברות של כל קטגוריה <img src="https://latex.codecogs.com/gif.latex?i"/> בקבוצה.
-  
-## דוגמה מספרית:
-  
-נניח שיש לנו קבוצה עם שתי קטגוריות:
-- חיובי (Positive) עם הסתברות <img src="https://latex.codecogs.com/gif.latex?p_1%20=%200.7"/>
-- שלילי (Negative) עם הסתברות <img src="https://latex.codecogs.com/gif.latex?p_2%20=%200.3"/>
-  
-### חישוב Gini:
-<p align="center"><img src="https://latex.codecogs.com/gif.latex?Gini%20=%201%20-%20(0.7^2%20+%200.3^2)%20=%201%20-%20(0.49%20+%200.09)%20=%200.42"/></p>  
-  
-  
+
+\[
+Entropy = - \sum_{i=1}^{k} p_i \cdot \log_2(p_i)
+\]
+
+- גם פה \(p_i\) זה ההסתברות של כל מחלקה.
+- ערך גבוה יותר אומר יותר ערבוב (חוסר טוהר).
+
+---
+
+## דוגמה:
+
+נניח שיש לך קבוצה עם 4 דוגמאות:
+
+- 2 דוגמאות בקטגוריה A.
+- 2 דוגמאות בקטגוריה B.
+
+### חישוב Gini Impurity:
+
+\[
+Gini = 1 - (p_A^2 + p_B^2) = 1 - (0.5^2 + 0.5^2) = 1 - (0.25 + 0.25) = 0.5
+\]
+
 ### חישוב Entropy:
-<p align="center"><img src="https://latex.codecogs.com/gif.latex?Entropy%20=%20-%20(0.7%20/cdot%20/log_2(0.7)%20+%200.3%20/cdot%20/log_2(0.3))%20//Entropy%20=%20-%20(0.7%20/cdot%20-0.5146%20+%200.3%20/cdot%20-1.737)%20//Entropy%20/approx%20-%20(-0.3602%20-%200.5211)%20=%200.8813"/></p>  
+
+\[
+Entropy = - (p_A \cdot \log_2(p_A) + p_B \cdot \log_2(p_B)) = - (0.5 \cdot \log_2(0.5) + 0.5 \cdot \log_2(0.5)) = 1
+\]
+
+---
+
+## השוואה כללית:
+
+| מאפיין              | Gini Impurity            | Entropy                |
+|----------------------|---------------------------|------------------------|
+| נוסחה               | \(1 - \sum p_i^2\)       | \(- \sum p_i \log_2 p_i\) |
+| ערך מקסימלי (2 מחלקות) | 0.5                      | 1                      |
+| חישוב               | פשוט ומהיר יותר          | איטי יותר (יש לוגים)   |
+| פרשנות              | מדד חוסר טוהר             | מדד חוסר טוהר (מידע)  |
+
+---
+
+## באיזה לבחור?
+
+- **Gini** יותר נפוץ בעצי החלטה כמו **CART** בגלל פשטות החישוב.
+- **Entropy** נפוץ כשיש משמעות ל**מידע** (Information Gain), כמו בעץ **ID3**.
+
+
   
   
 ## מתי להשתמש?
