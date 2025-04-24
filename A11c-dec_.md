@@ -86,7 +86,7 @@
   
 ### מה זה Mean Squared Error (MSE) בעצי החלטה?
   
-הוא **מדד חלוקה** שנמצא בשימוש בעצי החלטה מסוג **רגרסיה**  
+**מדד חלוקה** שנמצא בשימוש בעצי החלטה מסוג **רגרסיה**  
 המטרה של המדד היא להעריך **כמה טוב הפיצול מנבא את הערכים הרציפים** (כמו מחיר, גיל, משקל)  
 ככל שה-MSE קטן יותר, כך הפיצול נחשב **טוב יותר**  
   
@@ -166,6 +166,89 @@
   
 **מדד חלוקה**  
 - **Information Gain** (מבוסס על **Entropy**)
+  
+### מה זה Information Gain?
+  
+**מדד חלוקה** שמשמש בעצי החלטה (בעיקר **ID3** ו-**C4.5**)  
+המטרה של IG היא למדוד **כמה אי-סדר (אנטרופי)** הצלחנו **להפחית** בעזרת פיצול נתונים לפי תכונה מסוימת  
+ככל שה-IG **גבוה יותר**, הפיצול נחשב **טוב יותר** כי הוא עושה את הקבוצות **טהורות** יותר
+  
+##### למה צריך את זה?
+  
+בכל שלב בבניית עץ החלטה, צריך לבחור **איזו תכונה הכי משתלם לפצל לפיה**  
+- תכונה עם **IG גבוה** תביא לחלוקה שבה הקבוצות הרבה יותר **אחידות**  
+- תכונה עם **IG נמוך** לא תעזור לנו לסדר את הדאטה, והקבוצות ישארו **מעורבבות**
+  
+IG עוזר לנו לבחור את **התכונה הכי טובה** לפיצול בכל צומת
+  
+##### איך מחשבים את זה?
+  
+1. מחשבים את ה-**Entropy** של הקבוצה לפני הפיצול:
+  
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?Entropy(S)%20=%20-\sum_{i=1}^{c}%20p_i%20\log_2(p_i)"/></p>  
+  
+  
+- <img src="https://latex.codecogs.com/gif.latex?S"/> – הקבוצה הנוכחית  
+- <img src="https://latex.codecogs.com/gif.latex?c"/> – מספר הקבוצות (קטגוריות)  
+- <img src="https://latex.codecogs.com/gif.latex?p_i"/> – הסיכוי של כל קבוצה (למשל, אחוז ה-Yes וה-No)
+  
+2. מחשבים את ה-**Entropy הממוצע אחרי הפיצול** (Weighted Average):
+  
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?Entropy_{after}%20=%20\sum_{j=1}^{k}%20\frac{|S_j|}{|S|}%20Entropy(S_j)"/></p>  
+  
+  
+- <img src="https://latex.codecogs.com/gif.latex?k"/> – מספר תתי הקבוצות שנוצרו מהפיצול  
+- <img src="https://latex.codecogs.com/gif.latex?S_j"/> – כל תת-קבוצה  
+- <img src="https://latex.codecogs.com/gif.latex?|S_j|"/> – גודל תת-הקבוצה  
+- <img src="https://latex.codecogs.com/gif.latex?|S|"/> – גודל הקבוצה המקורית
+  
+3. מחשבים את ה-**Information Gain**:
+  
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?IG%20=%20Entropy_{before}%20-%20Entropy_{after}"/></p>  
+  
+  
+##### דוגמה
+  
+נתונים:  
+| Outlook  | Play Tennis |
+|----------|-------------|
+| Sunny    | No          |
+| Sunny    | No          |
+| Overcast | Yes         |
+| Rain     | Yes         |
+| Rain     | Yes         |
+| Rain     | No          |
+| Overcast | Yes         |
+| Sunny    | Yes         |
+| Sunny    | Yes         |
+| Rain     | Yes         |
+| Sunny    | No          |
+| Overcast | Yes         |
+| Overcast | Yes         |
+| Rain     | No          |
+  
+##### 1. מחשבים Entropy לפני הפיצול (כל הדאטה):
+  
+- **Yes** = 9, **No** = 5
+  
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?Entropy(S)%20=%20-\left(%20\frac{9}{14}%20\log_2%20\frac{9}{14}%20+%20\frac{5}{14}%20\log_2%20\frac{5}{14}%20\right)%20%20Entropy(S)%20\approx%200.940"/></p>  
+  
+  
+##### 2. מחשבים Entropy אחרי פיצול לפי Outlook:
+  
+- **Sunny** (5 דגימות): 2 Yes, 3 No → Entropy ≈ 0.971  
+- **Overcast** (4 דגימות): 4 Yes, 0 No → Entropy = 0  
+- **Rain** (5 דגימות): 3 Yes, 2 No → Entropy ≈ 0.971
+  
+- Weighted Entropy after split:
+  
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?Entropy_{after}%20=%20\frac{5}{14}%20\cdot%200.971%20+%20\frac{4}{14}%20\cdot%200%20+%20\frac{5}{14}%20\cdot%200.971%20%20Entropy_{after}%20\approx%200.693"/></p>  
+  
+  
+##### 3. מחשבים Information Gain:
+  
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?IG%20=%200.940%20-%200.693%20=%200.247"/></p>  
+  
   
 ---
   
