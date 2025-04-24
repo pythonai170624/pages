@@ -82,6 +82,10 @@
 | 5  | 1  | A  |
 | 6  | 2  | B  |
 
-<img src="dec10.png" style="widht: 70%" />
+##  Gini index
 
-<img src="dec11.png" style="widht: 70%" />
+<img src="dec10.png" style="widht: 60%" />
+
+##  Entropy
+
+<img src="dec11.png" style="widht: 60%" />
