@@ -273,3 +273,22 @@ Classification Report:
 weighted avg       1.00      1.00      1.00         6
 ```
 
+1. **Accuracy (דיוק)**  
+   - אחוז התחזיות הנכונות מתוך כלל התחזיות  
+   - מתאים כשיש **איזון** בין הקטגוריות
+
+2. **Precision (דיוק חיובי)**  
+   - כמה מתוך התחזיות שהיו **חיוביות** היו נכונות  
+   - חשוב כשעלות של **False Positives** גבוהה
+
+3. **Recall (רגישות)**  
+   - כמה מתוך כל המקרים **החיוביים האמיתיים** זוהו נכון  
+   - חשוב כשעלות של **False Negatives** גבוהה
+
+4. **F1 Score**  
+   - ממוצע הרמוני של **Precision** ו-**Recall**  
+   - טוב כשיש **אי-איזון** בין הקטגוריות
+
+5. **Confusion Matrix**  
+   - טבלה שמציגה את מספר התחזיות בכל קטגוריה: True Positives, False Positives, True Negatives, False Negatives
+

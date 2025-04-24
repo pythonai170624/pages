@@ -66,5 +66,22 @@
   
 - **Gini** is more commonly used in decision trees like **CART** (Classification And Regression Tree) because of its simpler computation
 - **Entropy** is often used when information gain is meaningful, such as in the ID3 tree
+
+# דוגמא
   
 **ראה סוגי עצי החלטה בשקף הבא**
+
+נניח שיש לנו מערכת נתונים פשוטה עם שני מאפיינים (X1, X2) וקטגוריה יעד (Y) כפי שמוצג בטבלה:
+  
+| X1 | X2 | Y |
+|----|----|----|
+| 1  | 3  | A  |
+| 2  | 1  | A  |
+| 3  | 2  | B  |
+| 4  | 3  | B  |
+| 5  | 1  | A  |
+| 6  | 2  | B  |
+
+<img src="dec10.png" style="widht: 70%" />
+
+<img src="dec11.png" style="widht: 70%" />
