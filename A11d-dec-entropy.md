@@ -84,5 +84,5 @@
 
 ##  Gini index Vs Entropy
 
-<img src="dec14.png" style="widht: 80%" />
+<img src="dec14.png" style="widht: 90%" />
 
