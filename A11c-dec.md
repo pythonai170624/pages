@@ -75,8 +75,6 @@ Entropy = - (p_A \cdot \log_2(p_A) + p_B \cdot \log_2(p_B)) = - (0.5 \cdot \log_
 
 ## 1. CART (Classification and Regression Trees)
 
-<img src="dec55.png" style="width: 70%" />
-
 **דוגמה**  
 - סיווג: חיזוי אם אדם יאושר להלוואה לפי גיל והכנסה  
 - רגרסיה: חיזוי מחיר דירה לפי שטח ומספר חדרים
@@ -91,6 +89,8 @@ Entropy = - (p_A \cdot \log_2(p_A) + p_B \cdot \log_2(p_B)) = - (0.5 \cdot \log_
 
 
 ### מה זה Mean Squared Error (MSE) בעצי החלטה?
+
+<img src="dec55.png" style="width: 70%" />
 
 **מדד חלוקה** שנמצא בשימוש בעצי החלטה מסוג **רגרסיה**  
 המטרה של המדד היא להעריך **כמה טוב הפיצול מנבא את הערכים הרציפים** (כמו מחיר, גיל, משקל)  
