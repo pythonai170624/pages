@@ -198,3 +198,79 @@ Gini Impurity (אי-טוהר ג'יני)
   
 המדד משתלב בתהליך הבנייה של עץ ההחלטה ומוביל ליצירת עץ שמפריד את הקטגוריות ביעילות ומשפר את הדיוק של המודל. ככל שערך ה-Gini Impurity קטן יותר, כך הצומת טהור יותר וההבדלה בין הקטגוריות טובה יותר.
   
+# דוגמא בפייטון
+
+נניח שיש לנו מערכת נתונים פשוטה עם שני מאפיינים (X1, X2) וקטגוריה יעד (Y) כפי שמוצג בטבלה:
+  
+| X1 | X2 | Y |
+|----|----|----|
+| 1  | 3  | A  |
+| 2  | 1  | A  |
+| 3  | 2  | B  |
+| 4  | 3  | B  |
+| 5  | 1  | A  |
+| 6  | 2  | B  |
+
+
+```python
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix, classification_report
+import numpy as np
+
+# Data
+X = np.array([
+    [1, 3],
+    [2, 1],
+    [3, 2],
+    [4, 3],
+    [5, 1],
+    [6, 2]
+])
+
+y = np.array(['A', 'A', 'B', 'B', 'A', 'B'])
+
+# Model
+clf = DecisionTreeClassifier(criterion='gini', random_state=42)
+clf.fit(X, y)
+
+# Predictions
+y_pred = clf.predict(X)
+
+# Metrics
+accuracy = accuracy_score(y, y_pred)
+precision = precision_score(y, y_pred, average='macro')
+recall = recall_score(y, y_pred, average='macro')
+f1 = f1_score(y, y_pred, average='macro')
+cm = confusion_matrix(y, y_pred)
+report = classification_report(y, y_pred)
+
+print("Accuracy:", accuracy)
+print("Precision (macro):", precision)
+print("Recall (macro):", recall)
+print("F1 Score (macro):", f1)
+print("Confusion Matrix:\n", cm)
+print("Classification Report:\n", report)
+```
+
+<img src="dec10.png" style="widht: 70%" />
+
+Output:
+```
+Accuracy: 1.0
+Precision (macro): 1.0
+Recall (macro): 1.0
+F1 Score (macro): 1.0
+Confusion Matrix:
+ [[3 0]
+ [0 3]]
+Classification Report:
+               precision    recall  f1-score   support
+
+           A       1.00      1.00      1.00         3
+           B       1.00      1.00      1.00         3
+
+    accuracy                           1.00         6
+   macro avg       1.00      1.00      1.00         6
+weighted avg       1.00      1.00      1.00         6
+```
+
