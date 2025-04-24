@@ -62,8 +62,8 @@ Entropy = - (p_A \cdot \log_2(p_A) + p_B \cdot \log_2(p_B)) = - (0.5 \cdot \log_
 
 ## באיזה לבחור?
 
-- **Gini** יותר נפוץ בעצי החלטה כמו **CART** בגלל פשטות החישוב.
-- **Entropy** נפוץ כשיש משמעות ל**מידע** (Information Gain), כמו בעץ **ID3**.
+- **Gini** is more commonly used in decision trees like **CART** (Classification And Regression Tree) because of its simpler computation
+- **Entropy** is often used when information gain is meaningful, such as in the ID3 tree
 
 
   
