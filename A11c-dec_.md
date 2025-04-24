@@ -179,7 +179,7 @@
 - תכונה עם **IG גבוה** תביא לחלוקה שבה הקבוצות הרבה יותר **אחידות**  
 - תכונה עם **IG נמוך** לא תעזור לנו לסדר את הדאטה, והקבוצות ישארו **מעורבבות**
   
-IG עוזר לנו לבחור את **התכונה הכי טובה** לפיצול בכל צומת
+איי גיי עוזר לנו לבחור את **התכונה הכי טובה** לפיצול בכל צומת
   
 ##### איך מחשבים את זה?
   
@@ -231,7 +231,7 @@ IG עוזר לנו לבחור את **התכונה הכי טובה** לפיצול
   
 - **Yes** = 9, **No** = 5
   
-<p align="center"><img src="https://latex.codecogs.com/gif.latex?Entropy(S)%20=%20-\left(%20\frac{9}{14}%20\log_2%20\frac{9}{14}%20+%20\frac{5}{14}%20\log_2%20\frac{5}{14}%20\right)%20%20Entropy(S)%20\approx%200.940"/></p>  
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?Entropy(S)%20=%20-\left(%20\frac{9}{14}%20\log_2%20\frac{9}{14}%20+%20\frac{5}{14}%20\log_2%20\frac{5}{14}%20\right)%20%20\approx%200.940"/></p>  
   
   
 ##### 2. מחשבים Entropy אחרי פיצול לפי Outlook:
@@ -242,7 +242,7 @@ IG עוזר לנו לבחור את **התכונה הכי טובה** לפיצול
   
 - Weighted Entropy after split:
   
-<p align="center"><img src="https://latex.codecogs.com/gif.latex?Entropy_{after}%20=%20\frac{5}{14}%20\cdot%200.971%20+%20\frac{4}{14}%20\cdot%200%20+%20\frac{5}{14}%20\cdot%200.971%20%20Entropy_{after}%20\approx%200.693"/></p>  
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?Entropy_{after}%20=%20\frac{5}{14}%20\cdot%200.971%20+%20\frac{4}{14}%20\cdot%200%20+%20\frac{5}{14}%20\cdot%200.971%20%20\approx%200.693"/></p>  
   
   
 ##### 3. מחשבים Information Gain:

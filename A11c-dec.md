@@ -190,7 +190,7 @@ $$
 - תכונה עם **IG גבוה** תביא לחלוקה שבה הקבוצות הרבה יותר **אחידות**  
 - תכונה עם **IG נמוך** לא תעזור לנו לסדר את הדאטה, והקבוצות ישארו **מעורבבות**
 
-IG עוזר לנו לבחור את **התכונה הכי טובה** לפיצול בכל צומת
+איי גיי עוזר לנו לבחור את **התכונה הכי טובה** לפיצול בכל צומת
 
 ##### איך מחשבים את זה?
 
@@ -246,8 +246,7 @@ $$
 - **Yes** = 9, **No** = 5
 
 $$
-Entropy(S) = -\left( \frac{9}{14} \log_2 \frac{9}{14} + \frac{5}{14} \log_2 \frac{5}{14} \right)  
-Entropy(S) \approx 0.940
+Entropy(S) = -\left( \frac{9}{14} \log_2 \frac{9}{14} + \frac{5}{14} \log_2 \frac{5}{14} \right)  \approx 0.940
 $$
 
 ##### 2. מחשבים Entropy אחרי פיצול לפי Outlook:
@@ -259,8 +258,7 @@ $$
 - Weighted Entropy after split:
 
 $$
-Entropy_{after} = \frac{5}{14} \cdot 0.971 + \frac{4}{14} \cdot 0 + \frac{5}{14} \cdot 0.971  
-Entropy_{after} \approx 0.693
+Entropy_{after} = \frac{5}{14} \cdot 0.971 + \frac{4}{14} \cdot 0 + \frac{5}{14} \cdot 0.971  \approx 0.693
 $$
 
 ##### 3. מחשבים Information Gain:
