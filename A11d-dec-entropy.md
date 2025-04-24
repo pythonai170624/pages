@@ -82,10 +82,7 @@
 | 5  | 1  | A  |
 | 6  | 2  | B  |
 
-##  Gini index
+##  Gini index Vs Entropy
 
 <img src="dec12.png" style="widht: 80%" />
 
-##  Entropy
-
-<img src="dec11.png" style="widht: 60%" />
