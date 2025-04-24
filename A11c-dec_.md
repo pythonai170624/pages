@@ -41,6 +41,8 @@
   
 ## השוואה כללית:
   
+<img src="dec5.png" style="width: 70%" />
+  
 | מאפיין              | Gini Impurity            | Entropy                |
 |----------------------|---------------------------|------------------------|
 | נוסחה               | <img src="https://latex.codecogs.com/gif.latex?1%20-%20\sum%20p_i^2"/>       | <img src="https://latex.codecogs.com/gif.latex?-%20\sum%20p_i%20\log_2%20p_i"/> |
@@ -337,13 +339,9 @@
 | **מדד חלוקה**        | Gini / MSE      | Entropy + Info Gain | Gain Ratio     | Gini / MSE בכל עץ (כמו CART)       |
 | **תומך במספרים רציפים** | כן             | לא                  | כן             | כן                                  |
 | **תומך בנתונים חסרים** | כן              | לא                  | כן             | כן                                  |
-| **סוג הפיצול**       | בינארי בלבד     | לא חייב בינארי      | לא חייב בינארי | בינארי בכל עץ (כמו CART), אבל אנסמבל |
+| **סוג הפיצול**       | בינארי בלבד     | לא חייב בינארי      | לא חייב בינארי | בינארי בכל עץ (כמו CART), אבל שילוב ביחד שיטת אנסמבל |
   
   
-## גרפים (במילים 😅):
-  
-- **Gini** מקסימלי כשההסתברויות שוות (0.5, 0.5).
-- **Entropy** גם מקסימלי כשההסתברויות שוות, אבל הערך שלו גדול יותר (1 לעומת 0.5 ב-Gini לשני מחלקות).
   
   
   
