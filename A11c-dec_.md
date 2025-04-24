@@ -71,7 +71,7 @@
   
 ## 1. CART (Classification and Regression Trees)
   
-<img src="dec6.png" style="width: 70%" />
+<img src="dec55.jpg" style="width: 70%" />
   
 **דוגמה**  
 - סיווג: חיזוי אם אדם יאושר להלוואה לפי גיל והכנסה  
@@ -255,6 +255,8 @@
   
   
 ## 3. C4.5
+  
+<img src="dec6.png" style="width: 70%" />
   
 **דוגמה**  
 - חיזוי אם לקוח יקנה מחשב לפי גיל (רציף), תעסוקה (קטגוריה), והכנסה (רציף)

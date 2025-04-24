@@ -75,7 +75,7 @@ Entropy = - (p_A \cdot \log_2(p_A) + p_B \cdot \log_2(p_B)) = - (0.5 \cdot \log_
 
 ## 1. CART (Classification and Regression Trees)
 
-<img src="dec6.png" style="width: 70%" />
+<img src="dec55.jpg" style="width: 70%" />
 
 **דוגמה**  
 - סיווג: חיזוי אם אדם יאושר להלוואה לפי גיל והכנסה  
@@ -272,6 +272,8 @@ IG = 0.940 - 0.693 = 0.247
 $$
 
 ## 3. C4.5
+
+<img src="dec6.png" style="width: 70%" />
 
 **דוגמה**  
 - חיזוי אם לקוח יקנה מחשב לפי גיל (רציף), תעסוקה (קטגוריה), והכנסה (רציף)
