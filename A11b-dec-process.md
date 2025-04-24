@@ -211,6 +211,7 @@ Gini Impurity (אי-טוהר ג'יני)
 | 5  | 1  | A  |
 | 6  | 2  | B  |
 
+<img src="dec10.png" style="widht: 70%" />
 
 ```python
 from sklearn.tree import DecisionTreeClassifier
@@ -252,8 +253,6 @@ print("Confusion Matrix:\n", cm)
 print("Classification Report:\n", report)
 ```
 
-<img src="dec10.png" style="widht: 70%" />
-
 Output:
 ```
 Accuracy: 1.0
@@ -262,7 +261,7 @@ Recall (macro): 1.0
 F1 Score (macro): 1.0
 Confusion Matrix:
  [[3 0]
- [0 3]]
+  [0 3]]
 Classification Report:
                precision    recall  f1-score   support
 
