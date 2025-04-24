@@ -84,7 +84,7 @@
 
 ##  Gini index
 
-<img src="dec10.png" style="widht: 60%" />
+<img src="dec12.png" style="widht: 80%" />
 
 ##  Entropy
 
