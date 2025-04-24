@@ -14,8 +14,6 @@
 - <img src="https://latex.codecogs.com/gif.latex?p_i"/> זה ההסתברות של כל מחלקה (class).
 - הערך המקסימלי מתקבל כשהמחלקות מעורבבות שווה בשווה.
   
----
-  
 ### 2. Entropy:
   
 <p align="center"><img src="https://latex.codecogs.com/gif.latex?Entropy%20=%20-%20\sum_{i=1}^{k}%20p_i%20\cdot%20\log_2(p_i)"/></p>  
@@ -23,8 +21,6 @@
   
 - גם פה <img src="https://latex.codecogs.com/gif.latex?p_i"/> זה ההסתברות של כל מחלקה.
 - ערך גבוה יותר אומר יותר ערבוב (חוסר טוהר).
-  
----
   
 ## דוגמה:
   
@@ -43,8 +39,6 @@
 <p align="center"><img src="https://latex.codecogs.com/gif.latex?Entropy%20=%20-%20(p_A%20\cdot%20\log_2(p_A)%20+%20p_B%20\cdot%20\log_2(p_B))%20=%20-%20(0.5%20\cdot%20\log_2(0.5)%20+%200.5%20\cdot%20\log_2(0.5))%20=%201"/></p>  
   
   
----
-  
 ## השוואה כללית:
   
 | מאפיין              | Gini Impurity            | Entropy                |
@@ -54,7 +48,6 @@
 | חישוב               | פשוט ומהיר יותר          | איטי יותר (יש לוגים)   |
 | פרשנות              | מדד חוסר טוהר             | מדד חוסר טוהר (מידע)  |
   
----
   
 ## מתי להשתמש?
   
@@ -76,8 +69,6 @@
   
 ## סוגי עצי החלטה
   
----
-  
 ### 1. CART (Classification and Regression Trees)
   
 **דוגמה**  
@@ -93,7 +84,7 @@
 - **Mean Squared Error (MSE)** (לבעיות רגרסיה)
   
   
-##### מה זה Mean Squared Error (MSE) בעצי החלטה?
+#### מה זה Mean Squared Error (MSE) בעצי החלטה?
   
 **Mean Squared Error (MSE)** הוא **מדד חלוקה** שנמצא בשימוש בעצי החלטה מסוג **רגרסיה** (Regression Trees)  
 המטרה של המדד היא להעריך **כמה טוב הפיצול מנבא את הערכים הרציפים** (כמו מחיר, גיל, משקל)  

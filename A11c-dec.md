@@ -15,8 +15,6 @@ Gini = 1 - \sum_{i=1}^{k} p_i^2
 - \(p_i\) זה ההסתברות של כל מחלקה (class).
 - הערך המקסימלי מתקבל כשהמחלקות מעורבבות שווה בשווה.
 
----
-
 ### 2. Entropy:
 
 \[
@@ -25,8 +23,6 @@ Entropy = - \sum_{i=1}^{k} p_i \cdot \log_2(p_i)
 
 - גם פה \(p_i\) זה ההסתברות של כל מחלקה.
 - ערך גבוה יותר אומר יותר ערבוב (חוסר טוהר).
-
----
 
 ## דוגמה:
 
@@ -47,8 +43,6 @@ Gini = 1 - (p_A^2 + p_B^2) = 1 - (0.5^2 + 0.5^2) = 1 - (0.25 + 0.25) = 0.5
 Entropy = - (p_A \cdot \log_2(p_A) + p_B \cdot \log_2(p_B)) = - (0.5 \cdot \log_2(0.5) + 0.5 \cdot \log_2(0.5)) = 1
 \]
 
----
-
 ## השוואה כללית:
 
 | מאפיין              | Gini Impurity            | Entropy                |
@@ -58,8 +52,7 @@ Entropy = - (p_A \cdot \log_2(p_A) + p_B \cdot \log_2(p_B)) = - (0.5 \cdot \log_
 | חישוב               | פשוט ומהיר יותר          | איטי יותר (יש לוגים)   |
 | פרשנות              | מדד חוסר טוהר             | מדד חוסר טוהר (מידע)  |
 
----
-  
+ 
 ## מתי להשתמש?
   
 | מאפיין            | Gini Impurity           | Entropy                  |
@@ -80,8 +73,6 @@ Entropy = - (p_A \cdot \log_2(p_A) + p_B \cdot \log_2(p_B)) = - (0.5 \cdot \log_
   
 ## סוגי עצי החלטה
 
----
-
 ### 1. CART (Classification and Regression Trees)
 
 **דוגמה**  
@@ -97,7 +88,7 @@ Entropy = - (p_A \cdot \log_2(p_A) + p_B \cdot \log_2(p_B)) = - (0.5 \cdot \log_
 - **Mean Squared Error (MSE)** (לבעיות רגרסיה)
 
 
-##### מה זה Mean Squared Error (MSE) בעצי החלטה?
+#### מה זה Mean Squared Error (MSE) בעצי החלטה?
 
 **Mean Squared Error (MSE)** הוא **מדד חלוקה** שנמצא בשימוש בעצי החלטה מסוג **רגרסיה** (Regression Trees)  
 המטרה של המדד היא להעריך **כמה טוב הפיצול מנבא את הערכים הרציפים** (כמו מחיר, גיל, משקל)  
