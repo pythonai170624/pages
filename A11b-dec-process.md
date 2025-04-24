@@ -289,6 +289,8 @@ weighted avg       1.00      1.00      1.00         6
    - ממוצע הרמוני של **Precision** ו-**Recall**  
    - טוב כשיש **אי-איזון** בין הקטגוריות
 
+   ממוצע הרמוני שווה למספר המספרים חלקי סכום ההופככים שלהם
+
 5. **Confusion Matrix**  
    - טבלה שמציגה את מספר התחזיות בכל קטגוריה: True Positives, False Positives, True Negatives, False Negatives
 
