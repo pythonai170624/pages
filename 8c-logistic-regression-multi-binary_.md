@@ -45,7 +45,7 @@
   
 ההסתברות שהסטודנט יעבור:
   
-<p align="center"><img src="https://latex.codecogs.com/gif.latex?P(עבר)%20=%20\frac{1}{1%20+%20e^{-1.5}}%20\approx%200.8176"/></p>  
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?P%20=%20\frac{1}{1%20+%20e^{-1.5}}%20\approx%200.8176"/></p>  
   
   
 כלומר, הסתברות של כ־81.8% שהסטודנט יעבור.
