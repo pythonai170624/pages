@@ -50,10 +50,46 @@ What is \( x_i \)?
 What does \( \|x_i - \mu_{c_i}\|^2 \) mean?
 
 - This is the **squared Euclidean distance** between the point \( x_i \) and its cluster center \( \mu_{c_i} \)
-- The norm \( \| · \| \) means: “calculate the distance in the multi-dimensional space”
+- The norm | | means: “calculate the distance in the multi-dimensional space”
 - Then we square it to penalize points that are far from the center
 
-So it's not an absolute value like in regular math for scalars —  
+So it's not an absolute value like in regular math for scalars 
+
+**Numerical Example: Squared Distance in SSD**
+
+Let's say we have a 2D dataset:
+
+- A single data point: \( x_i = [3, 4] \)  
+- Its cluster centroid: \( \mu_{c_i} = [1, 1] \)
+
+We want to calculate:
+
+$$
+\|x_i - \mu_{c_i}\|^2
+$$
+
+Step by step:
+
+1. Subtract the centroid from the point:
+
+   $$
+   x_i - \mu_{c_i} = [3 - 1,\ 4 - 1] = [2,\ 3]
+   $$
+
+2. Calculate the squared Euclidean norm:
+
+   $$
+   \|[2, 3]\|^2 = 2^2 + 3^2 = 4 + 9 = 13
+   $$
+
+✅ So the contribution of this data point to the SSD is **13**
+
+**What does this mean?**  
+The point is “13 units squared” away from the cluster center.  
+If many points are far like this, the overall SSD will be large — and the model is less optimal.
+
+
+—  
 it's a vector norm used to calculate distance in **multi-dimensional space**
 
 📌 **מה זה אומר בפשטות?**  

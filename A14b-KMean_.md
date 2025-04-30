@@ -49,10 +49,43 @@ What is <img src="https://latex.codecogs.com/gif.latex?x_i"/>?
 What does <img src="https://latex.codecogs.com/gif.latex?\|x_i%20-%20\mu_{c_i}\|^2"/> mean?
   
 - This is the **squared Euclidean distance** between the point <img src="https://latex.codecogs.com/gif.latex?x_i"/> and its cluster center <img src="https://latex.codecogs.com/gif.latex?\mu_{c_i}"/>
-- The norm <img src="https://latex.codecogs.com/gif.latex?\|%20·%20\|"/> means: “calculate the distance in the multi-dimensional space”
+- The norm | | means: “calculate the distance in the multi-dimensional space”
 - Then we square it to penalize points that are far from the center
   
-So it's not an absolute value like in regular math for scalars —  
+So it's not an absolute value like in regular math for scalars 
+  
+**Numerical Example: Squared Distance in SSD**
+  
+Let's say we have a 2D dataset:
+  
+- A single data point: <img src="https://latex.codecogs.com/gif.latex?x_i%20=%20[3,%204]"/>  
+- Its cluster centroid: <img src="https://latex.codecogs.com/gif.latex?\mu_{c_i}%20=%20[1,%201]"/>
+  
+We want to calculate:
+  
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?\|x_i%20-%20\mu_{c_i}\|^2"/></p>  
+  
+  
+Step by step:
+  
+1. Subtract the centroid from the point:
+  
+   <p align="center"><img src="https://latex.codecogs.com/gif.latex?x_i%20-%20\mu_{c_i}%20=%20[3%20-%201,\%204%20-%201]%20=%20[2,\%203]"/></p>  
+  
+  
+2. Calculate the squared Euclidean norm:
+  
+   <p align="center"><img src="https://latex.codecogs.com/gif.latex?\|[2,%203]\|^2%20=%202^2%20+%203^2%20=%204%20+%209%20=%2013"/></p>  
+  
+  
+✅ So the contribution of this data point to the SSD is **13**
+  
+**What does this mean?**  
+The point is “13 units squared” away from the cluster center.  
+If many points are far like this, the overall SSD will be large — and the model is less optimal.
+  
+  
+—  
 it's a vector norm used to calculate distance in **multi-dimensional space**
   
 📌 **מה זה אומר בפשטות?**  
