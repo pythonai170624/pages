@@ -121,6 +121,8 @@ it's a vector norm used to calculate distance in **multi-dimensional space**
 המודל הזה ייכשל על דאטה חדש
 
 <img src="kmean6.png" style="width: 80%" />
+-
+<img src="kmean7.png" style="width: 80%" />
 
 ---
 
