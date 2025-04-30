@@ -207,7 +207,7 @@ accuracy = accuracy_score(y_true, y_pred)
   
 זו פשוט הנוסחה:
   
-<p align="center"><img src="https://latex.codecogs.com/gif.latex?\text{Accuracy}%20=%20\frac{correct%20predictions}{total%20predictions}"/></p>  
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?\text{Accuracy}%20=%20\frac{correct-predictions}{total-predictions}"/></p>  
   
   
 #### דוגמה:
