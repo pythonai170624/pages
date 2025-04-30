@@ -36,6 +36,32 @@ $$
 - \( \mu_{c_i} \) is the centroid of the cluster that \( x_i \) belongs to  
 - \( \|x_i - \mu_{c_i}\|^2 \) is the squared Euclidean distance between the point and the cluster center  
 
+Why is there a norm (|| · ||) in the SSD formula?
+
+The formula:
+
+$$
+S = \sum_{i=1}^{n} \|x_i - \mu_{c_i}\|^2
+$$
+
+uses a **vector norm**, not an absolute value.
+
+What is \( x_i \)?
+
+- \( x_i \) is a **vector** representing a single data point  
+- It can have multiple features (dimensions), for example:  
+  - If the data is 2D: \( x_i = [x_1, x_2] \)  
+  - If the data is 4D: \( x_i = [x_1, x_2, x_3, x_4] \)
+
+What does \( \|x_i - \mu_{c_i}\|^2 \) mean?
+
+- This is the **squared Euclidean distance** between the point \( x_i \) and its cluster center \( \mu_{c_i} \)
+- The norm \( \| · \| \) means: “calculate the distance in the multi-dimensional space”
+- Then we square it to penalize points that are far from the center
+
+So it's not an absolute value like in regular math for scalars —  
+it's a vector norm used to calculate distance in **multi-dimensional space**
+
 📌 **מה זה אומר בפשטות?**  
 לוקחים כל נקודה, מודדים כמה היא רחוקה מהמרכז של הקבוצה שלה, מעלים בריבוע – ואז מחברים את כל הערכים האלה
 

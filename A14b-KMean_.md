@@ -35,6 +35,31 @@
 - <img src="https://latex.codecogs.com/gif.latex?\mu_{c_i}"/> is the centroid of the cluster that <img src="https://latex.codecogs.com/gif.latex?x_i"/> belongs to  
 - <img src="https://latex.codecogs.com/gif.latex?\|x_i%20-%20\mu_{c_i}\|^2"/> is the squared Euclidean distance between the point and the cluster center  
   
+Why is there a norm (|| · ||) in the SSD formula?
+  
+The formula:
+  
+<p align="center"><img src="https://latex.codecogs.com/gif.latex?S%20=%20\sum_{i=1}^{n}%20\|x_i%20-%20\mu_{c_i}\|^2"/></p>  
+  
+  
+uses a **vector norm**, not an absolute value.
+  
+What is <img src="https://latex.codecogs.com/gif.latex?x_i"/>?
+  
+- <img src="https://latex.codecogs.com/gif.latex?x_i"/> is a **vector** representing a single data point  
+- It can have multiple features (dimensions), for example:  
+  - If the data is 2D: <img src="https://latex.codecogs.com/gif.latex?x_i%20=%20[x_1,%20x_2]"/>  
+  - If the data is 4D: <img src="https://latex.codecogs.com/gif.latex?x_i%20=%20[x_1,%20x_2,%20x_3,%20x_4]"/>
+  
+What does <img src="https://latex.codecogs.com/gif.latex?\|x_i%20-%20\mu_{c_i}\|^2"/> mean?
+  
+- This is the **squared Euclidean distance** between the point <img src="https://latex.codecogs.com/gif.latex?x_i"/> and its cluster center <img src="https://latex.codecogs.com/gif.latex?\mu_{c_i}"/>
+- The norm <img src="https://latex.codecogs.com/gif.latex?\|%20·%20\|"/> means: “calculate the distance in the multi-dimensional space”
+- Then we square it to penalize points that are far from the center
+  
+So it's not an absolute value like in regular math for scalars —  
+it's a vector norm used to calculate distance in **multi-dimensional space**
+  
 📌 **מה זה אומר בפשטות?**  
 לוקחים כל נקודה, מודדים כמה היא רחוקה מהמרכז של הקבוצה שלה, מעלים בריבוע – ואז מחברים את כל הערכים האלה
   
