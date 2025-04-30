@@ -9,8 +9,8 @@
   
 ## ✅ איך זה עובד?
   
-Random Forest **תומך בצורה טבעית ב־Multiclass**, בלי צורך בעטיפות מיוחדות.
-הוא פשוט בונה הרבה עצים, שכל אחד מהם מסוגל לתת תחזית על מחלקה אחת מתוך כמה.
+רנדום פורסט **תומך בצורה טבעית ב־מולטי קלאס**, בלי צורך בעטיפות מיוחדות
+הוא פשוט בונה הרבה עצים, שכל אחד מהם מסוגל לתת תחזית על מחלקה אחת מתוך כמה
   
 ### תהליך העבודה:
 1. כל עץ מתאמן על מדגם שונה (Bootstrapping)
@@ -84,7 +84,11 @@ print(classification_report(y_test, y_pred))
 ---
   
 ## 🧠 הערה טכנית
-Scikit-learn מממש את זה אוטומטית לפי גישת **One-vs-Rest** בתוך העצים. כל עץ עדיין נותן מחלקה אחת סופית, לא הסתברויות חלקיות.
+Scikit-learn handles multiclass classification natively in Random Forest. Each decision tree predicts a single class label (not probabilities), and the final prediction is based on majority voting among all the trees.
+  
+This is conceptually similar to a **One-vs-Rest** strategy, but implemented implicitly within the forest. Each tree votes once, and the class receiving the most votes is chosen as the final prediction.
+  
+There is no use of Softmax — probabilities are derived by counting votes and normalizing.
   
 ---
   
