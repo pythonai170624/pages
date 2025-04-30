@@ -38,13 +38,7 @@ $$
 
 Why is there a norm (|| · ||) in the SSD formula?
 
-The formula:
-
-$$
-S = \sum_{i=1}^{n} \|x_i - \mu_{c_i}\|^2
-$$
-
-uses a **vector norm**, not an absolute value.
+The Formula uses a **vector norm**, not an absolute value.
 
 What is \( x_i \)?
 
