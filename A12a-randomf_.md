@@ -115,13 +115,13 @@ This combination allows the forest to reduce overfitting while keeping the power
   
 | Feature | CART | Random Forest |
 |--------|------|----------------|
-| Tree Type | Binary-only CART | Ensemble of CART trees |
+| Tree Type | Binary-only CART | Ensemble of CART trees (A method that combines multiple models [="weak learners"] to produce a stronger, more accurate model)|
 | Supports Classification? | ✅ | ✅ |
 | Supports Regression? | ✅ | ✅ |
 | Uses pruning? | Optional | ❌ Not used by default |
 | Split criterion | Gini, Entropy, MSE | Gini/Entropy per tree |
   
-Random Forest builds **many CART trees** with added randomness — and combines their predictions to form a powerful, robust model.
+Random Forest builds **many CART trees** with added randomness — and combines their predictions to form a powerful, robust model
   
 ## מה זה Bootstrapping במודל?
   
