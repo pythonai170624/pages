@@ -123,41 +123,66 @@ $$
 ## דוגמת קוד פשוטה בפייתון
 
 ```python
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 
-# טוענים דאטה
-X, y = load_iris(return_X_y=True)
+# Creating a sample dataset directly in the code
+# Data represents students with study hours, sleep hours, and breakfast (yes/no)
+# Target is whether they passed an exam (1) or failed (0)
 
-# פיצול ל-train ו-test
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+# Features data
+study_hours = [2, 8, 5, 1, 7, 3, 6, 4, 9, 2, 7, 4, 8, 3, 6, 9, 5, 3, 7, 2]
+sleep_hours = [5, 8, 9, 4, 7, 8, 6, 7, 9, 6, 8, 5, 7, 6, 9, 8, 7, 5, 8, 4]
+had_breakfast = [1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 0, 1, 0]  # 1=yes, 0=no
 
-# יצירת מודל Random Forest
-model = RandomForestClassifier(n_estimators=100, bootstrap=True, oob_score=True, random_state=42)
-model.fit(X_train, y_train)
+# Create features array
+X = np.column_stack((study_hours, sleep_hours, had_breakfast))
 
-# חיזוי על סט הבדיקה
-y_pred = model.predict(X_test)
+# Target data (pass/fail)
+y = np.array([0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0])
 
-# חישוב דיוק
+# Feature names for better visualization
+feature_names = ["Study Hours", "Sleep Hours", "Had Breakfast"]
+
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.3, random_state=42
+)
+
+# Create a Random Forest model
+rf_model = RandomForestClassifier(
+    n_estimators=100,
+    bootstrap=True,
+    oob_score=True,
+    random_state=42
+)
+
+# Train the model
+rf_model.fit(X_train, y_train)
+
+# Predict on test set
+y_pred = rf_model.predict(X_test)
+
+# Calculate accuracy scores
 accuracy = accuracy_score(y_test, y_pred)
-print(f"דיוק המודל: {accuracy:.2f}")
-print(f"דיוק OOB: {model.oob_score_:.2f}")
+print(f"Model Accuracy: {accuracy:.2f}")
+print(f"Out-of-Bag Accuracy: {rf_model.oob_score_:.2f}")
 ```
 
-פלט אפשרי:
+Output
 ```
-דיוק המודל: 1.00
-דיוק OOB: 0.95
+Model Accuracy: 1.00
+Out-of-Bag Accuracy: 0.93
 ```
-
----
 
 ## גרף המחשה
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/7/76/Random_forest_diagram_complete.png" width="600">
+<img src="rand1.png" style="width: 90%" />
 
 **הסבר:**
 - הדאטה מפוצל על עצים שונים (עם תכונות שונות)
