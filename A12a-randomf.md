@@ -122,7 +122,7 @@ This combination allows the forest to reduce overfitting while keeping the power
 | Uses pruning? | Optional | ❌ Not used by default |
 | Split criterion | Gini, Entropy, MSE | Gini/Entropy per tree |
 
-Ensemble = A method that combines multiple models (="weak learners") to produce a stronger, more accurate model
+Ensemble = a method that combines multiple models (="weak learners") to produce a stronger, more accurate model
 
 Random Forest builds **many CART trees** with added randomness — and combines their predictions to form a powerful, robust model
 
