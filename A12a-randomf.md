@@ -144,9 +144,20 @@ This splitting behavior is **not affected** by the magnitude or distribution of 
 
 **When Is Scaling Needed?**
 
-Only when the algorithm is sensitive to the scale of the data. For example:
-- ✅ Needed: Logistic Regression, K-Nearest Neighbors, SVM, Gradient Descent-based models
-- ❌ Not Needed: Decision Trees, Random Forest, XGBoost, LightGBM
+Feature scaling is needed when the algorithm relies on **distance, gradient optimization, or numerical stability**
+
+Examples:
+- ✅ **Needed**:
+  - Logistic Regression
+  - Linear Regression (if using gradient descent)
+  - Polynomial Regression
+  - K-Nearest Neighbors (KNN)
+  - Support Vector Machines (SVM)
+- ❌ **Not Needed**:
+  - Decision Trees
+  - Random Forest
+  - XGBoost
+  - LightGBM
 
 **Summary**
 
@@ -155,9 +166,11 @@ Only when the algorithm is sensitive to the scale of the data. For example:
 | Random Forest | ❌ No |
 | Decision Tree | ❌ No |
 | Logistic Regression | ✅ Yes |
+| Linear Regression (with GD) | ✅ Yes |
+| Polynomial Regression | ✅ Yes |
 | KNN | ✅ Yes |
 
-So with Random Forest, **you can skip feature scaling** — and it’ll still perform just fine!
+So with Random Forest, **you can skip feature scaling** — and it’ll still perform just fine
 
 ## מה זה Bootstrapping במודל?
 
