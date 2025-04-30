@@ -367,3 +367,17 @@ cluster                                   ...
 [6 rows x 10 columns]
 ```
   
+### Graphs:
+  
+#### Amount of each cluster
+  
+<img src="kmeanr1.png" style="width: 80%" />
+  
+#### Percentage of subscription="yes" for each cluster
+  
+<img src="kmeanr2.png" style="width: 80%" />
+  
+#### Heatmap of numeric mean for each cluster
+  
+<img src="kmeanr3.png" style="width: 80%" />
+  
