@@ -219,27 +219,29 @@ from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
 import matplotlib.pyplot as plt
 
-# טוענים את הדאטה (במקרה הזה צריך להחליף בשם הקובץ שלך)
 df = pd.read_csv("bank-full.csv")
 
-# המרה של עמודות טקסט לערכים בינאריים
+# Convert categorical columns to binary using one-hot encoding
 df_dummies = pd.get_dummies(df)
 
-# נורמליזציה (סקיילינג)
+# Apply feature scaling
 scaler = StandardScaler()
 df_scaled = scaler.fit_transform(df_dummies)
 
-# חישוב המרחקים (סכום ריבועי) לכל ערך של קיי בין 1 ל־10
+# Calculate the sum of squared distances (SSD) for K values from 1 to 10
 ssd = []
 for k in range(1, 11):
     kmeans = KMeans(n_clusters=k, random_state=42)
     kmeans.fit(df_scaled)
     ssd.append(kmeans.inertia_)
 
-# גרף שיטת המרפק
+# Elbow method plot
 plt.plot(range(1, 11), ssd, marker='o')
-plt.xlabel("מספר הקבוצות (K)")
-plt.ylabel("סכום ריבועי מרחקים")
-plt.title("שיטת המרפק למציאת ערך K")
+plt.xlabel("Number of Clusters (K)")
+plt.ylabel("Within-Cluster Sum of Squares (WCSS)")
+plt.title("Elbow Method to Determine Optimal K")
 plt.grid(True)
 plt.show()
+```
+
+<img src="kmean9.png" style="width: 80%" />
