@@ -86,7 +86,7 @@ This uses **information gain** instead of Gini to evaluate splits.
 
 In short: Why use Gini? | It's fast, simple, and performs well in practice. **Random Forest relies on Gini Impurity to guide how each tree splits the data — unless you tell it otherwise**
 
-#### 🌲 Does Random Forest Use CART Trees?
+### 🌲 Does Random Forest Use CART Trees?
 
 Yes — **Random Forest uses CART (Classification and Regression Trees)** as the base tree model for both classification and regression tasks.
 
