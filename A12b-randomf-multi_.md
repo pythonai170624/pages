@@ -5,8 +5,6 @@
 - סיווג לקוחות לרמות סיכון (נמוך / בינוני / גבוה)
 - חיזוי ציונים לפי רמות (A / B / C / D / F)
   
----
-  
 ## ✅ איך זה עובד?
   
 רנדום פורסט **תומך בצורה טבעית ב־מולטי קלאס**, בלי צורך בעטיפות מיוחדות
@@ -20,7 +18,6 @@
    - כל עץ נותן תחזית למחלקה מסוימת
    - המודל בוחר את המחלקה שקיבלה הכי הרבה קולות (רוב)
   
----
   
 ## 🔢 דוגמה:
 נניח שיש לנו שלוש מחלקות: `A`, `B`, ו־`C`
@@ -36,8 +33,6 @@
 ```
 רוב קולות → מחלקה A (3 קולות)
 ```
-  
----
   
 ## 📦 איך זה מיושם בפייתון (עם Scikit-learn)?
   
@@ -73,24 +68,18 @@ print(classification_report(y_test, y_pred))
     accuracy                           1.00        45
 ```
   
----
-  
 ## ✨ יתרונות ב־Multiclass:
   
 - לא צריך שינוי מיוחד בקוד — עובד כמו ב־Binary
 - מתאים לכל מספר מחלקות
 - נותן תחזית מאוד יציבה ועמידה לרעש
   
----
-  
 ## 🧠 הערה טכנית
-Scikit-learn handles multiclass classification natively in Random Forest. Each decision tree predicts a single class label (not probabilities), and the final prediction is based on majority voting among all the trees.
+Scikit-learn handles multiclass classification natively in Random Forest. Each decision tree predicts a single class label (not probabilities), and the final prediction is based on majority voting among all the trees
   
-This is conceptually similar to a **One-vs-Rest** strategy, but implemented implicitly within the forest. Each tree votes once, and the class receiving the most votes is chosen as the final prediction.
+This is conceptually similar to a **One-vs-Rest** strategy, but implemented implicitly within the forest. Each tree votes once, and the class receiving the most votes is chosen as the final prediction
   
-There is no use of Softmax — probabilities are derived by counting votes and normalizing.
-  
----
+There is no use of Softmax — probabilities are derived by counting votes and normalizing
   
 ## סיכום קצר
   
@@ -101,5 +90,5 @@ There is no use of Softmax — probabilities are derived by counting votes and n
 | תומך בכל מספר מחלקות? | כן |
 | מדויק ויציב? | מאוד ✅ |
   
-רוצה שאראה איך לגרום למודל להחזיר גם הסתברויות (`predict_proba`) ולא רק את המחלקה הסופית? 🎯
+  
   
