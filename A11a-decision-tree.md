@@ -212,6 +212,21 @@ When a subtree is pruned, it's typically replaced with a leaf node that represen
 
 <img src="dec4.png" style="width: 70%"/>
 
+
+#### 📂 Two Main Types of Pruning:
+
+#### 1. **Pre-Pruning (Early Stopping)**
+We stop the tree from growing too deep by setting limits such as:
+- `max_depth` – maximum depth of the tree
+- `min_samples_split` – minimum number of samples to allow a split
+- `min_samples_leaf` – minimum samples required at a leaf node
+
+These limits are set **before** the tree is fully grown.
+
+#### 2. **Post-Pruning**
+Grow the full tree first, then **cut back** branches that do not improve generalization. This is less commonly used in Scikit-learn but more common in academic contexts
+
+
 ## Measure of Impurity
 
 ### GINI IMPURITY
