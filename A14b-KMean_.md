@@ -280,4 +280,90 @@ SSD = 6 is optimal
 - לתת שמות ברורים לכל קבוצה – זה הופך את המודל לכלי עסקי
 - להשתמש בקבוצות במודלים אחרים (כמו ניבוי) או בקבלת החלטות
   
+### איך יודעים מה מאפיין כל קבוצה אחרי החלוקה?
+  
+ברגע שיש לנו את העמודה "קלאסטר" עם מספר הקבוצה של כל שורה –  
+אנחנו יכולים לבצע ניתוח פשוט: לחשב **ממוצע**, **שכיח** או **אחוזים** בכל קבוצה
+  
+### לדוגמה:
+  
+- מה הגיל הממוצע של כל קבוצה?  
+- איזה סוג עבודה הכי נפוץ בכל קבוצה?  
+- מה שיעור האנשים שענו "yes" לקמפיין בכל קבוצה?
+  
+ככה מזהים תבניות ומתחילים להבין מה מאפיין כל קלאסטר
+  
+```python
+import pandas as pd
+from sklearn.cluster import KMeans
+from sklearn.preprocessing import StandardScaler
+  
+# Load the data
+df = pd.read_csv("bank-full.csv")
+  
+# 1. Data preprocessing
+# Handle categorical variables
+df_encoded = pd.get_dummies(df, drop_first=True)
+  
+# Scale numerical features
+scaler = StandardScaler()
+features = df_encoded.columns
+df_scaled = pd.DataFrame(scaler.fit_transform(df_encoded), columns=features)
+  
+# 2. Apply K-means with k=6 (as determined by your elbow method)
+k = 6
+kmeans = KMeans(n_clusters=k, random_state=42, n_init=10)
+df['cluster'] = kmeans.fit_predict(df_scaled)
+  
+# 3.1 Size of each cluster
+cluster_sizes = df['cluster'].value_counts().sort_index()
+print("\nCluster sizes:")
+print(cluster_sizes)
+print("\nPercentage of total:")
+print(round(cluster_sizes / len(df) * 100, 2))
+  
+# 3.2 Calculate mean values for numerical variables by cluster
+numerical_cols = ['age', 'duration', 'campaign', 'pdays', 'previous',
+                  'emp.var.rate', 'cons.price.idx', 'cons.conf.idx',
+                  'euribor3m', 'nr.employed']
+cluster_means = df.groupby('cluster')[numerical_cols].mean()
+print("\nNumerical feature means by cluster:")
+print(cluster_means)
+```
+  
+Output:
+```
+  
+Cluster sizes:
+cluster
+0    11622
+1     3775
+2    11482
+3     1498
+4    11836
+5      975
+Name: count, dtype: int64
+  
+Percentage of total:
+cluster
+0    28.22
+1     9.17
+2    27.88
+3     3.64
+4    28.74
+5     2.37
+Name: count, dtype: float64
+  
+Numerical feature means by cluster:
+               age    duration  campaign  ...  cons.conf.idx  euribor3m  nr.employed
+cluster                                   ...                                       
+0        39.940458  251.873516  3.062984  ...     -39.819472   4.962974  5228.097221
+1        40.948079  243.476026  1.920265  ...     -41.553272   3.886565  5182.548821
+2        39.285752  263.408465  2.125588  ...     -43.366591   1.211547  5079.549747
+3        41.857143  321.419893  1.825768  ...     -38.326702   0.985517  5029.139252
+4        40.299510  257.087783  2.809902  ...     -38.350566   4.884378  5204.281776
+5        39.977436  249.244103  2.572308  ...     -40.317641   3.695877  5169.115385
+  
+[6 rows x 10 columns]
+```
   
