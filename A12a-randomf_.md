@@ -125,6 +125,39 @@ Ensemble = a method that combines multiple models (="weak learners") to produce 
   
 Random Forest builds **many CART trees** with added randomness — and combines their predictions to form a powerful, robust model
   
+### ⚖️ Does Random Forest Require Feature Scaling?
+  
+No — **Random Forest does not require feature scaling** such as standardization or normalization.
+  
+**Why Not?**
+  
+Random Forest is based on **decision trees**, which split data using thresholds like:
+```text
+Is feature X <= some value?
+```
+  
+This splitting behavior is **not affected** by the magnitude or distribution of the feature values.
+  
+- Whether a feature ranges from 0–1 or 0–1000, the tree only cares about where to split the data to separate classes.
+- Unlike models like Logistic Regression or KNN, **distance and scale do not impact the tree’s logic.**
+  
+**When Is Scaling Needed?**
+  
+Only when the algorithm is sensitive to the scale of the data. For example:
+- ✅ Needed: Logistic Regression, K-Nearest Neighbors, SVM, Gradient Descent-based models
+- ❌ Not Needed: Decision Trees, Random Forest, XGBoost, LightGBM
+  
+**Summary**
+  
+| Model Type | Needs Scaling? |
+|------------|----------------|
+| Random Forest | ❌ No |
+| Decision Tree | ❌ No |
+| Logistic Regression | ✅ Yes |
+| KNN | ✅ Yes |
+  
+So with Random Forest, **you can skip feature scaling** — and it’ll still perform just fine!
+  
 ## מה זה Bootstrapping במודל?
   
  תהליך שבו אנו יוצרים מדגם חדש מהנתונים הקיימים **על ידי בחירה אקראית של דגימות עם החזרה**. כלומר:
