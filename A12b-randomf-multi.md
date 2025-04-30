@@ -79,7 +79,7 @@ Scikit-learn handles multiclass classification natively in Random Forest. Each d
 
 This is conceptually similar to a **One-vs-Rest** strategy, but implemented implicitly within the forest. Each tree votes once, and the class receiving the most votes is chosen as the final prediction
 
-There is no use of Softmax — probabilities are derived by counting votes and normalizing
+There is no use of Softmax — probabilities are derived by counting votes and normalizing (dividing the number of votes for each class by the total number of trees, so that the results become proper probabilities)
 
 ## סיכום קצר
 
