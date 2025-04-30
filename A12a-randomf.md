@@ -124,9 +124,8 @@ $$
 
 ```python
 import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
 import seaborn as sns
+from matplotlib import pyplot as plt
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
@@ -172,21 +171,80 @@ y_pred = rf_model.predict(X_test)
 accuracy = accuracy_score(y_test, y_pred)
 print(f"Model Accuracy: {accuracy:.2f}")
 print(f"Out-of-Bag Accuracy: {rf_model.oob_score_:.2f}")
+
+# Print detailed classification report
+print("\nClassification Report:")
+print(classification_report(y_test, y_pred))
 ```
 
 Output
 ```
 Model Accuracy: 1.00
 Out-of-Bag Accuracy: 0.93
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00         3
+           1       1.00      1.00      1.00         3
+
+    accuracy                           1.00         6
+   macro avg       1.00      1.00      1.00         6
+weighted avg       1.00      1.00      1.00         6
 ```
 
 ## גרף המחשה
+
+<img src="rand2.png" style="width: 80%" />
 
 <img src="rand1.png" style="width: 90%" />
 
 **הסבר:**
 - הדאטה מפוצל על עצים שונים (עם תכונות שונות)
 - בסוף אוספים את כל התחזיות ומקבלים החלטה סופית
+
+### Pairplot – הסבר על הגרף
+
+ה-פייר-פלוט הוא כלי ויזואלי חשוב להבנת הדאטה עוד לפני שמריצים עליו מודל. הנה הסבר פשוט למה הוא משמש, איך לקרוא אותו, ומה אפשר ללמוד ממנו
+
+### מה זה Pairplot?
+
+Pairplot מציג:
+- את **ההתפלגות של כל פיצ'ר** לאורך האלכסון הראשי
+- את **הקשרים (קורלציה)** בין כל זוג פיצ'רים במשבצות האחרות
+- צבע שונה לכל **מחלקה (Class)** – למשל: "עבר" בצבע כחול, "נכשל" בצבע אדום
+
+### איך לקרוא את הגרף?
+
+- אם שתי קבוצות (למשל: עבר/נכשל) מופרדות יפה בציר מסוים → כנראה שזה פיצ'ר חזק
+- אם ההתפלגות חופפת בין הקבוצות → הפיצ'ר כנראה לא תורם הרבה למודל
+- בין זוגות פיצ'רים: אם רואים הצטברות צבעים מסוימת בזווית → ייתכן קשר מעניין ביניהם
+
+1. **Study Hours**:
+   - העקומה של ה"עברו" נוטה לשעות לימוד גבוהות יותר
+   - העקומה של ה"נכשלו" נוטה לשעות לימוד נמוכות
+   - מסקנה: זה פיצ'ר טוב למודל!
+
+2. **Had Breakfast**:
+   - העקומות כמעט נפרדות לגמרי
+   - תלמידים שאכלו ארוחת בוקר עברו יותר!
+   - גם זה פיצ'ר חזק מאוד 💪
+
+3. **Sleep Hours**:
+   - קצת חופף, אבל בכל זאת יש נטייה ברורה
+   - כן תורם, אבל פחות חזק מהשניים האחרים
+
+### למה משתמשים בו?
+
+- כדי להבין במהירות את הדאטה
+- כדי לבחור אילו פיצ'רים שווה להכניס למודל
+- כדי למצוא דפוסים מעניינים שלא רואים בטבלה
+
+### סיכום 
+
+Pairplot נותן תמונה ראשונית חשובה על הקשרים בין פיצ'רים לבין התוצאה. בעזרת גרף פשוט אחד, אפשר לזהות אילו משתנים הם בעלי משמעות חזקה יותר ולהתמקד בהם
+
+אחרי זה – אפשר להיכנס לכלי כמו Random Forest ולתת לו לעשות את העבודה הרצינית 
 
 ---
 
