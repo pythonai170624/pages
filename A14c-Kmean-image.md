@@ -10,7 +10,7 @@
 כל קבוצה תיוצג על ידי **צבע ממוצע אחד**, וכל הפיקסלים בקבוצה יקבלו את הצבע הזה
 
 
-<img src="dog_image.jpeg" style="width: 80%" />
+<img src="dog_image.jpeg" style="width: 50%" />
 
 ---
 
