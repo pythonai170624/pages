@@ -61,7 +61,7 @@ Where:
 - <img src="https://latex.codecogs.com/gif.latex?C"/> is the number of classes
 - <img src="https://latex.codecogs.com/gif.latex?p_i"/> is the probability of a sample being in class <img src="https://latex.codecogs.com/gif.latex?i"/> at that node
   
-The goal is to **choose the split that minimizes impurity**.
+The goal is to **choose the split that minimizes impurity**
   
 **Why is Gini used in Random Forest?**
   
@@ -83,8 +83,45 @@ model = RandomForestClassifier(criterion="entropy")
 This uses **information gain** instead of Gini to evaluate splits.
   
   
-In short: Why use Gini? | It's fast, simple, and performs well in practice. **Random Forest relies on Gini Impurity to guide how each tree splits the data — unless you tell it otherwise.**
+In short: Why use Gini? | It's fast, simple, and performs well in practice. **Random Forest relies on Gini Impurity to guide how each tree splits the data — unless you tell it otherwise**
   
+#### 🌲 Does Random Forest Use CART Trees?
+  
+Yes — **Random Forest uses CART (Classification and Regression Trees)** as the base tree model for both classification and regression tasks.
+  
+**What is CART?**
+  
+**CART** stands for **Classification and Regression Trees**, introduced by Breiman et al. in 1986. It's a type of decision tree algorithm with the following characteristics:
+  
+✅ Key Features of CART:
+- **Binary Splits Only**: Every internal node splits into exactly two branches (left/right)
+- **Supports Two Tasks**:
+  - **Classification** → typically uses **Gini Impurity** or **Entropy**
+  - **Regression** → uses **Mean Squared Error (MSE)**
+- **No Multi-way Splits**: Unlike algorithms like ID3 or C4.5, CART only splits one feature at a time into two groups
+- **Can Grow Fully**: Unless explicitly pruned or limited, CART trees grow until all leaves are pure or stopping conditions are met
+  
+**🌳 How CART Fits into Random Forest**
+  
+Random Forest is essentially a collection (an ensemble) of CART trees:
+- Each tree is built using the CART algorithm
+- Random Forest adds randomness by:
+  - Bootstrapping the data (random samples with replacement)
+  - Randomly selecting features for each split (`max_features`)
+  
+This combination allows the forest to reduce overfitting while keeping the power of CART.
+  
+**Summary**
+  
+| Feature | CART | Random Forest |
+|--------|------|----------------|
+| Tree Type | Binary-only CART | Ensemble of CART trees |
+| Supports Classification? | ✅ | ✅ |
+| Supports Regression? | ✅ | ✅ |
+| Uses pruning? | Optional | ❌ Not used by default |
+| Split criterion | Gini, Entropy, MSE | Gini/Entropy per tree |
+  
+Random Forest builds **many CART trees** with added randomness — and combines their predictions to form a powerful, robust model.
   
 ## מה זה Bootstrapping במודל?
   
