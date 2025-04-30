@@ -86,7 +86,7 @@ Step by step:
 
 **What does this mean?**  
 The point is “13 units squared” away from the cluster center.  
-If many points are far like this, the overall SSD will be large — and the model is less optimal.
+If many points are far like this, the overall SSD will be large — and the model is less optimal
 
 
 —  
@@ -121,7 +121,9 @@ it's a vector norm used to calculate distance in **multi-dimensional space**
 המודל הזה ייכשל על דאטה חדש
 
 <img src="kmean6.png" style="width: 80%" />
---
+
+-
+
 <img src="kmean7.png" style="width: 80%" />
 
 ---
