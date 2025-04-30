@@ -371,7 +371,7 @@ cluster                                   ...
   
 #### Amount of each cluster
   
-<img src="kmeanr1.png" style="width: 80%" />
+<img src="kmeanr1.png" style="width: 70%" />
   
 #### Percentage of subscription="yes" for each cluster
   
@@ -379,5 +379,5 @@ cluster                                   ...
   
 #### Heatmap of numeric mean for each cluster
   
-<img src="kmeanr3.png" style="width: 80%" />
+<img src="kmeanr3.png" style="width: 100%" />
   
