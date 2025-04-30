@@ -121,7 +121,7 @@ it's a vector norm used to calculate distance in **multi-dimensional space**
 המודל הזה ייכשל על דאטה חדש
 
 <img src="kmean6.png" style="width: 80%" />
--
+--
 <img src="kmean7.png" style="width: 80%" />
 
 ---
@@ -132,6 +132,8 @@ it's a vector norm used to calculate distance in **multi-dimensional space**
 בונים גרף שבו על ציר X שמים את מספר הקבוצות, ועל ציר Y את מדד המרחקים  
 מחפשים את הנקודה שבה השיפור מפסיק להיות משמעותי – שם זה נראה כמו "מרפק"  
 משם והלאה, כל תוספת קבוצה לא מוסיפה הרבה לאיכות המודל – אז עוצרים שם
+
+<img src="kmean8.png" style="width: 80%" />
 
 ---
 
