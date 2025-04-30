@@ -200,7 +200,7 @@ new_image = new_colors.reshape(original_shape).astype(np.uint8)
 
 Imagine we have a tiny 2×2 image (4 pixels total) and we're using K=2 (two clusters):
 
-#### 1. Original Image
+#### a. Original Image
 
 Our original image might have these RGB values:
 ```
@@ -210,7 +210,7 @@ Pixel (1,0): [10, 10, 240]   # Slightly different blue
 Pixel (1,1): [0, 0, 255]     # Blue
 ```
 
-### 2. Reshaping to 2D Array
+### b. Reshaping to 2D Array
 
 The pixels are reshaped to a 2D array with shape (4, 3):
 ```
@@ -222,7 +222,7 @@ pixels = [
 ]
 ```
 
-### 3. K-Means Results After Fitting
+### c. K-Means Results After Fitting
 
 After fitting K-means (with K=2), we get:
 
@@ -244,7 +244,7 @@ This means:
 - Pixel (1,0) is assigned to cluster 1
 - Pixel (1,1) is assigned to cluster 1
 
-### 4. Replacing Pixels with Their Cluster Centers
+### d. Replacing Pixels with Their Cluster Centers
 
 Now, the magic happens with this line:
 ```python
@@ -271,7 +271,7 @@ new_colors = [
 ]
 ```
 
-### 5. Reshaping Back to Image Format
+### e. Reshaping Back to Image Format
 
 Finally:
 ```python
