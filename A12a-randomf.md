@@ -42,6 +42,58 @@ Why is This Effective?
 - Fully grown trees can capture patterns better; randomness reduces the risk of memorizing noise
 - No need to manually tune tree size — the ensemble handles it through averaging
 
+🔍 Does Random Forest Use Gini Impurity?
+
+Yes — by default, **Random Forest uses Gini Impurity** to decide how to split nodes in each decision tree it builds.
+
+What is Gini Impurity?
+
+Gini Impurity is a measure of how "pure" a node is. In classification:
+- A node is **pure** if all examples belong to the same class.
+- A node is **impure** if there's a mix of classes.
+
+The formula for Gini Impurity is:
+
+\[
+G = 1 - \sum_{i=1}^{C} p_i^2
+\]
+
+Where:
+- \( C \) is the number of classes
+- \( p_i \) is the probability of a sample being in class \( i \) at that node
+
+The goal is to **choose the split that minimizes impurity**.
+
+**Why is Gini used in Random Forest?**
+
+Because each tree in the forest is a regular decision tree (CART), and CART uses Gini by default.
+It is:
+- Fast to compute
+- Works well for classification
+- Often performs similarly to entropy (information gain), but with less computation
+
+**Can I use something else?**
+
+Yes! You can use **entropy** instead by setting the `criterion` parameter:
+
+```python
+from sklearn.ensemble import RandomForestClassifier
+model = RandomForestClassifier(criterion="entropy")
+```
+
+This uses **information gain** instead of Gini to evaluate splits.
+
+**✅ Summary**
+
+| Question | Answer |
+|----------|--------|
+| Does Random Forest use Gini Impurity? | ✅ Yes, by default |
+| Can I change it? | ✅ Yes, to entropy |
+| Why use Gini? | It's fast, simple, and performs well in practice |
+
+In short: **Random Forest relies on Gini Impurity to guide how each tree splits the data — unless you tell it otherwise.**
+
+
 ## מה זה Bootstrapping במודל?
 
  תהליך שבו אנו יוצרים מדגם חדש מהנתונים הקיימים **על ידי בחירה אקראית של דגימות עם החזרה**. כלומר:
