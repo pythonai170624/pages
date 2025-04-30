@@ -37,12 +37,7 @@
   
 Why is there a norm (|| · ||) in the SSD formula?
   
-The formula:
-  
-<p align="center"><img src="https://latex.codecogs.com/gif.latex?S%20=%20\sum_{i=1}^{n}%20\|x_i%20-%20\mu_{c_i}\|^2"/></p>  
-  
-  
-uses a **vector norm**, not an absolute value.
+The Formula uses a **vector norm**, not an absolute value.
   
 What is <img src="https://latex.codecogs.com/gif.latex?x_i"/>?
   
