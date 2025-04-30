@@ -211,7 +211,7 @@ accuracy = accuracy_score(y_true, y_pred)
 זו פשוט הנוסחה:
 
 \[
-\text{Accuracy} = \frac{correct-predictions}{total-predictions}
+\text{Accuracy} = \frac{CorrectPredictions}{TotalPredictions}
 \]
 
 #### דוגמה:
