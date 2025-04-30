@@ -100,8 +100,6 @@ it's a vector norm used to calculate distance in **multi-dimensional space**
 
 המטרה של המודל היא **להקטין את הערך הזה כמה שיותר**
 
-
-
 ---
 
 # Variation Within Cluster
@@ -121,6 +119,8 @@ it's a vector norm used to calculate distance in **multi-dimensional space**
 אם נגדיל את קיי למספר מאוד גדול, אפילו כזה שכל נקודה תקבל קבוצה משלה – אז המרחקים יהיו אפס  
 אבל זה לא טוב – כי אז אנחנו פשוט מתאימים את עצמנו בדיוק לנתונים הקיימים – וזה נקרא **למידת יתר**  
 המודל הזה ייכשל על דאטה חדש
+
+<img src="kmean6.png" style="width: 80%" />
 
 ---
 
