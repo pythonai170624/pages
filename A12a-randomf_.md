@@ -30,6 +30,22 @@
 5. חזרה על השלבים כדי לבנות הרבה עצים
 6. תחזית סופית על ידי רוב קולות או ממוצע
   
+❌ Why Random Forest Skips Pruning
+  
+Random Forest uses a **different strategy** to avoid overfitting:
+  
+- Each tree is trained on a **random subset** of the data (bootstrapping)
+- At each split, only a **random subset of features** is considered
+- Each tree is grown **fully** (no pruning)
+  
+Instead of simplifying individual trees, Random Forest relies on the **diversity of the forest** — the idea that many different trees making mistakes in different ways will average out to a good prediction.
+  
+Why is This Effective?
+  
+- A single tree might overfit — but averaging many trees leads to stable predictions
+- Fully grown trees can capture patterns better; randomness reduces the risk of memorizing noise
+- No need to manually tune tree size — the ensemble handles it through averaging
+  
 ---
   
 ## מה זה Bootstrapping במודל?
