@@ -71,11 +71,11 @@ Output:
 
 <img src="dog_image4.jpeg" style="width: 50%" />
 -
-<img src="dog_image10.jpeg" style="width: 50%" />
+<img src="dog_image10.png" style="width: 50%" />
 -
-<img src="dog_image25.jpeg" style="width: 50%" />
+<img src="dog_image25.png" style="width: 50%" />
 -
-<img src="dog_image50.jpeg" style="width: 50%" />
+<img src="dog_image50.png" style="width: 50%" />
 -
 
 ## הסבר שלב אחר שלב
