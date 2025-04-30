@@ -120,10 +120,10 @@ it's a vector norm used to calculate distance in **multi-dimensional space**
 אבל זה לא טוב – כי אז אנחנו פשוט מתאימים את עצמנו בדיוק לנתונים הקיימים – וזה נקרא **למידת יתר**  
 המודל הזה ייכשל על דאטה חדש
 
-<img src="kmean6.png" style="width: 80%" />
+<img src="kmean6.png" style="width: 100%" />
 
 -
-<img src="kmean7.png" style="width: 80%" />
+<img src="kmean7.png" style="width: 100%" />
 
 ---
 
