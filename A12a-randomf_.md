@@ -26,7 +26,7 @@
 5. חזרה על השלבים כדי לבנות הרבה עצים
 6. תחזית סופית על ידי רוב קולות או ממוצע
   
-#### ❌ Why Random Forest Skips Pruning
+### ❌ Why Random Forest Skips Pruning
   
 Random Forest uses a **different strategy** to avoid overfitting:
   
@@ -42,7 +42,7 @@ Why is This Effective?
 - Fully grown trees can capture patterns better; randomness reduces the risk of memorizing noise
 - No need to manually tune tree size — the ensemble handles it through averaging
   
-#### 🔍 Does Random Forest Use Gini Impurity?
+### 🔍 Does Random Forest Use Gini Impurity?
   
 Yes — by default, **Random Forest uses Gini Impurity** to decide how to split nodes in each decision tree it builds.
   
