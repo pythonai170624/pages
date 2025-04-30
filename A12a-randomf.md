@@ -193,12 +193,6 @@ Classification Report:
 weighted avg       1.00      1.00      1.00         6
 ```
 
-## גרף המחשה
-
-<img src="rand2.png" style="width: 60%" />
-
-<img src="rand1.png" style="width: 90%" />
-
 **הסבר:**
 - הדאטה מפוצל על עצים שונים (עם תכונות שונות)
 - בסוף אוספים את כל התחזיות ומקבלים החלטה סופית
@@ -261,6 +255,13 @@ Out-of-Bag Accuracy: 0.93
 |-----|----------|--------------|
 | `Model Accuracy` | תחזית על סט בדיקה | דיוק חיצוני קלאסי |
 | `OOB Accuracy` | תחזיות על דוגמאות שלא נבחרו במדגם | הערכה פנימית לאימון |
+
+
+## גרף המחשה
+
+<img src="rand2.png" style="width: 60%" />
+
+<img src="rand1.png" style="width: 90%" />
 
 
 ### Pairplot – הסבר על הגרף
