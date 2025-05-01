@@ -1,5 +1,7 @@
 
-# Hierarchical Clustering דוגמא בפייתון
+# Hierarchical Clustering 
+
+# דוגמא בפייתון
 
 ```python
 import pandas as pd
