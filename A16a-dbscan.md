@@ -18,7 +18,7 @@ Spatial = מרחבי
 
 ### 📷 דוגמה של כישלון כשקלאסטרים לא סימטריים
 
-<img src="dbscan1.png" style="width: 80%" />
+<img src="dbscan2.png" style="width: 80%" />
 
 ## DBSCAN Result
 
