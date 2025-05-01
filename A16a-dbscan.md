@@ -1,5 +1,8 @@
 ## DBSCAN -- Density-Based Spatial Clustering of Applications with Noise
 
+Desnsity = צפיפות
+Spatial = מרחבי
+
 הוא אלגוריתם קלאסטרינג מבוסס צפיפות 
 בניגוד ל־K-Means או קלאסטרינג היררכי, הוא לא מחפש קבוצות לפי מרחק למרכז, אלא לפי **צפיפות** של נקודות במרחב.  
 הוא יודע לזהות קבוצות בכל צורה וגם מסמן נקודות חריגות כ־Outliers.
