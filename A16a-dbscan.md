@@ -83,16 +83,19 @@ Spatial = מרחבי
 
 ## Visual Steps
 
-שלבי האלגוריתם בציור עם ערכים ε = 1, MinPts = 3
+שלבי האלגוריתם עם ערכים ε = 1, MinPts = 3
 
-📷 שקף 22 – התחלת התהליך  
-📷 שקף 23 – זיהוי נקודת ליבה  
-📷 שקף 24 – גבול מול ליבה  
-📷 שקף 25 – דוגמה ל־Outlier
+<img src="dbscan6.png" style="width: 40%" />
+
+<img src="dbscan7.png" style="width: 40%" />
+
+<img src="dbscan8.png" style="width: 40%" />
+
+<img src="dbscan9.png" style="width: 40%" />
+
 
 ## DBSCAN Simulation
 
-📷 שקף 26 – מציג תצוגה גרפית אינטראקטיבית של DBSCAN  
 ניתן להתנסות בסימולציה בלינק הבא:  
 https://www.naftaliharris.com/blog/visualizing-dbscan-clustering/
 
