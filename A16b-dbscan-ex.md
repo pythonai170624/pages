@@ -25,7 +25,7 @@
 - `cluster_moons.csv`
 - `cluster_circles.csv`
 
-<img src="dbscanA11.png" style="width: 90%" />
+<img src="dbscanA11.png" style="width: 100%" />
 
 לכל קובץ יש שתי תכונות בלבד (X1 ו־X2) וניתן לבחון את צורת הקלאסטרים הנוצרים
 
