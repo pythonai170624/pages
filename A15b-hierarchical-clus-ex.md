@@ -62,7 +62,7 @@ plt.grid(True)
 plt.show()
 ```
 
-<img src="hier7.png" style="width: 80%" />
+<img src="hier7.png" style="width: 100%" />
 
 ## דנדרוגרמה (Ward Linkage) – הסבר
 
