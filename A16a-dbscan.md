@@ -85,13 +85,13 @@ Spatial = מרחבי
 
 שלבי האלגוריתם עם ערכים ε = 1, MinPts = 3
 
-<img src="dbscan6.png" style="width: 40%" />
+<img src="dbscan6.png" style="width: 90%" />
 
-<img src="dbscan7.png" style="width: 40%" />
+<img src="dbscan7.png" style="width: 90%" />
 
-<img src="dbscan8.png" style="width: 40%" />
+<img src="dbscan8.png" style="width: 90%" />
 
-<img src="dbscan9.png" style="width: 40%" />
+<img src="dbscan9.png" style="width: 90%" />
 
 
 ## DBSCAN Simulation
