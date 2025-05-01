@@ -87,7 +87,7 @@ Spatial = מרחבי
 
 <img src="dbscan6.png" style="width: 90%" />
 
-<img src="dbscan7.png" style="width: 90%" />
+<img src="dbscan7.png" style="width: 100%" />
 
 <img src="dbscan8.png" style="width: 90%" />
 
