@@ -196,10 +196,6 @@ plt.show()
 
 ---
 
-<style>
-
-</style>
-
 <img src="hier8.png" style="width: 100%" />
 
 
