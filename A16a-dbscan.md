@@ -33,6 +33,8 @@ Spatial = מרחבי
 
 <img src="dbscan4.png" style="width: 40%" />
 
+<img src="dbscan5.png" style="width: 40%" />
+
 ### Epsilon (ε)
 
  המרחק המקסימלי שבו שתי נקודות נחשבות שכנות  
