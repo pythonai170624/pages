@@ -36,10 +36,10 @@ PCA מאפשרת לצמצם תכונות **באופן חכם ולא מפוקח**
 
 ### תכונות של הרכיבים
 
-- PC1 הוא וקטור שמצביע על הכיוון שבו השונות הכי גדולה בדאטה  
-- PC2 הוא וקטור שמאונך ל־PC1 ומסביר את השונות שנותרה  
-- כל הרכיבים מאונכים זה לזה  
-- כל הרכיבים מנורמלים – כלומר האורך שלהם הוא 1  
+- PC1 is a vector pointing in the direction of the greatest variance in the data  
+- PC2 is a vector orthogonal to PC1 that explains the remaining variance  
+- All principal components are orthogonal to each other  
+- All components are normalized – meaning their length is 1
 
 ### מתמטית
 
