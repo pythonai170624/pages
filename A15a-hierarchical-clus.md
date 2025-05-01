@@ -58,7 +58,7 @@
 
 <img src="hier4.png" style="image: 80%" />
 
-<img src="hier5.png" style="image: 25%" />
+<img src="hier5.png" style="image: 80%" />
 
 ## Single Linkage  
 המרחק הכי קצר בין שתי נקודות – אחת מכל קבוצה  
