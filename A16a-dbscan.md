@@ -31,7 +31,7 @@ Spatial = מרחבי
 
 ## Graph concepts:
 
-<img src="dbscan4.png" style="width: 40%" />
+<img src="dbscan5.png" style="width: 40%" />
 
 ### Epsilon (ε)
 
@@ -60,9 +60,9 @@ Spatial = מרחבי
 
 📷 שקף 20 – כולל את כל ההגדרות האלו ברשימה
 
-<img src="dbscan5.png" style="width: 40%" />
-
 ### Density Reachability
+
+<img src="dbscan4.png" style="width: 40%" />
 
 נקודה p היא צפיפות־ניתנת־להגעה מנקודה q אם p נמצאת בטווח ε מ־q  
 ו־q היא נקודת ליבה  
