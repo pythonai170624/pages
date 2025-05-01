@@ -114,9 +114,9 @@ PCA מחפש כיוונים חדשים (וקטורים) שבהם הנתונים 
 אם יש שלושה משתנים כמו מתמטיקה אנגלית ומדעים  
 נקבל שלושה רכיבים חדשים
 
-- PC1 נבחר כך שהוא הכיוון שבו השונות הכי גדולה  
-- PC2 נבחר כך שהוא מאונך ל־PC1 ומסביר כמה שיותר מהשונות שנותרה  
-- PC3 נבחר כך שהוא מאונך גם ל־PC1 וגם ל־PC2 ומסביר את השונות שנשארה
+- PC1 is chosen as the direction with the **maximum variance** in the data  
+- PC2 is chosen to be **orthogonal to PC1** and explains as much of the **remaining variance** as possible  
+- PC3 is chosen to be **orthogonal to both PC1 and PC2** and explains the **variance that still remains**
 
 כל ציר חדש בזווית של 90 מעלות לצירים הקודמים  
 זה אומר שהוא לא חופף להם בשום צורה
