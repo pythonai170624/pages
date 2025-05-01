@@ -94,8 +94,12 @@ Spatial = מרחבי
 <img src="dbscan9.png" style="width: 90%" />
 
 
-## DBSCAN Simulation
+## Cool DBSCAN Simulation Site
+
+<img src="dbscanA10.png" style="width: 90%" />
 
 ניתן להתנסות בסימולציה בלינק הבא:  
 https://www.naftaliharris.com/blog/visualizing-dbscan-clustering/
+
+
 
