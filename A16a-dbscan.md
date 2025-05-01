@@ -31,7 +31,7 @@ Spatial = מרחבי
 
 ## Graph concepts:
 
-<img src="dbscan4.png" style="width: 80%" />
+<img src="dbscan4.png" style="width: 40%" />
 
 ### Epsilon (ε)
 
