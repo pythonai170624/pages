@@ -30,70 +30,126 @@
 לכל קובץ יש שתי תכונות בלבד (X1 ו־X2) וניתן לבחון את צורת הקלאסטרים הנוצרים
 
 ```python
-import pandas as pd
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
 from sklearn.cluster import DBSCAN
-from sklearn.preprocessing import StandardScaler
-from sklearn.metrics import pairwise_distances_argmin_min
 
-# פונקציה לציור תוצאת המודל
-def display_categories(X, labels, title):
-    plt.figure(figsize=(6, 4))
-    plt.scatter(X[:, 0], X[:, 1], c=labels, cmap='Set1', s=40)
-    plt.title(title)
-    plt.xlabel("X1")
-    plt.ylabel("X2")
-    plt.grid(True)
+# Set plot style
+plt.style.use('seaborn-v0_8')
+
+# Function to display clustering results
+def display_categories(model, data):
+    labels = model.fit_predict(data)
+    sns.scatterplot(data=data, x='X1', y='X2', hue=labels, palette='Set1')
+    plt.title(f'DBSCAN (eps={model.eps}, min_samples={model.min_samples})')
     plt.show()
 
-# טוענים קובץ לדוגמה
-file = 'cluster_two_blobs_outliers.csv'
-df = pd.read_csv(file)
-X = df.values
+# Load dataset
+two_blobs_outliers = pd.read_csv('cluster_blobs.csv')
 
-# נורמליזציה
-scaler = StandardScaler()
-X_scaled = scaler.fit_transform(X)
+# Display original dataset
+plt.figure(figsize=(10, 6))
+sns.scatterplot(data=two_blobs_outliers, x='X1', y='X2')
+plt.title('Original Dataset')
+plt.show()
 
-# DBSCAN ברירת מחדל (e=0.5, minPts=5)
-db_default = DBSCAN(eps=0.5, min_samples=5)
-labels_default = db_default.fit_predict(X_scaled)
-display_categories(X_scaled, labels_default, "DBSCAN - Default")
+# Default DBSCAN parameters
+model = DBSCAN(eps=0.5, min_samples=5)
+labels = model.fit_predict(two_blobs_outliers)
+plt.figure(figsize=(10, 6))
+sns.scatterplot(data=two_blobs_outliers, x='X1', y='X2', hue=labels, palette='Set1')
+plt.title('Default DBSCAN (eps=0.5, min_samples=5)')
+plt.show()
 
-# בדיקת אפקט של ערכים שונים של Epsilon
-epsilons = np.linspace(0.05, 1.0, 20)
-outliers_count = []
-for eps in epsilons:
-    db = DBSCAN(eps=eps, min_samples=5)
-    labels = db.fit_predict(X_scaled)
-    count = np.sum(labels == -1)
-    outliers_count.append(count)
+# Count and percentage of outliers
+print("Default DBSCAN outliers:")
+print(f"Number of outliers: {np.sum(labels == -1)}")
+print(f"Percentage of outliers: {100 * np.sum(labels == -1) / len(labels):.2f}%\n")
 
-# גרף של מספר האאוטליירים לפי epsilon
-plt.plot(epsilons, outliers_count, marker='o')
-plt.title("Outliers vs Epsilon")
-plt.xlabel("Epsilon")
-plt.ylabel("Number of Outliers")
+# --------- Different Epsilon Values ---------
+epsilons = [0.1, 0.5, 2.0]
+
+plt.figure(figsize=(15, 5))
+for i, eps in enumerate(epsilons):
+    plt.subplot(1, 3, i+1)
+    model = DBSCAN(eps=eps, min_samples=5)
+    labels = model.fit_predict(two_blobs_outliers)
+    sns.scatterplot(data=two_blobs_outliers, x='X1', y='X2', hue=labels, palette='Set1')
+    plt.title(f'eps={eps}, min_samples=5')
+    print(f"eps={eps}: Number of outliers: {np.sum(labels == -1)}")
+
+plt.tight_layout()
+plt.show()
+
+# --------- Different MinPoints Values ---------
+min_points = [2, 5, 20]
+
+plt.figure(figsize=(15, 5))
+for i, min_sample in enumerate(min_points):
+    plt.subplot(1, 3, i+1)
+    model = DBSCAN(eps=0.5, min_samples=min_sample)
+    labels = model.fit_predict(two_blobs_outliers)
+    sns.scatterplot(data=two_blobs_outliers, x='X1', y='X2', hue=labels, palette='Set1')
+    plt.title(f'eps=0.5, min_samples={min_sample}')
+    print(f"min_samples={min_sample}: Number of outliers: {np.sum(labels == -1)}")
+
+plt.tight_layout()
+plt.show()
+
+# --------- Elbow Method for Finding Optimal Epsilon ---------
+eps_range = np.linspace(0.1, 2.0, 20)
+number_of_outliers = []
+
+for eps in eps_range:
+    dbscan = DBSCAN(eps=eps, min_samples=5)
+    labels = dbscan.fit_predict(two_blobs_outliers)
+    number_of_outliers.append(np.sum(labels == -1))
+
+# Plot number of outliers vs epsilon
+plt.figure(figsize=(10, 6))
+plt.plot(eps_range, number_of_outliers, 'o-', linewidth=2)
+plt.xlabel('Epsilon (ε)', fontsize=12)
+plt.ylabel('Number of outliers', fontsize=12)
+plt.title('Elbow Method: Number of Outliers vs Epsilon', fontsize=14)
 plt.grid(True)
 plt.show()
 
-# בדיקה דומה עבור MinPts
-minpts_values = range(2, 20)
-outliers_per_minpts = []
-for minpts in minpts_values:
-    db = DBSCAN(eps=0.3, min_samples=minpts)
-    labels = db.fit_predict(X_scaled)
-    count = np.sum(labels == -1)
-    outliers_per_minpts.append(count)
+# Find optimal epsilon value (where outliers stabilize)
+# A heuristic approach to find the "elbow" point
+diff = np.diff(number_of_outliers)
+elbow_index = np.where(abs(diff) < 0.5)[0][0] if len(np.where(abs(diff) < 0.5)[0]) > 0 else 0
+optimal_eps = eps_range[elbow_index]
 
-plt.plot(minpts_values, outliers_per_minpts, marker='o')
-plt.title("Outliers vs MinPts")
-plt.xlabel("MinPts")
-plt.ylabel("Number of Outliers")
-plt.grid(True)
+print(f"\nOptimal epsilon from elbow method: {optimal_eps:.2f}")
+print(f"This gives {number_of_outliers[elbow_index]} outliers")
+
+# --------- Apply DBSCAN with optimal parameters ---------
+# Using the recommended rule of thumb: min_samples = 2 * dimensions
+optimal_min_samples = 2 * two_blobs_outliers.shape[1]  # 2 * number of dimensions
+model = DBSCAN(eps=optimal_eps, min_samples=optimal_min_samples)
+labels = model.fit_predict(two_blobs_outliers)
+
+plt.figure(figsize=(10, 6))
+sns.scatterplot(data=two_blobs_outliers, x='X1', y='X2', hue=labels, palette='Set1')
+plt.title(f'DBSCAN with Optimal Parameters (eps={optimal_eps:.2f}, min_samples={optimal_min_samples})')
 plt.show()
+
+print(f"Final model: Number of outliers: {np.sum(labels == -1)}")
+print(f"Number of clusters detected: {len(set(labels)) - (1 if -1 in labels else 0)}")
 ```
 
+<img src="dbscanA12.png" style="width: 100%" />
+
+<img src="dbscanA13.png" style="width: 100%" />
+
+<img src="dbscanA14.png" style="width: 100%" />
+
+<img src="dbscanA15.png" style="width: 100%" />
+
+<img src="dbscanA16.png" style="width: 100%" />
+
+<img src="dbscanA17.png" style="width: 100%" />
 
 
