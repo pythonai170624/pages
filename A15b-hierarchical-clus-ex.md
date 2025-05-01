@@ -200,19 +200,7 @@ plt.show()
 
 </style>
 
-<img src="hier8.png" style=`.zoom-container {
-  width: 300px;
-  overflow: hidden;
-  display: inline-block;
-  border-radius: 10px;
-}
-.zoom-container img {
-  width: 100%;
-  transition: transform 0.3s ease;
-}
-.zoom-container:hover img {
-  transform: scale(1.2);
-}` />
+<img src="hier8.png" style="width: 100%" />
 
 
 ### 📌 דוגמה למה שרואים פה:
