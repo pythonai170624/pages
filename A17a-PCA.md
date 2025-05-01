@@ -160,9 +160,9 @@ $$
 
 לכן:
 
-\[
+$$
 \text{Explained Variance of PC1} + \text{Explained Variance of PC2} = 100\%
-\]
+$$
 
 ### בדוגמה שלנו
 
