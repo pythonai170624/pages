@@ -196,7 +196,7 @@ plt.show()
 
 ---
 
-<img src="hier8.png" style="width: 100%" />
+<img src="hier8.png" style="width: 80%" />
 
 ### 📌 דוגמה למה שרואים פה:
 
