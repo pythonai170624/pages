@@ -197,7 +197,10 @@ plt.show()
 ---
 
 <style>
-.zoom-container {
+
+</style>
+
+<img src="hier8.png" style=`.zoom-container {
   width: 300px;
   overflow: hidden;
   display: inline-block;
@@ -209,12 +212,7 @@ plt.show()
 }
 .zoom-container:hover img {
   transform: scale(1.2);
-}
-</style>
-
-<div class="zoom-container">
-    <img src="hier8.png" style="width: 100%" />
-</div>
+}` />
 
 
 ### 📌 דוגמה למה שרואים פה:
