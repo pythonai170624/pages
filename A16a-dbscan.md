@@ -1,6 +1,6 @@
 ## DBSCAN -- Density-Based Spatial Clustering of Applications with Noise
 
-Desnsity = צפיפות
+Desnsity = צפיפות...
 Spatial = מרחבי
 
 הוא אלגוריתם קלאסטרינג מבוסס צפיפות 
