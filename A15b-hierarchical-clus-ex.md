@@ -62,7 +62,7 @@ plt.grid(True)
 plt.show()
 ```
 
-<img src="hier6.png" style="width: 80%" />
+<img src="hier6.png" style="width: 100%" />
 
 ## מפת חום עם דנדרוגרמות – הסבר מלא
 
