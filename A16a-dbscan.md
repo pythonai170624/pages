@@ -33,8 +33,6 @@ Spatial = מרחבי
 
 <img src="dbscan4.png" style="width: 40%" />
 
-<img src="dbscan5.png" style="width: 40%" />
-
 ### Epsilon (ε)
 
  המרחק המקסימלי שבו שתי נקודות נחשבות שכנות  
@@ -61,6 +59,8 @@ Spatial = מרחבי
 היא נחשבת רעש – ו־DBSCAN יודע לזהות ולבודד אותה
 
 📷 שקף 20 – כולל את כל ההגדרות האלו ברשימה
+
+<img src="dbscan5.png" style="width: 40%" />
 
 ### Density Reachability
 
