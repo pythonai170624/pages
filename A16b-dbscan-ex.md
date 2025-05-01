@@ -1,13 +1,4 @@
 ## DBSCAN - Python Example
-דוגמה לשימוש ב־DBSCAN על שלושה קבצים:
-- `cluster_blobs.csv`
-- `cluster_moons.csv`
-- `cluster_circles.csv`
-
-לכל קובץ יש שתי תכונות בלבד (X1 ו־X2) וניתן לבחון את צורת הקלאסטרים הנוצרים
-
-### display_categories (פונקציה)
-פונקציה שמקבלת דאטה ומודל, ומציירת את תוצאת הקלאסטרינג של המודל בעזרת תרשים פיזור (scatter plot)
 
 ### ביצוע של K-Means על הנתונים
 במקרה של קבצים כמו moons או circles, מודל מבוסס־מרחק כמו K-Means נכשל לזהות את המבנה של הקבוצות כי הוא לא לוקח בחשבון את הצורה, אלא רק את המרחק למרכזים
@@ -36,7 +27,15 @@ DBSCAN מסווג נקודה כ־Outlier אם היא לא ליבתית ולא נ
 
 ---
 
-## קוד Python מלא משקפים 3–14 (DBSCAN)
+## קוד Python DBSCAN
+
+דוגמה לשימוש ב־DBSCAN על שלושה קבצים:
+- `cluster_blobs.csv`
+- `cluster_moons.csv`
+- `cluster_circles.csv`
+
+לכל קובץ יש שתי תכונות בלבד (X1 ו־X2) וניתן לבחון את צורת הקלאסטרים הנוצרים
+
 ```python
 import pandas as pd
 import numpy as np
