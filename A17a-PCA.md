@@ -153,8 +153,8 @@ X_{\text{projected}} = X_{\text{centered}} \cdot W
 $$
 
 Where:
-- \( X_{\text{centered}} \) is the normalized data (mean-centered)
-- \( W \) is the matrix of top `k` eigenvectors
+- X_centered is the normalized data (mean-centered)
+- W is the matrix of top `k` eigenvectors
 - The result is the transformed data in `k` dimensions
 
 #### ✅ Example
