@@ -98,6 +98,12 @@ This equation gives you the **direction** vector v that doesn't change its orien
 We won't solve the characteristic equation by hand here, but if you plug it into a calculator or use `numpy`, you'll get the three roots of the polynomial, which are exactly:
 
 ```python
+X = np.array([
+    [4.0, 2.0, 0.0],
+    [2.0, 1.0, 0.0],
+    [0.0, 0.0, 0.0]
+])
+
 eigenvalues, eigenvectors = np.linalg.eig(X)
 
 print("Eigenvalues:", eigenvalues)
