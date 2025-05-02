@@ -42,7 +42,7 @@ Where **X** is the normalized data matrix and **n = 3** (number of samples)
 #### Covariance Matrix result:
 
 ```
-X =
+X (Centered) =
 [[-2, -1, 0],
  [ 0, 0, 0],
  [ 2, 1, 0]]
@@ -153,7 +153,7 @@ X_{\text{projected}} = X_{\text{centered}} \cdot W
 $$
 
 Where:
-- X_centered is the normalized data (mean-centered)
+- X_centered is the normalized data (mean-centered), see step 2
 - W is the matrix of top `k` eigenvectors
 - The result is the transformed data in `k` dimensions
 
@@ -162,7 +162,7 @@ Where:
 Let’s say:
 
 ```python
-X_centered = [  # see step 3 
+X_centered = [  # see step 2
   [-2, -1, 0],
   [ 0,  0, 0],
   [ 2,  1, 0]
