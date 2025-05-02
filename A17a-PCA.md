@@ -1,3 +1,62 @@
+
+### 📊 Step 1: Original Data (3 Features, 3 Samples)
+
+| Sample | Feature 1 | Feature 2 | Feature 3 |
+|--------|-----------|-----------|-----------|
+|   A    |     2     |     4     |     6     |
+|   B    |     4     |     5     |     6     |
+|   C    |     6     |     6     |     6     |
+
+
+### 🔧 Step 2: Mean Centering (Normalization)
+
+**We subtract the mean of each column from each value**
+
+#### Column Means:
+- Feature 1 mean = (2 + 4 + 6) / 3 = **4**
+- Feature 2 mean = (4 + 5 + 6) / 3 = **5**
+- Feature 3 mean = (6 + 6 + 6) / 3 = **6**
+
+#### Normalized Data:
+
+value-avg , i.e. Feature 1 = 2-4=-2, 4-4=0, 6-4=2 etc
+
+| Sample | Feature 1 | Feature 2 | Feature 3 |
+|--------|-----------|-----------|-----------|
+|   A    |    -2     |    -1     |     0     |
+|   B    |     0     |     0     |     0     |
+|   C    |     2     |     1     |     0     |
+
+### 🧮 Step 3: Covariance Matrix
+
+We calculate the covariance matrix using the normalized data
+
+The formula is:
+
+$$
+Cov = (1 / (n - 1)) * Xᵀ ⋅ X
+$$
+
+Where **X** is the normalized data matrix and **n = 3** (number of samples)
+
+#### Covariance Matrix result:
+
+X =
+[[-2, -1, 0],
+[ 0, 0, 0],
+[ 2, 1, 0]]
+
+Cov = [
+[4.0, 2.0, 0.0],
+[2.0, 1.0, 0.0],
+[0.0, 0.0, 0.0]
+]
+
+
+
+
+
+
 ## PCA - Principal Component Analysis
 
 שיטת **PCA** (ניתוח רכיבים עיקריים) היא שיטה נפוצה בלמידת מכונה וסטטיסטיקה שנועדה לבצע **צמצום ממדים** – כלומר, להפוך דאטה עם הרבה תכונות (Features) לדאטה עם פחות תכונות, מבלי לאבד יותר מדי מידע חשוב.
