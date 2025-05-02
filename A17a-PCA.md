@@ -62,7 +62,7 @@ We compute the **eigenvalues** and **eigenvectors** of the covariance matrix
 Given the covariance matrix:
 
 ```
-Cov = 
+Cov = A =
 [[4.0, 2.0, 0.0],
  [2.0, 1.0, 0.0],
  [0.0, 0.0, 0.0]]
@@ -78,7 +78,7 @@ $$
 
 Where:
 - A is the covariance matrix
-- I is the identity matrix (same size as \( A \))
+- I is the identity matrix (same size as A))
 - lambda is the eigenvalue
 
 Once you find an eigenvalue **lambda** , you can find its **eigenvector (v)** by solving:
@@ -98,12 +98,19 @@ This equation gives you the **direction** vector v that doesn't change its orien
 We won't solve the characteristic equation by hand here, but if you plug it into a calculator or use `numpy`, you'll get the three roots of the polynomial, which are exactly:
 
 ```python
-eigenvalues, eigenvectors = np.linalg.eig(A)
+eigenvalues, eigenvectors = np.linalg.eig(X)
 
 print("Eigenvalues:", eigenvalues)
-print("Eigenvectors:\n", eigenvectors)
+print("Eigenvectors:", eigenvectors)
 
+Eigenvalues:
 [5.0, 0.0, 0.0]
+
+Eigenvectors:
+[[ 0.894,  0.0,     -0.447],
+ [ 0.447,  0.0,      0.894],
+ [ 0.0,    1.0,      0.0  ]]
+
 ```
 
 
