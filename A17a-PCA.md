@@ -531,3 +531,33 @@ result:
 ```
 
 **Now your 3D data is reduced to just 1 dimension, while preserving 100% of the variance**
+
+### 📈 Explained Variance
+
+We calculate the proportion of variance each principal component explains
+
+#### Formula:
+
+$$
+\text{Explained Variance Ratio} = \frac{\lambda_i}{\sum \lambda}
+$$
+
+Where:
+- lambda_i is the eigenvalue of PC₁, PC₂, etc.
+- sum(lambda_ is the total variance in the data (sum of all eigenvalues)
+
+#### In our case:
+
+Total variance = \( 5.0 + 0.0 + 0.0 = 5.0 \)
+
+$$
+PC1: \( \frac{5.0}{5.0} = 1.0 \) → **100%**
+$$
+
+$$
+PC2: \( \frac{0.0}{5.0} = 0.0 \) → **0%**
+$$
+
+$$
+PC3: \( \frac{0.0}{5.0} = 0.0 \) → **0%**
+$$
