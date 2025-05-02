@@ -34,8 +34,6 @@ We calculate the covariance matrix using the normalized data
 The formula is:
 
 $$
-\text{Variance} = \frac{1}{n} \sum_{i=1}^{n} (x_i - \bar{x})^2
-$$
 Cov = \frac{1}{n - 1} * Xᵀ ⋅ X
 $$
 
