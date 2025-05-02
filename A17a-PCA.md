@@ -34,7 +34,7 @@ We calculate the covariance matrix using the normalized data
 The formula is:
 
 $$
-Cov = \frac{1}{n - 1} * Xᵀ ⋅ X
+Cov = XᵀX⋅\frac{1}{n - 1}
 $$
 
 Where **X** is the normalized data matrix and **n = 3** (number of samples)
