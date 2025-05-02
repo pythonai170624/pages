@@ -70,18 +70,41 @@ Cov =
 
 We find:
 
-To find the eigenvalues \( \lambda \), solve the **characteristic equation**:
+To find the **eigenvalues lambda**, solve the **characteristic equation**:
 
 $$
 \det(A - \lambda I) = 0
 $$
 
 Where:
-- \( A \) is the covariance matrix
-- \( I \) is the identity matrix (same size as \( A \))
-- \( \lambda \) is the eigenvalue
+- A is the covariance matrix
+- I is the identity matrix (same size as \( A \))
+- lambda is the eigenvalue
 
+Once you find an eigenvalue **lambda** , you can find its **eigenvector (v)** by solving:
 
+$$
+(A - \lambda I) \cdot v = 0
+$$
+
+Where:
+- A is the original matrix
+- lambda is a specific eigenvalue
+- I is the identity matrix
+- v is a **non-zero vector** that satisfies the equation
+
+This equation gives you the **direction** vector v that doesn't change its orientation when multiplied by matrix A — only its **length** might change
+
+We won't solve the characteristic equation by hand here, but if you plug it into a calculator or use `numpy`, you'll get the three roots of the polynomial, which are exactly:
+
+```python
+eigenvalues, eigenvectors = np.linalg.eig(A)
+
+print("Eigenvalues:", eigenvalues)
+print("Eigenvectors:\n", eigenvectors)
+
+[5.0, 0.0, 0.0]
+```
 
 
 
