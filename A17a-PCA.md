@@ -119,9 +119,72 @@ Eigenvectors:
 
 ```
 
+### 🚀 Step 5: Use Eigenvalues and Eigenvectors for PCA
 
+1. **Sort the eigenvalues in descending order**  
+   and sort the corresponding eigenvectors accordingly 
 
+2. **Choose the top `k` eigenvectors** based on how much variance you want to preserve  
+   For example: if λ₁ = 5.0 and others = 0, then 100% of the variance is in PC1  
+   So we only need the first eigenvector: `[0.894, 0.447, 0.0]`
 
+3. **Build the Projection Matrix (W)** 
+
+The **Projection Matrix (W)** is built by:
+- **Selecting the top k eigenvectors** (each is a column vector)
+- **Stacking them as columns** in a matrix
+
+in our case, since we select only PCA1 we get:
+```
+W = 
+ [[0.894],
+  [0.447],
+  [0.0]]
+```
+
+### 🎯 Step 6: Project the Data into Lower Dimensions
+
+Now that we have the projection matrix \( W \), we can project the original normalized data onto the new space
+
+The formula is:
+
+$$
+X_{\text{projected}} = X_{\text{centered}} \cdot W
+$$
+
+Where:
+- \( X_{\text{centered}} \) is the normalized data (mean-centered)
+- \( W \) is the matrix of top `k` eigenvectors
+- The result is the transformed data in `k` dimensions
+
+#### ✅ Example
+
+Let’s say:
+
+```python
+X_centered = [  # see step 3 
+  [-2, -1, 0],
+  [ 0,  0, 0],
+  [ 2,  1, 0]
+]
+
+W = [
+  [0.894],
+  [0.447],
+  [0.0]
+]
+
+X_projected = X_centered @ W  # matirx multipication
+
+result:
+[
+  [-2.236],
+  [ 0.000],
+  [ 2.236]
+]
+```
+
+Now your 3D data is reduced to just 1 dimension, while preserving 100% of the variance
 
 ## PCA - Principal Component Analysis
 
