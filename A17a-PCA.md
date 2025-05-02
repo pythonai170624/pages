@@ -1,191 +1,4 @@
 
-### 📊 Step 1: Original Data (3 Features, 3 Samples)
-
-| Sample | Feature 1 | Feature 2 | Feature 3 |
-|--------|-----------|-----------|-----------|
-|   A    |     2     |     4     |     6     |
-|   B    |     4     |     5     |     6     |
-|   C    |     6     |     6     |     6     |
-
-
-### 🔧 Step 2: Mean Centering (Normalization)
-
-**We subtract the mean of each column from each value**
-
-#### Column Means:
-- Feature 1 mean = (2 + 4 + 6) / 3 = **4**
-- Feature 2 mean = (4 + 5 + 6) / 3 = **5**
-- Feature 3 mean = (6 + 6 + 6) / 3 = **6**
-
-#### Normalized Data:
-
-value-avg , i.e. Feature 1 = 2-4=-2, 4-4=0, 6-4=2 etc
-
-| Sample | Feature 1 | Feature 2 | Feature 3 |
-|--------|-----------|-----------|-----------|
-|   A    |    -2     |    -1     |     0     |
-|   B    |     0     |     0     |     0     |
-|   C    |     2     |     1     |     0     |
-
-### 🧮 Step 3: Covariance Matrix
-
-We calculate the covariance matrix using the normalized data
-
-The formula is:
-
-$$
-Cov = XᵀX⋅\frac{1}{n - 1}
-$$
-
-Where **X** is the normalized data matrix and **n = 3** (number of samples)
-
-#### Covariance Matrix result:
-
-```
-X (Centered) =
-[[-2, -1, 0],
- [ 0, 0, 0],
- [ 2, 1, 0]]
-```
-
-```
-Cov = 
-[[4.0, 2.0, 0.0],
- [2.0, 1.0, 0.0],
- [0.0, 0.0, 0.0]]
-```
-
-### 🧠 Step 4: Eigenvalues & Eigenvectors
-
-We compute the **eigenvalues** and **eigenvectors** of the covariance matrix
-
-Given the covariance matrix:
-
-```
-Cov = A =
-[[4.0, 2.0, 0.0],
- [2.0, 1.0, 0.0],
- [0.0, 0.0, 0.0]]
-```
-
-We find:
-
-To find the **eigenvalues lambda**, solve the **characteristic equation**:
-
-$$
-\det(A - \lambda I) = 0
-$$
-
-Where:
-- A is the covariance matrix
-- I is the identity matrix (same size as A))
-- lambda is the eigenvalue
-
-Once you find an eigenvalue **lambda** , you can find its **eigenvector (v)** by solving:
-
-$$
-(A - \lambda I) \cdot v = 0
-$$
-
-Where:
-- A is the original matrix
-- lambda is a specific eigenvalue
-- I is the identity matrix
-- v is a **non-zero vector** that satisfies the equation
-
-This equation gives you the **direction** vector v that doesn't change its orientation when multiplied by matrix A — only its **length** might change
-
-We won't solve the characteristic equation by hand here, but if you plug it into a calculator or use `numpy`, you'll get the three roots of the polynomial, which are exactly:
-
-```python
-X = np.array([
-    [4.0, 2.0, 0.0],
-    [2.0, 1.0, 0.0],
-    [0.0, 0.0, 0.0]
-])
-
-eigenvalues, eigenvectors = np.linalg.eig(X)
-
-print("Eigenvalues:", eigenvalues)
-print("Eigenvectors:", eigenvectors)
-
-Eigenvalues:
-[5.0, 0.0, 0.0]
-
-Eigenvectors:
-[[ 0.894,  0.0,     -0.447],
- [ 0.447,  0.0,      0.894],
- [ 0.0,    1.0,      0.0  ]]
-
-```
-
-### 🚀 Step 5: Use Eigenvalues and Eigenvectors for PCA
-
-1. **Sort the eigenvalues in descending order**  
-   and sort the corresponding eigenvectors accordingly 
-
-2. **Choose the top `k` eigenvectors** based on how much variance you want to preserve  
-   For example: if λ₁ = 5.0 and others = 0, then 100% of the variance is in PC1  
-   So we only need the first eigenvector: `[0.894, 0.447, 0.0]`
-
-3. **Build the Projection Matrix (W)** 
-
-The **Projection Matrix (W)** is built by:
-- **Selecting the top k eigenvectors** (each is a column vector)
-- **Stacking them as columns** in a matrix
-
-in our case, since we select only PCA1 we get:
-```
-W = 
- [[0.894],
-  [0.447],
-  [0.0]]
-```
-
-### 🎯 Step 6: Project the Data into Lower Dimensions
-
-Now that we have the projection matrix \( W \), we can project the original normalized data onto the new space
-
-The formula is:
-
-$$
-X_{\text{projected}} = X_{\text{centered}} \cdot W
-$$
-
-Where:
-- X_centered is the normalized data (mean-centered), see step 2
-- W is the matrix of top `k` eigenvectors
-- The result is the transformed data in `k` dimensions
-
-#### ✅ Example
-
-Let’s say:
-
-```python
-X_centered = [  # see step 2
-  [-2, -1, 0],
-  [ 0,  0, 0],
-  [ 2,  1, 0]
-]
-
-W = [
-  [0.894],
-  [0.447],
-  [0.0]
-]
-
-X_projected = X_centered @ W  # matirx multipication
-
-result:
-[
-  [-2.236],
-  [ 0.000],
-  [ 2.236]
-]
-```
-
-Now your 3D data is reduced to just 1 dimension, while preserving 100% of the variance
-
 ## PCA - Principal Component Analysis
 
 שיטת **PCA** (ניתוח רכיבים עיקריים) היא שיטה נפוצה בלמידת מכונה וסטטיסטיקה שנועדה לבצע **צמצום ממדים** – כלומר, להפוך דאטה עם הרבה תכונות (Features) לדאטה עם פחות תכונות, מבלי לאבד יותר מדי מידע חשוב.
@@ -529,3 +342,192 @@ PCA יקח את זה בחשבון וייצר רכיב חדש שמבוסס על �
 3. מחשבים את ה־Eigenvalues וה־Eigenvectors
 4. בוחרים את הרכיבים עם הערכים הגבוהים ביותר (שמכילים את מירב השונות)
 5. מקרינים את הדאטה למרחב החדש
+
+## חישוב מלא - נספח
+
+### 📊 Step 1: Original Data (3 Features, 3 Samples)
+
+| Sample | Feature 1 | Feature 2 | Feature 3 |
+|--------|-----------|-----------|-----------|
+|   A    |     2     |     4     |     6     |
+|   B    |     4     |     5     |     6     |
+|   C    |     6     |     6     |     6     |
+
+
+### 🔧 Step 2: Mean Centering (Normalization)
+
+**We subtract the mean of each column from each value**
+
+#### Column Means:
+- Feature 1 mean = (2 + 4 + 6) / 3 = **4**
+- Feature 2 mean = (4 + 5 + 6) / 3 = **5**
+- Feature 3 mean = (6 + 6 + 6) / 3 = **6**
+
+#### Normalized Data:
+
+value-avg , i.e. Feature 1 = 2-4=-2, 4-4=0, 6-4=2 etc
+
+| Sample | Feature 1 | Feature 2 | Feature 3 |
+|--------|-----------|-----------|-----------|
+|   A    |    -2     |    -1     |     0     |
+|   B    |     0     |     0     |     0     |
+|   C    |     2     |     1     |     0     |
+
+### 🧮 Step 3: Covariance Matrix
+
+We calculate the covariance matrix using the normalized data
+
+The formula is:
+
+$$
+Cov = XᵀX⋅\frac{1}{n - 1}
+$$
+
+Where **X** is the normalized data matrix and **n = 3** (number of samples)
+
+#### Covariance Matrix result:
+
+```
+X (Centered) =
+[[-2, -1, 0],
+ [ 0, 0, 0],
+ [ 2, 1, 0]]
+```
+
+```
+Cov = 
+[[4.0, 2.0, 0.0],
+ [2.0, 1.0, 0.0],
+ [0.0, 0.0, 0.0]]
+```
+
+### 🧠 Step 4: Eigenvalues & Eigenvectors
+
+We compute the **eigenvalues** and **eigenvectors** of the covariance matrix
+
+Given the covariance matrix:
+
+```
+Cov = A =
+[[4.0, 2.0, 0.0],
+ [2.0, 1.0, 0.0],
+ [0.0, 0.0, 0.0]]
+```
+
+We find:
+
+To find the **eigenvalues lambda**, solve the **characteristic equation**:
+
+$$
+\det(A - \lambda I) = 0
+$$
+
+Where:
+- A is the covariance matrix
+- I is the identity matrix (same size as A))
+- lambda is the eigenvalue
+
+Once you find an eigenvalue **lambda** , you can find its **eigenvector (v)** by solving:
+
+$$
+(A - \lambda I) \cdot v = 0
+$$
+
+Where:
+- A is the original matrix
+- lambda is a specific eigenvalue
+- I is the identity matrix
+- v is a **non-zero vector** that satisfies the equation
+
+This equation gives you the **direction** vector v that doesn't change its orientation when multiplied by matrix A — only its **length** might change
+
+We won't solve the characteristic equation by hand here, but if you plug it into a calculator or use `numpy`, you'll get the three roots of the polynomial, which are exactly:
+
+```python
+X = np.array([
+    [4.0, 2.0, 0.0],
+    [2.0, 1.0, 0.0],
+    [0.0, 0.0, 0.0]
+])
+
+eigenvalues, eigenvectors = np.linalg.eig(X)
+
+print("Eigenvalues:", eigenvalues)
+print("Eigenvectors:", eigenvectors)
+
+Eigenvalues:
+[5.0, 0.0, 0.0]
+
+Eigenvectors:
+[[ 0.894,  0.0,     -0.447],
+ [ 0.447,  0.0,      0.894],
+ [ 0.0,    1.0,      0.0  ]]
+
+```
+
+### 🚀 Step 5: Use Eigenvalues and Eigenvectors for PCA
+
+1. **Sort the eigenvalues in descending order**  
+   and sort the corresponding eigenvectors accordingly 
+
+2. **Choose the top `k` eigenvectors** based on how much variance you want to preserve  
+   For example: if λ₁ = 5.0 and others = 0, then 100% of the variance is in PC1  
+   So we only need the first eigenvector: `[0.894, 0.447, 0.0]`
+
+3. **Build the Projection Matrix (W)** 
+
+The **Projection Matrix (W)** is built by:
+- **Selecting the top k eigenvectors** (each is a column vector)
+- **Stacking them as columns** in a matrix
+
+in our case, since we select only PCA1 we get:
+```
+W = 
+ [[0.894],
+  [0.447],
+  [0.0]]
+```
+
+### 🎯 Step 6: Project the Data into Lower Dimensions
+
+Now that we have the projection matrix \( W \), we can project the original normalized data onto the new space
+
+The formula is:
+
+$$
+X_{\text{projected}} = X_{\text{centered}} \cdot W
+$$
+
+Where:
+- X_centered is the normalized data (mean-centered), see step 2
+- W is the matrix of top `k` eigenvectors
+- The result is the transformed data in `k` dimensions
+
+#### ✅ Example
+
+Let’s say:
+
+```python
+X_centered = [  # see step 2
+  [-2, -1, 0],
+  [ 0,  0, 0],
+  [ 2,  1, 0]
+]
+
+W = [
+  [0.894],
+  [0.447],
+  [0.0]
+]
+
+X_projected = X_centered @ W  # matirx multipication
+
+result:
+[
+  [-2.236],
+  [ 0.000],
+  [ 2.236]
+]
+```
+
+**Now your 3D data is reduced to just 1 dimension, while preserving 100% of the variance**
