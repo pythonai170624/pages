@@ -59,7 +59,9 @@ pca_result = pca.fit_transform(scaled_data)
 ### 4. נתבונן ב PCA COMPONENTS
 
 נראה שיש לנו מערך של שני רכיבים עם 30 ערכים
+
 מערך ראשון PC1
+
 מערך שני PC2
 
 ```python
