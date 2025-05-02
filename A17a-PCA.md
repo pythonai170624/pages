@@ -55,6 +55,33 @@ Cov =
  [0.0, 0.0, 0.0]]
 ```
 
+### 🧠 Step 4: Eigenvalues & Eigenvectors
+
+We compute the **eigenvalues** and **eigenvectors** of the covariance matrix
+
+Given the covariance matrix:
+
+```
+Cov = 
+[[4.0, 2.0, 0.0],
+ [2.0, 1.0, 0.0],
+ [0.0, 0.0, 0.0]]
+```
+
+We find:
+
+To find the eigenvalues \( \lambda \), solve the **characteristic equation**:
+
+$$
+\det(A - \lambda I) = 0
+$$
+
+Where:
+- \( A \) is the covariance matrix
+- \( I \) is the identity matrix (same size as \( A \))
+- \( \lambda \) is the eigenvalue
+
+
 
 
 
