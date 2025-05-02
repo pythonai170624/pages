@@ -34,23 +34,29 @@ We calculate the covariance matrix using the normalized data
 The formula is:
 
 $$
-Cov = (1 / (n - 1)) * Xᵀ ⋅ X
+\text{Variance} = \frac{1}{n} \sum_{i=1}^{n} (x_i - \bar{x})^2
+$$
+Cov = \frac{1}{n - 1} * Xᵀ ⋅ X
 $$
 
 Where **X** is the normalized data matrix and **n = 3** (number of samples)
 
 #### Covariance Matrix result:
 
+```
 X =
 [[-2, -1, 0],
 [ 0, 0, 0],
 [ 2, 1, 0]]
+```
 
+```
 Cov = [
 [4.0, 2.0, 0.0],
 [2.0, 1.0, 0.0],
 [0.0, 0.0, 0.0]
 ]
+```
 
 
 
