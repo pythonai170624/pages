@@ -136,7 +136,7 @@ PCA מחפש כיוונים חדשים (וקטורים) שבהם הנתונים 
 ### מה זה אומר בפועל
 
 אם יש שלושה משתנים כמו מתמטיקה אנגלית ומדעים  
-נקבל שלושה רכיבים חדשים
+לצורך הדוגמא נאמר שהחלטנו להשתמש בשלושה רכיבים
 
 - PC1 is chosen as the direction with the **maximum variance** in the data  
 - PC2 is chosen to be **orthogonal to PC1** and explains as much of the **remaining variance** as possible  
