@@ -50,7 +50,8 @@
 
 המודלים הכי מתקדמים היום – כמו BERT, GPT, T5 – מבוססים על טרנספורמרים
 
-T5 זה קיצור של Text-To-Text Transfer Transformer
+**T5 Text-To-Text Transfer Transformer**
+
 מדובר בטרנספורמר מתקדם שפותח על ידי גוגל, שמבצע המון משימות שונות על טקסט 
 
 ### 🏥 בריאות
