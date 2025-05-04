@@ -261,7 +261,7 @@
 
 אז הקרוס־אנטרופי יהיה גבוה – כי המודל לא בטוח ולא מדויק
 
-Categorical Cross-Entropy מקבלת את ההסתברויות ש־Softmax הפיקה ומשווה אותן לערכים האמיתיים (labels) – למשל [1, 0, 0]
+Categorical Cross-Entropy receives the probabilities produced by Softmax and compares them to the true labels (e.g., [1, 0, 0])
 
 💡 כל נוירון ברשת עושה לעצמו backpropagation – אבל כל הרשת מתעדכנת בצורה **מתואמת** כדי לצמצם את הטעות הכוללת
 
