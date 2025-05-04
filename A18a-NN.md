@@ -102,7 +102,7 @@
 
 💡 חשוב לבצע **נירמול** (Normalization) לקלטים כדי לשפר את ביצועי המודל
 
-<img src="deep4.jpg" style="width: 100%" />
+<img src="deep4.png" style="width: 100%" />
 
 ## איך נקבעים המשקלות הראשוניים?
 
