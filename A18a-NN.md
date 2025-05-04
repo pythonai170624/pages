@@ -156,7 +156,7 @@
 * אם סכום המשקלים והקלטים גדול או שווה ל־0 → הפלט יהיה 1
 * אחרת → הפלט יהיה 0
 
-<img src="deep5.png" style="width: 80%" />
+<img src="deep5.png" style="width: 60%" />
 
 ### ✅ Sigmoid Function
 
