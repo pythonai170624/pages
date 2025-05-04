@@ -261,7 +261,19 @@
 
 אז הקרוס־אנטרופי יהיה גבוה – כי המודל לא בטוח ולא מדויק
 
-Categorical Cross-Entropy receives the probabilities produced by Softmax and compares them to the true labels (e.g., [1, 0, 0])
+🧮 חישוב בפועל:
+
+אם הקטגוריה הנכונה היא "חתול" (כלומר התווית היא [1, 0, 0]) והמודל נתן:
+
+חתול → 0.3
+
+כלב → 0.4
+
+סוס → 0.3
+
+אז החישוב יהיה:
+
+Cross-Entropy = -log(0.3) ≈ 1.204
 
 💡 כל נוירון ברשת עושה לעצמו backpropagation – אבל כל הרשת מתעדכנת בצורה **מתואמת** כדי לצמצם את הטעות הכוללת
 
