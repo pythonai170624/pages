@@ -1,6 +1,6 @@
 ## מה זה TensorFlow
 
-<img src="deepex2.jpg" style="width: 15%" align="right" />
+<img src="deepex2.jpg" style="width: 15%" align="left" />
 
 טנסר-פלואו היא ספריית קוד פתוח מבית Google  
 היא נועדה לעזור לנו לבנות מודלים של למידת מכונה ובעיקר רשתות נוירונים  
