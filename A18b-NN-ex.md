@@ -164,7 +164,7 @@ model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy']
 
 **מה זה SGD**
 
-זה קיצור של Stochastic Gradient Descent  
+ קיצור של Stochastic Gradient Descent  
 זוהי הגרסה הבסיסית ביותר של אופטימייזר
 
 - בכל איטרציה הוא מחשב את השגיאה של המודל  
@@ -176,7 +176,7 @@ model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy']
 
 **מה זה Adam**
 
-Adam זה קיצור של Adaptive Moment Estimation  
+ קיצור של Adaptive Moment Estimation  
 הוא נחשב לאחד האופטימייזרים הכי טובים ומתקדמים לשימוש כללי
 
 - הוא שומר על ממוצע של השיפועים הקודמים  
