@@ -277,6 +277,23 @@ X זה כל הנתונים שמהם המודל ילמד
 y זו העמודה שאנחנו מנסים לחזות  
 כמו כן אנחנו מוחקים עמודות מזהות שלא עוזרות ללמידה כמו מספר שורה ושם משפחה
 
+```python
+import pandas as pd
+
+# Load the dataset
+df = pd.read_csv('Churn_Modelling.csv')
+
+# Drop the 'RowNumber' column as it's not needed
+df = df.drop('RowNumber', axis=1)
+
+# Display the first few rows
+df.head()
+
+# Create feature dataset (X) and target variable (y)
+X = df.drop(['CustomerId', 'Surname', 'Exited'], axis=1)
+y = df['Exited']
+```
+
 ## שלב 2 – טיפול בעמודות קטגוריות
 
 יש עמודות שמכילות טקסטים כמו מגדר או מדינה  
@@ -285,7 +302,13 @@ y זו העמודה שאנחנו מנסים לחזות
 
 לדוגמה  
 המגדר Male הופך לעמודה Gender_Male  
-המדינות France Spain Germany יהפכו לשלוש עמודות נפרדות
+המדינות France Spain יהפכו לשתי עמודות נפרדות
+
+```python
+# Handle categorical variables using one-hot encoding
+X = pd.get_dummies(X, columns=['Gender'], drop_first=True)  # Convert 'Gender' to numerical (Male=1, Female=0)
+X = pd.get_dummies(X, columns=['Geography'], drop_first=False)  # Keep all categories for 'Geography'
+```
 
 ## שלב 3 – פיצול ל־Train ו־Test
 
@@ -293,11 +316,29 @@ y זו העמודה שאנחנו מנסים לחזות
 Train זו הקבוצה שעליה המודל לומד  
 Test זו הקבוצה שעליה בודקים את הביצועים של המודל
 
+```python
+# Import necessary libraries
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+
+# Split the dataset into training and testing sets (70% train, 30% test)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+```
+
 ## שלב 4 – סטנדרטיזציה
 
 לפני שמתחילים לבנות את המודל עושים סטנדרטיזציה לנתונים  
 כלומר ממירים את הערכים כך שיהיו בממוצע אפס וסטיית תקן אחת  
 זה חשוב מאוד ברשתות נוירונים כדי לאזן את השפעת כל פיצ'ר
+
+```python
+# Initialize the StandardScaler
+scaler = StandardScaler()
+
+# Standardize the training and test sets
+scaled_X_train = scaler.fit_transform(X_train)
+scaled_X_test = scaler.transform(X_test)
+```
 
 ## שלב 5 – בניית רשת הנוירונים ANN
 
@@ -311,12 +352,36 @@ Test זו הקבוצה שעליה בודקים את הביצועים של המו
 פונקציית ההפעלה שלה היא ReLU שמתאימה ללמידה כללית  
 שכבת הפלט מכילה נוירון אחד עם פונקציית הפעלה Sigmoid שמתאימה לסיווג בינארי
 
+```python
+# Import necessary libraries
+import tensorflow as tf
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+
+# Initialize the ANN model
+ann = tf.keras.models.Sequential()
+
+# First layer - Input layer
+ann.add(tf.keras.layers.Dense(units=10))
+
+# Second layer - Hidden layer
+ann.add(tf.keras.layers.Dense(units=10, activation='relu'))
+
+# Third layer - Output layer
+ann.add(tf.keras.layers.Dense(units=1, activation='sigmoid'))
+```
+
 ## שלב 6 – קומפילציה של המודל
 
 אנחנו צריכים להגדיר למודל שלושה דברים  
 Optimizer זה האלגוריתם שמעדכן את המשקלים לדוגמה SGD  
 Loss זו פונקציית הפסד שהמודל מנסה למזער לדוגמה binary_crossentropy  
 Metrics אלו מדדים שבודקים את הביצועים של המודל לדוגמה accuracy
+
+```python
+# Compile the ANN model
+ann.compile(optimizer='sgd', loss='binary_crossentropy', metrics=['accuracy'])
+```
 
 ## שלב 7 – אימון Training
 
@@ -327,12 +392,29 @@ Metrics אלו מדדים שבודקים את הביצועים של המודל �
 
 שים פה את התמונה משקף 29 כדי לראות את תהליך האימון בלוגים
 
+```python
+# Train the ANN model
+ann.fit(scaled_X_train, y_train, batch_size=32, epochs=100)
+```
+
 ## שלב 8 – חיזוי על טסט חדש
 
 בסיום האימון בודקים איך המודל חוזה תוצאות על קבוצת הטסט  
 הוא נותן ערכים בין אפס לאחת שמייצגים הסתברות  
 כדי לקבל תשובה בינארית אמיתית קובעים סף לרוב 0.5  
 אם הערך מעל זה נחשב לאחד אחרת זה אפס
+
+```python
+# Import necessary libraries
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
+
+# Predict on the test set
+y_pred = (ann.predict(scaled_X_test) > 0.5)
+
+# Print evaluation metrics
+print(accuracy_score(y_test, y_pred))
+print(confusion_matrix(y_test, y_pred))
+```
 
 ## שלב 9 – חיזוי על לקוח חדש
 
@@ -341,20 +423,93 @@ Metrics אלו מדדים שבודקים את הביצועים של המודל �
 עושים עליה סטנדרטיזציה באותו אופן שעשינו קודם  
 מפעילים את המודל ומקבלים ניבוי אם הלקוח יעזוב או לא
 
-## מושגים נוספים שכדאי להכיר
+```python
+# Predicting on new customer data
+new_customer_details = [[600, 40, 3, 60000, 2, 1, 1, 50000, 1, 1, 0, 0]]
 
-### Activation Function
+# Scale the new data
+scaled_customer_details = scaler.transform(new_customer_details)
 
-פונקציה מתמטית שעוזרת לנוירון להחליט מה הפלט שלו  
-היא יוצרת אי לינאריות בלמידה בלעדיה המודל יתנהג כמו רגרסיה פשוטה  
-דוגמאות נפוצות הן ReLU Sigmoid Tanh ו־Softmax
+# Predict whether the customer will exit (1) or stay (0)
+ann.predict(scaled_customer_details) > 0.5
+```
 
-### Loss Function
+---
 
-מודד כמה המודל טעה בניבוי  
-בבעיות סיווג משתמשים בפונקציות כמו binary_crossentropy או categorical_crossentropy
+```python
+import pandas as pd
 
-### Optimizer
+# Load the dataset
+df = pd.read_csv('Churn_Modelling.csv')
 
-שיטה שבה המודל משפר את עצמו על ידי עדכון המשקלים  
-הנפוצים ביותר הם SGD Adam RMSprop
+# Drop the 'RowNumber' column as it's not needed
+df = df.drop('RowNumber', axis=1)
+
+# Display the first few rows
+df.head()
+
+# Create feature dataset (X) and target variable (y)
+X = df.drop(['CustomerId', 'Surname', 'Exited'], axis=1)
+y = df['Exited']
+
+# Handle categorical variables using one-hot encoding
+X = pd.get_dummies(X, columns=['Gender'], drop_first=True)  # Convert 'Gender' to numerical (Male=1, Female=0)
+X = pd.get_dummies(X, columns=['Geography'], drop_first=False)  # Keep all categories for 'Geography'
+print(X.head())
+
+# Import necessary libraries
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+
+# Split the dataset into training and testing sets (70% train, 30% test)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# Initialize the StandardScaler
+scaler = StandardScaler()
+
+# Standardize the training and test sets
+scaled_X_train = scaler.fit_transform(X_train)
+scaled_X_test = scaler.transform(X_test)
+
+# Import necessary libraries
+import tensorflow as tf
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+
+# Initialize the ANN model
+ann = tf.keras.models.Sequential()
+
+# First layer - Input layer
+ann.add(tf.keras.layers.Dense(units=10))
+
+# Second layer - Hidden layer
+ann.add(tf.keras.layers.Dense(units=10, activation='relu'))
+
+# Third layer - Output layer
+ann.add(tf.keras.layers.Dense(units=1, activation='sigmoid'))
+
+# Compile the ANN model
+ann.compile(optimizer='sgd', loss='binary_crossentropy', metrics=['accuracy'])
+
+# Train the ANN model
+ann.fit(scaled_X_train, y_train, batch_size=32, epochs=100)
+
+# Import necessary libraries
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
+
+# Predict on the test set
+y_pred = (ann.predict(scaled_X_test) > 0.5)
+
+# Print evaluation metrics
+print(accuracy_score(y_test, y_pred))
+print(confusion_matrix(y_test, y_pred))
+
+# Predicting on new customer data
+new_customer_details = [[600, 40, 3, 60000, 2, 1, 1, 50000, 1, 1, 0, 0]]
+
+# Scale the new data
+scaled_customer_details = scaler.transform(new_customer_details)
+
+# Predict whether the customer will exit (1) or stay (0)
+ann.predict(scaled_customer_details) > 0.5
+```
