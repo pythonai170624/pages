@@ -1,4 +1,4 @@
-## מה זה TensorFlow
+# מה זה TensorFlow
 
 <img src="deepex2.jpg" style="width: 15%" align="right" />
 
@@ -207,7 +207,7 @@ Adam זה קיצור של Adaptive Moment Estimation
 
 ---
 
-## דוגמה של בניית מודל ANN בפייתון
+# דוגמה של בניית מודל ANN בפייתון
 
 ### קובץ הנתונים – Churn_Modelling.csv
 
