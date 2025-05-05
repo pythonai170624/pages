@@ -39,15 +39,6 @@ print(tf.__version__)
 אנחנו יכולים ליצור רשת נוירונים על ידי הגדרה של שכבות  
 למשל רשת פשוטה עם שכבת קלט אחת שכבת חבויה אחת ושכבת פלט אחת תיראה כך
 
-```python
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense
-
-model = Sequential()  # Create an empty sequential model
-model.add(Dense(10, activation='relu'))  # Hidden layer with 10 neurons using ReLU activation function
-model.add(Dense(1, activation='sigmoid'))  # Output layer with 1 neuron using sigmoid activation function
-```
-
 **מה זה Keras**
 
 ממשק עבודה גבוה לבניית רשתות נוירונים
@@ -79,9 +70,9 @@ model.add(Dense(1, activation='sigmoid'))  # Output layer with 1 neuron using si
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 
-model = Sequential()
-model.add(Dense(64, activation='relu'))
-model.add(Dense(1, activation='sigmoid'))
+model = Sequential()  # Create an empty sequential model
+model.add(Dense(10, activation='relu'))  # Hidden layer with 10 neurons using ReLU activation function
+model.add(Dense(1, activation='sigmoid'))  # Output layer with 1 neuron using sigmoid activation function
 ```
 
 - **Functional API**
