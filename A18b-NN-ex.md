@@ -44,8 +44,8 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 
 model = Sequential()  # Create an empty sequential model
-model.add(Dense(10, activation='relu'))  # Hidden layer with 10 neurons and ReLU activation
-model.add(Dense(1, activation='sigmoid'))  # Output layer with 1 neuron and sigmoid activation
+model.add(Dense(10, activation='relu'))  # Hidden layer with 10 neurons using ReLU activation function
+model.add(Dense(1, activation='sigmoid'))  # Output layer with 1 neuron using sigmoid activation function
 ```
 
 ## תהליך עבודה כללי עם TensorFlow
