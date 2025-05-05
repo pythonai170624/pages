@@ -437,10 +437,9 @@ ann.compile(optimizer='sgd', loss='binary_crossentropy', metrics=['accuracy'])
 
 ### מה זה binary_crossentropy
 
-`binary_crossentropy` היא פונקציית הפסד (loss function)  
+פונקציית הפסד (loss function)  
 היא משמשת אותנו כשאנחנו פותרים **בעיה של סיווג בינארי**  
-כלומר בעיה שבה יש רק שתי תשובות אפשריות  
-לדוגמה – האם לקוח יעזוב את הבנק או יישאר  
+כלומר בעיה שבה יש רק שתי תשובות אפשריות דוגמה – האם לקוח יעזוב את הבנק או יישאר  
 0 = לא עזב  
 1 = כן עזב
 
