@@ -70,7 +70,7 @@ model.add(Dense(1, activation='sigmoid'))  # Output layer with 1 neuron using si
 
 יש שני סוגים עיקריים של בניית מודלים ב־Keras
 
-#### ========== Sequential API 
+- **Sequential API**
 
 הדרך הפשוטה ביותר  
 בונים את המודל כשכבה אחרי שכבה בסדר קווי
@@ -84,7 +84,7 @@ model.add(Dense(64, activation='relu'))
 model.add(Dense(1, activation='sigmoid'))
 ```
 
-#### ========== Functional API
+- **Functional API**
 
 מאפשר חיבור יותר גמיש בין שכבות
 מתאים לרשתות מורכבות עם הסתעפויות או כניסות מרובות
