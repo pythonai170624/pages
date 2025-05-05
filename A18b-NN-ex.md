@@ -66,7 +66,7 @@ model.add(Dense(1, activation='sigmoid'))  # Output layer with 1 neuron using si
 - קהילה רחבה והמון דוגמאות מוכנות באינטרנט  
 - תומך בכל סוגי הבעיות כמו סיווג רגרסיה ניתוח תמונה או טקסט
 
-**Keras Models**
+### Keras Models
 
 יש שני סוגים עיקריים של בניית מודלים ב־Keras
 
