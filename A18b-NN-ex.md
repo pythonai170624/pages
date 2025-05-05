@@ -217,7 +217,7 @@ model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy']
 ורק אז יעבור ל־32 הבאות
 
 הוא יחזור על זה שוב ושוב עד שעבר על כל ה־10,000 שורות  
-וזה נקרא Epoch אחד
+וזה נקרא **Epoch** אחד
 
 **למה לא נותנים את כל הנתונים ביחד**
 
