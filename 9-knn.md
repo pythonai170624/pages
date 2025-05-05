@@ -1,4 +1,4 @@
-HHHHHHHN MN# K-Nearest Neighbors (KNN)
+# K-Nearest Neighbors (KNN)
 
 ## הבעיה שרוצים לפתור
 
