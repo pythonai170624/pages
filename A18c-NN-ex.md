@@ -324,10 +324,11 @@ Output:
 הטבלה מראה איך המודל ביצע בפועל – איפה הוא צדק ואיפה הוא טעה  
 היא נראית כך:
 
-|                      | חזה 0 (לא עוזב) | חזה 1 (כן עוזב) |
-|----------------------|------------------|------------------|
-| אמת: 0 (לא עזב)      | 2334             | 82               |
-| אמת: 1 (כן עזב)      | 314              | 270              |
+|                      | Predicted 0 (Not Leaving) | Predicted 1 (Leaving) |
+|----------------------|---------------------------|------------------------|
+| Actual: 0 (Not Left) | 2334                      | 82                     |
+| Actual: 1 (Left)     | 314                       | 270                    |
+
 
 ### הסבר של כל תא בטבלה
 
@@ -353,7 +354,12 @@ new_customer_details = [[600, 40, 3, 60000, 2, 1, 1, 50000, 1, 1, 0, 0]]
 scaled_customer_details = scaler.transform(new_customer_details)
 
 # Predict whether the customer will exit (1) or stay (0)
-ann.predict(scaled_customer_details) > 0.5
+print(ann.predict(scaled_customer_details) > 0.5)
+```
+
+Output:
+```
+[[False]]
 ```
 
 ---
@@ -434,5 +440,5 @@ new_customer_details = [[600, 40, 3, 60000, 2, 1, 1, 50000, 1, 1, 0, 0]]
 scaled_customer_details = scaler.transform(new_customer_details)
 
 # Predict whether the customer will exit (1) or stay (0)
-ann.predict(scaled_customer_details) > 0.5
+print(ann.predict(scaled_customer_details) > 0.5)
 ```
