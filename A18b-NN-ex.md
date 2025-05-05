@@ -347,7 +347,9 @@ scaled_X_test = scaler.transform(X_test)
 שיטה שמביאה את כל הערכים של העמודות **לטווח קבוע**, לרוב בין 0 ל־1  
 הנוסחה היא:
 
-x_normalized = (x - min) / (max - min)
+$$
+x_{\text{normalized}} = \frac{x - \min}{\max - \min}
+$$
 
 **למה זה נשמע טוב**
 
