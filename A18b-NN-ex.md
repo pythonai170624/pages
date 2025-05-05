@@ -43,9 +43,9 @@ print(tf.__version__)
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 
-model = Sequential()  # יצירת מודל ריק
-model.add(Dense(10, activation='relu'))  # שכבת חבויה עם 10 נוירונים ו־ReLU
-model.add(Dense(1, activation='sigmoid'))  # שכבת פלט עם נוירון אחד ו־Sigmoid
+model = Sequential()  # Create an empty sequential model
+model.add(Dense(10, activation='relu'))  # Hidden layer with 10 neurons and ReLU activation
+model.add(Dense(1, activation='sigmoid'))  # Output layer with 1 neuron and sigmoid activation
 ```
 
 ## תהליך עבודה כללי עם TensorFlow
