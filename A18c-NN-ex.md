@@ -256,7 +256,7 @@ $$
 ann.fit(scaled_X_train, y_train, batch_size=32, epochs=100)
 ```
 
-<img src="deepex3.jpg" style="width: 100%" />
+<img src="deepex3.jpg" style="width: 60%" />
 
 ## שלב 8 – חיזוי על טסט חדש
 
