@@ -251,12 +251,12 @@ $$
 אנחנו בוחרים גם גודל חבילה batch_size כלומר כמה שורות יתעדכנו יחד בכל פעם  
 במקרה הזה batch_size שווה ל־32 ו־epochs שווה ל־100
 
-שים פה את התמונה משקף 29 כדי לראות את תהליך האימון בלוגים
-
 ```python
 # Train the ANN model
 ann.fit(scaled_X_train, y_train, batch_size=32, epochs=100)
 ```
+
+<img src="deepex3.jpg" style="width: 100%" />
 
 ## שלב 8 – חיזוי על טסט חדש
 
@@ -296,7 +296,7 @@ ann.predict(scaled_customer_details) > 0.5
 ```
 
 ---
-## הקוד כולו
+## הקוד המלא
 
 ```python
 import pandas as pd
