@@ -155,6 +155,7 @@ model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy']
 כאן אנחנו קובעים איך המודל ילמד  
 אנחנו בוחרים optimizer כמו `sgd` או `adam`  
 וגם פונקציית הפסד כמו `binary_crossentropy` או `mse` לפי סוג הבעיה
+
 ראה הסבר בהמשך ל `binary_crossentropy` 
 
 **מה זה Optimizer ברשת נוירונים**
