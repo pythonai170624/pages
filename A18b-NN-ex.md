@@ -164,7 +164,7 @@ model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy']
 
 **מה זה SGD**
 
-SGD זה קיצור של Stochastic Gradient Descent  
+זה קיצור של Stochastic Gradient Descent  
 זוהי הגרסה הבסיסית ביותר של אופטימייזר
 
 - בכל איטרציה הוא מחשב את השגיאה של המודל  
