@@ -111,7 +111,7 @@ $$\text{Recall} = \frac{TP}{TP + FN}$$
 
 $$\text{F1} = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}$$
 
-F1 גבוה משקף איזון טוב בין דיוק לכיסוי.
+גבוה משקף איזון טוב בין דיוק לכיסוי
 
 ### 4. Support
 מספר המופעים בפועל של כל קטגוריה בקבוצת הבדיקה
