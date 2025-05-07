@@ -5,7 +5,12 @@
 To run this notebook in the cloud, open:
 [https://colab.research.google.com/](https://colab.research.google.com/)
 
-Create a new notebook by clicking **File → New notebook** and copy the code blocks below step-by-step.
+Create a new notebook by clicking **File → New notebook** and copy the code blocks below step-by-step
+
+🗂️ Before running the training code, **upload the file** `CNN_dog_cat_dataset.zip` to your **Google Drive** inside a folder named `content`  
+(Or modify the code to reflect a different folder structure if needed)
+
+This dataset is required for training the CNN to classify dog and cat images
 
 ### 🔧 Importing Required Libraries and Configuring GPU (if available)
 
