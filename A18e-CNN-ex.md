@@ -316,7 +316,7 @@ print(prediction)
 
 <img src="cnn17.png" style="width:40%"/>
 
-<img src="cnn18.png" style="width:40%"/>
+<img src="cnn18.jpg" style="width:40%"/>
 
 הסבר:
 
