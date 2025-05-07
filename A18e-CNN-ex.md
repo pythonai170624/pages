@@ -256,5 +256,36 @@ print(prediction)
 * `cnn.predict` מחזיר הסתברות שהאובייקט הוא כלב
 * ההשוואה מול 0.5 קובעת את הקטגוריה הסופית
 
+**🧩 Why Do We Use `np.expand_dims` Before Prediction?**
+
+CNN models expect all inputs to be in 4D: `(batch_size, height, width, channels)`  
+If you forget to expand the dimensions, you’ll get an error like:
+
+> ValueError: Input 0 is incompatible with layer... expected ndim=4, found ndim=3
+
+So `expand_dims` is essential for reshaping the image correctly before passing it to `model.predict()`
+
+Before predicting, we typically load and preprocess a single image — this image will usually have a shape like:
+
+(1, 64, 64, 3)
+
+The extra dimension at the beginning (the `1`) represents the **batch size**
+
+**✅ What does `np.expand_dims(test_image, axis=0)` do?**
+
+It adds a new dimension **at position 0**, turning the shape from:
+
+(64, 64, 3)
+
+into:
+
+(1, 64, 64, 3)
+
+This allows the model to process the image as a batch of size 1
+
+
+
+
+
 אם `result[0][0] > 0.5` → המודל ינבא **כלב**
 אם פחות → **חתול**
