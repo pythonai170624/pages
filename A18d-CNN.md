@@ -1,6 +1,6 @@
 ## רשת עצבית קונבולוציונית (CNN - Convolutional Neural Network)
 
-<img src="cnn_layers.png" align="right" style="width:300px"/>
+<img src="cnn1.png" align="right" style="width:50%"/>
 
 CNN היא רשת עצבית עמוקה שמתמחה בעיבוד תמונות ווידאו
 במקום לסרוק את כל התמונה כמו רשת רגילה, CNN מתמקדת בחלקים חשובים מתוך התמונה דרך מסננים (filters) שמחפשים תבניות כמו קווים, צורות, או טקסטורות
