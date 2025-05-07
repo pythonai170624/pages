@@ -289,8 +289,10 @@ into:
 This allows the model to process the image as a batch of size 1
 
 
+If `result[0][0] > 0.5` → the model predicts **dog**, otherwise it predicts **cat**
 
+This is because the output layer uses a **sigmoid activation function**, which returns a probability between 0 and 1:
+- Values **closer to 1** indicate a higher confidence that the image is a dog
+- Values **closer to 0** indicate a higher confidence that the image is a cat
 
-
-אם `result[0][0] > 0.5` → המודל ינבא **כלב**
-אם פחות → **חתול**
+<img src="cnn16.jpg" style="width:100%"/>
