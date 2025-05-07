@@ -218,6 +218,28 @@ Perfect for models with a straight flow like this CNN (no branching or merging l
 - More filters = more ability to extract different features
 - 32 is a common default starting point — later layers could use more
 
+These filters are **not predefined** — the model learns them from the data  
+They are essentially **small weight matrices** (e.g. 3x3) that slide over the image and detect patterns
+
+**🔍 Are They Different Types of Filters?**
+
+Yes — each filter becomes specialized to detect different visual patterns, such as:
+
+- **Edges** (horizontal, vertical, diagonal)
+- **Textures**
+- **Curved lines**
+- **Color transitions**
+- **Animal features** (fur, eyes, ears)
+- **Background structures**
+
+These filters start with **random weights**, but during training, backpropagation updates them so they become useful for the task (e.g. classifying cats vs dogs)
+
+**🧠 Why 32 Filters?**
+
+Using 32 different filters gives the network **a broad set of feature detectors**  
+- Each one captures a different aspect of the image  
+- More filters = more expressive power (but also more computation)
+
 #### 🔲 Why `kernel_size=3`?
 
 - The kernel (filter) is the **window size** the layer uses to scan the image
