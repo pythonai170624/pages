@@ -160,6 +160,10 @@ image = [
 
 <img src="cnn11.png" style="width:70%"/>
 
+## סיכום ביניים
+
+<img src="cnn13.png" style="width:100%"/>
+
 ## שכבה צפופה (Fully Connected Layer)
 
 השכבה הצפופה היא כמו רשת רגילה (ANN) ומבצעת את הסיווג הסופי
