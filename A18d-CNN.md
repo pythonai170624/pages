@@ -155,10 +155,10 @@ image = [
 
 ## Flattening – הכנת הנתונים לסיווג
 
-<img src="page19"/>
-
 לאחר שיצרנו מפות מאפיינים מוקטנות, ממירים את כולן לשורה אחת ארוכה (וקטור)
 וקטור זה יועבר לשכבה הצפופה (Fully Connected)
+
+<img src="cnn11.png" style="width:70%"/>
 
 ## שכבה צפופה (Fully Connected Layer)
 
