@@ -39,7 +39,6 @@ image = [
 
 <img src="cnn3.jpg" style="width:50%"/>
 
-
 ### למה זה חשוב?
 
 הקונבולוציה עוזרת למצוא תבניות בתמונה כמו קווים או מעברים בין צבעים
@@ -53,6 +52,9 @@ image = [
 3. נוצרת תמונה חדשה (Feature Map)
 
 <img src="cnn4.jpg" style="width:50%"/>
+
+
+<img src="cnn5.jpg" style="width:50%"/>
 
 ### מה הרווחנו?
 
