@@ -151,7 +151,7 @@ image = [
 
 ## דוגמא להמחשה
 
-<img src="cnn10.png" style="width:100%"/>
+<img src="cnn10.jpg" style="width:100%"/>
 
 ## Flattening – הכנת הנתונים לסיווג
 
