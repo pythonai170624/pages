@@ -290,7 +290,7 @@ import numpy as np
 from keras.preprocessing import image
 
 # טוענים את התמונה
-test_image = image.load_img('/content/dataset/single_prediction/cat_or_dog.jpg', target_size=(64, 64))
+test_image = image.load_img('/content/dataset/single_prediction/cat_or_dog.jpg_1', target_size=(64, 64))
 
 # Convert image to array
 test_image = image.img_to_array(test_image)
@@ -313,6 +313,8 @@ else:
 
 print(prediction)
 ```
+
+<img src="cnn17.png" style="width:40%"/>
 
 הסבר:
 
