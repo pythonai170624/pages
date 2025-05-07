@@ -316,6 +316,8 @@ print(prediction)
 
 <img src="cnn17.png" style="width:40%"/>
 
+<img src="cnn18.png" style="width:40%"/>
+
 הסבר:
 
 * `image.load_img` טוען את התמונה ומכווץ אותה לגודל המתאים
