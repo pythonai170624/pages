@@ -274,7 +274,7 @@ The extra dimension at the beginning (the `1`) represents the **batch size**
 Channels הם שכבות הצבע שמרכיבות כל פיקסל בתמונה
 כל פיקסל בעצם מחזיק כמה ערכים – אחד לכל ערוץ צבע
 
-[255, 120, 0]  → פיקסל בגוון כתום
+[255, 120, 0]  → Orange Pixel
 
 **✅ What does `np.expand_dims(test_image, axis=0)` do?**
 
