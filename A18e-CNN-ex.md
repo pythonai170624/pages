@@ -99,6 +99,11 @@ cd CNN_dog_cat_dataset/
 ls
 ```
 
+Output:
+```
+single_prediction/  test_set/  training_set/
+```
+
 מציג את תוכן התיקייה הנוכחית ומוודא שהקבצים והמבנה תקינים
 
 ### 🖼️ הגדרת קונפיגורציה לטעינת תמונות
