@@ -54,7 +54,7 @@ image = [
 <img src="cnn4.jpg" style="width:50%"/>
 
 
-<img src="cnn5.jpg" style="width:50%"/>
+<img src="cnn5.jpg" style="width:100%"/>
 
 ### מה הרווחנו?
 
