@@ -14,6 +14,8 @@ Create a new notebook by clicking **File → New notebook** and copy the code bl
 
 This dataset is required for training the CNN to classify dog and cat images
 
+## CNN code
+
 ### 🔧 Importing Required Libraries and Configuring GPU (if available)
 
 ```python
