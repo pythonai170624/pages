@@ -12,7 +12,7 @@
 5. **Flattening** → ממירה את כל הפלטים לשורה אחת ארוכה
 6. **שכבה צפופה (Fully Connected)** → שכבה רגילה של ANN שמבצעת את הסיווג הסופי
 
-<img src="cnn1.png" align="right" style="width:100%"/>
+<img src="cnn1.png" style="width:100%"/>
 
 ## ייצוג תמונה במחשב
 
