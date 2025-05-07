@@ -21,7 +21,7 @@
 
 ### דוגמה:
 
-<img src="cnn2.jpg" align="right" style="width:50%"/>
+<img src="cnn2.jpg" style="width:50%"/>
 
 תמונה בגודל 2x2 תיוצג כך:
 
