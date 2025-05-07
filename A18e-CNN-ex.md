@@ -32,6 +32,10 @@ tf.config.set_visible_devices([], 'GPU')
 # Check how many GPUs are available
 print("Num GPUs Available: ", len(tf.config.experimental.list_physical_devices('GPU')))
 ```
+Output:
+```python
+Num GPUs Available:  1
+```
 
 Explanation:
 
@@ -51,11 +55,6 @@ import zipfile
 from google.colab import drive
 
 drive.mount('/content/drive')  # מחבר את הדרייב, יווצר קישור לנתיב /content/drive
-```
-
-Output:
-```python
-Num GPUs Available:  1
 ```
 
 ### 📌 בדיקת מיקום נוכחי
