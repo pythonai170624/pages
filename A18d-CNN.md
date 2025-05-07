@@ -162,7 +162,7 @@ image = [
 
 ## סיכום ביניים
 
-<img src="cnn13.png" style="width:100%"/>
+<img src="cnn13.png" style="width:80%"/>
 
 ## שכבה צפופה (Fully Connected Layer)
 
