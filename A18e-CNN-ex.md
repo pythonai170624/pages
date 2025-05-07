@@ -53,6 +53,11 @@ from google.colab import drive
 drive.mount('/content/drive')  # מחבר את הדרייב, יווצר קישור לנתיב /content/drive
 ```
 
+Output:
+```python
+Num GPUs Available:  1
+```
+
 ### 📌 בדיקת מיקום נוכחי
 
 ```bash
