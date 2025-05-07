@@ -199,6 +199,49 @@ cnn.add(Dense(units=1, activation='sigmoid'))  # בגלל שזה סיווג בי
 
 ביחד, הן עוזרות למודל ללמוד **ייצוג חכם של התמונה**, לפני שהוא מקבל החלטה סופית
 
+#### 🔁 Why `Sequential`?
+
+`Sequential` is the simplest way to build a model in Keras  
+It means the model is built **layer by layer in order**, where each layer has one input and one output  
+Perfect for models with a straight flow like this CNN (no branching or merging layers)
+
+#### 🧠 Why `filters=32` in `Conv2D`?
+
+- `filters=32` means the layer will learn **32 different patterns (features)** from the image
+- These filters might learn to detect:
+  - edges
+  - textures
+  - curves
+  - small details in the image
+- More filters = more ability to extract different features
+- 32 is a common default starting point — later layers could use more
+
+#### 🔲 Why `kernel_size=3`?
+
+- The kernel (filter) is the **window size** the layer uses to scan the image
+- A size of `3x3` means each filter looks at a **3×3 patch** of the image at a time
+- It’s a standard choice: small enough to be efficient, large enough to capture patterns
+
+#### ⚡ Why `activation='relu'`?
+
+- `ReLU` stands for Rectified Linear Unit
+- It replaces negative values with 0 and keeps positive ones
+- This adds **non-linearity**, allowing the model to learn more complex patterns
+- It’s fast and works very well in most CNNs
+
+#### 📏 Why `units=128` in `Dense`?
+
+- After flattening, the dense (fully connected) layer learns **combinations of features**
+- `128` is a typical choice — enough neurons to learn patterns, but not too large to overfit
+- You can adjust this number for model performance and training speed
+
+#### 🎯 Why `units=1` with `activation='sigmoid'`?
+
+- We're doing **binary classification**: cat (0) or dog (1)
+- `units=1` means the output is a **single number between 0 and 1**
+- `sigmoid` squashes the output into a **probability**
+  - Closer to 1 → more likely a dog
+  - Closer to 0 → more likely a cat
 
 ### ⚙️ קומפילציה ואימון המודל
 
