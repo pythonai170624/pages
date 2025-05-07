@@ -7,6 +7,8 @@ To run this notebook in the cloud, open:
 
 Create a new notebook by clicking **File → New notebook** and copy the code blocks below step-by-step
 
+## CNN_dog_cat_dataset.zip
+
 🗂️ Before running the training code, **upload the file** `CNN_dog_cat_dataset.zip` to your **Google Drive** inside a folder named `content`  
 (Or modify the code to reflect a different folder structure if needed)
 
