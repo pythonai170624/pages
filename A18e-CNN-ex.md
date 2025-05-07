@@ -1,28 +1,29 @@
 ## 🐶🐱 אימון רשת CNN לסיווג כלב או חתול (Colab)
 
-### 🔧 ייבוא ספריות חיוניות והגדרת שימוש ב־GPU
+### 🔧 Importing Required Libraries and Configuring GPU (if available)
 
 ```python
-# ייבוא ספריות עזר
+# Importing standard libraries
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import tensorflow as tf
 
-# הגדרת שימוש ב־GPU (אם זמין)
+# Optional: prevent TensorFlow from using GPU (for debugging or testing)
 tf.config.set_visible_devices([], 'GPU')
 
-# הדפסת מספר כרטיסי GPU זמינים
+# Check how many GPUs are available
 print("Num GPUs Available: ", len(tf.config.experimental.list_physical_devices('GPU')))
 ```
 
-הסבר:
+Explanation:
 
-* `numpy`, `pandas`, `matplotlib`, `seaborn` – ספריות נפוצות לניתוח והצגת נתונים
-* `tensorflow` – הספרייה המרכזית לבניית רשתות נוירונים
-* `set_visible_devices([], 'GPU')` – מונע שימוש ב־GPU אם רוצים לאמן רק על CPU (בדיקות/דיבאג)
-* `list_physical_devices('GPU')` – מציג כמה כרטיסי GPU זמינים
+* `numpy`, `pandas` are used for data handling
+* `matplotlib`, `seaborn` are used for plotting and visualization
+* `tensorflow` is the deep learning framework used to build and train the CNN
+* `tf.config.set_visible_devices([], 'GPU')` disables GPU usage intentionally (can be removed to use GPU)
+* `list_physical_devices('GPU')` checks how many GPUs are detected by TensorFlow\` – מציג כמה כרטיסי GPU זמינים
 
 ### 📁 התחברות ל־Google Drive
 
