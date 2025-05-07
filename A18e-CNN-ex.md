@@ -212,6 +212,10 @@ cnn.fit(x=training_set, validation_data=test_set, epochs=25)
 * `binary_crossentropy` → פונקציית עלות עבור סיווג בינארי
 * `epochs=25` → הרשת תלמד במשך 25 מחזורים על כל הדאטה
 
+התהליך עשוי לקחת כמה זמן ...
+
+<img src="cnn15.jpg" style="width:100%"/>
+
 ### 🐾 חיזוי על תמונה חדשה
 
 ```python
