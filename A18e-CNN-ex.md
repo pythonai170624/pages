@@ -111,14 +111,16 @@ single_prediction/  test_set/  training_set/
 ```python
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
+# Training data generator with augmentation
 train_datagen = ImageDataGenerator(
-    rescale=1./255,         # נירמול ערכי הפיקסלים לטווח [0,1]
-    shear_range=0.2,        # סיבוב קל בצורת התמונה (shear)
-    zoom_range=0.2,         # ביצוע זום אקראי פנימה
-    horizontal_flip=True    # היפוך אופקי של התמונה
+    rescale=1./255,         # Normalize pixel values to [0,1] — helps speed up training and stabilize gradients
+    shear_range=0.2,        # Apply a slight diagonal transformation (shear) — simulates natural changes in camera angle
+    zoom_range=0.2,         # Apply random zoom-in effect — helps the model recognize objects at different scales
+    horizontal_flip=True    # Flip images horizontally — helps the model handle symmetry (e.g., cat facing left or right)
 )
 
-test_datagen = ImageDataGenerator(rescale=1./255)  # לדאטה של הבדיקה אין שינויים – רק נירמול
+# Testing data generator — only normalization, no augmentation
+test_datagen = ImageDataGenerator(rescale=1./255)
 ```
 
 ### 📥 טעינת התמונות מהתיקיות
@@ -166,6 +168,37 @@ cnn.add(Flatten())
 cnn.add(Dense(units=128, activation='relu'))
 cnn.add(Dense(units=1, activation='sigmoid'))  # בגלל שזה סיווג בינארי
 ```
+
+**🧠 מה זה Conv2D ו־MaxPooling2D ולמה משתמשים בהם?**
+
+בבניית רשת עצבית קונבולוציונית (CNN), יש שתי שכבות חשובות במיוחד:
+
+#### 🔷 Conv2D – שכבת קונבולוציה
+
+Conv2D היא שכבה שמחפשת **מאפיינים חשובים** בתמונה כמו קווים, צבעים, גבולות, תבניות, מרקם ועוד  
+היא עושה את זה בעזרת **פילטרים קטנים** (למשל בגודל 3x3) שזזים על פני התמונה ובודקים כל אזור בנפרד
+
+בכל פעם שהפילטר עובר על אזור בתמונה, הוא מחשב **עד כמה המאפיין הזה קיים שם**  
+התוצאה היא **מפת מאפיינים** שמדגישה איפה נמצאים הדברים החשובים
+
+#### 🔷 MaxPooling2D – שכבת מיצוע
+
+MaxPooling2D היא שכבה שאחרי הקונבולוציה, ומטרתה **להקטין את גודל הנתונים**  
+במקום לשמור את כל הערכים ממפת המאפיינים, היא לוקחת **את הערך הכי גבוה מכל אזור קטן** (למשל חלון 2x2)
+
+למה זה טוב?
+- חיסכון בחישובים
+- הפחתת סיכון לאובר־פיטינג
+- שמירה רק על המאפיינים החזקים ביותר
+
+#### 🤔 אז למה משתמשים בזה כאן?
+
+המטרה שלנו היא לזהות האם תמונה היא של **כלב או חתול**  
+- Conv2D עוזרת לזהות תבניות חשובות כמו עיניים, פרווה, אוזניים...
+- MaxPooling2D שומרת רק את מה שחשוב ומפשטת את התמונה
+
+ביחד, הן עוזרות למודל ללמוד **ייצוג חכם של התמונה**, לפני שהוא מקבל החלטה סופית
+
 
 ### ⚙️ קומפילציה ואימון המודל
 
