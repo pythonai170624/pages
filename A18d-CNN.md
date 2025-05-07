@@ -95,7 +95,7 @@ image = [
 
 לאחר פעולת הקונבולוציה אנחנו מפעילים ReLU
 
-<img src="cnn7.jpg" style="width:50%"/>
+<img src="cnn7.jpg" style="width:75%"/>
 
 ### למה?
 
