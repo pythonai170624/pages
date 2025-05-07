@@ -136,7 +136,7 @@ image = [
 
 <img src="cnn8.jpg" style="width:100%"/>
 
-<img src="cnn9.jpg" style="width:100%"/>
+<img src="cnn9.png" style="width:100%"/>
 
 ### הערה חשובה:
 
