@@ -19,9 +19,7 @@
 
 לאחר פעולת הקונבולוציה אנחנו מפעילים ReLU
 
-### מה זה ReLU?
-
-ReLU (Rectified Linear Unit) 
+### מה זה ReLU? (Rectified Linear Unit) 
 
 היא אחת מפונקציות ההפעלה הנפוצות ביותר ברשתות נוירונים עמוקות
 
