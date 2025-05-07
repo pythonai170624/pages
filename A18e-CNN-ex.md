@@ -169,6 +169,8 @@ cnn.add(Dense(units=128, activation='relu'))
 cnn.add(Dense(units=1, activation='sigmoid'))  # בגלל שזה סיווג בינארי
 ```
 
+### הסבר לקוד
+
 **🧠 מה זה Conv2D ו־MaxPooling2D ולמה משתמשים בהם?**
 
 בבניית רשת עצבית קונבולוציונית (CNN), יש שתי שכבות חשובות במיוחד:
