@@ -295,4 +295,4 @@ This is because the output layer uses a **sigmoid activation function**, which r
 - Values **closer to 1** indicate a higher confidence that the image is a dog
 - Values **closer to 0** indicate a higher confidence that the image is a cat
 
-<img src="cnn16.png" style="width:100%"/>
+<img src="cnn16.png" style="width:80%"/>
