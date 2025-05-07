@@ -177,6 +177,8 @@ image = [
 
   <img src="cnn12.png" style="width:70%"/>
 
+  <img src="cnn14.jpg" style="width:70%"/>
+
 ## איך CNN לומדת?
 
 1. האימון כולל עדכון של המסננים, המשקלים ופונקציות ההפעלה
