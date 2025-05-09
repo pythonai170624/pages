@@ -290,11 +290,11 @@ Output:
 
 2. Install ipykernel Package 
 
-Output:
-
 ```python
 !conda install -n spacy_env ipykernel -y
 ```
+
+Output:
 
 <img src="nlp5.jpg" style="width: 50%" />
 
