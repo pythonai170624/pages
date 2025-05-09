@@ -13,7 +13,7 @@
 
 לאיזה פרי הוא שייך? 
 
-**Apple** או **Banana**?
+**Apple** או **Banana** האם?
 
 | Feature_A | Feature_B | Feature_C | Label   |
 |-----------|-----------|-----------|---------|
