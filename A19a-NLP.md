@@ -284,6 +284,8 @@ Jennifer drove to Seattle to see the Mariners.
 !conda create -n spacy_env python=3.11 -y
 ```
 
+Output:
+
 <img src="nlp4.jpg" style="width: 50%" />
 
 2. Install ipykernel Package 
