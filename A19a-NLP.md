@@ -89,9 +89,9 @@
 
 **תיוג תחבירי (POS Tagging) מדויק לפי מודלים מוכנים מראש**
 
-  דוגמה: במילה "run"  
-  במשפט "I run daily" → run = VERB  
-  במשפט "I went for a run" → run = NOUN
+  דוגמה: במילה run  
+  במשפט I run daily → run = VERB  
+  במשפט I went for a run → run = NOUN
 
 **ניתוח תלות תחבירית (Dependency Parsing) – להבין את מבנה המשפט**
 
