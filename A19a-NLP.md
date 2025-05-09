@@ -1,6 +1,6 @@
 ## עיבוד שפה טבעית (NLP - Natural Language Processing)
 
-<img src="nlp1.png" style="width: 50%" align="right"/>
+<img src="nlp1.png" style="width: 30%" align="right"/>
 
 עיבוד שפה טבעית הוא תחום בתוך אינטיליגנציה מלאכותית שמטרתו לגרום למחשב להבין שפה אנושית  
 המחשב לא רק קורא מילים אלא לומד את המשמעות וההקשר שלהן
