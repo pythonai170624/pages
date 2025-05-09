@@ -69,3 +69,15 @@ X = data_encoded.drop(['Label_apple', 'Label_banana'], axis=1)
 print(y)
 
 ```
+
+## GridSearch
+
+```python
+param_grid = {
+    'kernel': ['linear', 'rbf', 'poly', 'sigmoid'],
+    'C': [0.1, 1, 10, 100]
+}
+```
+
+כעת השתמש באוסף הפרמטרים כדי למצוא את המודל המתאים ביותר
+הדפס מה הפרמטרים האידיאליים שנמצאו
