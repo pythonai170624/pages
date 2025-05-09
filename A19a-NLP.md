@@ -114,7 +114,7 @@
 
   דוגמה: אפשר לטעון מודל כמו `fr_core_news_sm` לצרפתית ולעשות ניתוח של טקסט בצרפתית
 
-**Phrase Matching**
+**נושא Phrase Matching**
 
 יכולות התאמה חכמות כמו  דוגמה: לזהות את הביטוי "solar power" גם אם הוא מופיע כ־"solar-power" או "SolarPower"
 
