@@ -328,6 +328,8 @@ Output:
 
 ###  הורדת מודל שפה באנגלית
 
+🔹 עכשיו אתה מוריד את מודל השפה לתוך הסביבה שבה תעבוד
+
 ```python
 !python -m spacy download en_core_web_sm
 ```
@@ -335,8 +337,6 @@ Output:
 Output:
 
 <img src="nlp9.jpg" style="width: 70%" />
-
-🔹 עכשיו אתה מוריד את מודל השפה לתוך הסביבה שבה תעבוד
 
 ```python
 !python -m spacy validate
