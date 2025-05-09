@@ -122,7 +122,7 @@
 
   דוגמה: הצגה גרפית של הקשרים תחביריים בין מילים במשפט בתוך Jupyter Notebook
 
-  <img src="nlp3.png" style="width: 80%" />
+  <img src="nlp3.png" style="width: 100%" />
 
 **עבודה חלקה עם TensorFlow, PyTorch ו־Keras**
 
