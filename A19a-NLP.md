@@ -120,9 +120,39 @@
 
 **כלים לוויזואליזציה דרך displaCy להצגת מבנה תחבירי וישויות**
 
-  דוגמה: הצגה גרפית של הקשרים תחביריים בין מילים במשפט בתוך Jupyter Notebook
+דוגמה: הצגה גרפית של הקשרים תחביריים בין מילים במשפט בתוך
+
+"Jennifer drove to Seattle to see the Mariners."
 
   <img src="nlp3.png" style="width: 100%" />
+
+  **המשפט המלא:**  
+Jennifer drove to Seattle to see the Mariners.
+
+**Jennifer** → `PROPN` – Proper Noun  
+  שם עצם פרטי. מייצג שם של אדם מסוים ולא סתם תיאור כללי
+
+**drove** → `VERB` – Verb  
+  פועל. מתאר פעולה – במקרה הזה: נהיגה
+
+**to** → `ADP` – Adposition  
+  מילות יחס. מקשרות בין הפועל לבין יעד או מקום
+
+**Seattle** → `PROPN` – Proper Noun  
+  שם עצם פרטי. שם של עיר מסוימת
+
+**to** → `PART` – Particle  
+  חלקיק שמציין תחילית של פועל אינסופי – כמו "to see"
+
+**see** → `VERB` – Verb  
+  פועל שמתאר את מטרת הפעולה – לראות משהו
+
+**the** → `DET` – Determiner  
+  מילה שמקדימה שם עצם ומגדירה אותו (כמו "the" באנגלית)
+
+**Mariners** → `PROPN` – Proper Noun  
+  שם של קבוצת בייסבול אמריקאית – שם עצם פרטי
+
 
 **עבודה חלקה עם TensorFlow, PyTorch ו־Keras**
 
