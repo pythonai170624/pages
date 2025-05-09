@@ -176,7 +176,7 @@ Jennifer drove to Seattle to see the Mariners.
 * ran  
 * runs  
 
-אחרי Stemming → כולן יהפכו ל־`run` או אפילו ל־`ru` – תלוי באלגוריתם
+אחרי Stemming → כולן יהפכו ל־`run`  ל־
 
 למה זה שימושי
 
@@ -184,9 +184,9 @@ Jennifer drove to Seattle to see the Mariners.
 * מפשט את הווקטור של המילים – חשוב כשעובדים עם דאטה גדול  
 * עוזר להשוות בין מילים עם אותה משמעות אך בצורה שונה
 
-**מה זה NLTK**
+**מה זה NLTK  Natural Language Toolkit**
 
-**NLTK – Natural Language Toolkit** היא ספריית פייתון עוצמתית לעיבוד שפה טבעית  
+ ספריית פייתון עוצמתית לעיבוד שפה טבעית  
 היא קיימת משנת 2001 ומשמשת בעיקר באקדמיה, מחקר ולימוד
 
 מה יש בה?
