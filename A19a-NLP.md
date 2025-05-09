@@ -280,7 +280,7 @@ Jennifer drove to Seattle to see the Mariners.
 
 ### פתח את ה- Jupyter
 
-<img src="nlp12.jpg" style="width: 50%" />
+<img src="nlp12.png" style="width: 50%" />
 
 ### יצירת סביבה חדשה של פייתון
 
