@@ -232,25 +232,9 @@ Jennifer drove to Seattle to see the Mariners.
 מה יש בה?
 
 * טוקניזציה (Tokenization)  
-
-דוגמה: המשפט "I can't believe it's already 5 p.m.!"
-
-יתפצל לטוקנים כמו:
-["I", "ca", "n't", "believe", "it", "'s", "already", "5", "p.m.", "!"]
-
 * תיוג תחבירי (POS Tagging) 
-
-דוגמה: במילה run
-
-במשפט I run daily → run = VERB
-
-במשפט I went for a run → run = NOUN 
-
 * Stemming  
 * למיטיזציה  
-
-דוגמה: "running", "ran", "runs" → כולם יוחזרו כ־"run"
-
 * ניתוח תחבירי: ניתוח תחבירי בודק את **המבנה הדקדוקי של משפט** – כלומר, איך המילים מתחברות זו לזו  
 המחשב מזהה מי הנושא, מי הפועל, מה המושא, אילו תיאורים יש ועוד
 * קורפוסים מוכנים מראש
