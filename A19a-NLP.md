@@ -284,12 +284,21 @@ Jennifer drove to Seattle to see the Mariners.
 !conda create -n spacy_env python=3.11 -y
 ```
 
+<img src="nlp4.jpg" style="widht: 80%" />
+
 2. Install ipykernel Package 
 
 ```python
 !conda install -n spacy_env ipykernel -y
+```
+
+<img src="nlp5.jpg" style="widht: 80%" />
+
+```python
 !python -m ipykernel install --user --name spacy_env --display-name "Python (spacy_env)"
 ```
+
+<img src="nlp6.jpg" style="widht: 80%" />
 
 
 3. Install spaCy  
@@ -298,12 +307,24 @@ Jennifer drove to Seattle to see the Mariners.
 !pip install spacy
 ```
 
+<img src="nlp7.jpg" style="widht: 80%" />
+
+
+<img src="nlp8.jpg" style="widht: 80%" />
+
 4.  Download English Language Model
 
 ```python
 !python -m spacy download en_core_web_sm
 ```
 
+<img src="nlp9.jpg" style="widht: 80%" />
+
+```python
+!python -m spacy validate
+```
+
+<img src="nlp10.jpg" style="widht: 80%" />
 
 💡 לעבור לסביבה החדשה דרך Kernel → Change kernel
 
