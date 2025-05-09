@@ -375,4 +375,4 @@ for token in doc:
 
 Output:
 
-<img src="nlp11.jpg" style="width: 70%" />
+<img src="nlp11.jpg" style="width: 60%" />
