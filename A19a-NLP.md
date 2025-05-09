@@ -290,6 +290,8 @@ Output:
 
 2. Install ipykernel Package 
 
+Output:
+
 ```python
 !conda install -n spacy_env ipykernel -y
 ```
@@ -300,14 +302,17 @@ Output:
 !python -m ipykernel install --user --name spacy_env --display-name "Python (spacy_env)"
 ```
 
-<img src="nlp6.png" style="width: 75%" />
+Output:
 
+<img src="nlp6.png" style="width: 75%" />
 
 3. Install spaCy  
 
 ```python
 !pip install spacy
 ```
+
+Output:
 
 <img src="nlp7.jpg" style="width: 60%" />
 
@@ -320,11 +325,15 @@ Output:
 !python -m spacy download en_core_web_sm
 ```
 
+Output:
+
 <img src="nlp9.jpg" style="width: 70%" />
 
 ```python
 !python -m spacy validate
 ```
+
+Output:
 
 <img src="nlp10.jpg" style="width: 70%" />
 
