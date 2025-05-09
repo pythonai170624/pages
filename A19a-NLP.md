@@ -371,3 +371,8 @@ doc = nlp("Apple is looking at buying U.K. startup for $1 billion")
 
 for token in doc:
     print(token.text, token.pos_, token.dep_)
+```
+
+Output:
+
+<img src="nlp9.jpg" style="width: 70%" />
