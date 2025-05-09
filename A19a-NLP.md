@@ -278,17 +278,17 @@ Jennifer drove to Seattle to see the Mariners.
 
 ### שלבים
 
-1. יצירת סביבה חדשה  
+1. Create a New Python Environment
 `!conda create -n spacy_env python=3.11 -y`
 
-2. התקנת חבילת ipykernel  
+2. Install ipykernel Package 
 `!conda install -n spacy_env ipykernel -y`  
 `!python -m ipykernel install --user --name spacy_env --display-name "Python (spacy_env)"`
 
-3. התקנת spaCy  
+3. Install spaCy  
 `!pip install spacy`
 
-4. הורדת מודל שפה  
+4.  Download English Language Model
 `!python -m spacy download en_core_web_sm`
 
 💡 לעבור לסביבה החדשה דרך Kernel → Change kernel
