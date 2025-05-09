@@ -298,7 +298,7 @@ Jennifer drove to Seattle to see the Mariners.
 !python -m ipykernel install --user --name spacy_env --display-name "Python (spacy_env)"
 ```
 
-<img src="nlp6.png" style="width: 50%" />
+<img src="nlp6.png" style="width: 75%" />
 
 
 3. Install spaCy  
@@ -307,10 +307,10 @@ Jennifer drove to Seattle to see the Mariners.
 !pip install spacy
 ```
 
-<img src="nlp7.jpg" style="width: 50%" />
+<img src="nlp7.jpg" style="width: 60%" />
 
 
-<img src="nlp8.png" style="width: 50%" />
+<img src="nlp8.png" style="width: 75%" />
 
 4.  Download English Language Model
 
@@ -318,13 +318,13 @@ Jennifer drove to Seattle to see the Mariners.
 !python -m spacy download en_core_web_sm
 ```
 
-<img src="nlp9.jpg" style="width: 50%" />
+<img src="nlp9.jpg" style="width: 70%" />
 
 ```python
 !python -m spacy validate
 ```
 
-<img src="nlp10.jpg" style="width: 50%" />
+<img src="nlp10.jpg" style="width: 70%" />
 
 💡 לעבור לסביבה החדשה דרך Kernel → Change kernel
 
