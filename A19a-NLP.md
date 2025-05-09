@@ -306,7 +306,17 @@ Output:
 
 <img src="nlp6.png" style="width: 75%" />
 
-3. Install spaCy  
+זה יוצר סביבת עבודה חדשה בשם spacy_env – אבל עדיין לא פועלת
+
+🔹 זה אומר ליופיטר: "היי, יש לי סביבת קוד חדשה, תוכל להוסיף אותה לרשימת הקרנלים שלך"
+🔹 עדיין לא צריך לעבור אליה – אנחנו רק רושמים אותה כמוכנה
+
+
+3. Switch to the new Kernel
+
+<img src="nlp8.png" style="width: 75%" />
+
+4. Install spaCy  
 
 ```python
 !pip install spacy
@@ -316,10 +326,7 @@ Output:
 
 <img src="nlp7.jpg" style="width: 60%" />
 
-
-<img src="nlp8.png" style="width: 75%" />
-
-4.  Download English Language Model
+5.  Download English Language Model
 
 ```python
 !python -m spacy download en_core_web_sm
@@ -328,6 +335,8 @@ Output:
 Output:
 
 <img src="nlp9.jpg" style="width: 70%" />
+
+🔹 עכשיו אתה מוריד את מודל השפה לתוך הסביבה שבה תעבוד
 
 ```python
 !python -m spacy validate
