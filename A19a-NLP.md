@@ -287,8 +287,8 @@ Jennifer drove to Seattle to see the Mariners.
 Output:
 
 <img src="nlp4.jpg" style="width: 50%" />
-
-### התקנת חבילת ipykernel
+ 
+### התקנת חבילת ipykernel חדש
 ```python
 !conda install -n spacy_env ipykernel -y
 ```
