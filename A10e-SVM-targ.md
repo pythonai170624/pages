@@ -11,7 +11,7 @@
 
 🔍 נתוני פרי חדש: **Feature_A = 1.9**, **Feature_B = 4.0**, **Feature_C = 0.7**  
 
-לאיזה פרי הוא שייך?  **Apple** או **Banana** האם?
+לאיזה פרי הוא שייך?  **Apple** או **Banana**?
 
 | Feature_A | Feature_B | Feature_C | Label   |
 |-----------|-----------|-----------|---------|
