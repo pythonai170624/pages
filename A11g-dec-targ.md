@@ -22,4 +22,4 @@
 <img src="dechw.png" style="widht: 70%" />
 
 ראה דוגמא:
-<a href="A11b-dec-process.md" >הקלק כאן</a>
+<a href="A11b-dec-process.md#example" >הקלק כאן</a>
