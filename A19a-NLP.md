@@ -278,7 +278,7 @@ Jennifer drove to Seattle to see the Mariners.
 
 ### שלבים
 
-### Create a New Python Environment
+### יצירת סביבה חדשה של פייתון
 
 ```python
 !conda create -n spacy_env python=3.11 -y
@@ -288,8 +288,7 @@ Output:
 
 <img src="nlp4.jpg" style="width: 50%" />
 
-### Install ipykernel Package 
-
+### התקנת חבילת ipykernel
 ```python
 !conda install -n spacy_env ipykernel -y
 ```
@@ -313,7 +312,7 @@ Output:
 🔹 עדיין לא צריך לעבור אליה – אנחנו רק רושמים אותה כמוכנה
 
 
-### Switch to the new Kernel
+### מעבר לקרנל החדש
 
 <img src="nlp8.png" style="width: 75%" />
 
@@ -327,7 +326,7 @@ Output:
 
 <img src="nlp7.jpg" style="width: 60%" />
 
-###  Download English Language Model
+###  הורדת מודל שפה באנגלית
 
 ```python
 !python -m spacy download en_core_web_sm
