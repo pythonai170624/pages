@@ -267,7 +267,7 @@ word: another, start a sentence: False
 
 ### spaCy Tokenization – Practical Example Explained
 
-In this example, we can see how spaCy handles complex tokenization step by step using a real sentence:
+בדוגמה זו ניתן לראות כיצד SpaCy מטפלת בטוקניזציה מורכבת שלב אחר שלב באמצעות משפט אמיתי
 
 ```python
 mystring = "\"We\'re moving to L.A.!\""
