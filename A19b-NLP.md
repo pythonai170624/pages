@@ -307,7 +307,7 @@ import spacy
 nlp = spacy.load("en_core_web_sm")
 
 # Process the text
-doc8 = nlp('Apple is about to build a Hong Kong factory for $6 million')
+doc8 = nlp('Apple is about to build a factory in Hong Kong for $6 million')
 
 # Print tokens
 for token in doc8:
@@ -317,7 +317,7 @@ for token in doc8:
 **Output:**
 
 ```
-Apple | is | about | to | build | a | Hong | Kong | factory | for | $ | 6 | million |
+Apple | is | about | to | build | a | factory | in | Hong | Kong | for | $ | 6 | million | 
 ```
 
 ה- spaCy מפרקת את המשפט לטוקנים בעלי משמעות, תוך ניהול נכון של סימני פיסוק ומילים מורכבות
