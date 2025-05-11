@@ -35,6 +35,42 @@ running → run
 ran → run
 ```
 
+### פרמטרים
+
+```python
+doc1 = nlp("I am a runner running in a race because I love to run since I ran today")
+
+print(f'{"token.text":16}', f'{"token.pos_":15}', f'{"token.lemma":23}', f'{"token.lemma_":20}')
+print('-' * 70)
+
+for token in doc1:
+    print(f'{token.text:10}', '\t', f'{token.pos_:10}', '\t', f'{token.lemma:10}', '\t', token.lemma_)
+
+```
+
+Ouput:
+```
+token.text       token.pos_      token.lemma             token.lemma_        
+----------------------------------------------------------------------
+I          	 PRON       	 4690420944186131903 	 I
+am         	 AUX        	 10382539506755952630 	 be
+a          	 DET        	 11901859001352538922 	 a
+runner     	 NOUN       	 12640964157389618806 	 runner
+running    	 VERB       	 12767647472892411841 	 run
+in         	 ADP        	 3002984154512732771 	 in
+a          	 DET        	 11901859001352538922 	 a
+race       	 NOUN       	 8048469955494714898 	 race
+because    	 SCONJ      	 16950148841647037698 	 because
+I          	 PRON       	 4690420944186131903 	 I
+love       	 VERB       	 3702023516439754181 	 love
+to         	 PART       	 3791531372978436496 	 to
+run        	 VERB       	 12767647472892411841 	 run
+since      	 SCONJ      	 10066841407251338481 	 since
+I          	 PRON       	 4690420944186131903 	 I
+ran        	 VERB       	 12767647472892411841 	 run
+today      	 NOUN       	 11042482332948150395 	 today
+```
+
 ### ה- Stop Words – מילות עצירה
 
 מילות עצירה הן מילים נפוצות בשפה שאין להן תרומה משמעותית להבנת התוכן המרכזי בטקסט
