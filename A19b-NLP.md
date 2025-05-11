@@ -204,7 +204,7 @@ This is the last sentence.
 
 ### מה זה is\_sent\_start?
 
-`token.is_sent_start` מחזיר `True` אם הטוקן הוא הטוקן הראשון במשפט, ו־`False` אחרת
+ה- `token.is_sent_start` מחזיר `True` אם הטוקן הוא הטוקן הראשון במשפט, ו־`False` אחרת
 
 ```python
 print(f'word: {doc4[6]}, start a sentence: {doc4[6].is_sent_start}')
