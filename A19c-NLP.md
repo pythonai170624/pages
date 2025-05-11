@@ -112,7 +112,7 @@ displacy.render(doc, style='ent', jupyter=True)
 pip install nltk
 ```
 
-<img src="nlp15.png" style="width: 75%" />
+<img src="nlp17.png" style="width: 75%" />
 
 ### דוגמה בקוד
 
