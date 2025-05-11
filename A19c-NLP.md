@@ -126,7 +126,7 @@ for word in words:
     print(word, "→", stemmer.stem(word))
 ```
 
-פלט:
+Output:
 
 ```
 run → run
@@ -139,8 +139,27 @@ fairness → fair
 ### דוגמה עם Snowball
 
 ```python
-stemmer = SnowballStemmer(language='english')
-print(stemmer.stem("fairly"))  # → fair
+import nltk
+from nltk.stem import PorterStemmer, SnowballStemmer
+
+s_stemmer = SnowballStemmer(language='english')
+
+words = ['run','runner','running','ran','runs','easily','fairly','fairness']
+
+for word in words:
+    print(word+' --> '+s_stemmer.stem(word))
+```
+
+Output:
+```
+run --> run
+runner --> runner
+running --> run
+ran --> ran
+runs --> run
+easily --> easili
+fairly --> fair
+fairness --> fair
 ```
 
 ה- Snowball החזיר "fair" ולא "fairli" כמו האלגוריתם של Porter
