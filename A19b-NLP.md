@@ -41,7 +41,8 @@ Output:
 
 | טוקן (text) | POS\_ |                | DEP\_    |                         |
 | ----------- | ----- | ------------------------- | -------- | --------------------------------- |
-| Tesla       | PROPN | שם עצם פרטי (Proper Noun) | nsubj    | נושא המשפט                        |
+| Tesla       | PROPN | שם עצם פרטי (Proper Noun) In linguistic terms, a proper noun is a specific type of noun that names a particular
+person, place, organization, or sometimes a thing.| nsubj    | נושא המשפט                        |
 | is          | AUX   | פועל עזר (Auxiliary Verb) | aux      | פועל עזר של הפועל המרכזי          |
 | looking     | VERB  | פועל (Verb)               | ROOT     | הפועל המרכזי במשפט                |
 | at          | ADP   | מילת יחס (Adposition)     | prep     | מילת יחס שמקשרת לפועל             |
