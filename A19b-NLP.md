@@ -100,9 +100,7 @@ First for the 'is' (AUX - auxiliary verbs) Second for 'n't' (neg - negativity wo
 
 כדי לא לפצל את המילה המקוצרת isn't לטוקנים is ו־n't, צריך לשנות את חוקי הטוקניזציה של SpaCy
 
-ברירת המחדל של SpaCy מפרידה קונטרקציות, אבל
-
-ניתן לבטל זאת ע"י החלפת ברירת המחדל של ה־Tokenizer או ע"י שינוי של infixes ו־suffixes
+ברירת המחדל של SpaCy מפרידה קונטרקציות, אבל ניתן לבטל זאת ע"י החלפת ברירת המחדל של ה־Tokenizer או ע"י שינוי של infixes ו־suffixes
 
 ### אינדקס וסריקה בלולאות
 
