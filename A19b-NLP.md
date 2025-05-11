@@ -185,7 +185,7 @@ Life is what happens to us while we are making other plans
 
 ### מה זה Sents ב-SpaCy?
 
-`Doc.sents` הוא generator של משפטים – כלומר SpaCy מזהה אוטומטית את הגבולות בין משפטים בטקסט ומחזיר כל משפט כאובייקט `Span`
+ה- `Doc.sents` הוא generator של משפטים – כלומר SpaCy מזהה אוטומטית את הגבולות בין משפטים בטקסט ומחזיר כל משפט כאובייקט `Span`
 
 ```python
 doc4 = nlp('This is the first sentence. This is another sentence. This is the last sentence.')
