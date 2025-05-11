@@ -249,7 +249,7 @@ word: another, start a sentence: False
 
 באיור המצורף, ניתן לראות כיצד SpaCy מפרקת את הטקסט שלב אחר שלב:
 
-<img src="nlp13.png" style="width: 100%" />
+<img src="nlp13.png" style="width: 90%" />
 
 
 1. **Original Text** – "We’re moving to L.A.!"
