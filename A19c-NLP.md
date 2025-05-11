@@ -34,14 +34,16 @@ the lazy dog
 
 ## למה זה שימוש?
 
-Noun Chunks represent meaningful content units that reflect the main entities and owners in the sentence. Recognizing them helps identify the core structure and focus of the text.
+Noun Chunks represent meaningful content units that reflect the main entities and owners in the sentence
+
+Recognizing them helps identify the core structure and focus of the text
 
 ### Uses of Noun Chunks:
 - **Information Retrieval** → Isolate and extract relevant information from text  
 - **Text Summarization** → Identify the most informative parts of a sentence  
 - **Semantic NLP Tasks** → Useful in tasks involving deeper understanding of meaning and relationships in text
 
-## 🎨 displaCy – ויזואליזציה גרפית
+## ה- 🎨 displaCy – ויזואליזציה גרפית
 
 ספייסי מצעה displaCy ככלי שמזרה בספסי הפעלה את המבנה הגרמטית במשפט ואת הישויות בשם
 
