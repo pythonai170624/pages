@@ -64,8 +64,7 @@ displacy.render(doc, style="dep", jupyter=True)  # להציג תחביר
 displacy.render(doc, style="ent", jupyter=True)  # להציג ישויות בשם
 ```
 
-#### ציון:
-> 📷 **שים פה 24 לצור כאנוני שתוסף פה של displaCy לריאה**
+<img src="nlp14.png" style="width: 100%" />
 
 ## סיכום:
 
