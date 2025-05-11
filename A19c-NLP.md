@@ -68,6 +68,6 @@ displacy.render(doc, style="ent", jupyter=True)  # להציג ישויות בש�
 
 ## סיכום:
 
-* `noun_chunks` מחזיר צירופים שמניים אוטומטית מהטקסט
-* `displaCy` מציע ויזואליזציה לחלקים לשונות עקריים במשפט
-* חשוב לעבוד משפט הפעולה אתה ואת הישויות בובה ובאפקט
+* `noun_chunks` returns noun phrases automatically from the text
+* `displaCy` offers visual representation of key linguistic elements in the sentence
+* Understanding and using these tools helps you analyze both the structure and content of text effectively
