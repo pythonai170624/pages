@@ -296,3 +296,56 @@ L.A.
 * **!** → The exclamation mark is treated as a separate token. spaCy splits punctuation marks to isolate them
 
 
+### Named Entity Recognition (NER) and Tokenization in spaCy
+
+בדוגמה זו נחקור כיצד SpaCy מבצעת טוקניזציה ולאחר מכן מזהה ישויות בשם מתוך משפט
+
+#### Tokenization Example
+
+```python
+import spacy
+nlp = spacy.load("en_core_web_sm")
+
+# Process the text
+doc8 = nlp('Apple to build a Hong Kong factory for $6 million')
+
+# Print tokens
+for token in doc8:
+    print(token.text, end=' | ')
+```
+
+**Output:**
+
+```
+Apple | to | build | a | Hong | Kong | factory | for | $ | 6 | million |
+```
+
+ה- spaCy מפרקת את המשפט לטוקנים בעלי משמעות, תוך ניהול נכון של סימני פיסוק ומילים מורכבות
+
+#### Named Entity Recognition Example
+
+```python
+for entity in doc8.ents:
+    print(entity)
+    print(entity.label_)
+    print(spacy.explain(entity.label_))
+    print('\n')
+```
+
+**Output Explanation:**
+
+* **Apple** → `ORG` → Companies, agencies, institutions, etc.
+* **Hong Kong** → `GPE` → Countries, cities, states
+* **\$6 million** → `MONEY` → Monetary values, including unit
+
+ה- SpaCy מזהה את הטוקנים האלה כישויות בשם ומשייכת לכל אחת תווית עם קטגוריה ספציפית
+
+### Summary:
+
+* spaCy first tokenizes the input text into individual components
+* Then it scans for named entities using built-in models
+* Each recognized entity includes:
+
+  * The text span
+  * A label like ORG, GPE, or MONEY
+  * A short description (via `spacy.explain`)
