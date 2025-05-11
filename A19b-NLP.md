@@ -158,6 +158,77 @@ print(span.text)
 
 לסיכום: `Doc` הוא המסמך השלם, ו־`Span` הוא חתיכה מתוכו שאפשר לנתח בנפרד
 
+אובייקט מסוג `Span` מייצג קטע (רציף) מתוך `Doc` – כלומר תת-רצף של טוקנים שנוצרו לאחר עיבוד הטקסט. ה-Span שומר על ההקשר מתוך המסמך המקורי ומאפשר לבצע עליו ניתוח תחבירי, סמנטי או אחר, בדיוק כמו על `Doc`
+
+```python
+import spacy
+nlp = spacy.load("en_core_web_sm")
+
+# מסמך שלם
+doc3 = nlp(u"Although commonly attributed to John Lennon from his song \"Beautiful Boy\", the phrase \"Life is what happens to us while we are making other plans\" was written by cartoonist Allen Saunders and published in Reader's Digest in 1957, when Lennon was 17.")
+
+# Span מתוך המילים במיקומים 16 עד 30
+life_quote = doc3[16:30]
+
+print(life_quote)
+print(type(life_quote))
+```
+
+פלט:
+
+```
+Life is what happens to us while we are making other plans
+<class 'spacy.tokens.span.Span'>
+```
+
+### מה זה Sents ב-SpaCy?
+
+`Doc.sents` הוא generator של משפטים – כלומר SpaCy מזהה אוטומטית את הגבולות בין משפטים בטקסט ומחזיר כל משפט כאובייקט `Span`
+
+```python
+doc4 = nlp('This is the first sentence. This is another sentence. This is the last sentence.')
+
+for sentence in doc4.sents:
+    print(sentence)
+```
+
+פלט:
+
+```
+This is the first sentence.
+This is another sentence.
+This is the last sentence.
+```
+
+🖼️ \*כאן להוסיף את התמונה מהשקף (שורה שנייה בתמונה)
+
+### מה זה is\_sent\_start?
+
+`token.is_sent_start` מחזיר `True` אם הטוקן הוא הטוקן הראשון במשפט, ו־`False` אחרת
+
+```python
+print(f'word: {doc4[6]}, start a sentence: {doc4[6].is_sent_start}')
+print(f'word: {doc4[8]}, start a sentence: {doc4[8].is_sent_start}')
+```
+
+פלט:
+
+```
+word: This, start a sentence: True
+word: another, start a sentence: False
+```
+
+🖼️ \*כאן להוסיף את התמונה מהשקף (שורה שלישית בתמונה)
+
+### סיכום:
+
+* `Span` = קטע מוגדר מתוך Doc
+* `sents` = משפטים ש-SpaCy חילקה אוטומטית מתוך Doc
+* `is_sent_start` = האם הטוקן הוא תחילת משפט
+
+שלושתם שומרים על ההקשר של הטקסט המקורי ומאפשרים ניתוחים מתקדמים
+
+
 ### כיצד spaCy מפרק טוקנים בשפה
 
 spaCy משתמש בחוקי טוקניזציה שמתאימים לשפה (למשל אנגלית) שמוגדרים מראש
