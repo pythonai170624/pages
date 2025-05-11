@@ -400,6 +400,7 @@ Output:
 import spacy
 nlp = spacy.load("en_core_web_sm")
 
+# The model response is a SpaCy Doc object
 doc = nlp("Apple is looking at buying U.K. startup for $1 billion")
 
 for token in doc:
@@ -409,3 +410,4 @@ for token in doc:
 Output:
 
 <img src="nlp11.jpg" style="width: 60%" />
+
