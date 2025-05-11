@@ -29,11 +29,29 @@ print(doc[0].pos_)  # PROPN – שם עצם פרטי
 #### דוגמה: טוקניזציה מתקדמת
 
 ```python
+doc2 = nlp("Tesla isn't looking into startups anymore.")
+
+for token in doc2:
+    print(token.text, token.pos_, token.dep_)
+```
+
+| טוקן (text) | POS\_ | הסבר POS\_  | DEP\_  | הסבר DEP\_               |
+| ----------- | ----- | ----------- | ------ | ------------------------ |
+| Tesla       | PROPN | שם עצם פרטי | nsubj  | נושא המשפט               |
+| is          | AUX   | פועל עזר    | aux    | פועל עזר של הפועל המרכזי |
+| n't         | PART  | מילת שלילה  | neg    | שלילה שמתווספת לפועל     |
+| looking     | VERB  | פועל        | ROOT   | הפועל המרכזי במשפט       |
+| into        | ADP   | מילת יחס    | prep   | מילת יחס שמובילה למושא   |
+| startups    | NOUN  | שם עצם      | pobj   | מושא של מילת היחס "into" |
+| anymore     | ADV   | תואר פועל   | advmod | תיאור שמתווסף לפועל      |
+| .           | PUNCT | סימן פיסוק  | punct  | סימן שמסיים משפט         |
+
+```python
 for token in doc:
     print(token.text, token.pos_, token.dep_)
 ```
 
-| טוקן (text) | POS\_ |  POS\_                | DEP\_    |  DEP\_                        |
+| טוקן (text) | POS\_ | הסבר POS\_                | DEP\_    | הסבר DEP\_                        |
 | ----------- | ----- | ------------------------- | -------- | --------------------------------- |
 | Tesla       | PROPN | שם עצם פרטי (Proper Noun) | nsubj    | נושא המשפט                        |
 | is          | AUX   | פועל עזר (Auxiliary Verb) | aux      | פועל עזר של הפועל המרכזי          |
@@ -59,6 +77,23 @@ print(spacy.explain("ROOT"))    # root of the sentence
 
 ### פירוק של מילים מסובכות
 
+במקרה של מילים מקוצרות (contractions), spaCy מזהה את חלקי המילה המופרדים ומתייחס אליהם כטוקנים נפרדים
+
+למשל:
+
+```python
+doc = nlp("Tesla isn't looking into startups anymore.")
+for token in doc:
+    print(token.text, token.pos_, token.dep_)
+```
+
+המודל מחלק את "isn't" ל־`is` (פועל עזר מסוג AUX) ול־`n't` (מילת שלילה מסוג PART)
+זה מאפשר להבין בצורה מדויקת יותר את משמעות המשפט ואת התפקיד התחבירי של כל חלק
+
+spaCy מזהה גם את "Tesla" ו־"startups" כ־PROPN (שם עצם פרטי) ו־NOUN (שם עצם רגיל) בהתאמה
+
+כאן להוסיף תמונה מהעמוד 15
+
 המילה **isn't** מתפצלת לשני טוקנים:
 
 * `is` (פועל עזר)
@@ -67,6 +102,21 @@ print(spacy.explain("ROOT"))    # root of the sentence
 כאן להוסיף תמונה מהעמוד 15
 
 ### אינדקס וסריקה בלולאות
+
+אם אנחנו רוצים להבין מה המשמעות של תג מסוים שמחזירה לנו spaCy, אפשר להשתמש בפונקציה `spacy.explain()` שמספקת הסבר טקסטואלי ברור לכל תג תחבירי או דקדוקי
+
+לדוגמה:
+
+```python
+import spacy
+import spacy.explain
+
+print(spacy.explain("AUX"))    # Auxiliary verb
+print(spacy.explain("nsubj"))  # Nominal subject
+print(spacy.explain("ROOT"))   # Root of the sentence
+```
+
+הפלט עוזר לנו להבין במה מדובר מבלי לנחש את הפירוש של ראשי התיבות
 
 אפשר לבדוק את `pos_` של מילה לפי אינדקס:
 
@@ -102,4 +152,6 @@ spaCy משתמש בחוקי טוקניזציה שמתאימים לשפה (למש
 
 * **prefixes** – תווים בהתחלה כמו \$, (
 * **suffixes** – תווים בסוף כמו ., !
-* \*\*inf
+* **infixes** – תווים באמצע כמו קו מפריד ב־"e-mail"
+
+כאן להוסיף תמונה מהעמוד 18

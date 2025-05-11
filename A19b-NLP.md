@@ -100,20 +100,18 @@ First for the 'is' (AUX - auxiliary verbs) Second for 'n't' (neg - negativity wo
 
 ### אינדקס וסריקה בלולאות
 
-אפשר לבדוק את `pos_` של מילה לפי אינדקס:
+אם אנחנו רוצים להבין מה המשמעות של תג מסוים שמחזירה לנו spaCy, אפשר להשתמש בפונקציה `spacy.explain()` שמספקת הסבר טקסטואלי ברור לכל תג תחבירי או דקדוקי
+
+לדוגמה:
 
 ```python
-print(doc[0].pos_)  # PROPN
+import spacy
+import spacy.explain
+
+print(spacy.explain("AUX"))    # auxiliary - Auxiliary verb
+print(spacy.explain("nsubj"))  # nominal subject
+print(spacy.explain("ROOT"))   # root - Root of the sentence
 ```
-
-אפשר גם לעבור על כל המילים במסמך ולהדפיס את המאפיינים:
-
-```python
-for token in doc:
-    print(token.text, token.pos, token.pos_, token.dep_)
-```
-
-spaCy מאפשר גם יצירת `Span` – קטע מתוך המסמך
 
 ### זיהוי משפטים
 
