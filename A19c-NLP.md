@@ -121,7 +121,7 @@ import nltk
 from nltk.stem import PorterStemmer, SnowballStemmer
 
 stemmer = PorterStemmer()
-words = ["run", "running", "runs", "runner", "fairness"]
+words = ['run','runner','running','ran','runs','easily','fairly','fairness']
 for word in words:
     print(word, "→", stemmer.stem(word))
 ```
@@ -130,9 +130,12 @@ Output:
 
 ```
 run → run
-running → run
-runs → run
 runner → runner
+running → run
+ran → ran
+runs → run
+easily → easili
+fairly → fairli  # wrong
 fairness → fair
 ```
 
@@ -158,7 +161,7 @@ running --> run
 ran --> ran
 runs --> run
 easily --> easili
-fairly --> fair
+fairly --> fair  # correct
 fairness --> fair
 ```
 
