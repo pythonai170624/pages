@@ -1,8 +1,13 @@
-# Noun Chunks, displaCy, and Visualization in SpaCy
+# ניתוח טקסט עם SpaCy – פונקציונליות בסיסית המשך
+
+## Noun Chunks, displaCy, and Visualization in SpaCy
 
 ## 🧠 מה זה Noun Chunk?
 
 ### Noun Chunk (צירוף שמני)
+
+השורש ש־ם־ע או ליתר דיוק מהמילה שֵׁם — במשמעות שם עצם
+
 צירוף שמני הוא רצף מילים שמכיל ⭐שם עצם⭐ (או כנוי גוף) יחד עם תארים, מילות יחס או קבעים שמתארים אותו.
 
 #### דוגמא:
