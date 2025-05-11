@@ -336,6 +336,8 @@ Apple | is | about | to | build | a | factory | in | Hong | Kong | for | $ | 6 |
 * **סכומים כספיים** (MONEY)
 
 ```python
+doc8 = nlp('Apple is about to build a factory in Hong Kong for $6 million')
+
 for entity in doc8.ents:
     print(entity)
     print(entity.label_)
