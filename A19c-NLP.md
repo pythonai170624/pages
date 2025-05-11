@@ -51,7 +51,7 @@ Recognizing them helps identify the core structure and focus of the text
 - **Dependency Parsing** → מציג את הקשר בין המילים
 - **Named Entity Recognition (NER)** → מציג את הישויות השם
 
-### ששוו:
+### לדוגמא:
 ```python
 from spacy import displacy
 import spacy
