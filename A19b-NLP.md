@@ -165,7 +165,9 @@ import spacy
 nlp = spacy.load("en_core_web_sm")
 
 # מסמך שלם
-doc3 = nlp(u"Although commonly attributed to John Lennon from his song \"Beautiful Boy\", the phrase \"Life is what happens to us while we are making other plans\" was written by cartoonist Allen Saunders and published in Reader's Digest in 1957, when Lennon was 17.")
+doc3 = nlp(u"Although commonly attributed to John Lennon from his song \"Beautiful Boy\", the phrase\
+\"Life is what happens to us while we are making other plans\" was written by cartoonist Allen Saunders\
+ and published in Reader's Digest in 1957, when Lennon was 17.")
 
 # Span מתוך המילים במיקומים 16 עד 30
 life_quote = doc3[16:30]
