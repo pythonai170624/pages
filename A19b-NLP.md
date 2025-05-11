@@ -255,7 +255,7 @@ word: another, start a sentence: False
 1. **Original Text** – "We’re moving to L.A.!"
 2. **Split on Whitespace** – פיצול ראשוני לפי רווחים בלבד
 3. **Prefix** – זיהוי של תווים לפני מילה (כמו גרש בתחילת מילה)
-4. **Exception** – טיפול בקונטרקציות כמו "We're" שמתחלק ל־"We" + "'re"
+4. **Exception** – handling contractions like "We're", which is split into "We" + "'re"
 5. **Suffix** – זיהוי תווים שבסוף מילה (כמו סימן קריאה)
 6. **Exception נוסף** – קיצור כמו "L.A." מזוהה כקיצור תקני
 7. **Done** – הפיצול הסופי של הטקסט לטוקנים מוכנים לעיבוד
