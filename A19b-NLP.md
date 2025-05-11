@@ -332,6 +332,23 @@ for entity in doc8.ents:
     print('\n')
 ```
 
+Output:
+```
+Apple
+ORG
+Companies, agencies, institutions, etc.
+
+
+Hong Kong
+GPE
+Countries, cities, states
+
+
+$6 million
+MONEY
+Monetary values, including unit
+```
+
 **Output Explanation:**
 
 * **Apple** → `ORG` → Companies, agencies, institutions, etc.
