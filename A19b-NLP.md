@@ -264,3 +264,39 @@ word: another, start a sentence: False
 ### סיכום:
 
 ה- SpaCy לא סומכת רק על חלוקה לפי רווחים או סימני פיסוק, אלא משתמשת גם בכללים מתקדמים כדי לזהות קונטרקציות, קיצורים, ותבניות מיוחדות. תהליך זה מבטיח שהטוקנים הסופיים יהיו מדויקים ונכונים לעיבוד תחבירי ולשוני
+
+### spaCy Tokenization – Practical Example Explained
+
+In this example, we can see how spaCy handles complex tokenization step by step using a real sentence:
+
+```python
+mystring = "\"We\'re moving to L.A.!\""
+print(mystring)
+print()
+
+doc = nlp(mystring)
+for token in doc:
+    print(token.text)
+```
+
+#### Output:
+
+```
+"
+We
+'re
+moving
+to
+L.A.
+!
+"
+```
+
+#### Explanation of tokenization:
+
+* **"** → The opening quotation mark is treated as a separate token. spaCy recognizes quotation marks as distinct punctuation characters
+* **We + 're** → spaCy separates the contraction `'re` from `We`, treating them as distinct tokens. This allows for better analysis of verbs
+* **L.A.** → spaCy recognizes "L.A." as an abbreviation and correctly handles the periods. It does not split "L.A." into multiple tokens
+* **!** → The exclamation mark is treated as a separate token. spaCy splits punctuation marks to isolate them
+
+
