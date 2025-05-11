@@ -227,6 +227,8 @@ word: another, start a sentence: False
 שלושתם שומרים על ההקשר של הטקסט המקורי ומאפשרים ניתוחים מתקדמים
 
 
+## SpaCy – טוקניזציה (Tokenization)
+
 ### כיצד spaCy מפרק טוקנים בשפה
 
 ה- spaCy משתמש בחוקי טוקניזציה שמתאימים לשפה (למשל אנגלית) שמוגדרים מראש
@@ -234,8 +236,6 @@ word: another, start a sentence: False
 - **Prefixes** – Characters at the beginning of a token, such as `$`, `(`
 - **Suffixes** – Characters at the end of a token, such as `.`, `!`
 - **Infixes** – Characters that appear inside tokens and cause a split, such as the hyphen in `"e-mail"`
-
-## SpaCy – טוקניזציה (Tokenization)
 
 ה- SpaCy משתמשת בחוקי התאמה (matching rules) שמותאמים לשפה שבה אנחנו עובדים. הכללים קובעים כיצד לפצל טקסט לטוקנים על בסיס מרווחים, סימני פיסוק וחוקים לשוניים מורכבים יותר
 
