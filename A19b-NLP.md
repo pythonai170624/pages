@@ -220,8 +220,6 @@ word: This, start a sentence: True
 word: another, start a sentence: False
 ```
 
-🖼️ \*כאן להוסיף את התמונה מהשקף (שורה שלישית בתמונה)
-
 ### סיכום:
 
 * `Span` = קטע מוגדר מתוך Doc
