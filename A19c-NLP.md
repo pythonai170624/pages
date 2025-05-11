@@ -1,0 +1,71 @@
+# Noun Chunks, displaCy, and Visualization in SpaCy
+
+## 🧠 מה זה Noun Chunk?
+
+### Noun Chunk (צירוף שמני)
+צירוף שמני הוא רצף מילים שמכיל ⭐שם עצם⭐ (או כנוי גוף) יחד עם תארים, מילות יחס או קבעים שמתארים אותו.
+
+#### דוגמא:
+> "The quick brown fox" ← כלו Noun Chunk אחד
+
+## כיצד SpaCy מזהה אותם?
+
+המודל מזהה באופן אוטומטי צירופים שמניים בכל משפט בטקסט, ומציע להם גישה עם `noun_chunks`
+
+```python
+import spacy
+nlp = spacy.load("en_core_web_sm")
+doc = nlp("The quick brown fox jumps over the lazy dog.")
+
+for chunk in doc.noun_chunks:
+    print(chunk.text)
+```
+
+#### Output:
+```
+The quick brown fox
+the lazy dog
+```
+
+## למה זה שימוש?
+
+Noun chunks משקפים ישוי תוכן שמעיינים ובעלים של המשפט. ההכרה שלם מעזרת את התחומה בטקסט.
+
+### שימושים של Noun Chunks:
+- חיפוש מידע בשחזור מידע מבודד
+- סיכום לחיצור מדע משפט ולבצע text summarization
+- שימוש NLP בעבודה סמנטית
+
+---
+
+## 🎨 displaCy – ויזואליזציה גרפית
+
+ספייסי מצעה displaCy ככלי שמזרה בספסי הפעלה את המבנה הגרמטית במשפט ואת הישויות בשם
+
+### שינוי displaCy:
+- **Dependency Parsing** → מציג את הקשר בין המילים
+- **Named Entity Recognition (NER)** → מציג את הישויות השם
+
+### ששוו:
+```python
+from spacy import displacy
+import spacy
+
+nlp = spacy.load("en_core_web_sm")
+doc = nlp("Apple is looking to buy a startup in Hong Kong for $6 million")
+
+displacy.render(doc, style="dep", jupyter=True)  # להציג תחביר
+
+displacy.render(doc, style="ent", jupyter=True)  # להציג ישויות בשם
+```
+
+#### ציון:
+> 📷 **שים פה 24 לצור כאנוני שתוסף פה של displaCy לריאה**
+
+---
+
+## סיכום:
+
+* `noun_chunks` מחזיר צירופים שמניים אוטומטית מהטקסט
+* `displaCy` מציע ויזואליזציה לחלקים לשונות עקריים במשפט
+* חשוב לעבוד משפט הפעולה אתה ואת הישויות בובה ובאפקט
