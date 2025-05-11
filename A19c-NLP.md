@@ -81,7 +81,7 @@ displacy.render(doc, style='ent', jupyter=True)
 * `displaCy` offers visual representation of key linguistic elements in the sentence
 * Understanding and using these tools helps you analyze both the structure and content of text effectively
 
-## Stemming – מה זה ולמה זה חשוב
+## ה- Stemming – מה זה ולמה זה חשוב
 
 Stemming היא טכניקת קדם-עיבוד בתחום עיבוד שפה טבעית (NLP)
 המטרה של stemming היא להחזיר מילים לצורת השורש שלהן כדי שמילים עם אותה משמעות בסיסית ייחשבו לשוות
