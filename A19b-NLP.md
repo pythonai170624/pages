@@ -229,9 +229,9 @@ word: another, start a sentence: False
 
 ### כיצד spaCy מפרק טוקנים בשפה
 
-spaCy משתמש בחוקי טוקניזציה שמתאימים לשפה (למשל אנגלית) שמוגדרים מראש
+ה- spaCy משתמש בחוקי טוקניזציה שמתאימים לשפה (למשל אנגלית) שמוגדרים מראש
 
-* **prefixes** – תווים בהתחלה כמו \$, (
-* **suffixes** – תווים בסוף כמו ., !
-* **infixes** – תווים באמצע כמו קו מפריד ב־"e-mail"
+- **Prefixes** – Characters at the beginning of a token, such as `$`, `(`
+- **Suffixes** – Characters at the end of a token, such as `.`, `!`
+- **Infixes** – Characters that appear inside tokens and cause a split, such as the hyphen in `"e-mail"`
 
