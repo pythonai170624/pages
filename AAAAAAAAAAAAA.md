@@ -33,41 +33,27 @@ for token in doc:
     print(token.text, token.pos_, token.dep_)
 ```
 
-| טוקן (text) | סוג דקדוקי (pos\_) | תפקיד תחבירי (dep\_) |
-| ----------- | ------------------ | -------------------- |
-| Tesla       | PROPN              | nsubj                |
-| is          | AUX                | aux                  |
-| looking     | VERB               | ROOT                 |
-| at          | ADP                | prep                 |
-| buying      | VERB               | pcomp                |
-| U.S.        | PROPN              | dobj                 |
-| startup     | VERB               | advcl                |
-| for         | ADP                | prep                 |
-| \$          | SYM                | quantmod             |
-| 6           | NUM                | compound             |
-| million     | NUM                | pobj                 |
+| טוקן (text) | סוג דקדוקי (pos\_) | תפקיד תחבירי (dep\_) | הסבר pos\_                | הסבר dep\_                        |
+| ----------- | ------------------ | -------------------- | ------------------------- | --------------------------------- |
+| Tesla       | PROPN              | nsubj                | שם עצם פרטי (Proper Noun) | נושא המשפט                        |
+| is          | AUX                | aux                  | פועל עזר (Auxiliary Verb) | פועל עזר של הפועל המרכזי          |
+| looking     | VERB               | ROOT                 | פועל (Verb)               | הפועל המרכזי במשפט                |
+| at          | ADP                | prep                 | מילת יחס (Adposition)     | מילת יחס שמקשרת לפועל             |
+| buying      | VERB               | pcomp                | פועל (Verb)               | משלים של הפועל באמצעות מילת יחס   |
+| U.S.        | PROPN              | dobj                 | שם עצם פרטי               | מושא ישיר של הפועל                |
+| startup     | VERB               | advcl                | פועל                      | פסוקית נסיבתית שמוסיפה מידע לפועל |
+| for         | ADP                | prep                 | מילת יחס                  | מילת יחס שמובילה למושא נוסף       |
+| \$          | SYM                | quantmod             | סימן (Symbol)             | תיאור כמות שמקדים מספר            |
+| 6           | NUM                | compound             | מספר (Numeral)            | תיאור מקדים של שם עצם אחר         |
+| million     | NUM                | pobj                 | מספר (Numeral)            | מושא של מילת היחס "for"           |
 
-#### הסבר של תגים נפוצים:
+ניתן להשתמש ב־`spacy.explain("TAG")` כדי לקבל הסבר לכל תג:
 
-* **PROPN** → שם עצם פרטי (Proper Noun), לדוגמה: Tesla, U.S.
-* **AUX** → פועל עזר (Auxiliary Verb), לדוגמה: is
-* **VERB** → פועל (Verb), לדוגמה: looking, buying
-* **ADP** → מילות יחס (Adposition), לדוגמה: at, for
-* **SYM** → סימן (Symbol), לדוגמה: \$
-* **NUM** → מספרים (Numeral), לדוגמה: 6, million
-
-#### הסבר של תפקידי התחביר (dep\_):
-
-* **nsubj** → נושא המשפט
-* **aux** → פועל עזר
-* **ROOT** → הפועל המרכזי במשפט
-* **prep** → מילת יחס (תחבירית)
-* **pcomp** → משלים לפועל (complement of a preposition)
-* **dobj** → מושא ישיר
-* **advcl** → פסוקית נסיבתית
-* **quantmod** → תיאור כמות
-* **compound** → תיאור מקדים (לרוב של שם עצם)
-* **pobj** → שם עצם שמושפע ממילת יחס (object of preposition)
+```python
+import spacy.explain
+print(spacy.explain("aux"))     # auxiliary
+print(spacy.explain("ROOT"))    # root of the sentence
+```
 
 כאן להוסיף תמונה מהעמוד 14
 
@@ -99,23 +85,4 @@ spaCy מאפשר גם יצירת `Span` – קטע מתוך המסמך
 
 ### זיהוי משפטים
 
-אפשר לבדוק משפטים במסמך כך:
-
-```python
-for sent in doc.sents:
-    print(sent.text)
-```
-
-spaCy מזהה היכן מתחיל ונגמר כל משפט לפי ההקשר וסימני הפיסוק
-
-כאן להוסיף תמונה מהעמוד 17
-
-### כיצד spaCy מפרק טוקנים בשפה
-
-spaCy משתמש בחוקי טוקניזציה שמתאימים לשפה (למשל אנגלית) שמוגדרים מראש
-
-* **prefixes** – תווים בהתחלה כמו \$, (
-* **suffixes** – תווים בסוף כמו ., !
-* **infixes** – תווים באמצע כמו קו מפריד ב־"e-mail"
-
-כאן להוסיף תמונה מהעמוד 18
+אפשר לבדוק
