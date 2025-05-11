@@ -66,12 +66,14 @@ displacy.render(doc, style="ent", jupyter=True)  # להציג ישויות בש�
 
 <img src="nlp14.png" style="width: 100%" />
 
+<img src="nlp16.png" style="width: 75%" />
+
 ```python
 doc = nlp('Over the last quarter Apple sold nearly 20 thousand iPods for a profit of $6 million.')
 displacy.render(doc, style='ent', jupyter=True)
 ```
 
-<img src="nlp15.png" style="width: 100%" />
+<img src="nlp15.png" style="width: 75%" />
 
 ## סיכום:
 
