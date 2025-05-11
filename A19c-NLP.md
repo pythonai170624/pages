@@ -75,8 +75,70 @@ displacy.render(doc, style='ent', jupyter=True)
 
 <img src="nlp15.png" style="width: 75%" />
 
-## סיכום:
+### סיכום:
 
 * `noun_chunks` returns noun phrases automatically from the text
 * `displaCy` offers visual representation of key linguistic elements in the sentence
 * Understanding and using these tools helps you analyze both the structure and content of text effectively
+
+## Stemming – מה זה ולמה זה חשוב
+
+Stemming היא טכניקת קדם-עיבוד בתחום עיבוד שפה טבעית (NLP)
+המטרה של stemming היא להחזיר מילים לצורת השורש שלהן כדי שמילים עם אותה משמעות בסיסית ייחשבו לשוות
+
+לדוגמה:
+
+* "running", "runner", "ran" → כולם מחזירים את השורש: "run"
+* "fairness", "fairly" → לשתיהן השורש: "fair"
+
+### למה להשתמש ב־Stemming
+
+* מקטין וריאציות של מילים לצורה בסיסית אחת
+* תורם להתאמה טובה יותר בין מסמכים ושאילתות בחיפוש מידע
+* מקטין את מספר המילים הייחודיות בטקסט
+
+### אלגוריתמים נפוצים
+
+* **Porter Stemmer** – נפוץ מאוד באנגלית, משתמש בחוקים קבועים לקיצוץ סיומות
+* **Snowball Stemmer** – גרסה מתקדמת יותר של Porter, תומכת במספר שפות
+
+### שימו לב
+
+spaCy לא כוללת stemmer מובנה
+כדי להשתמש ב־stemming, צריך לייבא אותו מספרייה חיצונית כמו NLTK
+
+### דוגמה בקוד
+
+```python
+import nltk
+from nltk.stem import PorterStemmer, SnowballStemmer
+
+stemmer = PorterStemmer()
+words = ["run", "running", "runs", "runner", "fairness"]
+for word in words:
+    print(word, "→", stemmer.stem(word))
+```
+
+פלט:
+
+```
+run → run
+running → run
+runs → run
+runner → runner
+fairness → fair
+```
+
+### דוגמה עם Snowball
+
+```python
+stemmer = SnowballStemmer(language='english')
+print(stemmer.stem("fairly"))  # → fair
+```
+
+Snowball החזיר "fair" ולא "fairli" כמו האלגוריתם של Porter
+
+### סיכום
+
+Stemming הוא כלי פשוט אך חשוב בהכנת טקסט לניתוח
+במקום לעבוד עם כל מילה כמו שהיא, אנחנו מצמצמים את כולן לצורה אחידה כדי להבין את המשמעות המרכזית
