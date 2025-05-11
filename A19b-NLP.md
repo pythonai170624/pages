@@ -53,20 +53,39 @@ Output:
 | 6           | NUM   | מספר (Numeral)            | compound | תיאור מקדים של שם עצם אחר         |
 | million     | NUM   | מספר (Numeral)            | pobj     | מושא של מילת היחס "for"           |
 
-לדוגמה, אפשר לבדוק את סוג המילה הראשונה:
-
-```python
-print(doc[0].pos)   # מחזיר ערך מספרי
-print(doc[0].pos_)  # PROPN – שם עצם פרטי
-```
-
 #### דוגמה: טוקניזציה מתקדמת
 
 * המודל מזהה **U.S.** כטוקן אחד ולא מפצל אותו
 * מזהה **\$** כסמל (SYM)
 * מזהה **million** כמספר (NUM)
 
-כאן להוסיף תמונה מהעמוד 14
+## דוגמא נוספת
+
+```python
+import spacy
+nlp = spacy.load("en_core_web_sm")
+
+# The model response is a SpaCy Doc object
+doc = nlp("Tesla isn't looking into startups anymore")
+
+for token in doc:
+    print(f'[{token.pos:3}]', token.text, token.pos_, token.dep_)
+```
+
+Output:
+
+```
+[ 96] Tesla PROPN nsubj
+[ 87] is AUX aux
+[ 94] n't PART neg
+[100] looking VERB ROOT
+[ 85] into ADP prep
+[ 92] startups NOUN pobj
+[ 86] anymore ADV advmod
+```
+
+We can see that the model splitted the 'isn't' word into 2 separated tokens.
+First for the 'is' (AUX - auxiliary verbs) Second for 'n't' (neg - negativity word)
 
 ### פירוק של מילים מסובכות
 
@@ -74,8 +93,6 @@ print(doc[0].pos_)  # PROPN – שם עצם פרטי
 
 * `is` (פועל עזר)
 * `n't` (מילת שלילה)
-
-כאן להוסיף תמונה מהעמוד 15
 
 ### אינדקס וסריקה בלולאות
 
