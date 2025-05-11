@@ -1,60 +1,59 @@
-### מה זה `ents` ב־spaCy?
+### Analyzing Token Parameters in spaCy
 
-התכונה `ents` של האובייקט `Doc` מכילה את כל **הישויות בשם** (Named Entities) ש־spaCy זיהתה בטקסט
-
-ישויות בשם הן מילים או צירופים שמתארים דברים ממשיים בעולם, כמו:
-
-* שמות של **אנשים** (PERSON)
-* **חברות וארגונים** (ORG)
-* **מדינות וערים** (GPE)
-* **תאריכים** (DATE)
-* **סכומים כספיים** (MONEY)
-
-### דוגמה בסיסית:
+In this example, we're processing a sentence that includes multiple forms of the word `run`:
 
 ```python
-import spacy
-nlp = spacy.load("en_core_web_sm")
+doc1 = nlp("I am a runner running in a race because I love to run since I ran today")
 
-doc = nlp("Apple is planning to invest $10 million in Israel in 2024")
-
-for ent in doc.ents:
-    print(ent.text, ent.label_)
+for token in doc1:
+    print(token.text, '\t', token.pos_, '\t', token.lemma, '\t', token.lemma_)
 ```
 
-#### פלט:
+This line prints the following information for each token:
+
+#### 1. `token.text`
+
+The actual word (token) as it appears in the sentence
+
+#### 2. `token.pos_`
+
+The part-of-speech tag (POS) as a **readable string**, like:
+
+* `PRON` – pronoun
+* `AUX` – auxiliary verb
+* `VERB` – main verb
+* `NOUN` – noun
+
+This is the **human-readable** label for grammatical role
+
+#### 3. `token.lemma`
+
+The lemma of the token, as an **internal hash-based ID number** (spaCy uses numerical IDs internally for efficiency)
+This is useful for internal lookup but not for human interpretation
+
+#### 4. `token.lemma_`
+
+The lemma as a **readable string**, e.g.:
+
+* `running`, `ran`, `run` → all will have `lemma_ = "run"`
+* `am` → `lemma_ = "be"`
+
+### Example Output (simplified):
 
 ```
-Apple ORG
-$10 million MONEY
-Israel GPE
-2024 DATE
+I       PRON    4690420944186131903    I
+am      AUX     10382539506755952630   be
+runner  NOUN    5566430174578461922    runner
+running VERB    976151799503001163    run
+...
 ```
 
-### תכונות של כל ישות:
+### Summary
 
-* `ent.text` → הטקסט של הישות
-* `ent.label_` → סוג הישות (כמו ORG, GPE)
-* `spacy.explain(ent.label_)` → הסבר טקסטואלי לקטגוריה
+This format helps analyze:
 
-### דוגמה עם הסברים:
+* What each word is (text)
+* Its grammatical role (POS)
+* The root/base form (lemma)
 
-```python
-for ent in doc.ents:
-    print(ent.text, ent.label_, spacy.explain(ent.label_))
-```
-
-#### פלט:
-
-```
-Apple ORG Companies, agencies, institutions, etc.
-$10 million MONEY Monetary values, including unit
-Israel GPE Countries, cities, states
-2024 DATE Absolute or relative dates or periods
-```
-
-### סיכום:
-
-* `ents` היא רשימת הישויות ש־spaCy זיהתה במסמך
-* כל ישות כוללת טקסט, סוג, והסבר על הסוג
-* ניתן לעבור על הרשימה בלולאה ולעבד אותה כרצונך
+Using `lemma_` is most helpful when comparing different forms of a word like `run`, `running`, `ran`, `runs`, etc.

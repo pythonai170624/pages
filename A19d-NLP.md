@@ -71,6 +71,34 @@ ran        	 VERB       	 12767647472892411841 	 run
 today      	 NOUN       	 11042482332948150395 	 today
 ```
 
+**1. `token.text`**
+
+The actual word (token) as it appears in the sentence
+
+**2. `token.pos_`**
+
+The part-of-speech tag (POS) as a **readable string**, like:
+
+* `PRON` – pronoun
+* `AUX` – auxiliary verb
+* `VERB` – main verb
+* `NOUN` – noun
+
+This is the **human-readable** label for grammatical role
+
+**3. `token.lemma`**
+
+The lemma of the token, as an **internal hash-based ID number** (spaCy uses numerical IDs internally for efficiency)
+This is useful for internal lookup but not for human interpretation
+
+**4. `token.lemma_`**
+
+The lemma as a **readable string**, e.g.:
+
+* `running`, `ran`, `run` → all will have `lemma_ = "run"`
+* `am` → `lemma_ = "be"`
+
+
 ### ה- Stop Words – מילות עצירה
 
 מילות עצירה הן מילים נפוצות בשפה שאין להן תרומה משמעותית להבנת התוכן המרכזי בטקסט
