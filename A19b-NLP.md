@@ -53,7 +53,7 @@ Output:
 | 6           | NUM   | מספר (Numeral)            | compound | תיאור מקדים של שם עצם אחר         |
 | million     | NUM   | מספר (Numeral)            | pobj     | מושא של מילת היחס "for"           |
 
-#### דוגמה: טוקניזציה מתקדמת
+#### רואים כאן טוקניזציה מתקדמת
 
 * המודל מזהה **U.S.** כטוקן אחד ולא מפצל אותו
 * מזהה **\$** כסמל (SYM)
@@ -84,7 +84,8 @@ Output:
 [ 86] anymore ADV advmod
 ```
 
-We can see that the model splitted the 'isn't' word into 2 separated tokens.
+We can see that the model **splitted the 'isn't' word into 2 separated tokens**
+
 First for the 'is' (AUX - auxiliary verbs) Second for 'n't' (neg - negativity word)
 
 ### פירוק של מילים מסובכות
