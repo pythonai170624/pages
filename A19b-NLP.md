@@ -265,10 +265,6 @@ word: another, start a sentence: False
 
 ה- SpaCy לא סומכת רק על חלוקה לפי רווחים או סימני פיסוק, אלא משתמשת גם בכללים מתקדמים כדי לזהות קונטרקציות, קיצורים, ותבניות מיוחדות. תהליך זה מבטיח שהטוקנים הסופיים יהיו מדויקים ונכונים לעיבוד תחבירי ולשוני
 
-### spaCy Tokenization – Practical Example Explained
-
-בדוגמה זו ניתן לראות כיצד SpaCy מטפלת בטוקניזציה מורכבת שלב אחר שלב באמצעות משפט אמיתי
-
 ```python
 mystring = "\"We\'re moving to L.A.!\""
 print(mystring)
