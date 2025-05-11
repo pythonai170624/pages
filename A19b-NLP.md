@@ -12,12 +12,42 @@ nlp = spacy.load("en_core_web_sm")
 doc = nlp("Tesla is looking at buying U.S. startup for $6 million")
 ```
 
+Output:
+```
+Tesla PROPN nsubj
+is AUX aux
+looking VERB ROOT
+at ADP prep
+buying VERB pcomp
+U.S. PROPN dobj
+startup VERB advcl
+for ADP prep
+$ SYM quantmod
+6 NUM compound
+million NUM pobj
+```
+
 הפלט כולל טוקנים עם מאפיינים כמו:
 
 * `text` → הטקסט של המילה
 * `pos` → תג חלק הדיבר כמספר (int)
 * `pos_` → סוג המילה (שם עצם, פועל, תואר וכו’) כתיאור מילולי
 * `dep_` → הקשר התחבירי של המילה במשפט (נושא, נשוא, מושא ישיר וכו’)
+
+
+| טוקן (text) | סוג דקדוקי (pos\_) | תפקיד תחבירי (dep\_) |
+| ----------- | ------------------ | -------------------- |
+| Tesla       | PROPN              | nsubj                |
+| is          | AUX                | aux                  |
+| looking     | VERB               | ROOT                 |
+| at          | ADP                | prep                 |
+| buying      | VERB               | pcomp                |
+| U.S.        | PROPN              | dobj                 |
+| startup     | VERB               | advcl                |
+| for         | ADP                | prep                 |
+| \$          | SYM                | quantmod             |
+| 6           | NUM                | compound             |
+| million     | NUM                | pobj                 |
 
 לדוגמה, אפשר לבדוק את סוג המילה הראשונה:
 

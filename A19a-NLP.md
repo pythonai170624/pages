@@ -411,3 +411,4 @@ Output:
 
 <img src="nlp11.jpg" style="width: 60%" />
 
+הסבר בעמוד הבא
