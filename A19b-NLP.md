@@ -257,7 +257,7 @@ word: another, start a sentence: False
 3. **Prefix** – זיהוי של תווים לפני מילה (כמו גרש בתחילת מילה)
 4. **Exception** – handling contractions like "We're", which is split into "We" + "'re"
 5. **Suffix** – זיהוי תווים שבסוף מילה (כמו סימן קריאה)
-6. **Exception נוסף** – קיצור כמו "L.A." מזוהה כקיצור תקני
+6. **Exception נוסף** – an abbreviation like "L.A." is recognized as a valid abbreviation קיצור תקני
 7. **Done** – הפיצול הסופי של הטקסט לטוקנים מוכנים לעיבוד
 
 
