@@ -7,35 +7,36 @@
 
 ```python
 import spacy
-
 nlp = spacy.load("en_core_web_sm")
+
+# The model response is a SpaCy Doc object
 doc = nlp("Tesla is looking at buying U.S. startup for $6 million")
 
 for token in doc:
-    print(token.text, token.pos_, token.dep_)
+    print(f'[{token.pos:3}]', token.text, token.pos_, token.dep_)
 ```
 
 Output:
 ```
-Tesla PROPN nsubj
-is AUX aux
-looking VERB ROOT
-at ADP prep
-buying VERB pcomp
-U.S. PROPN dobj
-startup VERB advcl
-for ADP prep
-$ SYM quantmod
-6 NUM compound
-million NUM pobj
+[ 96] Tesla PROPN nsubj
+[ 87] is AUX aux
+[100] looking VERB ROOT
+[ 85] at ADP prep
+[100] buying VERB pcomp
+[ 96] U.S. PROPN dobj
+[100] startup VERB advcl
+[ 85] for ADP prep
+[ 99] $ SYM quantmod
+[ 93] 6 NUM compound
+[ 93] million NUM pobj
 ```
 
 הפלט כולל טוקנים עם מאפיינים כמו:
 
 * `text` → הטקסט של המילה
-* `pos` part-of-speech → תג חלק הדיבר כמספר (int)
-* `pos_` → סוג המילה (שם עצם, פועל, תואר וכו’) כתיאור מילולי
-* `dep_` → הקשר התחבירי של המילה במשפט (נושא, נשוא, מושא ישיר וכו’)
+* `pos` part-of-speech tag as an integer → תג חלק הדיבר כמספר (int)
+* `pos_`string representation of the POS tag (more human) → סוג המילה (שם עצם, פועל, תואר וכו’) כתיאור מילולי
+* `dep_` dependency label → הקשר התחבירי של המילה במשפט (נושא, נשוא, מושא ישיר וכו’)
 
 
 | טוקן (text) | POS\_ |                | DEP\_    |                         |
