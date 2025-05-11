@@ -135,7 +135,7 @@ running → run
 ran → ran
 runs → run
 easily → easili
-fairly → fairli  # wrong
+fairly → fairli  # wrong לא מילה תקנית באנגלית
 fairness → fair
 ```
 
@@ -161,7 +161,7 @@ running --> run
 ran --> ran
 runs --> run
 easily --> easili
-fairly --> fair  # correct
+fairly --> fair  # correct 
 fairness --> fair
 ```
 
