@@ -112,7 +112,7 @@ displacy.render(doc, style='ent', jupyter=True)
 pip install nltk
 ```
 
-<img src="nlp17.png" style="width: 75%" />
+<img src="nlp17.png" style="width: 100%" />
 
 ### דוגמה בקוד
 
@@ -143,9 +143,9 @@ stemmer = SnowballStemmer(language='english')
 print(stemmer.stem("fairly"))  # → fair
 ```
 
-Snowball החזיר "fair" ולא "fairli" כמו האלגוריתם של Porter
+ה- Snowball החזיר "fair" ולא "fairli" כמו האלגוריתם של Porter
 
 ### סיכום
 
-Stemming הוא כלי פשוט אך חשוב בהכנת טקסט לניתוח
+ה- Stemming הוא כלי פשוט אך חשוב בהכנת טקסט לניתוח
 במקום לעבוד עם כל מילה כמו שהיא, אנחנו מצמצמים את כולן לצורה אחידה כדי להבין את המשמעות המרכזית
