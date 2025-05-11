@@ -295,7 +295,6 @@ L.A.
 * **L.A.** → spaCy recognizes "L.A." as an abbreviation and correctly handles the periods. It does not split "L.A." into multiple tokens
 * **!** → The exclamation mark is treated as a separate token. spaCy splits punctuation marks to isolate them
 
-
 ### Named Entity Recognition (NER) and Tokenization in spaCy
 
 בדוגמה זו נחקור כיצד SpaCy מבצעת טוקניזציה ולאחר מכן מזהה ישויות בשם מתוך משפט
@@ -323,6 +322,18 @@ Apple | is | about | to | build | a | factory | in | Hong | Kong | for | $ | 6 |
 ה- spaCy מפרקת את המשפט לטוקנים בעלי משמעות, תוך ניהול נכון של סימני פיסוק ומילים מורכבות
 
 #### Named Entity Recognition Example
+
+**מה זה `ents` ב־spaCy?**
+
+התכונה `ents` של האובייקט `Doc` מכילה את כל **הישויות בשם** (Named Entities) ש־spaCy זיהתה בטקסט
+
+ישויות בשם הן מילים או צירופים שמתארים דברים ממשיים בעולם, כמו:
+
+* שמות של **אנשים** (PERSON)
+* **חברות וארגונים** (ORG)
+* **מדינות וערים** (GPE)
+* **תאריכים** (DATE)
+* **סכומים כספיים** (MONEY)
 
 ```python
 for entity in doc8.ents:
