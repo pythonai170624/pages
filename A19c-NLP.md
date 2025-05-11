@@ -108,6 +108,12 @@ displacy.render(doc, style='ent', jupyter=True)
 ה- spaCy לא כוללת stemmer מובנה
 כדי להשתמש ב־stemming, צריך לייבא אותו מספרייה חיצונית כמו NLTK
 
+```python
+pip install nltk
+```
+
+<img src="nlp15.png" style="width: 75%" />
+
 ### דוגמה בקוד
 
 ```python
