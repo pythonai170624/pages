@@ -162,23 +162,23 @@ nlp.vocab["awesome"].is_stop = True
 nlp.vocab["the"].is_stop = False
 ```
 
-### SpaCy – עבודה עם Stop Words
-
 ב־spaCy ניתן לגשת לרשימת מילות העצירה (stop words) ברירת המחדל, לבדוק אם מילה מסוימת נחשבת מילת עצירה, ולהוסיף מילות עצירה חדשות בהתאמה אישית
 
 #### הדפסת רשימת מילות העצירה של spaCy:
 
 ```python
+import spacy
+from spacy.lang.en.stop_words import STOP_WORDS
+
+nlp = spacy.load("en_core_web_sm")
 print(nlp.Defaults.stop_words)
 ```
 
-מחזיר סט (set) של מילים כמו:
+Output:
 
 ```
-{'and', 'the', 'from', 'herself', 'only', 'should', ...}
+{"'ve", 'everything', 'whence', "'ll", 'this', 'to', 'mostly', 'three', 'too', 'four', 'front', 'nor', 'beyond', '‘ll', 'his', 'empty', 'n’t', 'done', 'using', 'nine', 'before', 'namely', 'cannot', 'whom', 'below', 'hers', 'itself', "'m", 'quite', 'which', 'sixty', '‘ve', "'s", 'several', 'unless', 'every', '’ll', 'and', 'show', 'none', 'i', 'move', 'was', 'were', 'there', 'much', 'my', 'go', 'bottom', 'of', 'same', 'someone', 'became', 'nothing', 'he', 'name', "'d", 'nowhere', 'except', 're', 'herein', 'whenever', 'so', 'besides', 'them', "n't", 'next', 'first', 'moreover', 'down', 'still', 'all', 'part', 'two', 'via', 'due', '‘m', 'whose', 'whereby', 'together', 'her', 'give', 'am', 'its', 'we', 'already', 'then', 'twelve', 'along', 'keep', 'while', 'per', 'otherwise', 'else', 'only', 'ours', 'used', 'she', 'hundred', 'other', 'might', 'themselves', 'since', 'therein', 'well', 'noone', 'whatever', 'it', 'should', 'whoever'...}
 ```
-
-> הערה: זהו סט בלתי-ממויין (unordered), ולכן הסדר יכול להשתנות
 
 #### בדיקה האם מילה מסוימת היא stop word:
 
