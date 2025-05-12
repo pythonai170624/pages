@@ -333,8 +333,6 @@ SolarPower
 * ד- "data-driven approach"
 * ד- "artificial-intelligence" (כולל מקף) (Efficiency)
 
-הטכניקה של Phrase Matching מותאמת לעבודה מהירה ויעילה במיוחד בטקסטים ארוכים או ביישומים בזמן אמת
-
 #### • יעילות (Efficiency)
 
 הטכניקה של Phrase Matching מותאמת לעבודה מהירה ויעילה במיוחד בטקסטים ארוכים או ביישומים בזמן אמת
@@ -350,9 +348,9 @@ SolarPower
 
 דוגמאות:
 
-* "COVID19", "COVID-19", "covid 19" – שלוש וריאציות של אותו מושג
-* "e-mail" לעומת "email" – אותו מונח עם או בלי מקף
-* "U.S.A." לעומת "USA" – עם נקודות או בלעדיהן (Applications)
+* ד- "COVID19", "COVID-19", "covid 19" – שלוש וריאציות של אותו מושג
+* ד- "e-mail" לעומת "email" – אותו מונח עם או בלי מקף
+* ד- "U.S.A." לעומת "USA" – עם נקודות או בלעדיהן (Applications)
 
 #### • יישומים (Applications)
 
