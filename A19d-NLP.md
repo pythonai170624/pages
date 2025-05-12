@@ -240,7 +240,7 @@ print(nlp.vocab['beyond'].is_stop)  # False
 
 ---
 
-### Phrase Matching ב־spaCy
+### ה- Phrase Matching ב־ spaCy
 
 ה- Phrase Matching הוא תהליך שמטרתו לזהות ביטויים (צירופים של מילים) שמופיעים בטקסט
 זהו כלי שימושי ב־NLP לזיהוי שמות, מונחים, תאריכים, קטגוריות ועוד
