@@ -1,59 +1,40 @@
-### Analyzing Token Parameters in spaCy
+### Benefits of Removing Stop Words – הסרת מילות עצירה
 
-In this example, we're processing a sentence that includes multiple forms of the word `run`:
+כאשר אנו מסירים מילות עצירה (כמו: the, is, and, in) מהטקסט, אנו משפרים את יעילות ואיכות העיבוד הלשוני בכמה דרכים עיקריות:
 
-```python
-doc1 = nlp("I am a runner running in a race because I love to run since I ran today")
+#### \* הסרתן מפחיתה את מספר הטוקנים
 
-for token in doc1:
-    print(token.text, '\t', token.pos_, '\t', token.lemma, '\t', token.lemma_)
+כאשר מסירים מילים חסרות משמעות תחבירית, מתקבל טקסט קצר יותר עם פחות טוקנים
+
+**דוגמה:**
+
+```text
+Before: I am going to the store and I will buy some milk
+After: going store buy milk
 ```
 
-This line prints the following information for each token:
+במקום 11 טוקנים – נשארים עם 4 בלבד
 
-#### 1. `token.text`
+#### \* הסרתן מחדדת את התוכן המרכזי
 
-The actual word (token) as it appears in the sentence
+כאשר נפטרים מהמילים השכיחות שלא מוסיפות מידע מהותי, נשארים רק המילים החשובות והייחודיות של המסמך
 
-#### 2. `token.pos_`
+**דוגמה:**
 
-The part-of-speech tag (POS) as a **readable string**, like:
-
-* `PRON` – pronoun
-* `AUX` – auxiliary verb
-* `VERB` – main verb
-* `NOUN` – noun
-
-This is the **human-readable** label for grammatical role
-
-#### 3. `token.lemma`
-
-The lemma of the token, as an **internal hash-based ID number** (spaCy uses numerical IDs internally for efficiency)
-This is useful for internal lookup but not for human interpretation
-
-#### 4. `token.lemma_`
-
-The lemma as a **readable string**, e.g.:
-
-* `running`, `ran`, `run` → all will have `lemma_ = "run"`
-* `am` → `lemma_ = "be"`
-
-### Example Output (simplified):
-
-```
-I       PRON    4690420944186131903    I
-am      AUX     10382539506755952630   be
-runner  NOUN    5566430174578461922    runner
-running VERB    976151799503001163    run
-...
+```text
+Original: The new phone is really fast and very efficient
+After: new phone fast efficient
 ```
 
-### Summary
+זה מדגיש בדיוק את התכונות החשובות של המכשיר
 
-This format helps analyze:
+#### \* הסרתן מייעלת את תהליך הלמידה או הניתוח
 
-* What each word is (text)
-* Its grammatical role (POS)
-* The root/base form (lemma)
+באלגוריתמים של למידת מכונה או בניתוח טקסט – פחות טוקנים משמעו פחות תכונות (features) לבחינה, מה שמוביל לאימון מהיר יותר ומודלים פשוטים יותר
 
-Using `lemma_` is most helpful when comparing different forms of a word like `run`, `running`, `ran`, `runs`, etc.
+**דוגמה:**
+אם מסמך מכיל 1,000 מילים ורק 400 מהן אינפורמטיביות, מודל שיוסמך על 400 תכונות יפעל מהר יותר ויבין טוב יותר את ההקשר האמיתי
+
+### סיכום
+
+הסרת מילות עצירה היא צעד חשוב בתהליך קדם-עיבוד של טקסט, שמוביל לדיוק, פשטות ויעילות גבוהה יותר
