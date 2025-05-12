@@ -328,11 +328,12 @@ SolarPower
 
 לדוגמה:
 
-* "machine learning"
-* "natural language processing"
-* "data-driven approach"
-* "artificial-intelligence" (כולל מקף) (Efficiency)
-  הטכניקה של Phrase Matching מותאמת לעבודה מהירה ויעילה במיוחד בטקסטים ארוכים או ביישומים בזמן אמת
+* ד- "machine learning"
+* ד- "natural language processing"
+* ד- "data-driven approach"
+* ד- "artificial-intelligence" (כולל מקף) (Efficiency)
+
+הטכניקה של Phrase Matching מותאמת לעבודה מהירה ויעילה במיוחד בטקסטים ארוכים או ביישומים בזמן אמת
 
 #### • יעילות (Efficiency)
 
