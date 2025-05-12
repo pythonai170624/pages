@@ -240,13 +240,20 @@ print(nlp.vocab['beyond'].is_stop)  # False
 
 ---
 
-### ה- Phrase Matching – זיהוי ביטויים בטקסט
+### Phrase Matching ב־spaCy
 
-ה- Phrase matching הוא תהליך של זיהוי ביטויים או רצפים קבועים של מילים בטקסט
+ה- Phrase Matching הוא תהליך שמטרתו לזהות ביטויים (צירופים של מילים) שמופיעים בטקסט
+זהו כלי שימושי ב־NLP לזיהוי שמות, מונחים, תאריכים, קטגוריות ועוד
 
-ב־spaCy יש מחלקה מיוחדת לכך: `PhraseMatcher`
+ב־spaCy משתמשים במחלקה `PhraseMatcher` שמבוססת על המודל והטוקניזציה הפנימית שלו
 
-### דוגמה לשימוש:
+### למה זה חשוב
+
+* מאפשר לזהות ביטויים קבועים או מונחים מתוך רשימה
+* מייעל תהליכי חיפוש, סיווג טקסטים, שליפת מידע
+* תומך בהתאמות עם רגישות למבנה תחבירי או פיסוק
+
+### שלבי עבודה בסיסיים:
 
 ```python
 from spacy.matcher import PhraseMatcher
@@ -257,20 +264,59 @@ matcher.add("SOLARPOWER", patterns)
 
 doc = nlp("This building uses Solar-Power and solarpower systems")
 matches = matcher(doc)
+
 for match_id, start, end in matches:
     print(doc[start:end].text)
 ```
 
-פלט:
+#### פלט:
 
 ```
 Solar-Power
 solarpower
 ```
 
-### למה להשתמש בזה
+### מה קורה בפועל
 
-* מאפשר לזהות שמות, ביטויים, מושגים
-* שימושי בחיפוש, סיווג טקסטים, זיהוי ישויות
+* אנו מוסיפים למתאם (`matcher`) שלוש וריאציות של אותו ביטוי
+* spaCy מזהה את כולן במשפט למרות ההבדלים במבנה (רווח, מקף, יחד)
 
-ה- PhraseMatcher יודע לעבוד בצורה חכמה עם מילים שונות, צורות דקדוקיות שונות וסימני פיסוק
+### התאמה מתקדמת עם הקשרים תחביריים
+
+```python
+# הסרת המתאם הקודם כדי לא לייצר כפילויות
+matcher.remove("SOLARPOWER")
+
+# הגדרה מחדש עם תבניות מתקדמות
+patterns = [
+    nlp("solarpower"),
+    nlp("solar power"),
+    nlp("solar-power"),
+    nlp("solar--power"),
+    nlp("solar.power"),
+    nlp("solar_powered")
+]
+matcher.add("SOLARPOWER", patterns)
+
+doc = nlp("The company installs solar-powered and SolarPower panels")
+
+matches = matcher(doc)
+for match_id, start, end in matches:
+    print(doc[start:end].text)
+```
+
+#### פלט:
+
+```
+solar-powered
+SolarPower
+```
+
+### סיכום:
+
+* PhraseMatcher של spaCy מאפשר לזהות ביטויים בטקסט באופן מהיר וגמיש
+* ניתן להוסיף תבניות פשוטות או מורכבות לפי הצורך
+* חשוב להסיר מתאמים קודמים לפני הוספת תבניות חדשות באותו שם
+* מתאים מאוד לזיהוי מונחים ומילים רלוונטיות בטקסט אמיתי
+
+🖼️ *כאן להוסיף את התמונות מהשקפים 34–36 על Phrase Matching*
