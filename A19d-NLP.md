@@ -98,6 +98,7 @@ The lemma as a **readable string**, e.g.:
 * `running`, `ran`, `run` → all will have `lemma_ = "run"`
 * `am` → `lemma_ = "be"`
 
+---
 
 ### ה- Stop Words – מילות עצירה
 
