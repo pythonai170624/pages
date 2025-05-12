@@ -162,6 +162,56 @@ nlp.vocab["awesome"].is_stop = True
 nlp.vocab["the"].is_stop = False
 ```
 
+### SpaCy – עבודה עם Stop Words
+
+ב־spaCy ניתן לגשת לרשימת מילות העצירה (stop words) ברירת המחדל, לבדוק אם מילה מסוימת נחשבת מילת עצירה, ולהוסיף מילות עצירה חדשות בהתאמה אישית
+
+#### הדפסת רשימת מילות העצירה של spaCy:
+
+```python
+print(nlp.Defaults.stop_words)
+```
+
+מחזיר סט (set) של מילים כמו:
+
+```
+{'and', 'the', 'from', 'herself', 'only', 'should', ...}
+```
+
+> הערה: זהו סט בלתי-ממויין (unordered), ולכן הסדר יכול להשתנות
+
+#### בדיקה האם מילה מסוימת היא stop word:
+
+```python
+print(nlp.vocab['myself'].is_stop)    # True
+print(nlp.vocab['mystery'].is_stop)   # False
+```
+
+> משמש כדי לבדוק אם מילה מסוימת מזוהה כברירת מחדל כמילת עצירה
+
+#### הוספת מילת עצירה חדשה באופן ידני:
+
+```python
+nlp.Defaults.stop_words.add('btw')
+nlp.vocab['btw'].is_stop = True
+
+print(nlp.vocab['btw'].is_stop)  # True
+```
+
+> שים לב: יש להשתמש באותיות קטנות בלבד בעת הוספה לרשימה
+> אנו מסמנים את המילה כ־stop word על ידי הגדרת `is_stop = True`
+
+### סיכום:
+
+* ניתן להדפיס את כל מילות העצירה המובנות ב־spaCy
+* ניתן לבדוק האם מילה היא stop word קיימת
+* ניתן להוסיף מילות עצירה חדשות לפי הצורך
+
+
+
+
+---
+
 ### ה- Phrase Matching – זיהוי ביטויים בטקסט
 
 ה- Phrase matching הוא תהליך של זיהוי ביטויים או רצפים קבועים של מילים בטקסט
