@@ -177,7 +177,11 @@ print(nlp.Defaults.stop_words)
 Output:
 
 ```
-{"'ve", 'everything', 'whence', "'ll", 'this', 'to', 'mostly', 'three', 'too', 'four', 'front', 'nor', 'beyond', '‘ll', 'his', 'empty', 'n’t', 'done', 'using', 'nine', 'before', 'namely', 'cannot', 'whom', 'below', 'hers', 'itself', "'m", 'quite', 'which', 'sixty', '‘ve', "'s", 'several', 'unless', 'every', '’ll', 'and', 'show', 'none', 'i', 'move', 'was', 'were', 'there', 'much', 'my', 'go', 'bottom', 'of', 'same', 'someone', 'became', 'nothing', 'he', 'name', "'d", 'nowhere', 'except', 're', 'herein', 'whenever', 'so', 'besides', 'them', "n't", 'next', 'first', 'moreover', 'down', 'still', 'all', 'part', 'two', 'via', 'due', '‘m', 'whose', 'whereby', 'together', 'her', 'give', 'am', 'its', 'we', 'already', 'then', 'twelve', 'along', 'keep', 'while', 'per', 'otherwise', 'else', 'only', 'ours', 'used', 'she', 'hundred', 'other', 'might', 'themselves', 'since', 'therein', 'well', 'noone', 'whatever', 'it', 'should', 'whoever'...}
+{"'ve", 'everything', 'whence', "'ll", 'this', 'to', 'mostly', 'three', 'too', 'four', 'front', 'nor', 'beyond', 
+  '‘ll', 'his', 'empty', 'n’t', 'done', 'using', 'nine', 'before', 'namely', 'cannot', 'whom', 'below', 'hers', 
+  'itself', "'m", 'quite', 'which', 'sixty', '‘ve', "'s", 'several', 'unless', 'every', '’ll', 'and', 'show', 
+  'none', 'i', 'move', 'was', 'were', 'there', 'much', 'my', 'go', 'bottom', 'of', 'same', 'someone', 'became',
+   'nothing', 'he', 'name', "'d", 'nowhere', 'except', 're', 'herein', 'whenever', 'so', 'besides', 'them'...}
 ```
 
 #### בדיקה האם מילה מסוימת היא stop word:
