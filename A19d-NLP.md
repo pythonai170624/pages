@@ -284,10 +284,10 @@ solarpower
 ### התאמה מתקדמת עם הקשרים תחביריים
 
 ```python
-# הסרת המתאם הקודם כדי לא לייצר כפילויות
+# Removing the previous matcher to avoid duplicates
 matcher.remove("SOLARPOWER")
 
-# הגדרה מחדש עם תבניות מתקדמות
+# Redefining with advanced patterns
 patterns = [
     nlp("solarpower"),
     nlp("solar power"),
