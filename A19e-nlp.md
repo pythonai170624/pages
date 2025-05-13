@@ -361,12 +361,12 @@ def set_custom_boundaries(doc):
 
 ה- **SpaCy Pipeline** Pipeline הוא רצף הפעולות ש־SpaCy מבצעת על הטקסט:
 
-- Tokenization
-- POS Tagging
-- Dependency Parsing
-- Lemmatization
-- Named Entity Recognition
-- Sentence Segmentation
+- פ- Tokenization
+- פ- POS Tagging
+- פ- Dependency Parsing
+- פ- Lemmatization
+- פ- Named Entity Recognition
+- פ- Sentence Segmentation
 
 
 Output:
