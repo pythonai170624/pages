@@ -324,15 +324,44 @@ This is the first sentence.
 בדוגמה הבאה, SpaCy לא מפצל את המשפט לשניים, למרות שיש `;` שמפריד בין רעיונות שונים:
 
 ```python
-doc3 = nlp('Management is doing things right; leadership is doing the right things. –Peter Drucker')
+doc = nlp('Management is doing things right; leadership is doing the right things. –Peter Drucker')
 
-for sent in doc3.sents:
+for sent in doc.sents:
     print(sent)
 ```
 
 Output:
 ```
-Management is doing things right; leadership is doing the right things. –Peter Drucker
+Management is doing things right; leadership is doing the right things.
+–Peter Drucker
+```
+
+נגדיר פונקציה שתחפש תו ; ותסמן את הטוקן הבא אחריו כהתחלה של משפט חדש
+
+הפונקציה תירשם לרצף הפעולות (pipeline) של SpaCy כ־component חדש
+
+```python
+from spacy.language import Language
+
+@Language.component('set_custom_boundaries')
+def set_custom_boundaries(doc):
+    for token in doc[:-1]:
+        if token.text == ';':
+            doc[token.i + 1].is_sent_start = True
+    return doc
+```
+
+📌 מה הפונקציה עושה:
+
+עוברת על כל הטוקנים במסמך (חוץ מהאחרון)
+
+אם היא מוצאת ;, היא מסמנת את הטוקן הבא (token.i + 1) כהתחלה של משפט (is_sent_start = True)
+
+הפונקציה מחזירה את ה־doc עם העדכון
+
+
+Output:
+```
 ```
 
 ---
