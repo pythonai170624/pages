@@ -170,6 +170,22 @@ $6 million MONEY Monetary values, including unit
 - `dashboard website`
 - `dashboard-website`
 
+In this example, we demonstrate how to use SpaCy’s `PhraseMatcher` to detect custom named entities that are not recognized by default
+
+#### Step 1: Default Behavior – No Entities Detected
+
+```python
+doc = nlp(u"Our company plans to introduce a new dashboard-website. If successful, the dashboard website\
+ will be our main customer payed product")
+show_ents(doc)
+```
+
+Output:
+```
+No named entities found.
+```
+
+
 נשתמש ב־PhraseMatcher לזיהוי הביטויים במסמך, ואז נוסיף אותם כישויות:
 
 ```python
