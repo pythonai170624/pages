@@ -135,11 +135,34 @@ Hawaii GPE Countries, cities, states
 3. הוספת ה־Span לרשימת הישויות במסמך `doc.ents`
 
 ```python
+import spacy
+nlp = spacy.load('en_core_web_sm')
+
+doc = nlp(u'Tesla to build a U.K. factory for $6 million')
+for ent in doc.ents:
+    print(ent.text, ent.label_, spacy.explain(ent.label_))  
+
+
 from spacy.tokens import Span
 
 ORG = doc.vocab.strings["ORG"]
 new_ent = Span(doc, start=0, end=1, label=ORG)
 doc.ents = list(doc.ents) + [new_ent]
+
+for ent in doc.ents:
+    print(ent.text, ent.label_, spacy.explain(ent.label_))  
+```
+
+Output:
+```
+-Before
+U.K. GPE Countries, cities, states
+$6 million MONEY Monetary values, including unit
+
+-After
+Tesla ORG Companies, agencies, institutions, etc.
+U.K. GPE Countries, cities, states
+$6 million MONEY Monetary values, including unit
 ```
 
 #### דוגמה מתקדמת – Phrase Matcher
