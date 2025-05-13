@@ -1,46 +1,43 @@
-### היבטים מרכזיים של Phrase Matching ב־spaCy
+### 🧠 התאמה אישית של NER ב־spaCy
 
-#### • הגדרת תבניות (Pattern Specification)
+#### למה נרצה להוסיף ישויות ידנית?
+לפעמים spaCy לא מזהה ישויות שאנחנו כן רוצים לזהות – לדוגמה, "Tesla" לא מזוהה כברירת מחדל כישות מסוג ORG  
+במקרים כאלה נוכל להוסיף את הישות ידנית למסמך
 
-ב־Phrase Matching מגדירים מראש תבניות או רצפי טוקנים שרוצים לזהות בטקסט
-תבניות אלו יכולות להיות מילים בודדות או מבנים מורכבים הכוללים וריאציות תחביריות או סימני פיסוק
+#### השלבים להוספת ישות ידנית:
+1. שליפת הערך המספרי (hash) של התווית הרצויה (למשל "ORG")
+2. יצירת Span מהמילה או הביטוי הרצוי
+3. הוספת ה־Span לרשימת הישויות במסמך `doc.ents`
 
-לדוגמה:
+```python
+from spacy.tokens import Span
 
-* "machine learning"
-* "natural language processing"
-* "data-driven approach"
-* "artificial-intelligence" (כולל מקף) (Efficiency)
-  הטכניקה של Phrase Matching מותאמת לעבודה מהירה ויעילה במיוחד בטקסטים ארוכים או ביישומים בזמן אמת
-
-#### • התאמה אישית (Customization)
-
-ניתן להתאים את תהליך ההתאמה למקרים שונים כמו:
-
-* אותיות רישיות מול קטנות (לדוגמה: Run לעומת run, AI לעומת ai)
-* צורות דקדוקיות משתנות (כגון: run, running, ran – כולן קשורות לאותו שורש)
-* פיסוק מגוון (כמו: machine-learning, machine.learning, machine learning)
-* צרכים לשוניים מיוחדים בהתאם לאפליקציה או למטרה
-
-דוגמאות:
-
-* "COVID19", "COVID-19", "covid 19" – שלוש וריאציות של אותו מושג
-* "e-mail" לעומת "email" – אותו מונח עם או בלי מקף
-* "U.S.A." לעומת "USA" – עם נקודות או בלעדיהן (Applications)
-
-ה- Phrase Matching שימושי למגוון רחב של מטרות:
-
-* חילוץ מידע (כמו שמות, תאריכים, מונחים מקצועיים)
-* סיווג טקסטים לפי קטגוריות לפי ביטויים קיימים
-* שיפור מנועי חיפוש על ידי זיהוי ביטויים רלוונטיים שמובילים לתוצאות מדויקות יותר
-
-machine-learning
-machinelearning
-
+ORG = doc.vocab.strings["ORG"]
+new_ent = Span(doc, start=0, end=1, label=ORG)
+doc.ents = list(doc.ents) + [new_ent]
 ```
-Phrase Matching שימושי למגוון רחב של מטרות:
-- חילוץ מידע (כמו שמות, תאריכים, מונחים מקצועיים)
-- סיווג טקסטים לפי קטגוריות לפי ביטויים קיימים
-- שיפור מנועי חיפוש על ידי זיהוי ביטויים רלוונטיים שמובילים לתוצאות מדויקות יותר
 
+#### דוגמה מתקדמת – Phrase Matcher
+אם נרצה לזהות ביטויים שלמים כמו:
+- `dashboard website`
+- `dashboard-website`
+
+נשתמש ב־PhraseMatcher לזיהוי הביטויים במסמך, ואז נוסיף אותם כישויות:
+
+```python
+from spacy.matcher import PhraseMatcher
+
+matcher = PhraseMatcher(nlp.vocab)
+patterns = [nlp("dashboard website"), nlp("dashboard-website")]
+matcher.add("PRODUCT", patterns)
+
+matches = matcher(doc)
+new_ents = [Span(doc, start, end, label=doc.vocab.strings["PRODUCT"]) for match_id, start, end in matches]
+doc.ents = list(doc.ents) + new_ents
 ```
+
+#### שימושים נוספים:
+אפשר גם:
+- לספור ישויות לפי סוג: `len([ent for ent in doc.ents if ent.label_ == "ORG"])`
+- להציג את כל הישויות עם הסוגים שלהן
+- להדפיס את מיקום ההתחלה והסיום של כל ישות
