@@ -442,34 +442,3 @@ Management is doing things right;
 leadership is doing the right things.
 –Peter Drucker
 ```
-
-ה- **SpaCy Pipeline** Pipeline הוא רצף הפעולות ש־SpaCy מבצעת על הטקסט:
-
-- פ- Tokenization
-- פ- POS Tagging
-- פ- Dependency Parsing
-- פ- Lemmatization
-- פ- Named Entity Recognition
-- פ- Sentence Segmentation
-
-
-Output:
-```
-```
-
----
-
-### SpaCy Pipeline
-
-Pipeline הוא רצף הפעולות ש־SpaCy מבצעת על הטקסט:
-
-1. Tokenization
-2. POS Tagging
-3. Dependency Parsing
-4. Lemmatization
-5. Named Entity Recognition
-6. Sentence Segmentation
-
-כל שלב משפיע על ה־`Doc` ומוסיף לו מידע. אפשר גם להוסיף שלבים מותאמים כמו segmentation או זיהוי ישויות מותאמות
-
-📌 ניתן להוסיף שלב עם `add_pipe()` או להסיר עם `disable()`
