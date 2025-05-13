@@ -185,6 +185,35 @@ Output:
 No named entities found.
 ```
 
+#### Step 2: Define Phrase Matcher Patterns
+
+We want to recognize ```"dashboard website"``` and ```"dashboard-website"``` as **PRODUCT** entities. First, we use PhraseMatcher to define patterns for them
+
+```python
+from spacy.matcher import PhraseMatcher
+
+matcher = PhraseMatcher(nlp.vocab)
+
+phrase_list = ['dashboard website', 'dashboard-website']
+phrase_patterns = [nlp(text) for text in phrase_list]
+
+matcher.add('newproduct', phrase_patterns)
+
+matches = matcher(doc)
+matches
+```
+
+Output:
+```
+[(2689272359382549672, 7, 10), (2689272359382549672, 15, 17)]
+```
+
+✅ We created two phrase patterns: one for "dashboard website" and one for "dashboard-website"
+
+✅ Added both patterns under the label 'newproduct'
+
+✅ SpaCy successfully matched both phrases within the doc and returned their span positions
+
 
 נשתמש ב־PhraseMatcher לזיהוי הביטויים במסמך, ואז נוסיף אותם כישויות:
 
