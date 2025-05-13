@@ -177,7 +177,9 @@ In this example, we demonstrate how to use SpaCy’s `PhraseMatcher` to detect c
 ```python
 doc = nlp(u"Our company plans to introduce a new dashboard-website. If successful, the dashboard website\
  will be our main customer payed product")
-show_ents(doc)
+
+for ent in doc.ents:
+    print(ent.text, ent.label_, spacy.explain(ent.label_))  
 ```
 
 Output:
@@ -214,6 +216,28 @@ Output:
 
 ✅ SpaCy successfully matched both phrases within the doc and returned their span positions
 
+#### Step 3: Add Matched Spans to `doc.ents`
+
+After using the `PhraseMatcher` to find matching phrases in the text, we can now manually add them to SpaCy’s `doc.ents` list so that they are treated as proper named entities.
+
+```python
+from spacy.tokens import Span
+
+PROD = doc.vocab.strings['PRODUCT']
+
+new_ents = [Span(doc, match[1], match[2], label=PROD) for match in matches]
+
+doc.ents = list(doc.ents) + new_ents
+
+for ent in doc.ents:
+    print(ent.text, ent.label_, spacy.explain(ent.label_))  
+```    
+
+Output:
+```
+dashboard-website PRODUCT Objects, vehicles, foods, etc. (not services)
+dashboard website PRODUCT Objects, vehicles, foods, etc. (not services)
+```
 
 נשתמש ב־PhraseMatcher לזיהוי הביטויים במסמך, ואז נוסיף אותם כישויות:
 
