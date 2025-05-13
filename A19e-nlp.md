@@ -13,6 +13,39 @@
 
 📌 ה- SpaCy אומנה על קורפוסים מסומנים, מה שמאפשר לה להבין הקשרים ולזהות מבנים לשוניים מורכבים
 
+```python
+import spacy
+nlp = spacy.load('en_core_web_sm')
+doc = nlp("The quick brown fox jumped over the lazy dog's back.")
+
+print(doc[4].text, doc[4].pos_, doc[4].tag_, spacy.explain(doc[4].tag_))
+```
+
+Output:
+```
+jumped VERB VBD verb, past tense
+```
+
+SpaCy decided that the token jumped is a verb with the VBD tag, meaning it's a verb in past tense
+
+```python
+doc1 = nlp(u'I read books on NLP.')
+doc2 = nlp(u'I read a book on NLP.')
+
+print(f'{doc1[1].text:10} {doc1[1].pos_:8} {doc1[1].tag_:6} {spacy.explain(doc1[1].tag_)}')
+print()
+print(f'{doc2[1].text:10} {doc2[1].pos_:8} {doc2[1].tag_:6} {spacy.explain(doc2[1].tag_)}')
+```
+
+Output:
+```
+read       VERB     VBP    verb, non-3rd person singular present
+
+read       VERB     VBD    verb, past tense
+```
+
+📌 SpaCy is smart enough to understand from the textual context that the first read token is in present tense, while the second read is in past tense
+
 ## Named Entity Recognition (NER)
 
 NER הוא תהליך שבו מזהים ישויות בשם בטקסט (כמו שמות של אנשים, מקומות, חברות, סכומים, תאריכים וכו').
