@@ -359,6 +359,16 @@ def set_custom_boundaries(doc):
 
 הפונקציה מחזירה את ה־doc עם העדכון
 
+**SpaCy Pipeline**
+Pipeline הוא רצף הפעולות ש־SpaCy מבצעת על הטקסט:
+
+- Tokenization
+- POS Tagging
+- Dependency Parsing
+- Lemmatization
+- Named Entity Recognition
+- Sentence Segmentation
+
 
 Output:
 ```
