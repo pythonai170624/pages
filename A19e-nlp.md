@@ -245,7 +245,7 @@ dashboard website PRODUCT Objects, vehicles, foods, etc. (not services)
 
 ### פיצול למשפטים (Sentence Segmentation) 🧩
 
-**פיצול משפטים** – תהליך ב־NLP שמטרתו לחלק טקסט שלם למשפטים נפרדים. המטרה היא לזהות מתי מסתיים משפט אחד ומתחיל משפט חדש.
+**פיצול משפטים** – תהליך ב־NLP שמטרתו לחלק טקסט שלם למשפטים נפרדים. המטרה היא לזהות מתי מסתיים משפט אחד ומתחיל משפט חדש
 
 #### 🟣 הגישה הנפוצה
 
@@ -279,7 +279,27 @@ dashboard website PRODUCT Objects, vehicles, foods, etc. (not services)
 - סיכום טקסטים
 - ניתוח סנטימנט
 
-בגלל שפעולות אלו מבוצעות לעיתים קרובות **ברמת משפט**, פיצול לא מדויק יפגע בדיוק התוצאות.
+בגלל שפעולות אלו מבוצעות לעיתים קרובות **ברמת משפט**, פיצול לא מדויק יפגע בדיוק התוצאות
+
+כאשר אנו מפצלים טקסט למשפטים בעזרת SpaCy, הפלט נשמר באובייקט בשם `doc.sents`  
+זהו לא ממש רשימה, אלא **generator** – אובייקט שמחזיר כל משפט בנפרד בלולאה
+
+```python
+import spacy
+nlp = spacy.load('en_core_web_sm')
+
+doc = nlp('This is the first sentence. This is another sentence. This is the last sentence.')
+
+for sent in doc.sents:
+    print(sent)
+```
+
+Output:
+```
+This is the first sentence.
+This is another sentence.
+This is the last sentence.
+```
 
 ---
 
