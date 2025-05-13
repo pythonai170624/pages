@@ -359,7 +359,7 @@ def set_custom_boundaries(doc):
 
 הפונקציה מחזירה את ה־doc עם העדכון
 
-**anotaton של Language.component 🧩**
+**ה- anotaton של Language.component 🧩**
 
 ה־`@Language.component` הוא קישוט (decorator) ב־SpaCy שמאפשר לרשום פונקציה מותאמת אישית כשלב (component) ב־pipeline של SpaCy.  
 באמצעותו אנו מודיעים ל־SpaCy שהפונקציה שיצרנו צריכה להיות מופעלת כחלק מתהליך העיבוד של הטקסט.
@@ -367,7 +367,7 @@ def set_custom_boundaries(doc):
 📌 זה שימושי במיוחד כשאנחנו רוצים להוסיף חוקים מותאמים אישית – כמו כלל לפיצול משפטים לפי `;`  
 או לבצע ניתוח מותאם לפני או אחרי שלבים כמו POS או NER.
 
-**SpaCy Pipeline 🛠️**
+**ה- SpaCy Pipeline 🛠️**
 
 ה־**Pipeline** של SpaCy הוא רצף של שלבים שמופעלים על הטקסט כדי להמיר אותו מטקסט גולמי למידע שניתן לנתח ולעבוד איתו בתוכנה.
 
