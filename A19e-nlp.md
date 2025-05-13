@@ -301,7 +301,7 @@ This is another sentence.
 This is the last sentence.
 ```
 
-כדי להשתמש ביכולות של רשימות (כמו שליפה לפי אינדקס), צריך להמיר את doc.sents לרשימה ידנית:
+הערה: כדי להשתמש ביכולות של רשימות (כמו שליפה לפי אינדקס), צריך להמיר את doc.sents לרשימה ידנית:
 
 ```python
 doc_sents = [sent for sent in doc.sents]
