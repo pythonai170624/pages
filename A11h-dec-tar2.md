@@ -24,13 +24,12 @@ The goal is to build a **decision tree** using the **CART algorithm** that predi
 
 ## ❓ Tasks
 
-4. Use the trained model to **make a prediction** for a new customer where Discount=Yes, Purchase=No
+1. Build a decision tree based on the dataset.
+   Use the **CART algorithm** with **Gini Index**
 
-5. Build a decision tree based on the dataset.
+2. Use the trained model to **make a prediction** for a new customer where Discount=Yes, Purchase=No
 
-6. Use the **CART algorithm** with **Gini Index**.
-
-7. *Bonus: add Python code to visualize the decision tree using ```sklearn.tree -> plot_tree```
+3. *Bonus: add Python code to visualize the decision tree using ```sklearn.tree -> plot_tree```
 
 ---
 
