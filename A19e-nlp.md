@@ -81,7 +81,7 @@ for ent in doc.ents:
     print(ent.text, ent.label_, spacy.explain(ent.label_))
 ```
 
-📌 SpaCy מחזיר ישויות עם label כמו `PERSON`, `DATE`, `GPE` ומאפשר להסביר כל label באמצעות `spacy.explain()`
+📌 ה- SpaCy מחזיר ישויות עם label כמו `PERSON`, `DATE`, `GPE` ומאפשר להסביר כל label באמצעות `spacy.explain()`
 
 ---
 
