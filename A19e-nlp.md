@@ -336,6 +336,8 @@ Management is doing things right; leadership is doing the right things.
 –Peter Drucker
 ```
 
+#### פיתרון:
+
 **נגדיר פונקציה שתחפש תו ; ותסמן את הטוקן הבא אחריו כהתחלה של משפט חדש**
 
 הפונקציה תירשם לרצף הפעולות (pipeline) של SpaCy כ־component חדש
