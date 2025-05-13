@@ -75,12 +75,10 @@ read       VERB     VBD    verb, past tense
 3. **Model Training** – אימון מודל על טקסטים מסומנים מראש
 4. **Prediction** – זיהוי ישויות בטקסט חדש
 
-ונבצע עליו תהליך זיהוי ישויות בשם (NER). התהליך כולל ארבעה שלבים עיקריים:
-
 `Barack Obama was born on August 4, 1961, in Honolulu, Hawaii.`
 
 #### 1. **Tokenization** – פיצול הטקסט למילים (טוקנים)  
-SpaCy מפרקת את המשפט למילים ותווי פיסוק – כמו `"Barack"`, `"Obama"`, `"August"`, `"4"`, `"1961"`, `","`, `"Hawaii"` וכו'
+ה- SpaCy מפרקת את המשפט למילים ותווי פיסוק – כמו `"Barack"`, `"Obama"`, `"August"`, `"4"`, `"1961"`, `","`, `"Hawaii"` וכו'
 
 #### 2. **Feature Extraction** – הפקת מאפיינים מהטוקנים  
 לכל מילה מחולצים מאפיינים כמו:  
@@ -96,7 +94,16 @@ SpaCy מפרקת את המשפט למילים ותווי פיסוק – כמו `
 #### 4. **Prediction** – חיזוי הישויות בטקסט  
 המודל מזהה את הישויות הבאות:
 
+```
+Barack Obama → PERSON → אדם (אמיתי או בדיוני)
+August 4, 1961 → DATE → תאריך
+Honolulu → GPE → מדינה / עיר / אזור גיאוגרפי
+Hawaii → GPE → מדינה / עיר / אזור גיאוגרפי
+```
 
+📌 כך spaCy מצליחה להבין מתוך ההקשר ולסווג נכון כל ישות בטקסט
+
+**פייתון**
 
 ```python
 doc = nlp("Barack Obama was born on August 4, 1961, in Honolulu, Hawaii.")
