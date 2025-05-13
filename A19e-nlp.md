@@ -301,6 +301,40 @@ This is another sentence.
 This is the last sentence.
 ```
 
+כדי להשתמש ביכולות של רשימות (כמו שליפה לפי אינדקס), צריך להמיר את doc.sents לרשימה ידנית:
+
+```python
+doc_sents = [sent for sent in doc.sents]
+
+print(doc_sents[0])
+```
+
+Output:
+```
+This is the first sentence.
+```
+
+### כלל מותאם לפיצול משפטים לפי תו מותאם אישית (כמו `;`) ✂️
+
+ב־SpaCy ברירת המחדל לפיצול משפטים מתבצעת לפי סימני פיסוק בסיסיים כמו נקודה (`.`).  
+אך לפעמים המשפט כולל תווים נוספים שיכולים לסמן סיום משפט – למשל **נקודה־פסיק** (`;`)
+
+#### בעיה:
+
+בדוגמה הבאה, SpaCy לא מפצל את המשפט לשניים, למרות שיש `;` שמפריד בין רעיונות שונים:
+
+```python
+doc3 = nlp('Management is doing things right; leadership is doing the right things. –Peter Drucker')
+
+for sent in doc3.sents:
+    print(sent)
+```
+
+Output:
+```
+Management is doing things right; leadership is doing the right things. –Peter Drucker
+```
+
 ---
 
 ### SpaCy Pipeline
