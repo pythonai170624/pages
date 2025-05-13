@@ -142,7 +142,7 @@ doc = nlp(u'Tesla to build a U.K. factory for $6 million')
 for ent in doc.ents:
     print(ent.text, ent.label_, spacy.explain(ent.label_))  
 
-
+# adding Tesla entity
 from spacy.tokens import Span
 
 ORG = doc.vocab.strings["ORG"]
