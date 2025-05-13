@@ -336,7 +336,7 @@ Management is doing things right; leadership is doing the right things.
 –Peter Drucker
 ```
 
-נגדיר פונקציה שתחפש תו ; ותסמן את הטוקן הבא אחריו כהתחלה של משפט חדש
+**נגדיר פונקציה שתחפש תו ; ותסמן את הטוקן הבא אחריו כהתחלה של משפט חדש**
 
 הפונקציה תירשם לרצף הפעולות (pipeline) של SpaCy כ־component חדש
 
@@ -355,7 +355,7 @@ def set_custom_boundaries(doc):
 
 עוברת על כל הטוקנים במסמך (חוץ מהאחרון)
 
-אם היא מוצאת ;, היא מסמנת את הטוקן הבא (token.i + 1) כהתחלה של משפט (is_sent_start = True)
+אם היא מוצאת `;` היא מסמנת את הטוקן הבא (token.i + 1) כהתחלה של משפט (is_sent_start = True)
 
 הפונקציה מחזירה את ה־doc עם העדכון
 
