@@ -393,6 +393,54 @@ def set_custom_boundaries(doc):
 - בכל שלב, האובייקט `Doc` מתעדכן עם המידע שנוצר
 - לכן **הסדר שבו השלבים מופעלים חשוב מאוד**
 
+**הוספת רכיב מותאם ל־pipeline של SpaCy 🧱**
+
+לאחר שיצרנו כלל חדש לפיצול משפטים (למשל לפי `;`), אפשר להוסיף אותו כרכיב (component) בתוך ה־pipeline של SpaCy.
+
+לשם כך, עלינו לציין:
+- את **שם הרכיב** שיצרנו (`set_custom_boundaries`)
+- ואת **המיקום שלו** ב־pipeline (למשל: לפני שלב `parser`)
+
+```python
+from spacy.language import Language
+import spacy
+
+@Language.component('set_custom_boundaries')
+def set_custom_boundaries(doc):
+    for token in doc[:-1]:
+        if token.text == ';':
+            doc[token.i + 1].is_sent_start = True
+    return doc
+
+nlp = spacy.load('en_core_web_sm')
+
+nlp.add_pipe('set_custom_boundaries', before='parser')
+nlp.pipe_names
+```
+
+Output:
+```
+['tok2vec',
+ 'tagger',
+ 'set_custom_boundaries',  # --> new pipeline component
+ 'parser',
+ 'attribute_ruler',
+ 'lemmatizer',
+ 'ner']
+```
+
+```python
+for sent in doc.sents:
+    print(sent)
+```
+
+Output:
+```
+Management is doing things right;
+leadership is doing the right things.
+–Peter Drucker
+```
+
 ה- **SpaCy Pipeline** Pipeline הוא רצף הפעולות ש־SpaCy מבצעת על הטקסט:
 
 - פ- Tokenization
