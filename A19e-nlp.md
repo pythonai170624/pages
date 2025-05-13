@@ -81,7 +81,15 @@ for ent in doc.ents:
     print(ent.text, ent.label_, spacy.explain(ent.label_))
 ```
 
-📌 ה- SpaCy מחזיר ישויות עם label כמו `PERSON`, `DATE`, `GPE` ומאפשר להסביר כל label באמצעות `spacy.explain()`
+Output:
+```
+Barack Obama PERSON People, including fictional
+August 4, 1961 DATE Absolute or relative dates or periods
+Honolulu GPE Countries, cities, states
+Hawaii GPE Countries, cities, states
+```
+
+📌 ה- SpaCy מחזיר ישויות עם label כמו `PERSON`, `DATE`, `GPE` ומאפשר להסביר כל label באמצעות `spacy.explain`
 
 ---
 
