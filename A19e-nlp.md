@@ -54,6 +54,20 @@ read       VERB     VBD    verb, past tense
 
 ה- NER הוא תהליך שבו מזהים ישויות בשם בטקסט (כמו שמות של אנשים, מקומות, חברות, סכומים, תאריכים וכו')
 
+#### • **Named Entities**  
+בניית רשימה של ישויות בשם מתוך הטקסט, כשהמפתח הוא סוג הישות והערכים הם המופעים שזוהו  
+לדוגמה:
+- **Persons (PER)** – שמות של אנשים כמו: `"Albert Einstein"`, `"Marie Curie"`
+- **Locations (LOC)** – מקומות גיאוגרפיים כמו: `"Paris"`, `"Mount Everest"`
+
+#### • **Recognition**  
+זיהוי בפועל של המילים או הביטויים בטקסט שמייצגים ישויות בשם  
+לדוגמה: במשפט `"Barack Obama visited Paris"` – נזהה את `"Barack Obama"` ואת `"Paris"` כישויות
+
+#### • **Classification**  
+שיוך כל ישות שנמצאה לקטגוריה מתאימה (כמו `PERSON`, `LOCATION`, `ORG`, `DATE` וכו')
+
+
 #### שלבים:
 
 1. **Tokenization** – פיצול הטקסט למילים
