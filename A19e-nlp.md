@@ -239,27 +239,7 @@ dashboard-website PRODUCT Objects, vehicles, foods, etc. (not services)
 dashboard website PRODUCT Objects, vehicles, foods, etc. (not services)
 ```
 
-נשתמש ב־PhraseMatcher לזיהוי הביטויים במסמך, ואז נוסיף אותם כישויות:
-
-```python
-from spacy.matcher import PhraseMatcher
-
-matcher = PhraseMatcher(nlp.vocab)
-patterns = [nlp("dashboard website"), nlp("dashboard-website")]
-matcher.add("PRODUCT", patterns)
-
-matches = matcher(doc)
-new_ents = [Span(doc, start, end, label=doc.vocab.strings["PRODUCT"]) for match_id, start, end in matches]
-doc.ents = list(doc.ents) + new_ents
-```
-
-#### שימושים נוספים:
-אפשר גם:
-- לספור ישויות לפי סוג: `len([ent for ent in doc.ents if ent.label_ == "ORG"])`
-- להציג את כל הישויות עם הסוגים שלהן
-- להדפיס את מיקום ההתחלה והסיום של כל ישות
-
----A
+---
 
 ### Sentence Segmentation
 
