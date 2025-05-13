@@ -68,7 +68,7 @@ read       VERB     VBD    verb, past tense
 שיוך כל ישות שנמצאה לקטגוריה מתאימה (כמו `PERSON`, `LOCATION`, `ORG`, `DATE` וכו')
 
 
-#### שלבים:
+### שלבים:
 
 1. **Tokenization** – פיצול הטקסט למילים
 2. **Feature Extraction** – הפקת מאפיינים כמו צורת מילה, אותיות גדולות, סיומות
