@@ -13,6 +13,8 @@
 
 📌 ה- SpaCy אומנה על קורפוסים מסומנים, מה שמאפשר לה להבין הקשרים ולזהות מבנים לשוניים מורכבים
 
+**דוגמא 1**
+
 ```python
 import spacy
 nlp = spacy.load('en_core_web_sm')
@@ -27,6 +29,8 @@ jumped VERB VBD verb, past tense
 ```
 
 SpaCy decided that the token jumped is a verb with the VBD tag, meaning it's a verb in past tense
+
+**דוגמא 2**
 
 ```python
 doc1 = nlp(u'I read books on NLP.')
