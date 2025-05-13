@@ -165,7 +165,7 @@ U.K. GPE Countries, cities, states
 $6 million MONEY Monetary values, including unit
 ```
 
-#### דוגמה מתקדמת – Phrase Matcher
+### דוגמה מתקדמת – Phrase Matcher
 אם נרצה לזהות ביטויים שלמים כמו:
 - `dashboard website`
 - `dashboard-website`
