@@ -429,6 +429,8 @@ Output:
  'ner']
 ```
 
+ועכשיו נריץ שוב: 
+
 ```python
 doc = nlp('Management is doing things right; leadership is doing the right things. –Peter Drucker')
 
