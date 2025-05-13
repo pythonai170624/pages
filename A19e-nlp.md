@@ -430,6 +430,8 @@ Output:
 ```
 
 ```python
+doc = nlp('Management is doing things right; leadership is doing the right things. –Peter Drucker')
+
 for sent in doc.sents:
     print(sent)
 ```
