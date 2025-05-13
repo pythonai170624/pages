@@ -30,7 +30,7 @@ The goal is to build a **decision tree** using the **CART algorithm** that predi
 
 6. Use the **CART algorithm** with **Gini Index**.
 
-7. Write Python code to build and visualize the decision tree using scikit-learn.
+7. *Bonus: add Python code to visualize the decision tree using ```sklearn.tree -> plot_tree```
 
 ---
 
@@ -38,7 +38,7 @@ The goal is to build a **decision tree** using the **CART algorithm** that predi
 
 1. Convert categorical values using `get_dummies()`
 2. Train a `DecisionTreeClassifier` with the data
-3. Visualize the tree using `plot_tree`
+3. predict 
 
 ---
 
@@ -60,5 +60,4 @@ data = pd.DataFrame({
 
 ## 🧩 Challenge:
 
-* Add a new customer who did not purchase but returned
-* Try using `criterion='entropy'` instead of `gini` and compare the tree
+* Try using `criterion='entropy'` instead of `gini`, then compare the visual tree and prediction
