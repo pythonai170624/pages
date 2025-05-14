@@ -379,7 +379,7 @@ $$
 
 <img src="nlpe6.jpg" style="width: 60%" />
 
-### מהו TfidfTransformer?
+### מהו TfidfVectorizer?
 
 ה- TfidfVectorizer מקצר את הפעולה הקודמת
 
