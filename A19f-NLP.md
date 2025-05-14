@@ -130,6 +130,58 @@ TF-IDF:
   `"Barack Obama was born in Hawaii"`  
   → Barack Obama = PERSON, Hawaii = GPE
 
+---
+
+## דוגמא בפייתון
+
+**🧠 בניית אוצר מילים (Vocabulary) באמצעות Python**
+
+כדי לבצע סיווג טקסט, אנחנו צריכים לבנות תחילה **אוצר מילים (Vocabulary)** שיכיל את כל המילים הייחודיות במסמכים שלנו  
+לאחר מכן כל מילה מקבלת מזהה מספרי ייחודי שנוכל להשתמש בו ל־Vectorization
+
+### שלבים:
+1. יצירת קובצי טקסט
+2. קריאת המילים מכל מסמך
+3. המרה לאותיות קטנות (lowercase)
+4. הוספה למילון עם מזהה ייחודי
+
+### 📄 יצירת קבצים
+
+```python
+%%writefile doc1.txt
+The sky is blue
+
+%%writefile doc2.txt
+The sun is bright
+```
+
+בניית אוצר מילים
+
+```python
+vocab = {}
+i = 0
+
+with open("doc1.txt") as f:
+    for word in f.read().split():
+        word = word.lower()
+        if word not in vocab:
+            vocab[word] = i
+            i += 1
+
+with open("doc2.txt") as f:
+    for word in f.read().split():
+        word = word.lower()
+        if word not in vocab:
+            vocab[word] = i
+            i += 1
+
+print(vocab)
+```
+
+Output:
+```
+{'the': 0, 'sky': 1, 'is': 2, 'blue': 3, 'sun': 4, 'bright': 5}
+```
 
 
 
