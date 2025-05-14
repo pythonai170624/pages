@@ -451,7 +451,7 @@ X_tfidf = TfidfVectorizer().fit_transform(X_train)
 
 `clf.fit(X_train_tfidf, y_train)`  
 
-אמנים את המודל על הנתונים:
+מאמנים את המודל על הנתונים:
 - `X_train_tfidf` = המאפיינים המספריים של הודעות האימון (לאחר TF-IDF)
 - `y_train` = התוויות (spam / ham)
 
