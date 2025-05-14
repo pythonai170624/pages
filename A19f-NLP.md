@@ -207,27 +207,27 @@ Output:
 
 המטרה שלנו היא להשתמש במודל למידה מונחית כדי לחזות האם אימיילים עתידיים יסווגו כ־`spam` או לא
 
-<img src="nlpe1.jpg" style="width: 30%" />
+<img src="nlpe1.jpg" style="width: 60%" />
 
-<img src="nlpe2.jpg" style="width: 30%" />
+<img src="nlpe2.jpg" style="width: 60%" />
 
-<img src="nlpe3.jpg" style="width: 30%" />
+<img src="nlpe3.jpg" style="width: 60%" />
 
-<img src="nlpe4.jpg" style="width: 30%" />
+<img src="nlpe4.jpg" style="width: 60%" />
 
-<img src="nlpe5.jpg" style="width: 30%" />
+<img src="nlpe5.jpg" style="width: 60%" />
 
-<img src="nlpe6.jpg" style="width: 30%" />
+<img src="nlpe6.jpg" style="width: 60%" />
 
 <img src="nlpe7.jpg" style="width: 30%" />
 
-<img src="nlpe8.jpg" style="width: 30%" />
+<img src="nlpe8.jpg" style="width: 60%" />
 
-<img src="nlpe9.jpg" style="width: 30%" />
+<img src="nlpe9.jpg" style="width: 60%" />
 
-<img src="nlpe10.jpg" style="width: 30%" />
+<img src="nlpe10.jpg" style="width: 60%" />
 
-<img src="nlpe11.jpg" style="width: 30%" />
+<img src="nlpe11.jpg" style="width: 60%" />
 
 
 
