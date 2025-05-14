@@ -379,13 +379,13 @@ $$
 
 <img src="nlpe6.jpg" style="width: 60%" />
 
-### ❓ למה צריך TfidfVectorizer אם כבר יש לי TfidfTransformer?
+### TfidfTransformer?
 
 ה- TfidfVectorizer מקצר את הפעולה הקודמת
 
 זו רק דוגמא פה כיצד להשתמש בו
 
-יכולנו גם לדלג
+זה פשוט שילוב של 2 השלבים הקודמים לתוך שלב מאוחד
 
 ### קודם כל נבין מה קרה בשני השלבים:
 
