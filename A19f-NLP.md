@@ -434,32 +434,34 @@ X_tfidf = TfidfVectorizer().fit_transform(X_train)
 
 <img src="nlpe7.jpg" style="width: 30%" />
 
-## 🧠 אימון מודל סיווג עם LinearSVC
+### 🧠 אימון מודל סיווג עם LinearSVC
 
 בשלב הזה אנו משתמשים באלגוריתם למידת מכונה מסוג **Linear Support Vector Classifier (LinearSVC)**  
 זהו מודל נפוץ לביצוע **סיווג טקסט**, במיוחד כאשר מדובר בנתונים לאחר עיבוד TF-IDF
 
-### ⚙️ מה כל שורה עושה?
+**⚙️ מה כל שורה עושה?**
 
-1. `from sklearn.svm import LinearSVC`  
-   מייבא את מחלקת `LinearSVC` מתוך מודול הסיווג של Scikit-Learn
+`from sklearn.svm import LinearSVC`  
 
-2. `clf = LinearSVC()`  
-   יוצרת מופע חדש של המודל – כלומר מכונה מוכנה ללמידה
+מייבא את מחלקת `LinearSVC` מתוך מודול הסיווג של Scikit-Learn
 
-3. `clf.fit(X_train_tfidf, y_train)`  
-   מאמנים את המודל על הנתונים:
-   - `X_train_tfidf` = המאפיינים המספריים של הודעות האימון (לאחר TF-IDF)
-   - `y_train` = התוויות (spam / ham)
+`clf = LinearSVC()`  
 
-### 📌 תוצאה
+יוצרת מופע חדש של המודל – כלומר מכונה מוכנה ללמידה
+
+`clf.fit(X_train_tfidf, y_train)`  
+
+אמנים את המודל על הנתונים:
+- `X_train_tfidf` = המאפיינים המספריים של הודעות האימון (לאחר TF-IDF)
+- `y_train` = התוויות (spam / ham)
+
+**📌 תוצאה**
 
 בסיום השלב הזה, המודל `clf` יודע:
 - לזהות דפוסים בטקסטים
 - ולסווג הודעות חדשות כ־`spam` או `ham`
 
 זהו שלב האימון בפועל של המודל
-
 
 
 <img src="nlpe8.jpg" style="width: 60%" />
