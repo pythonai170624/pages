@@ -209,8 +209,8 @@ Output:
 
 <img src="nlpe1.jpg" style="width: 60%" />
 
-```
-      count = 5,572 rows
+```python
+      df.count() = 5,572 rows
 ```
 
 <img src="nlpe2.jpg" style="width: 60%" />
