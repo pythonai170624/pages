@@ -211,7 +211,7 @@ Output:
 
 <img src="nlpe2.jpg" style="width: 60%" />
 
-<img src="nlpe3.jpg" style="width: 60%" />
+<img src="nlpe3.jpg" style="width: 70%" />
 
 <img src="nlpe4.jpg" style="width: 60%" />
 
