@@ -320,7 +320,6 @@ Output:
 - **TF** – כמה פעמים המילה מופיעה במסמך (כמו בספירה)
 - **IDF** – כמה היא נדירה בכל שאר המסמכים
 
-🔢 נוסחה:
 $$
 \text{TF-IDF}(t, d) = \text{TF}(t, d) \times \log \left( \frac{N}{df(t)} \right)
 $$
