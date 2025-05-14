@@ -1,8 +1,5 @@
 # NLP FETAURES
 
-<details>
-<summary>📘 Text Classification – סיווג טקסטים (עמודים 20–23)</summary>
-
 # 🧠 Text Classification – סיווג טקסטים
 
 ## מה זה סיווג טקסטים
@@ -84,4 +81,3 @@ TF-IDF:
 | Doc1  | 0.1003 | 0.1003 | 0   | 0      | 0      |
 | Doc2  | 0      | 0      | 0   | 0.1003 | 0.1003 |
 
-</details>
