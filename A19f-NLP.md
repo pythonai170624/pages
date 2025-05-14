@@ -294,6 +294,8 @@ Output:
 
 <img src="nlpe5.jpg" style="width: 60%" />
 
+### 🧮 חישוב ה- TF-IDF
+
 בשלב זה אנו מעדכנים את ערכי הספירה לפי חשיבותן היחסית של המילים בכל המסמכים  
 המטרה היא לתת משקל גבוה למילים ייחודיות ומידעיות, ולהפחית משקל ממילים שכיחות מדי כמו "the" או "is"
 
