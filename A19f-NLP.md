@@ -223,9 +223,9 @@ Output:
 
 <img src="nlpe8.jpg" style="width: 60%" />
 
-<img src="nlpe9.jpg" style="width: 60%" />
+<img src="nlpe9.jpg" style="width: 55%" />
 
-<img src="nlpe10.jpg" style="width: 60%" />
+<img src="nlpe10.jpg" style="width: 65%" />
 
 <img src="nlpe11.jpg" style="width: 60%" />
 
