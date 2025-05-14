@@ -148,12 +148,22 @@ TF-IDF:
 ### 📄 יצירת קבצים
 
 ```python
-%%writefile doc1.txt
-The sky is blue
-
-%%writefile doc2.txt
-The sun is bright
+%%writefile 1.txt
+This is a story about cats
+our feline pets
+Cats are furry animals
 ```
+
+<img src="nlp18.jpg" style="width: 70%" />
+
+```python
+%%writefile 2.txt
+This story is about surfing
+Catching waves is fun
+Surfing is a popular water sport
+```
+
+<img src="nlp19.jpg" style="width: 70%" />
 
 בניית אוצר מילים
 
