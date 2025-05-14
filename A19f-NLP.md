@@ -154,7 +154,7 @@ our feline pets
 Cats are furry animals
 ```
 
-<img src="nlp18.jpg" style="width: 70%" />
+<img src="nlp18.jpg" style="width: 40%" />
 
 ```python
 %%writefile 2.txt
@@ -163,7 +163,7 @@ Catching waves is fun
 Surfing is a popular water sport
 ```
 
-<img src="nlp19.jpg" style="width: 70%" />
+<img src="nlp19.jpg" style="width: 40%" />
 
 בניית אוצר מילים
 
