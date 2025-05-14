@@ -390,7 +390,7 @@ $$
    מייבא את המחלקה שמבצעת גם **בנייה של אוצר מילים** וגם **חישוב TF-IDF** בו זמנית
 
 2. `vectorizer = TfidfVectorizer()`  
-   יוצר מופע של ה־Vectorizer  
+   יוצר מופע של ה- וקטורייז  
    זה האובייקט שאחראי ללמוד את המילים מכל הטקסטים ולחשב ציונים
 
 3. `X_train_tfidf = vectorizer.fit_transform(X_train)`  
