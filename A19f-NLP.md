@@ -379,47 +379,50 @@ $$
 
 <img src="nlpe6.jpg" style="width: 60%" />
 
-**🧠 המרת טקסטים ל־TF-IDF באמצעות TfidfVectorizer**
+## ❓ למה צריך TfidfVectorizer אם כבר יש לי TfidfTransformer?
 
-בשלב הזה אנו משתמשים ב־`TfidfVectorizer` כדי להמיר את הודעות האימון (`X_train`) למטריצה של ערכי TF-IDF  
-זהו שלב חשוב שבו הטקסטים הופכים למספרים שהמודל יכול להבין
+### קודם כל נבין מה קרה בשני השלבים:
 
-**⚙️ הסבר של כל שורה:**
+1. **CountVectorizer**  
+   סופר כמה פעמים כל מילה מופיעה בטקסט  
+   יוצר מטריצה של "כמה פעמים מילה X מופיעה במסמך Y"
 
-`from sklearn.feature_extraction.text import TfidfVectorizer`  
+2. **TfidfTransformer**  
+   לוקח את מטריצת הספירה ומחשב TF-IDF  
+   כלומר – במקום רק לספור, הוא שוקל את החשיבות היחסית של כל מילה
 
-מייבא את המחלקה שמבצעת גם **בנייה של אוצר מילים** וגם **חישוב TF-IDF** בו זמנית
+### אז למה בכלל יש `TfidfVectorizer`?
 
-`vectorizer = TfidfVectorizer()`  
+כי הוא משלב **שני שלבים באחד**:
 
-יוצר מופע של ה- וקטורייז  
+- גם בונה את אוצר המילים (כמו CountVectorizer)
+- וגם מחשב TF-IDF (כמו TfidfTransformer)
 
-זה האובייקט שאחראי ללמוד את המילים מכל הטקסטים ולחשב ציונים
+כלומר:
+במקום לכתוב:
 
-`X_train_tfidf = vectorizer.fit_transform(X_train)`  
-המטרה של השורה הזו היא להמיר את הודעות האימון (`X_train`) ממילים למספרים חכמים לפי שיטת TF-IDF
+```python
+X_counts = CountVectorizer().fit_transform(X_train)
+X_tfidf = TfidfTransformer().fit_transform(X_counts)
+```
 
-`vectorizer` הוא אובייקט מטיפוס `TfidfVectorizer()`  
-הוא יודע:
-לבנות אוצר מילים מכל המילים שמופיעות בטקסטים
-לחשב לכל מילה ציון חשיבות (TF-IDF)
+אפשר פשוט לכתוב:
 
-`fit_transform(X_train)` מבצע שני שלבים:
-`fit` – עובר על כל ההודעות ובונה רשימה של כל המילים הייחודיות
-`transform` – מחשב ציון TF-IDF לכל מילה בכל הודעה
+```python
+X_tfidf = TfidfVectorizer().fit_transform(X_train)
+```
 
-התוצאה נשמרת ב־`X_train_tfidf` והיא מטריצה שבה:
-- כל שורה = הודעה
-- כל עמודה = מילה
-- כל תא = ציון TF-IDF של המילה בהודעה
+### מתי נשתמש בזה?
 
-כך הטקסט מוכן לשימוש במודל למידת מכונה
+- אם אתה **רוצה שליטה מלאה** – תשתמש ב־`CountVectorizer` + `TfidfTransformer`
+- אם אתה **רוצה קיצור דרך** ונוחות – פשוט תשתמש ב־`TfidfVectorizer`
 
+### 📌 סיכום קצר:
 
-**📌 יתרון:**
-
-בשונה מהשיטה הקודמת (CountVectorizer + TfidfTransformer), כאן עושים **הכל בפעולה אחת**  
-זה חוסך שלב ומפשט את התהליך
+| שיטה | שלבים | יתרון |
+|------|--------|--------|
+| CountVectorizer + TfidfTransformer | 2 שלבים | שליטה ידנית |
+| TfidfVectorizer | שלב אחד | פשוט ויעיל |
 
 
 
