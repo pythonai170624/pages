@@ -171,14 +171,14 @@ Surfing is a popular water sport
 vocab = {}
 i = 0
 
-with open("doc1.txt") as f:
+with open("1.txt") as f:
     for word in f.read().split():
         word = word.lower()
         if word not in vocab:
             vocab[word] = i
             i += 1
 
-with open("doc2.txt") as f:
+with open("2.txt") as f:
     for word in f.read().split():
         word = word.lower()
         if word not in vocab:
