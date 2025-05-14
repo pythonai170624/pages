@@ -307,7 +307,7 @@ Output:
 
 **למה CountVectorizer לא מספיק?**
 
-CountVectorizer פשוט סופר כמה פעמים כל מילה מופיעה  
+ה- CountVectorizer פשוט סופר כמה פעמים כל מילה מופיעה  
 אבל:
 - מילים נפוצות כמו `"the"`, `"is"` או `"and"` יופיעו המון – וזה **מטעה**
 - הן לא באמת מייחדות מסמך אחד מאחר
@@ -315,7 +315,7 @@ CountVectorizer פשוט סופר כמה פעמים כל מילה מופיעה
 
 **🧠 מה כן עושה TF-IDF?**
 
-TF-IDF = Term Frequency – Inverse Document Frequency  
+ה- TF-IDF = Term Frequency – Inverse Document Frequency  
 הוא מחשב ציון משוקלל לכל מילה לפי:
 - **TF** – כמה פעמים המילה מופיעה במסמך (כמו בספירה)
 - **IDF** – כמה היא נדירה בכל שאר המסמכים
