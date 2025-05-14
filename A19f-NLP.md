@@ -1,6 +1,6 @@
 # NLP FETAURES
 
-# 🧠 Text Classification – סיווג טקסטים
+# מהו 🧠 Text Classification – סיווג טקסטים
 
 ## מה זה סיווג טקסטים
 
