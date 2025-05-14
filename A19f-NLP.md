@@ -190,7 +190,9 @@ print(vocab)
 
 Output:
 ```
-{'the': 0, 'sky': 1, 'is': 2, 'blue': 3, 'sun': 4, 'bright': 5}
+{'this': 0, 'is': 1, 'a': 2, 'story': 3, 'about': 4, 'cats': 5, 'our': 6, 'feline': 7, 'pets': 8, 
+ 'are': 9, 'furry': 10, 'animals': 11, 'surfing': 12, 'catching': 13, 'waves': 14, 'fun': 15, 
+ 'popular': 16, 'water': 17, 'sport': 18}
 ```
 
 
