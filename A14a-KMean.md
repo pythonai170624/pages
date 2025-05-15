@@ -6,6 +6,8 @@
 🧠 **האלגוריתם לא יודע להסביר מהי כל קבוצה**, זה התפקיד של מנתח הדאטה  
 לכן הוא קורא לקבוצות פשוט בשם **group_1**, **group_2** וכו’  
 
+<img src="kmean10.png" style="width: 50%" />
+
 ---
 
 # K-MEAN CLUSTERING - ALGORITHM STEPS
