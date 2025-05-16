@@ -226,6 +226,18 @@ $$
 
 ### שלב 4: Model Prediction
 
+ניתוח לפי נושאים:
+
+Topic 1: חיות → ["cats", "dogs", "eat", "bones"]
+
+Topic 2: טבע/מים → ["fish", "swim", "water"]
+
+Doc 1: contains both "cats" and "fish" → it may belong to both topics, but likely more to Topic 1 (Animals)
+
+Doc 2: contains "dogs", "eat", "bones" → all words match Topic 1 → will mostly belong to Topic 1
+
+Doc 3: contains "fish", "swim", "water" → all words match Topic 2 → will mostly belong to Topic 2
+
 - אחרי מספר איטרציות:
   - **Doc 1** ישויך בעיקר נושא 1 (חיות)
   - **Doc 3** ישויך נושא 2 (טבע/מים)
@@ -237,6 +249,15 @@ $$
 
 - לכל מסמך → הסתברות לכל נושא  
 - לכל נושא → הסתברות לכל מילה
+
+### 🟢 Final Summary:
+
+| Document | Topic 1 (Animals) | Topic 2 (Nature/Water) | Main Assignment |
+|----------|-------------------|------------------------|-----------------|
+| Doc 1    | Medium–High       | Medium                 | Likely Topic 1  |
+| Doc 2    | Very High         | Very Low               | Topic 1         |
+| Doc 3    | Low               | Very High              | Topic 2         |
+
 
 וזה עוזר לנו להבין על מה מדברים המסמכים גם בלי תיוגים מראש 🧩
 
