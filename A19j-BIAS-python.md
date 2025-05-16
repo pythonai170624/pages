@@ -131,7 +131,26 @@
 
 ואז משווים: מי פגע טוב יותר ברגש? מי נתן תוצאה טובה יותר?
 
-### קוד Python לאימון המודלים:
+## שלב 5: הערכת ביצועים
+
+- פונקציה שמחשבת את התוצאות של כל מודל על סט הבדיקה
+
+<img src="biasex10.jpg" style="width: 100%" />
+
+- מדפיסים precision, recall, f1 לכל מחלקה
+
+**שלב 6: השוואת ביצועים**
+
+<img src="biasex13.png" style="width: 100%" />
+
+- המודל של Logistic Regression מדויק יותר מ־Naive Bayes
+- זה צפוי, כי Logistic Regression מודל מורכב יותר
+
+**AD PICTURE FROM PAGE 21**
+
+## גרף השוואת דיוק בין מודלים
+
+לים:
 
 ```python
 # ייבוא ספריות
@@ -175,20 +194,3 @@ def evaluate_model(model, name):
 evaluate_model(nb_model, "Naive Bayes")
 evaluate_model(log_model, "Logistic Regression")
 ```
-## שלב 5: הערכת ביצועים
-
-- פונקציה שמחשבת את התוצאות של כל מודל על סט הבדיקה
-- מדפיסים precision, recall, f1 לכל מחלקה
-
-**AD PICTURE FROM PAGE 20**
-
-## שלב 6: השוואת ביצועים
-
-- המודל של Logistic Regression מדויק יותר מ־Naive Bayes
-- זה צפוי, כי Logistic Regression מודל מורכב יותר
-
-**AD PICTURE FROM PAGE 21**
-
-## גרף השוואת דיוק בין מודלים
-
-![Model Accuracy Comparison](model_accuracy_comparison.png)
