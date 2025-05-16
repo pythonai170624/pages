@@ -77,10 +77,21 @@
 
 ## שלב 4: אימון המודלים
 
-- מאמנים מודל מסוג `MultinomialNB` (Naive Bayes)
-- בנוסף, מאמנים גם `LogisticRegression` לצורך השוואה
+**מאמנים מודל מסוג `MultinomialNB` (Naive Bayes)**
 
-**AD PICTURE FROM PAGE 19**
+ה- MultinomialNB הוא מימוש של אלגוריתם Naive Bayes, שמיועד לבעיות סיווג (classification)
+
+למה דווקא Multinomial?
+
+כי בניגוד לגרסאות אחרות של Naive Bayes (כמו Gaussian),
+הגרסה הזו יודעת לעבוד הכי טוב כשאנחנו סופרים כמה פעמים מופיעה כל מילה בטקסט —
+וזה בדיוק מה שאנחנו עושים בטקסטים אחרי CountVectorizer או TF-IDF
+
+<img src="biasex8.jpg" style="width: 100%" />
+
+בנוסף, מאמנים גם `LogisticRegression` לצורך השוואה
+
+<img src="biasex9.jpg" style="width: 100%" />
 
 ### קוד Python לאימון המודלים:
 
