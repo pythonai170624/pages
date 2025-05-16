@@ -37,9 +37,9 @@ $$
 
 אל תיבהל! בוא נפרק:
 
-- **P(C_k | x)**: The probability that the text belongs to category C_k (e.g., positive)
-- **P(C_k)**: How often this category appeared in the past (e.g., how many past texts were positive)
-- **P(x_i | C_k)**: How often the word x_i appeared in texts of category C_k
+- **P(Ck | x)**: The probability that the text belongs to category Ck (e.g., positive)
+- **P(Ck)**: How often this category appeared in the past (e.g., how many past texts were positive)
+- **P(Xi | Ck)**: How often the word Xi appeared in texts of category Ck
 - **prod**: Product symbol – multiply all the word probabilities one after the other
 
 
