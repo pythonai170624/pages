@@ -255,24 +255,17 @@ Topic 2 = מים/טבע (fish, water, swim...)
 
 ### שלב 4: Model Prediction
 
-ניתוח לפי נושאים:
+בשלב הזה, לאחר מספר איטרציות של אימון, המודל כבר למד אילו מילים שייכות לאילו נושאים  
+כעת אפשר לבדוק את ההתפלגות של המילים בתוך כל Topic
 
-Topic 1: חיות → ["cats", "dogs", "eat", "bones"]
+מה בדיוק בודקים?  
+המודל מחזיר מטריצה בשם components_ (אם משתמשים ב־sklearn)
 
-Topic 2: טבע/מים → ["fish", "swim", "water"]
+כל שורה במטריצה מייצגת נושא (Topic)
 
-Doc 1: contains both "cats" and "fish" → it may belong to both topics, but likely more to Topic 1 (Animals)
+כל עמודה מייצגת מילה מאוצר המילים
 
-Doc 2: contains "dogs", "eat", "bones" → all words match Topic 1 → will mostly belong to Topic 1
-
-Doc 3: contains "fish", "swim", "water" → all words match Topic 2 → will mostly belong to Topic 2
-
-- אחרי מספר איטרציות:
-  - **Doc 1** ישויך בעיקר נושא 1 (חיות)
-  - **Doc 3** ישויך נושא 2 (טבע/מים)
-- המודל גם יודע אילו מילים מייצגות כל Topic:
-  - Topic 1: cats, dogs, eat
-  - Topic 2: fish, water, swim
+ה- כל ערך מספרי הוא מדד להסתברות (או משקל) של המילה באותו Topic
 
 ### ⚡ התוצאה:
 
