@@ -249,7 +249,7 @@ Topic 2 = מים/טבע (fish, water, swim...)
 במסמך הזה "cat" כבר ב־Topic 1  
 אז רוב הסיכויים שהמודל ישייך גם את "eats" ל־Topic 1  
 
-בסוף, המילים נאספות סביב נושאים הגיוניים, לפי התפלגות סטטיסטית וזה יוצר את ה־Topic Modeling החכם של LDA
+🎯 בסוף, המילים נאספות סביב נושאים הגיוניים, לפי התפלגות סטטיסטית וזה יוצר את ה־Topic Modeling החכם של LDA
 
 🔁 המודל בודק את כל זה מחדש בכל איטרציה, ועד שהוא מתייצב על חלוקה סופית של מילים לטופיקים
 
