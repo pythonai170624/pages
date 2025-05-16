@@ -85,7 +85,7 @@ Latent Dirichlet Allocation = הקצאה של נושאים סמויים למסמ
 - כשאנחנו רוצים להבין על מה מדברים טקסטים
 - כשצריך לסכם או לקבץ טקסטים לפי רעיונות סמויים
 
-## 📊 ההבדל בין Topic Modeling לבין Clustering רגיל
+#### 📊 ההבדל בין Topic Modeling לבין Clustering רגיל
 
 | תכונה                      | Topic Modeling (LDA)           | Clustering רגיל (KMeans למשל) |
 |----------------------------|--------------------------------|-------------------------------|
@@ -93,7 +93,7 @@ Latent Dirichlet Allocation = הקצאה של נושאים סמויים למסמ
 | למידה מונחית או לא?         | לא מונחית (Unsupervised)        | לרוב לא מונחית               |
 | משקל לכל תכונה              | לפי הסתברות מילה לנושא         | לפי מיקום במרחב              |
 
-## 🧪 בפועל:
+#### 🧪 בפועל:
 
 > נריץ LDA על טקסטים ונקבל:
 > - עבור כל מסמך: לאיזה נושאים הוא שייך (ואחוז שייכות)
