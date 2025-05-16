@@ -85,7 +85,7 @@ $$
 
   אנחנו רוצים לגלות לאיזו מחלקה הטקסט איקס הכי מתאים
 
-- **P(Cₖ)** = ההסתברות המוקדמת של כל מחלקה  → כלומר:
+- **P(Cₖ)** = ההסתברות המוקדמת של כל מחלקה  → כלומר
 
   Pc1 = P(positive reviews) = 25/35
 
@@ -93,15 +93,21 @@ $$
 
 ### עבור "positive":
 
+ - P("movie" | positive), see previous section table
+ - P("actor" | positive), see previous section table
+
 ```
-P(positive reviews) * P(movie | positive) * P(actor | positive)
+P(positive reviews) * P("movie" | positive) * P("actor" | positive)
 = (25/35) * (0.42) * (0.08) = 0.024
 ```
 
 ### עבור "negative":
 
+- P("movie" | negative), see previous section table
+- P("actor" | negative), see previous section table
+
 ```
-P(negative reviews) * P(movie | negative) * P(actor | negative)
+P(negative reviews) * P("movie" | negative) * P("actor" | negative)
 = (10/35) * (0.4) * (0.5) = 0.057
 ```
 
