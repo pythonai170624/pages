@@ -156,7 +156,7 @@ Latent Dirichlet Allocation = הקצאה של נושאים סמויים למסמ
 3. מחשב הסתברות משותפת (joint probability)  
 
 $$
-P(Topic X and word w) = P(w belongs to Topic X) × P(Topic X belongs to document)
+P(text{Topic X and word w}) = P(w belongs to Topic X) × P(Topic X belongs to document)
 $$
 
 4. חוזר על התהליך שוב ושוב (איטרציות) כדי לדייק
