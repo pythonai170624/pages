@@ -27,22 +27,31 @@ df
 - מזהים שמרבית הציוצים הם שליליים
 - בודקים אילו סיבות ניתנו לציוצים שליליים
 
+נספור כמות ציוצים:
+
 <img src="biasex2.jpg" style="width: 100%" />
 
+נספור כמה לכל סיבה:
+
 <img src="biasex3.jpg" style="width: 100%" />
+
+נספור כמה יש בכל קטגוריה לפי חברת תעופה:
+
+<img src="biasex4.jpg" style="width: 100%" />
 
 ## שלב 3: הכנת הנתונים
 
 - בוחרים רק את עמודת `text` (תוכן הציוץ) כקלט
 - עמודת `airline_sentiment` משמשת כתיוג (label)
+
+<img src="biasex5.jpg" style="width: 100%" />
+
 - מבצעים פיצול ל־Train/Test
 - מבצעים וקטוריזציה מסוג TF-IDF על טקסט בלבד
 
 > שים לב: כדי להימנע מדליפת מידע (Data Leakage), מבצעים את הפיצול **לפני** הווקטוריזציה
 
-<img src="biasex4.jpg" style="width: 100%" />
 
-<img src="biasex5.jpg" style="width: 100%" />
 
 ## שלב 4: אימון המודלים
 
