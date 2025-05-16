@@ -139,7 +139,7 @@
 
 - מדפיסים precision, recall, f1 לכל מחלקה
 
-**שלב 6: השוואת ביצועים**
+**השוואת ביצועים**
 
 <img src="biasex13.png" style="width: 100%" />
 
