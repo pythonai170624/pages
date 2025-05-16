@@ -5,9 +5,10 @@
 Steps:
 
 1. split train-test 70%-30%
-2. use accuracy_score for both models
-3. use random forest with 100 estimators
-4. create bar plot for comparison
+2. build DecisionTreeClassifier and RandomForestClassifier (100 estimators)
+3. use accuracy_score for both models
+4. print the accuracy
+5. create bar plot for comparison
 
 Sample code:
 
