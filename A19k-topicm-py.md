@@ -1,4 +1,4 @@
-# Topic Modeling with LDA – Python Example (Pages 29–33)
+# Topic Modeling with LDA – Python Example 
 
 ### שלב 1: טעינת הקובץ ובדיקת טקסט לדוגמה
 
