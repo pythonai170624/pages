@@ -7,6 +7,10 @@
 
 <img src="ldaex1.jpg" style="width: 100%" />
 
+נסתכל על המסמך הראשון
+
+<img src="ldaex2.jpg" style="width: 100%" />
+
 ### שלב 2: וקטוריזציה באמצעות CountVectorizer
 
 נשתמש ב־CountVectorizer כדי להמיר את הטקסטים למטריצת תכונות  
@@ -15,7 +19,7 @@
 - `min_df=2` → מסיר מילים שמופיעות בפחות משני מסמכים
 - `max_df=0.9` → מסיר מילים שמופיעות בלמעלה מ־90% מהמסמכים
 
-<img src="ldaex2.jpg" style="width: 100%" />
+<img src="ldaex3.jpg" style="width: 100%" />
 
 ### שלב 3: אימון מודל LDA
 
