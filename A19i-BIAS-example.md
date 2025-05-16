@@ -2,7 +2,7 @@
 
 ## שלב 1: הגדרת הבעיה
 
-<img src="bias1.jpg" align="right" style="width: 40%" />
+<img src="bias1.jpg" align="center" style="width: 40%" />
 
 יש לנו 35 ביקורות סרטים.  
 כל ביקורת כוללת טקסט ואת הסיווג שלה: חיובית או שלילית
