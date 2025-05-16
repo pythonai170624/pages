@@ -1,4 +1,4 @@
-# Topic Modeling – עמודים 22–25
+# Topic Modeling 
 
 ## 🧠 מה זה Topic Modeling?
 
