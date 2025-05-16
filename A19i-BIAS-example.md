@@ -79,11 +79,11 @@ $$
 
 ### עבור "positive":
 
-- x = [movie, actor]
+- x = ["movie", "actor"]
   
   → זהו וקטור המאפיינים שלך: רשימת המילים שבביקורת (tokens)
 
-- C = [positive, negative]
+- C = ["positive", "negative"]
 
   → אלו המחלקות האפשריות (labels)
 
@@ -92,7 +92,7 @@ $$
 - **P(Cₖ)** = ההסתברות המוקדמת של כל מחלקה  → כלומר:
 
   Pc1 = P(text-positive)
-  
+
   Pc2 = P(text-negative)
 
 
