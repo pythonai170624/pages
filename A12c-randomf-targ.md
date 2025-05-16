@@ -1,5 +1,9 @@
 # 🌳 Radnom forest exercise 
 
+**The goal here is to compare random forst to decision tree**
+
+Steps:
+
 1. split train-test 70%-30%
 2. use accuracy_score for both models
 3. use random forest with 100 estimators
