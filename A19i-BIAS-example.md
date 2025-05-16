@@ -42,10 +42,10 @@
 
 קטגוריה חיובית:
 
-- P(movie | pos) = 10 / 24 = 0.42  
-- P(actor | pos) = 2 / 24 = 0.08  
-- P(great | pos) = 8 / 24 = 0.33  
-- P(film | pos) = 4 / 24 = 0.17
+- P(movie | positive) = 10 / 24 = 0.42  
+- P(actor | positive) = 2 / 24 = 0.08  
+- P(great | positive) = 8 / 24 = 0.33  
+- P(film | positive) = 4 / 24 = 0.17
 
 <img src="bias4.jpg" style="width: 60%" />
 
@@ -64,10 +64,10 @@
 
 קטגוריה שלילית:
 
-- P(movie | neg) = 8 / 20 = 0.4  
-- P(actor | neg) = 10 / 20 = 0.5  
-- P(great | neg) = 0 / 20 = 0  
-- P(film | neg) = 2 / 20 = 0.1
+- P(movie | negative) = 8 / 20 = 0.4  
+- P(actor | negative) = 10 / 20 = 0.5  
+- P(great | negative) = 0 / 20 = 0  
+- P(film | negative) = 2 / 20 = 0.1
 
 <img src="bias5.jpg" style="width: 65%" />
 
