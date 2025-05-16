@@ -34,11 +34,12 @@
 <img src="biasex5.jpg" style="width: 100%" />
 
 - מבצעים פיצול ל־Train/Test
+
+<img src="biasex6.jpg" style="width: 100%" />
+
 - מבצעים וקטוריזציה מסוג TF-IDF על טקסט בלבד
 
 > שים לב: כדי להימנע מדליפת מידע (Data Leakage), מבצעים את הפיצול **לפני** הווקטוריזציה
-
-<img src="biasex6.jpg" style="width: 100%" />
 
 <img src="biasex7.jpg" style="width: 100%" />
 
