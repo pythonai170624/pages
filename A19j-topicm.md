@@ -32,8 +32,8 @@
 
 **אימון המודל**  
 שתמשים באלגוריתמים כמו:
-- פ- LDA – Latent Dirichlet Allocation
-- פ- NMF – Non-Negative Matrix Factorization
+- פ- LDA – Latent Dirichlet Allocation - יוסבר בהמשך
+- פ- NMF – Non-Negative Matrix Factorization - יוסבר בהמשך
 
 **פרשנות והבנה של הנושאים**  
 המודל מחזיר:
