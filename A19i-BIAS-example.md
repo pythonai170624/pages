@@ -38,27 +38,16 @@
 
 **סה״כ מילים בקטגוריה חיובית: 24**
 
-**שלילי**:
-
-| מילה   | מופעים |
-|--------|--------|
-| movie  | 8     |
-| actor  | 10      |
-| great  | 0     |
-| film   | 2      |
-
-**סה״כ מילים בקטגוריה שלילית: 20**
-
 <img src="bias3.png" style="width: 80%" />
 
-אז:
+קטגוריה חיובית:
 
 - P(movie | pos) = 10 / 24 = 0.42  
 - P(actor | pos) = 2 / 24 = 0.08  
 - P(great | pos) = 8 / 24 = 0.33  
 - P(film | pos) = 4 / 24 = 0.17
 
-<img src="bias4.jpg" style="width: 80%" />
+<img src="bias4.jpg" style="width: 70%" />
 
 ## שלב 4: חישוב הסתברויות עבור קטגוריה שלילית
 
@@ -73,14 +62,14 @@
 
 **סה״כ מילים בקטגוריה שלילית: 20**
 
-אז:
+קטגוריה שלילית:
 
 - P(movie | neg) = 8 / 20 = 0.4  
 - P(actor | neg) = 10 / 20 = 0.5  
 - P(great | neg) = 0 / 20 = 0  
 - P(film | neg) = 2 / 20 = 0.1
 
-<img src="bias5.jpg" style="width: 60%" />
+<img src="bias5.jpg" style="width: 70%" />
 
 ## שלב 5: חיזוי טקסט חדש: "movie actor"
 
