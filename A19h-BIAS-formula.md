@@ -81,6 +81,9 @@ Where:
 - **∝ (proportional to)**: This means we **ignore P(x)** in this version  
   → Because P(x) is the same for all classes, we don't need it when comparing which class has the highest probability
 
+אנחנו כופלים את ההסתברות המוקדמת של המחלקה (class) בהסתברויות של כל מילה להופיע במחלקה הזו.  
+המחלקה שמקבלת את התוצאה הגבוהה ביותר היא זו שתיבחר כתווית החיזוי של הטקסט
+
 
 
 הסימן הזה ( \propto \) אומר: "פרופורציונלי ל־".  
