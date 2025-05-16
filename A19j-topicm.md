@@ -119,7 +119,7 @@ Latent Dirichlet Allocation = הקצאה של נושאים סמויים למסמ
 🟩 כלומר:
 > כל מסמך מיוצג כווקטור הסתברויות – כמה הוא שייך לכל Topic
 
-<img src="lda1.jpg" style="width: 80%" />
+<img src="lda1.jpg" style="width: 100%" />
 
 ### 🎯 התפלגות מילים לפי נושא (Topic)
 
