@@ -80,6 +80,7 @@ Where:
 
 - **∝ (proportional to)**: choosing the best fit
   → picking the highest value from the list or result of k classes
+  
   comment:
   we ignore the dominator P(x) from the previous equation
   Because P(x) is the same for all classes, we don't need it when comparing which class has the highest probability
