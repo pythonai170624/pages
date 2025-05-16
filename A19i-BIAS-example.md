@@ -147,3 +147,12 @@ P(negative | "great movie actor") = P(negative reviews) * 0.4 * 0.5 * 0 = 0
 
 נוסיף ערך קטן (למשל 1) לכל ספירת מילה, כדי למנוע אפס
 
+P("great" | negative) = 0 / 20 = 0 ❌
+
+P("great" | negative) = (0 + 1) / (20 + V) ≈ 0.0417✅
+
+- 20 = סך כל מופעי המילים במחלקת negative  
+- V = מספר המילים הייחודיות הכולל בדאטה (positive + negative)
+
+V = מספר מילים ייחודיות = 4
+["movie", "actor", "great", "film"]
