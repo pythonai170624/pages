@@ -156,6 +156,9 @@ Latent Dirichlet Allocation = הקצאה של נושאים סמויים למסמ
 3. מחשב הסתברות משותפת (joint probability)  
 4. חוזר על התהליך שוב ושוב (איטרציות) כדי לדייק
 
+P(נושא X ומילה w) = P(w שייכת ל־X) × P(X שייך למסמך)
+
+
 💡 בסוף התהליך נקבל:
 - שיוך מילים לנושאים
 - התפלגות נושאים לכל מסמך
