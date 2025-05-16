@@ -47,7 +47,7 @@
 - P(great | pos) = 8 / 24 = 0.33  
 - P(film | pos) = 4 / 24 = 0.17
 
-<img src="bias4.jpg" style="width: 70%" />
+<img src="bias4.jpg" style="width: 65%" />
 
 ## שלב 4: חישוב הסתברויות עבור קטגוריה שלילית
 
@@ -69,7 +69,7 @@
 - P(great | neg) = 0 / 20 = 0  
 - P(film | neg) = 2 / 20 = 0.1
 
-<img src="bias5.jpg" style="width: 70%" />
+<img src="bias5.jpg" style="width: 65%" />
 
 ## שלב 5: חיזוי טקסט חדש: "movie actor"
 
