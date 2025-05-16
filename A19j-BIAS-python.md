@@ -1,36 +1,37 @@
 # Naive Bayes in NLP – Python Example
 
-## שלב 1: טעינת הנתונים
+אנחנו עובדים עם הקובץ `airline_tweets.csv` שמכיל ציוצים של לקוחות, עם טקסט חופשי ותווית רגשית (positive, neutral, negative)
 
-אנחנו עובדים עם הקובץ `airline_tweets.csv` שמכיל ציוצים של לקוחות, עם טקסט חופשי ותווית רגשית (positive, neutral, negative).  
-המטרה שלנו היא לחזות את הרגש של כל ציוץ לפי התוכן שלו בלבד.
+המטרה שלנו היא לחזות את הרגש של כל ציוץ לפי התוכן שלו בלבד
+
+## שלב 1: טעינת הנתונים
 
 **AD PICTURE FROM PAGE 15**
 
 ## שלב 2: חקירת הנתונים
 
-- סופרים כמה ציוצים יש לכל תווית רגשית.
-- מזהים שמרבית הציוצים הם שליליים.
-- בודקים אילו סיבות ניתנו לציוצים שליליים.
+- סופרים כמה ציוצים יש לכל תווית רגשית
+- מזהים שמרבית הציוצים הם שליליים
+- בודקים אילו סיבות ניתנו לציוצים שליליים
 
 **AD PICTURE FROM PAGE 16**
 
 ## שלב 3: הכנת הנתונים
 
-- בוחרים רק את עמודת `text` (תוכן הציוץ) כקלט.
-- עמודת `airline_sentiment` משמשת כתיוג (label).
-- מבצעים פיצול ל־Train/Test.
-- מבצעים וקטוריזציה מסוג TF-IDF על טקסט בלבד.
+- בוחרים רק את עמודת `text` (תוכן הציוץ) כקלט
+- עמודת `airline_sentiment` משמשת כתיוג (label)
+- מבצעים פיצול ל־Train/Test
+- מבצעים וקטוריזציה מסוג TF-IDF על טקסט בלבד
 
-> שים לב: כדי להימנע מדליפת מידע (Data Leakage), מבצעים את הפיצול **לפני** הווקטוריזציה.
+> שים לב: כדי להימנע מדליפת מידע (Data Leakage), מבצעים את הפיצול **לפני** הווקטוריזציה
 
 **AD PICTURE FROM PAGE 17**
 **AD PICTURE FROM PAGE 18**
 
 ## שלב 4: אימון המודלים
 
-- מאמנים מודל מסוג `MultinomialNB` (Naive Bayes).
-- בנוסף, מאמנים גם `LogisticRegression` לצורך השוואה.
+- מאמנים מודל מסוג `MultinomialNB` (Naive Bayes)
+- בנוסף, מאמנים גם `LogisticRegression` לצורך השוואה
 
 **AD PICTURE FROM PAGE 19**
 
@@ -78,19 +79,17 @@ def evaluate_model(model, name):
 evaluate_model(nb_model, "Naive Bayes")
 evaluate_model(log_model, "Logistic Regression")
 ```
-
-
 ## שלב 5: הערכת ביצועים
 
-- פונקציה שמחשבת את התוצאות של כל מודל על סט הבדיקה.
-- מדפיסים precision, recall, f1 לכל מחלקה.
+- פונקציה שמחשבת את התוצאות של כל מודל על סט הבדיקה
+- מדפיסים precision, recall, f1 לכל מחלקה
 
 **AD PICTURE FROM PAGE 20**
 
 ## שלב 6: השוואת ביצועים
 
-- המודל של Logistic Regression מדויק יותר מ־Naive Bayes.
-- זה צפוי, כי Logistic Regression מודל מורכב יותר.
+- המודל של Logistic Regression מדויק יותר מ־Naive Bayes
+- זה צפוי, כי Logistic Regression מודל מורכב יותר
 
 **AD PICTURE FROM PAGE 21**
 
