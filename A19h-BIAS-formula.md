@@ -78,8 +78,11 @@ Where:
 - **∏ (product)**: Multiply all the individual word probabilities together  
   → We assume that the words are conditionally independent given the class, so we multiply them
 
-- **∝ (proportional to)**: This means we **ignore P(x)** in this version  
-  → Because P(x) is the same for all classes, we don't need it when comparing which class has the highest probability
+- **∝ (proportional to)**: choosing the best fit
+  → picking the highest value from the list or result of k classes
+  comment:
+  we ignore the dominator P(x) from the previous equation
+  Because P(x) is the same for all classes, we don't need it when comparing which class has the highest probability
 
 אנחנו כופלים את ההסתברות המוקדמת של המחלקה (class) בהסתברויות של כל מילה להופיע במחלקה הזו.  
 המחלקה שמקבלת את התוצאה הגבוהה ביותר היא זו שתיבחר כתווית החיזוי של הטקסט
@@ -87,7 +90,7 @@ Where:
 
 
 הסימן הזה ∝ אומר: "פרופורציונלי ל־".  
-כלומר: זה לא הנוסחה המלאה עם המונה והמחנה – רק החלק החשוב שמשווה בין הקטגוריות
+כלומר: זה לא הנוסחה המלאה עם המונה והמכנה – רק החלק החשוב שמשווה בין הקטגוריות
 
 ## מה עושים בפועל?
 
