@@ -100,7 +100,7 @@ P(A|B) = ?
 נשתמש בכלל ההסתברות הכוללת:
 
 $$
-P(\neg A) = **not**_A_propability
+P(\neg A) = **not**APropability
 $$
 
 $$
