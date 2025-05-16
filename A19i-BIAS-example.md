@@ -21,7 +21,7 @@
 - P(pos) = 25 / 35  
 - P(neg) = 10 / 35  
 
-🖼️ **הוספת תמונה**: ADD IMAGE HERE FROM PAGE 10
+<img src="bias2.jpg" style="width: 40%" />
 
 ## שלב 3: ספירת מילים בכל קטגוריה
 
@@ -38,6 +38,8 @@
 
 **סה״כ מילים בקטגוריה חיובית: 24**
 
+<img src="bias3.png" style="width: 40%" />
+
 אז:
 
 - P(movie | pos) = 10 / 24 = 0.42  
@@ -45,7 +47,7 @@
 - P(great | pos) = 8 / 24 = 0.33  
 - P(film | pos) = 4 / 24 = 0.17
 
-🖼️ **הוספת תמונה**: ADD IMAGE HERE FROM PAGE 11
+<img src="bias4.jpg" style="width: 40%" />
 
 ## שלב 4: חישוב הסתברויות עבור קטגוריה שלילית
 
@@ -67,7 +69,7 @@
 - P(great | neg) = 0 / 20 = 0  
 - P(film | neg) = 2 / 20 = 0.1
 
-🖼️ **הוספת תמונה**: ADD IMAGE HERE FROM PAGE 12
+<img src="bias5.jpg" style="width: 40%" />
 
 ## שלב 5: חיזוי טקסט חדש: "movie actor"
 
