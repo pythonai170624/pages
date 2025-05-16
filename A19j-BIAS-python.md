@@ -38,7 +38,9 @@
 
 > שים לב: כדי להימנע מדליפת מידע (Data Leakage), מבצעים את הפיצול **לפני** הווקטוריזציה
 
+<img src="biasex6.jpg" style="width: 100%" />
 
+<img src="biasex7.jpg" style="width: 100%" />
 
 ## שלב 4: אימון המודלים
 
