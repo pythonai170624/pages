@@ -154,10 +154,12 @@ Latent Dirichlet Allocation = הקצאה של נושאים סמויים למסמ
    - מה הסיכוי שהמילה שייכת לכל נושא  
    - מה הסיכוי שהנושא שייך למסמך  
 3. מחשב הסתברות משותפת (joint probability)  
+
+$$
+P(Topic X and word w) = P(w belongs to Topic X) × P(Topic X belongs to document)
+$$
+
 4. חוזר על התהליך שוב ושוב (איטרציות) כדי לדייק
-
-P(נושא X ומילה w) = P(w שייכת ל־X) × P(X שייך למסמך)
-
 
 💡 בסוף התהליך נקבל:
 - שיוך מילים לנושאים
