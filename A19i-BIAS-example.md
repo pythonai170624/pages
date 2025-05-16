@@ -76,14 +76,14 @@
 ### עבור "positive":
 
 ```
-P(pos) * P(movie | pos) * P(actor | pos)
+P(pos) * P(movie | positive) * P(actor | positive)
 = (25/35) * (0.42) * (0.08) = 0.024
 ```
 
 ### עבור "negative":
 
 ```
-P(neg) * P(movie | neg) * P(actor | neg)
+P(neg) * P(movie | negative) * P(actor | negative)
 = (10/35) * (0.4) * (0.5) = 0.057
 ```
 
