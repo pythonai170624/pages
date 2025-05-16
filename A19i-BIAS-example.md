@@ -98,7 +98,7 @@ P(negative) * P(movie | negative) * P(actor | negative)
 אם נחשב עבור negative:
 
 ```
-P(neg) * P(great | neg) * P(movie | neg)
+P(negative) * P(great | negative) * P(movie | negative)
 = (10 / 35) * 0 * 0.4 = 0
 ```
 
