@@ -89,9 +89,9 @@ $$
 
 - **P(Cₖ)** = ההסתברות המוקדמת של כל מחלקה  → כלומר:
 
-  Pc1 = P(text-positive)
+  Pc1 = P(text-positive) = 25/35
 
-  Pc2 = P(text-negative)
+  Pc2 = P(text-negative) = 10/35
 
 ### עבור "positive":
 
