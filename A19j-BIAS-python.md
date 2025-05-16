@@ -19,7 +19,7 @@ df = pd.read_csv('airline_tweets.csv')
 df
 ```
 
-<img src="biasex1.jpg" style="width: 80%" />
+<img src="biasex1.jpg" style="width: 100%" />
 
 ## שלב 2: חקירת הנתונים
 
