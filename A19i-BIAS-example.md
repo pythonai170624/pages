@@ -47,7 +47,7 @@
 - P(great | pos) = 8 / 24 = 0.33  
 - P(film | pos) = 4 / 24 = 0.17
 
-<img src="bias4.jpg" style="width: 65%" />
+<img src="bias4.jpg" style="width: 60%" />
 
 ## שלב 4: חישוב הסתברויות עבור קטגוריה שלילית
 
