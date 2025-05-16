@@ -6,7 +6,20 @@
 
 ## שלב 1: טעינת הנתונים
 
-**AD PICTURE FROM PAGE 15**
+```python
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import classification_report
+
+# load data
+df = pd.read_csv('airline_tweets.csv')
+df
+```
+
+<img src="biasex1.jpg" style="width: 80%" />
 
 ## שלב 2: חקירת הנתונים
 
