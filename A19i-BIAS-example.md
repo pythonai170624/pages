@@ -119,10 +119,12 @@ P(negative reviews) * P("movie" | negative) * P("actor" | negative)
 
 <img src="bias6.jpg" style="width: 45%" />
 
-אם נחשב עבור negative:
+**אם נחשב עבור negative:**
+
+Pc2 = P(negative reviews) = 10/35
 
 ```
-P(negative) * P(great | negative) * P(movie | negative)
+P(negative reviews) * P(great | negative) * P(movie | negative)
 = (10 / 35) * 0 * 0.4 = 0
 ```
 
@@ -132,4 +134,3 @@ P(negative) * P(great | negative) * P(movie | negative)
 
 נוסיף ערך קטן (למשל 1) לכל ספירת מילה, כדי למנוע אפס.
 
-🖼️ **הוספת תמונה**: ADD IMAGE HERE FROM PAGE 14
