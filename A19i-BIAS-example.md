@@ -133,7 +133,13 @@ P(negative reviews) * P(great | negative) * P(movie | negative)
 **למה זאת בעיה?**
 
 אם **אחת ההסתברויות שווה ל-0**, כל המכפלה תהיה **0**,  
-וזה יגרום לכך שהמודל יפסול את המחלקה לחלוטין — גם אם כל שאר המילים כן מתאימות לה.
+וזה יגרום לכך שהמודל יפסול את המחלקה לחלוטין — גם אם כל שאר המילים כן מתאימות לה
+
+P("movie" | negative) = 0.4
+P("actor" | negative) = 0.5
+P("great" | negative) = 0
+
+P(negative | "great movie actor") = P(negative reviews) * 0.4 * 0.5 * 0 = 0
 
 **פתרון: Alpha Smoothing**
 
