@@ -40,7 +40,7 @@
 - עבור כל נושא → רשימת מילים אופייניות
 - עבור כל טקסט → הסתברות לכל נושא
 
-## LDA Model
+## מודל LDA Model
 
 ### מה זה LDA – Latent Dirichlet Allocation?
 
