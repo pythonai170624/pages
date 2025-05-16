@@ -69,7 +69,7 @@
 
 <img src="bias5.jpg" style="width: 65%" />
 
-## שלב 5: חיזוי טקסט חדש: "movie actor"
+## שלב 4: חיזוי טקסט חדש: "movie actor"
 
 $$
 P(C_k | \mathbf{x}) \propto P(C_k) \cdot \prod_{i=1}^{n} P(x_i | C_k)
@@ -113,7 +113,7 @@ P(negative reviews) * P("movie" | negative) * P("actor" | negative)
 
 🖼️ **הוספת תמונה**: ADD IMAGE HERE FROM PAGE 13
 
-## שלב 6: בעיית אפס הסתברות
+## שלב 5: בעיית אפס הסתברות
 
 ניקח טקסט חדש: `"great movie"`
 
