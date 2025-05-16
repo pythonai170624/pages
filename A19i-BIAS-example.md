@@ -94,14 +94,14 @@ $$
 ### עבור "positive":
 
 ```
-P(positive) * P(movie | positive) * P(actor | positive)
+P(positive reviews) * P(movie | positive) * P(actor | positive)
 = (25/35) * (0.42) * (0.08) = 0.024
 ```
 
 ### עבור "negative":
 
 ```
-P(negative) * P(movie | negative) * P(actor | negative)
+P(negative reviews) * P(movie | negative) * P(actor | negative)
 = (10/35) * (0.4) * (0.5) = 0.057
 ```
 
