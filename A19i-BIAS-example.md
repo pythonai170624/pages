@@ -121,7 +121,7 @@ P(negative reviews) * P("movie" | negative) * P("actor" | negative)
 
 **אם נחשב עבור negative:**
 
-Pc2 = P(negative reviews) = 10/35
+P(negative reviews) = 10/35
 
 ```
 P(negative reviews) * P(great | negative) * P(movie | negative)
@@ -130,7 +130,12 @@ P(negative reviews) * P(great | negative) * P(movie | negative)
 
 למה? כי המילה "great" לא הופיעה בכלל בביקורות שליליות → הסתברות = 0
 
-### פתרון: Alpha Smoothing
+**למה זאת בעיה?**
 
-נוסיף ערך קטן (למשל 1) לכל ספירת מילה, כדי למנוע אפס.
+אם **אחת ההסתברויות שווה ל-0**, כל המכפלה תהיה **0**,  
+וזה יגרום לכך שהמודל יפסול את המחלקה לחלוטין — גם אם כל שאר המילים כן מתאימות לה.
+
+**פתרון: Alpha Smoothing**
+
+נוסיף ערך קטן (למשל 1) לכל ספירת מילה, כדי למנוע אפס
 
