@@ -73,6 +73,10 @@
 
 ## שלב 5: חיזוי טקסט חדש: "movie actor"
 
+$$
+P(C_k | \mathbf{x}) \propto P(C_k) \cdot \prod_{i=1}^{n} P(x_i | C_k)
+$$
+
 ### עבור "positive":
 
 ```
