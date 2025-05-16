@@ -37,10 +37,11 @@ $$
 
 אל תיבהל! בוא נפרק:
 
-- P(C_k | \mathbf{x}): ההסתברות שהטקסט שייך לקטגוריה C_k (למשל, חיובי)
-- P(C_k): כמה פעמים הקטגוריה הזו הופיעה בעבר (למשל, כמה מהטקסטים בעבר היו חיוביים)
-- P(x_i | C_k): כמה פעמים המילה x_i הופיעה בטקסטים מקטגוריה C_k 
-- prod: סימן כפל – נכפיל את כל ההסתברויות של המילים אחת אחרי השנייה
+- **P(C_k | x)**: The probability that the text belongs to category C_k (e.g., positive)
+- **P(C_k)**: How often this category appeared in the past (e.g., how many past texts were positive)
+- **P(x_i | C_k)**: How often the word x_i appeared in texts of category C_k
+- **prod**: Product symbol – multiply all the word probabilities one after the other
+
 
 הסימן הזה ( \propto \) אומר: "פרופורציונלי ל־".  
 כלומר: זה לא הנוסחה המלאה עם המונה והמחנה – רק החלק החשוב שמשווה בין הקטגוריות
