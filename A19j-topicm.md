@@ -40,9 +40,17 @@
 - עבור כל נושא → רשימת מילים אופייניות
 - עבור כל טקסט → הסתברות לכל נושא
 
-## 📘 דוגמה: LDA Model
+## LDA Model
 
-### 🧠 מה זה LDA – Latent Dirichlet Allocation?
+### מה זה LDA – Latent Dirichlet Allocation?
+
+ Latent = סמוי, חבוי
+
+ Dirichlet = שם של התפלגות סטטיסטית
+
+ Allocation = הקצאה
+
+Latent Dirichlet Allocation = הקצאה של נושאים סמויים למסמכים, בעזרת התפלגות דירישלה
 
 ה- LDA הוא מודל הסתברותי גנרטיבי שמשמש ל־**Topic Modeling**  
 המטרה שלו היא לגלות אילו נושאים סמויים מרכיבים אוסף של מסמכים
