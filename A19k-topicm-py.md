@@ -55,9 +55,9 @@
 נשתמש ב־`np.argsort` כדי לסדר את כל המילים לפי ההסתברות שלהן  
 ונבחר את **10 המילים עם ההסתברות הגבוהה ביותר לכל Topic**
 
-<img src="ldaex9.jpg" style="width: 100%" />
+<img src="ldaex12.jpg" style="width: 100%" />
 
-<img src="ldaex10.jpg" style="width: 100%" />
+<img src="ldaex9.jpg" style="width: 100%" />
 
 כך בהמשך נוכל **לנסות לתת שם לנושא לפי המילים שמייצגות אותו**  
 לדוגמה: נושא 1 מכיל מילים שקשורות ל־Politics → ניתן לתייג אותו כ־"בחירות"
