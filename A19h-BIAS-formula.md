@@ -31,9 +31,6 @@ $$
 P(C_k|x) = \frac{P(C_k) \cdot P(x|C_k)}{P(x)}
 $$
 
-- **P(Ck | x)**: The probability that the text belongs to category Ck (e.g., positive)
-- **P(Ck)**: How often this category appeared in the past (e.g., how many past texts were positive in the training data)
-
 - **P(Ck | x)**: The probability that the text (x) belongs to class Ck  
   → This is what we want to find
 
