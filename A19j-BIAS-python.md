@@ -29,7 +29,7 @@ df
 
 <img src="biasex2.jpg" style="width: 100%" />
 
-**AD PICTURE FROM PAGE 16**
+<img src="biasex3.jpg" style="width: 100%" />
 
 ## שלב 3: הכנת הנתונים
 
