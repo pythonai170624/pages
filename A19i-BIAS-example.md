@@ -7,7 +7,7 @@
 
 המטרה: לאמן מודל Naive Bayes שיוכל לחזות אם ביקורת חדשה היא חיובית או שלילית
 
-<img src="bias1.jpg" style="width: 40%" />
+<img src="bias1.jpg" align="right" style="width: 40%" />
 
 ## שלב 2: חישוב הסתברויות בסיסיות (Prior)
 
