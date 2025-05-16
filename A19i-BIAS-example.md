@@ -18,8 +18,8 @@
 
 לכן:
 
-- P(pos) = 25 / 35  
-- P(neg) = 10 / 35  
+- P(positive reviews) = 25 / 35  
+- P(negative reviews) = 10 / 35  
 
 <img src="bias2.jpg" style="width: 50%" />
 
