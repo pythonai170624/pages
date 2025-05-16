@@ -40,8 +40,9 @@ df
 
 > שים לב: כדי להימנע מדליפת מידע (Data Leakage), מבצעים את הפיצול **לפני** הווקטוריזציה
 
-**AD PICTURE FROM PAGE 17**
-**AD PICTURE FROM PAGE 18**
+<img src="biasex4.jpg" style="width: 100%" />
+
+<img src="biasex5.jpg" style="width: 100%" />
 
 ## שלב 4: אימון המודלים
 
