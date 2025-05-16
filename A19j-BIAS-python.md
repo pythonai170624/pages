@@ -185,12 +185,22 @@
 אלא כי הוא מודל בסיסי, חכם, קל להסבר, שימושי בהרבה בעיות,  
 ולפעמים — הוא פשוט **הפתעת השנה** 🎯
 
-## גרף השוואת דיוק בין מודלים
+## פרדיקציה
 
-לים:
+**נבנה pipeline**
+
+<img src="biasex14.jpg" style="width: 100%" />
+
+**ננבא את הרגש של המילים**
+
+<img src="biasex15.jpg" style="width: 100%" />
+
+
+---
+
+## הקוד המלא
 
 ```python
-# ייבוא ספריות
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -198,36 +208,71 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report
 
-# טעינת הדאטה
+# load data
 df = pd.read_csv('airline_tweets.csv')
+df
 
-# יצירת תכונות ותוויות
-X = df['text']
-y = df['airline_sentiment']
+import seaborn as sns
+import matplotlib.pyplot as plt
 
-# פיצול ל-Train ו-Test
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+sns.countplot(data=df, x='airline_sentiment')
+plt.show()
 
-# וקטוריזציה עם TF-IDF (רק על הטקסט)
-vectorizer = TfidfVectorizer(stop_words='english')
-X_train_vec = vectorizer.fit_transform(X_train)
-X_test_vec = vectorizer.transform(X_test)
+sns.countplot(data=df, x='negativereason')
+plt.xticks(rotation=90)
+plt.show()
 
-# יצירת מודל Naive Bayes ואימון
-nb_model = MultinomialNB()
-nb_model.fit(X_train_vec, y_train)
+sns.countplot(data=df, x='airline', hue='airline_sentiment')
+plt.show()
 
-# מודל נוסף להשוואה – Logistic Regression
-log_model = LogisticRegression(max_iter=1000)
-log_model.fit(X_train_vec, y_train)
+data = df[['airline_sentiment', 'text']]
+data.head()
 
-# בדיקת דיוק וביצועים
-def evaluate_model(model, name):
-    print(f"\n{name} Results:")
-    predictions = model.predict(X_test_vec)
-    print(classification_report(y_test, predictions))
+from sklearn.model_selection import train_test_split
+         
+X = data['text']
+y = data['airline_sentiment']
+         
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
-# הצגת ביצועים של שני המודלים
-evaluate_model(nb_model, "Naive Bayes")
-evaluate_model(log_model, "Logistic Regression")
+from sklearn.feature_extraction.text import TfidfVectorizer
+         
+tfidf_vectorizer = TfidfVectorizer(stop_words='english')
+tfidf_vectorizer.fit(X_train)
+X_train_tfidf = tfidf_vectorizer.transform(X_train)
+X_test_tfidf = tfidf_vectorizer.transform(X_test)
+
+from sklearn.naive_bayes import MultinomialNB
+
+naive_bias = MultinomialNB()
+naive_bias.fit(X_train_tfidf, y_train)
+
+from sklearn.linear_model import LogisticRegression
+
+logistic_reg = LogisticRegression(max_iter=1000)
+logistic_reg.fit(X_train_tfidf, y_train)
+
+from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
+
+def print_metrics(model):
+   predictions = model.predict(X_test_tfidf)
+   print(accuracy_score(y_test, predictions))
+   print()
+   print(classification_report(y_test, predictions))
+   print()
+   print(confusion_matrix(y_test, predictions))
+
+print_metrics(naive_bias)
+
+print_metrics(logistic_reg)
+
+from sklearn.pipeline import Pipeline
+
+pipeline = Pipeline([('tfidf', TfidfVectorizer()), ('logistic_reg', LogisticRegression())])
+
+pipeline.fit(X, y)
+
+print(pipeline.predict(["good flight"]))
+print(pipeline.predict(["bad flight"]))
+print(pipeline.predict(["ok flight"]))
 ```
