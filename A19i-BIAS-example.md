@@ -93,8 +93,7 @@ $$
 
 ### עבור "positive":
 
- - P("movie" | positive), see previous section table
- - P("actor" | positive), see previous section table
+ - P("movie" | positive), P("actor" | positive) → see previous section table
 
 ```
 P(positive reviews) * P("movie" | positive) * P("actor" | positive)
@@ -103,8 +102,7 @@ P(positive reviews) * P("movie" | positive) * P("actor" | positive)
 
 ### עבור "negative":
 
-- P("movie" | negative), see previous section table
-- P("actor" | negative), see previous section table
+- P("movie" | negative), P("actor" | negative) → see previous section table
 
 ```
 P(negative reviews) * P("movie" | negative) * P("actor" | negative)
