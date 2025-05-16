@@ -117,7 +117,7 @@ P(negative reviews) * P("movie" | negative) * P("actor" | negative)
 
 ניקח טקסט חדש: `"great movie"`
 
-<img src="bias6.jpg" style="width: 65%" />
+<img src="bias6.jpg" style="width: 45%" />
 
 אם נחשב עבור negative:
 
