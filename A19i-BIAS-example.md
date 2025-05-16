@@ -38,7 +38,7 @@
 
 **סה״כ מילים בקטגוריה חיובית: 24**
 
-<img src="bias3.png" style="width: 60%" />
+<img src="bias3.png" style="width: 80%" />
 
 אז:
 
