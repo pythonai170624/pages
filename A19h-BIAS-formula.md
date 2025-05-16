@@ -31,6 +31,21 @@ $$
 P(C_k|x) = \frac{P(C_k) \cdot P(x|C_k)}{P(x)}
 $$
 
+- **P(Ck | x)**: The probability that the text belongs to category Ck (e.g., positive)
+- **P(Ck)**: How often this category appeared in the past (e.g., how many past texts were positive in the training data)
+
+- **P(Ck | x)**: The probability that the text (x) belongs to class Ck  
+  → This is what we want to find
+
+- **P(Ck)**: The prior probability of class Ck  
+  → How common this class is in the **training data** (e.g., how many of the training reviews are labeled as positive)
+
+- **P(x | Ck)**: The likelihood  
+  → How likely it is to see the words x in texts that belong to class Ck. This is calculated from the **training data**
+
+- **P(x)**: The evidence or total probability of x  
+  → How likely the words x are in general, across all classes (from the **training data**)
+
 ## הנוסחה החדשה (פשוטה):
 
 $$
