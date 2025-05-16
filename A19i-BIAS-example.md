@@ -79,6 +79,10 @@ $$
 
 ### עבור "positive":
 
+x = [movie, actor]
+C = [positive, negative]
+
+
 ```
 P(positive) * P(movie | positive) * P(actor | positive)
 = (25/35) * (0.42) * (0.08) = 0.024
