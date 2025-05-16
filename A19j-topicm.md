@@ -112,9 +112,9 @@ Latent Dirichlet Allocation = הקצאה של נושאים סמויים למסמ
 
 נניח שיש לנו 2 מסמכים והרצנו עליהם מודל LDA עם 5 נושאים (`Topics 1–5`)
 
-### עבור כל מסמך, נקבל:
-- **DOC 1**: שייך הכי הרבה לנושא 2, קצת לנושאים 3 ו־4
-- **DOC 2**: שייך הכי הרבה לנושא 4, קצת לנושאים 1, 2 ו־5
+#### עבור כל מסמך, נקבל:
+- **DOC 1**: Mostly belongs to topic 2, and partially to topics 3 and 4  
+- **DOC 2**: Mostly belongs to topic 4, and partially to topics 1, 2, and 5
 
 🟩 כלומר:
 > כל מסמך מיוצג כווקטור הסתברויות – כמה הוא שייך לכל Topic
