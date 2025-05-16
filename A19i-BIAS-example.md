@@ -79,8 +79,8 @@ $$
 
 ### עבור "positive":
 
-x = [movie, actor]
-C = [positive, negative]
+- x = [movie, actor]
+- C = [positive, negative]
 
 
 ```
