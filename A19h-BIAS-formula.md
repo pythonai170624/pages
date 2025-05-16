@@ -59,10 +59,28 @@ $$
 
 אל תיבהל! בוא נפרק:
 
-- **P(Ck | x)**: The probability that the text belongs to category Ck (e.g., positive)
-- **P(Ck)**: How often this category appeared in the past (e.g., how many past texts were positive)
-- **P(Xi | Ck)**: How often the word Xi appeared in texts of category Ck
-- **prod**: Product symbol – multiply all the word probabilities one after the other
+
+### Formula:
+P(Ck | x) ∝ P(Ck) × ∏ P(xi | Ck)
+
+Where:
+
+- **P(Ck | x)**: The probability that the text `x` (a sequence of words) belongs to class `Ck`  
+  → This is the final result we want to calculate: how likely the text is to belong to a specific class (e.g., "positive", "spam")
+
+- **P(Ck)**: The prior probability of class `Ck`  
+  → How common this class is in the **training data** (e.g., how many reviews in the training set are labeled as "positive")
+
+- **P(xi | Ck)**: The likelihood  
+  → The probability that the word `xi` appears in texts of class `Ck`.  
+  → This is calculated from the **training data** by counting how often each word appears in each class
+
+- **∏ (product)**: Multiply all the individual word probabilities together  
+  → We assume that the words are conditionally independent given the class, so we multiply them
+
+- **∝ (proportional to)**: This means we **ignore P(x)** in this version  
+  → Because P(x) is the same for all classes, we don't need it when comparing which class has the highest probability
+
 
 
 הסימן הזה ( \propto \) אומר: "פרופורציונלי ל־".  
