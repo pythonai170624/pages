@@ -408,8 +408,9 @@ from tensorflow.keras.layers import Dense
 # Initialize the ANN model
 ann = tf.keras.models.Sequential()
 
-# First layer - Input layer
-ann.add(tf.keras.layers.Dense(units=10))
+# First layer - Input + first hidden layer
+# shape of the input is (7000, 12)
+ann.add(tf.keras.layers.Dense(units=10, activation='relu', input_shape=(12,)))
 
 # Second layer - Hidden layer
 ann.add(tf.keras.layers.Dense(units=10, activation='relu'))
