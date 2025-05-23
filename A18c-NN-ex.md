@@ -363,7 +363,7 @@ Output:
 ```
 
 ---
-## הקוד המלא
+## complete code
 
 ```python
 import pandas as pd
