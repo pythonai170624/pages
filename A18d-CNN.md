@@ -65,7 +65,7 @@ model.add(Activation('relu'))
 model.add(MaxPooling2D(pool_size=(2, 2)))              
 
 # בלוק קונבולוציוני שלישי (אופציונלי)
-model.add(Conv2D(128, (3, 3)))
+model.add(Conv2D(128, (3, 3)))  
 model.add(Activation('relu'))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 
@@ -73,7 +73,7 @@ model.add(MaxPooling2D(pool_size=(2, 2)))
 model.add(Flatten())
 
 # שכבה צפופה רגילה
-model.add(Dense(128))                # 128 נוירונים
+model.add(Dense(128))                # 128 נוירונים סטנדרט
 model.add(Activation('relu'))
 
 # שכבת פלט לסיווג בינארי
