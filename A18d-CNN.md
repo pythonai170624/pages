@@ -26,7 +26,7 @@ model.add(Conv2D(32, (3, 3), input_shape=(64, 64, 3)))  # שכבה קונבול�
 32:
 This means the layer uses 32 filters (also called kernels)
 Each filter detects a different pattern in the image (e.g., edges, curves, colors)
-Each filter produces a feature map, so the output will have 32 channels
+Each filter produces a feature map, so the output will have 32  “layers of features” learned from the image
 
 (3, 3)
 This is the size of each filter: 3 pixels by 3 pixels
