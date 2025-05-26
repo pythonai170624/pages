@@ -22,6 +22,30 @@ model = Sequential()
 
 # בלוק קונבולוציוני ראשון
 model.add(Conv2D(32, (3, 3), input_shape=(64, 64, 3)))  # שכבה קונבולוציונית
+'''
+32:
+This means the layer uses 32 filters (also called kernels)
+Each filter detects a different pattern in the image (e.g., edges, curves, colors)
+Each filter produces a feature map, so the output will have 32 channels
+
+(3, 3)
+This is the size of each filter: 3 pixels by 3 pixels
+The filter slides over the image and analyzes 3×3 pixel patches at a time
+It's a very common choice, but you can also use (5, 5), (7, 7), etc.
+
+input_shape=(64, 64, 3)
+This defines the shape of the input image:
+64 = height of the image (in pixels)
+64 = width of the image
+3 = number of channels → RGB image (Red, Green, Blue)
+So, this input is a 64×64 color image
+
+Each of the 32 filters has a size of 3×3×3 (3×3 for pixels, 3 for RGB channels)
+Each filter scans the entire image and produces one feature map
+In total, you'll get 32 feature maps (one per filter) as the output of this layer
+'''
+
+
 model.add(Activation('relu'))                           # פונקציית הפעלה
 model.add(MaxPooling2D(pool_size=(2, 2)))               # שכבת Pooling
 
