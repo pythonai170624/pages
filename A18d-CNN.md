@@ -22,12 +22,12 @@ model = Sequential()
 
 # בלוק קונבולוציוני ראשון
 model.add(Conv2D(32, (3, 3), input_shape=(64, 64, 3)))  # שכבה קונבולוציונית
-model.add(Activation('relu'))                          # פונקציית הפעלה
-model.add(MaxPooling2D(pool_size=(2, 2)))              # שכבת Pooling
+model.add(Activation('relu'))                           # פונקציית הפעלה
+model.add(MaxPooling2D(pool_size=(2, 2)))               # שכבת Pooling
 
 # בלוק קונבולוציוני שני
-model.add(Conv2D(64, (3, 3)))                          # עוד מסננים
-model.add(Activation('relu'))                          
+model.add(Conv2D(64, (3, 3)))                           # עוד מסננים
+model.add(Activation('relu'))                           
 model.add(MaxPooling2D(pool_size=(2, 2)))              
 
 # בלוק קונבולוציוני שלישי (אופציונלי)
