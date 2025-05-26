@@ -26,12 +26,22 @@ model.add(Conv2D(32, (3, 3), input_shape=(64, 64, 3)))  # שכבה קונבול�
 32:
 This means the layer uses 32 filters (also called kernels)
 Each filter detects a different pattern in the image (e.g., edges, curves, colors)
-Each filter produces a feature map, so the output will have 32  “layers of features” learned from the image
+Each filter produces a feature map, so the output will have 32 “layers of features” learned from the image
+The 32 filters are not pre-made (like “edge detector”, “circle detector” etc.)
+These filters are initialized with random weights (random numbers)
 
 (3, 3)
 This is the size of each filter: 3 pixels by 3 pixels
 The filter slides over the image and analyzes 3×3 pixel patches at a time
 It's a very common choice, but you can also use (5, 5), (7, 7), etc.
+Use 3×3 when: 
+  You want deep networks with many layers (better feature extraction)
+  You want to keep computation efficient
+  You can stack several 3×3 filters to simulate larger ones (e.g., two 3×3 filters ≈ 5×5)
+Use 5×5 or 7×7 when:
+  You're working with larger images and need to detect larger features earlier
+  You want a shallower network (fewer layers)
+  You’re trying to reduce the number of layers but still want global context              
 
 input_shape=(64, 64, 3)
 This defines the shape of the input image:
