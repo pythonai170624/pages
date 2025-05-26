@@ -150,7 +150,7 @@ from tensorflow.keras.layers import Dense
 # Initialize the ANN model
 ann = tf.keras.models.Sequential()
 
-# First layer - Input layer
+# First layer - Input + first hidden layer
 ann.add(tf.keras.layers.Dense(units=10))
 
 # Second layer - Hidden layer
