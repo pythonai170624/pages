@@ -14,6 +14,43 @@
 
 <img src="cnn1.png" style="width:100%"/>
 
+```python
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, Activation, Flatten, Dense
+
+model = Sequential()
+
+# בלוק קונבולוציוני ראשון
+model.add(Conv2D(32, (3, 3), input_shape=(64, 64, 3)))  # שכבה קונבולוציונית
+model.add(Activation('relu'))                          # פונקציית הפעלה
+model.add(MaxPooling2D(pool_size=(2, 2)))              # שכבת Pooling
+
+# בלוק קונבולוציוני שני
+model.add(Conv2D(64, (3, 3)))                          # עוד מסננים
+model.add(Activation('relu'))                          
+model.add(MaxPooling2D(pool_size=(2, 2)))              
+
+# בלוק קונבולוציוני שלישי (אופציונלי)
+model.add(Conv2D(128, (3, 3)))
+model.add(Activation('relu'))
+model.add(MaxPooling2D(pool_size=(2, 2)))
+
+# שטוח (Flatten) – מעביר את הפלט משכבות קונבולוציה לשכבות צפופות
+model.add(Flatten())
+
+# שכבה צפופה רגילה
+model.add(Dense(128))                # 128 נוירונים
+model.add(Activation('relu'))
+
+# שכבת פלט לסיווג בינארי
+model.add(Dense(1))                  # נוירון אחד כי זו בעיה בינארית
+model.add(Activation('sigmoid'))     # פונקציית סיגמואיד לסיווג 0/1
+
+# קומפילציה של המודל
+model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+
+```
+
 
 ## ReLU – פונקציית הפעלה
 
