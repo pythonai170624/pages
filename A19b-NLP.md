@@ -39,33 +39,20 @@ Output:
 * `dep_` dependency label → הקשר התחבירי של המילה במשפט (נושא, נשוא, מושא ישיר וכו’)
 
 
-| טוקן (text) | POS\_ |                | DEP\_    |                         |
-| ----------- | ----- | ------------------------- | -------- | --------------------------------- |
-| Tesla       | PROPN | שם עצם פרטי (Proper Noun) | nsubj    | נושא המשפט                        |
-| is          | AUX   | פועל עזר (Auxiliary Verb) | aux      | פועל עזר של הפועל המרכזי          |
-| looking     | VERB  | פועל (Verb)               | ROOT     | הפועל המרכזי במשפט                |
-| at          | ADP   | מילת יחס (Adposition)     | prep     | מילת יחס שמקשרת לפועל             |
-| buying      | VERB  | פועל (Verb)               | pcomp    | משלים של הפועל באמצעות מילת יחס   |
-| U.S.        | PROPN | שם עצם פרטי               | dobj     | מושא ישיר של הפועל                |
-| startup     | VERB  | פועל                      | advcl    | פסוקית נסיבתית שמוסיפה מידע לפועל |
-| for         | ADP   | מילת יחס                  | prep     | מילת יחס שמובילה למושא נוסף       |
-| \$          | SYM   | סימן (Symbol)             | quantmod | תיאור כמות שמקדים מספר            |
-| 6           | NUM   | מספר (Numeral)            | compound | תיאור מקדים של שם עצם אחר         |
-| million     | NUM   | מספר (Numeral)            | pobj     | מושא של מילת היחס "for"           |
+| טוקן (text) | POS\_ |                | DEP\_    | הסבר בעברית                             | Explanation (English)                                           |
+| ----------- | ----- | ------------------------- | -------- | ---------------------------------------- | ---------------------------------------------------------------- |
+| Tesla       | PROPN | שם עצם פרטי (Proper Noun) | nsubj    | נושא המשפט                              | **Nominal Subject** – the subject performing the action          |
+| is          | AUX   | פועל עזר (Auxiliary Verb) | aux      | פועל עזר של הפועל המרכזי               | **Auxiliary** – helps the main verb form tense, mood, or voice   |
+| looking     | VERB  | פועל (Verb)               | ROOT     | הפועל המרכזי במשפט                     | **Root** – the main verb of the sentence                         |
+| at          | ADP   | מילת יחס (Adposition)     | prep     | מילת יחס שמקשרת לפועל                  | **Prepositional Modifier** – links a prepositional phrase to the verb |
+| buying      | VERB  | פועל (Verb)               | pcomp    | משלים של הפועל באמצעות מילת יחס        | **Prepositional Complement** – the verb that completes the preposition |
+| U.S.        | PROPN | שם עצם פרטי               | dobj     | מושא ישיר של הפועל                     | **Direct Object** – the noun receiving the action of the verb    |
+| startup     | VERB  | פועל                      | advcl    | פסוקית נסיבתית שמוסיפה מידע לפועל      | **Adverbial Clause Modifier** – gives extra information about the action |
+| for         | ADP   | מילת יחס                  | prep     | מילת יחס שמובילה למושא נוסף            | **Prepositional Modifier** – introduces a prepositional phrase   |
+| \$          | SYM   | סימן (Symbol)             | quantmod | תיאור כמות שמקדים מספר                 | **Quantifier Modifier** – modifies a number or quantity          |
+| 6           | NUM   | מספר (Numeral)            | compound | תיאור מקדים של שם עצם אחר              | **Compound** – joins with another noun to form a complex noun    |
+| million     | NUM   | מספר (Numeral)            | pobj     | מושא של מילת היחס "for"                | **Object of Preposition** – the noun that follows a preposition  |
 
-| טוקן (text) | POS\_ |                | DEP\_    | Explanation (English)                                           |
-| ----------- | ----- | ------------------------- | -------- | ---------------------------------------------------------------- |
-| Tesla       | PROPN | שם עצם פרטי (Proper Noun) | nsubj    | **Nominal Subject** – the subject performing the action          |
-| is          | AUX   | פועל עזר (Auxiliary Verb) | aux      | **Auxiliary** – helps the main verb form tense, mood, or voice   |
-| looking     | VERB  | פועל (Verb)               | ROOT     | *Not requested – central verb of the sentence*                   |
-| at          | ADP   | מילת יחס (Adposition)     | prep     | *Not requested – preposition linked to the verb*                 |
-| buying      | VERB  | פועל (Verb)               | pcomp    | *Not requested – complement of a preposition*                    |
-| U.S.        | PROPN | שם עצם פרטי               | dobj     | **Direct Object** – the noun receiving the action of the verb    |
-| startup     | VERB  | פועל                      | advcl    | *Not requested – adverbial clause adding context*                |
-| for         | ADP   | מילת יחס                  | prep     | *Not requested – preposition leading to another object*          |
-| \$          | SYM   | סימן (Symbol)             | quantmod | *Not requested – modifier indicating quantity*                   |
-| 6           | NUM   | מספר (Numeral)            | compound | *Not requested – compound modifier of another noun*              |
-| million     | NUM   | מספר (Numeral)            | pobj     | *Not requested – object of the preposition "for"*                |
 
 
 In linguistic terms, a **proper noun** is a specific type of noun that names a particular
