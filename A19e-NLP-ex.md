@@ -1,4 +1,4 @@
-# 💪 NLP Exercises for Beginners (with SpaCy)
+# 💪 NLP Exercises with SpaCy
 
 ## 📌 Instructions
 
