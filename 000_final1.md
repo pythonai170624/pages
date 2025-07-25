@@ -135,5 +135,9 @@ age,salary,rooms,price
 - Model evaluation (MAE, R2, etc.)
 - Rate limiting per user/email
 - Web UI for uploading data and running predictions
+## 📤 הגשה
+
+יש לשלוח את הפתרון עם כל שלבי התרגול והמימושים למייל:
+📧 [pythonai170624+FINALSERVER@gmail.com](mailto:pythonai170624+FINALSERVER@gmail.com)
 
 
