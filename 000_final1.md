@@ -137,7 +137,7 @@ age,salary,rooms,price
 - Web UI for uploading data and running predictions
 ## 📤 הגשה
 
-יש לשלוח את הפתרון עם כל שלבי התרגול והמימושים למייל:
+יש לשלוח את הפתרון למייל:
 📧 [pythonai170624+FINALSERVER@gmail.com](mailto:pythonai170624+FINALSERVER@gmail.com)
 
 
