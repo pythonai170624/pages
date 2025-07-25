@@ -132,6 +132,8 @@ age,salary,rooms,price
 ## 💡 Optional Extensions
 - Support for multiple model types: random_forest, logistic, svr, xgboost
 - Model evaluation (MAE, R2, etc.)
+
+<a href="000_final2.md" />see part b </a>
 ## 📤 הגשה
 
 יש לשלוח את הפתרון למייל:
