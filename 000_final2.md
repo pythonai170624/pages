@@ -1,7 +1,7 @@
 # 📊 Final Project: FastAPI Server for Model Training and Prediction
 # Part B: User Monitoring, Tokens, and Admin GUI
 
-<img src="stremli1.jpg" />
+<img src="stremlit1.jpg" />
 
 ## 📦 1. User Monitoring in Database (Token System)
 
