@@ -130,11 +130,8 @@ age,salary,rooms,price
 ```
 
 ## 💡 Optional Extensions
-- Email + JWT authentication
 - Support for multiple model types: random_forest, logistic, svr, xgboost
 - Model evaluation (MAE, R2, etc.)
-- Rate limiting per user/email
-- Web UI for uploading data and running predictions
 ## 📤 הגשה
 
 יש לשלוח את הפתרון למייל:
